@@ -1,0 +1,83 @@
+import { Fragment, useState } from "react";
+import { AiOutlinePlusCircle } from "react-icons/ai";
+import { MdOutlineContentCopy } from "react-icons/md";
+import { handleCopyToClipBoard } from "../../../utils/handleCopyToClipBoard";
+import { getSiteURL } from "../../../utils/getSiteURL";
+import { useIndexQuery } from "../../../hooks";
+import AddNewUser from "../../modals/Affiliate/AddNewUser";
+import images from "../../../assets/images";
+import { Settings } from "../../../api";
+
+const InviteSection = () => {
+  let payload = { type: "get_referral_code" };
+  const { siteURL } = getSiteURL();
+  if (siteURL) {
+    payload.site = siteURL;
+  }
+  const [showAddNewUserModal, setShowAddNewUserModal] = useState(false);
+  const { data } = useIndexQuery(payload);
+
+  return (
+    <Fragment>
+      {showAddNewUserModal && (
+        <AddNewUser setShowAddNewUserModal={setShowAddNewUserModal} />
+      )}
+      <div data-v-4c49d924 className="nw-affi-invite-sec mb-5">
+        <div className="nw-affi-invite-content-wrapper" data-v-4c49d924>
+          <div className="nw-affi-invite-content" data-v-4c49d924>
+            <h2 data-v-4c49d924>Invite your friends</h2>
+            <p data-v-4c49d924>to join and you can receive huge bonuses</p>
+          </div>
+          <div className="nw-affi-invite-img" data-v-4c49d924>
+            <img
+              src={images.affiInvite}
+              alt="affi-invite-img"
+              data-v-4c49d924
+            />
+          </div>
+        </div>
+        {Settings?.referral_create_account && (
+          <div className="nw-affi-add-new-user-btn-sec" data-v-4c49d924>
+            <button
+              onClick={() => setShowAddNewUserModal(true)}
+              className="nw-affi-add-new-user-btn"
+              data-bs-target="#AfAddNewUser"
+              data-bs-toggle="modal"
+              data-v-4c49d924
+            >
+              <span data-v-4c49d924>
+                <AiOutlinePlusCircle size={18} />
+                ADD NEW USER
+              </span>
+            </button>
+          </div>
+        )}
+        <div data-v-4c49d924 className="nw-affi-qr-invite-wrapper">
+          <div data-v-4c49d924 className="nw-affi-qr-invite-code">
+            <div data-v-4c49d924 className="nw-affi-qr-invite-heading">
+              <img
+                data-v-4c49d924
+                src={images.affiInviteGift}
+                alt="invite-gift"
+              />
+              <h3 data-v-4c49d924>Invitation Code</h3>
+            </div>
+            <div data-v-4c49d924 className="nw-affi-share-link-sec">
+              <span data-v-4c49d924>{data?.result?.link}</span>
+              <button
+                style={{ position: "absolute", right: "10px", top: "0px" }}
+                onClick={() => handleCopyToClipBoard(data?.result?.text)}
+                data-v-4c49d924
+                className="thm-but thm-bdr-btn affi-cancel-btn affi-yellow-btn"
+              >
+                <MdOutlineContentCopy color="#000" size={18} />
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </Fragment>
+  );
+};
+
+export default InviteSection;
