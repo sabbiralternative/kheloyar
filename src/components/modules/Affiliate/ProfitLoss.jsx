@@ -121,9 +121,9 @@ const ProfitLoss = () => {
                     <div key={i}>
                       <div
                         title="Cricket - 1.232257782-3066645.FY"
-                        className="w-full flex active:scale-95 transition-all ease-in-out duration-200 flex-col rounded-[4px] items-center justify-start gap-y-1 bg-bg_Quaternary my-1 shadow-[0_3px_10px_rgb(0,0,0,0.2)]"
+                        className="w-full flex active:scale-95 transition-all ease-in-out duration-200 flex-col rounded-[4px] items-center justify-start gap-y-1 bg-sidebarBg my-1 shadow-[0_3px_10px_rgb(0,0,0,0.2)]"
                       >
-                        <div className="w-full bg-bg_Quaternary1 px-2.5 py-2 flex items-center justify-between  text-xs sm:text-sm">
+                        <div className="w-full bg-sidebarBg1 px-2.5 py-2 flex items-center justify-between  text-xs sm:text-sm">
                           <span className="text-text_Ternary w-1/2 border-r border-r-oddInputColor flex items-center justify-start gap-x-1">
                             <span className={`font-medium  `}>
                               {item?.event_type_id}

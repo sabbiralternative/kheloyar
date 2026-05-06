@@ -59,7 +59,7 @@ const AppOnlyBonus = () => {
         <div className="w-full router-ctn max-md:pb-9">
           <main className="flex w-full flex-col">
             <div
-              className="text-start bg-bg_Quaternary mt-5 px-2.5 py-1  rounded text-[12px] shadow-sm mx-2 flex items-start gap-2 transition-opacity duration-500"
+              className="text-start bg-sidebarBg mt-5 px-2.5 py-1  rounded text-[12px] shadow-sm mx-2 flex items-start gap-2 transition-opacity duration-500"
               style={{
                 opacity: fade ? 1 : 0,
               }}

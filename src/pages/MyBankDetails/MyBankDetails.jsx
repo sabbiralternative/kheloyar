@@ -114,7 +114,7 @@ const MyBankDetails = () => {
                 <div className="app-bg flex-row w-full h-full flex">
                   <div className="w-[34px] h-full flex items-center justify-center">
                     <button
-                      className="inline-block leading-normal relative overflow-hidden transition duration-150 ease-in-out w-8 rounded-sm h-6 flex ml-[4px] items-center justify-center bg-bg_Primary2 active:scale-150 cursor-pointer primary-icon-color"
+                      className="inline-block leading-normal relative overflow-hidden transition duration-150 ease-in-out w-8 rounded-sm h-6 flex ml-[4px] items-center justify-center bg-buttonGradient2 active:scale-150 cursor-pointer primary-icon-color"
                       type="button"
                     >
                       <svg
@@ -146,7 +146,7 @@ const MyBankDetails = () => {
                   >
                     <span
                       className={` px-[25px] py-2 text-[13px] md:text-sm lg:text-base rounded-full font-bold leading-4 active:scale-95 block z-10 ${
-                        tab === 1 ? "text-primary" : "bg-bg_Quaternary"
+                        tab === 1 ? "text-primary" : "bg-sidebarBg"
                       }`}
                     >
                       Active
@@ -158,14 +158,14 @@ const MyBankDetails = () => {
                   >
                     <span
                       className={`text-text_Ternary text-sm  rounded-full  px-[25px] py-2 text-[13px] md:text-sm lg:text-base font-bold leading-4 active:scale-95 block z-10  ${
-                        tab === 0 ? "text-primary" : "bg-bg_Quaternary"
+                        tab === 0 ? "text-primary" : "bg-sidebarBg"
                       }`}
                     >
                       Deleted
                     </span>
                   </div>
                   <div
-                    className={`absolute z-1 w-full h-full transition-all ease-in-out duration-150 bg-bg_Primary text-sm bg-bg_Primary  rounded-full  ${
+                    className={`absolute z-1 w-full h-full transition-all ease-in-out duration-150 bg-buttonGradient text-sm bg-buttonGradient  rounded-full  ${
                       tab === 1 ? "left-0" : "left-[105px] lg:left-[115px]"
                     }`}
                     style={{

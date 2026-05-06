@@ -130,251 +130,592 @@ export const Fancy = ({ data }) => {
     }
   };
   return (
-    <Fragment>
-      {ladderData?.length > 0 && (
-        <Ladder
-          ladderData={ladderData}
-          setLadderData={setLadderData}
-          marketName={marketName}
-        />
-      )}
-      {fancyData?.length > 0 && (
-        <div className="relative flex flex-col w-full">
-          <div className="flex flex-col gap-5">
-            <div className="w-full">
-              <table className="w-full bg-white">
-                <thead>
-                  <tr className="h-[24px] text-xs font-bold border border-slate-400 bg-slate-300">
-                    <th className="w-[60%] text-start capitalize px-2">
-                      Fancy
-                    </th>
-                    <th className="w-[20%] md:w-[10%]">
-                      <div className="hidden md:flex items-center justify-center">
-                        No
-                      </div>
-                      <div className="block md:hidden items-center justify-center">
-                        NO
-                      </div>
-                    </th>
-                    <th className="w-[20%] md:w-[10%]">
-                      <div className="hidden md:flex items-center justify-center">
-                        Yes
-                      </div>
-                      <div className="block md:hidden items-center justify-center">
-                        Yes
-                      </div>
-                    </th>
-                    <th className="hidden md:table-cell md:w-[20%] text-[12px] font-sans font-[700] " />
-                  </tr>
-                </thead>
-                <tbody className="w-full">
-                  {fancyData?.map((game) => {
-                    const pnl = pnlBySelection?.find(
-                      (pnl) => pnl?.MarketId === game?.id,
-                    );
-
-                    return (
-                      <Fragment key={game?.id}>
-                        <tr className="border-b border-b-gray13 text-xs h-[43px] relative">
-                          <td className="px-2 text-[14px] w-[60%] h-[43px]">
-                            <span className=" text-[12px] font-[900] flex justify-between">
-                              <span>{game?.name}</span>
-
-                              {pnl ? (
-                                <span
-                                  onClick={() =>
-                                    handleGetLadder(pnl, game?.name)
-                                  }
-                                  className="col-span-2 md:col-span-2 flex flex-row items-center justify-end"
-                                >
-                                  <div className="opacity-100 cursor-pointer">
-                                    <svg
-                                      height="18"
-                                      width="18"
-                                      viewBox="0 0 16 16"
-                                      fill="none"
-                                      xmlns="http://www.w3.org/2000/svg"
+       <div className="flex lg:flex-row flex-col w-full">
+                    <div className="w-full flex gap-1">
+                      <div className="relative w-full flex flex-wrap gap-[0.5rem] items-start max-md:block">
+                        <div className="bg-eventRowBg w-full flex md:pt-1 gap-1 md:pb-2 text-[12px] md:text-sm overflow-auto hide-scrollbar">
+                          <span className=" bg-exchMarketTitleBg rounded px-3 md:px-10 py-1 md:pt-0 md:pb-0 capitalize cursor-pointer text-black font-bold text-center w-full md:w-auto text-nowrap">
+                            All
+                          </span>
+                        </div>
+                        <div className="columns-1 lg:columns-2 w-full gap-2">
+                          <div className="mb-2 break-inside-avoid">
+                            <div className="w-full">
+                              <table className="w-full border-separate border-spacing-y-[1px]">
+                                <thead>
+                                  <tr>
+                                    <th className="w-[78%]" />
+                                    <th className="w-[6%]" />
+                                    <th className="w-[8%]">
+                                      <div className="me-[0.5px] text-center text-sm rounded-md text-black bg-fancyNoMarketBg">
+                                        No
+                                      </div>
+                                    </th>
+                                    <th className="w-[8%]">
+                                      <div className="ms-[0.5px] text-center text-sm rounded-md text-black bg-fancyYesMarketBg">
+                                        Yes
+                                      </div>
+                                    </th>
+                                  </tr>
+                                </thead>
+                                <tbody className="w-full">
+                                  <tr className="border-b bg-sportsTitleBg">
+                                    <td className="px-2 text-[12px] md:text-[14px] w-[78%] min-w-[150px]">
+                                      6 Over Runs PBKS Adv
+                                    </td>
+                                    <td className="w-[6%] px-1">
+                                      <div className="flex flex-col items-center justify-center text-[9px] md:text-[10px] leading-tight">
+                                        <div className="text-gray-400 text-nowrap">
+                                          MIN: 100
+                                        </div>
+                                        <div className="text-gray-400 text-nowrap">
+                                          MAX: 25K
+                                        </div>
+                                      </div>
+                                    </td>
+                                    <td
+                                      colSpan={2}
+                                      className="relative w-[16%]"
                                     >
-                                      <g id="63d691358b4e4026f6539708_stairs 1">
-                                        <path
-                                          id="Vector"
-                                          d="M5.21875 3.13672V13.1367"
-                                          stroke="var(--color-text-primary)"
-                                        ></path>
-                                        <path
-                                          id="Vector_2"
-                                          d="M5.21875 5.48047H10.5312"
-                                          stroke="var(--color-text-primary)"
-                                        ></path>
-                                        <path
-                                          id="Vector_3"
-                                          d="M5.21875 8.13672H10.5312"
-                                          stroke="var(--color-text-primary)"
-                                        ></path>
-                                        <path
-                                          id="Vector_4"
-                                          d="M5.21875 11.1055H10.5312"
-                                          stroke="var(--color-text-primary)"
-                                        ></path>
-                                        <path
-                                          id="Vector_5"
-                                          d="M10.5312 3.13672V13.1367"
-                                          stroke="var(--color-text-primary)"
-                                        ></path>
-                                      </g>
-                                    </svg>
-                                  </div>
-                                </span>
-                              ) : (
-                                <span className="col-span-2 md:col-span-2 flex flex-row items-center justify-end">
-                                  <div className="opacity-50 cursor-not-allowed">
-                                    <svg
-                                      height="18"
-                                      width="18"
-                                      viewBox="0 0 16 16"
-                                      fill="none"
-                                      xmlns="http://www.w3.org/2000/svg"
+                                      <div className="flex">
+                                        <div className="w-1/2">
+                                          <div className="fancy-market-col text-center market-btn w-full ">
+                                            <div className="w-[70px] h-[40px] flex items-center justify-center py-3 px-2 cursor-pointer hover:opacity-80 transition-opacity bg-fancyNoMarketBg border border-fancyNoMarketBorder rounded-md">
+                                              <div className="flex flex-col items-center">
+                                                <span className="text-black text-xs font-semibold leading-[1.0769230769230769em] text-center">
+                                                  63
+                                                </span>
+                                                <div className="text-[9px] text-center text-fancyBetsCountText leading-none mt-1">
+                                                  100
+                                                </div>
+                                              </div>
+                                            </div>
+                                          </div>
+                                        </div>
+                                        <div className="w-1/2">
+                                          <div className="fancy-market-col text-center market-btn w-full ">
+                                            <div className="w-[70px] h-[40px] flex items-center justify-center py-3 px-2 cursor-pointer hover:opacity-80 transition-opacity bg-fancyYesMarketBg border border-fancyYesMarketBorder rounded-md">
+                                              <div className="flex flex-col items-center">
+                                                <span className="text-black text-xs font-semibold leading-[1.0769230769230769em] text-center">
+                                                  65
+                                                </span>
+                                                <div className="text-[9px] text-center text-fancyBetsCountText leading-none mt-1">
+                                                  100
+                                                </div>
+                                              </div>
+                                            </div>
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </td>
+                                  </tr>
+                                  <tr className="border-b bg-sportsTitleBg">
+                                    <td className="px-2 text-[12px] md:text-[14px] w-[78%] min-w-[150px]">
+                                      6 Over Runs SRH Adv
+                                    </td>
+                                    <td className="w-[6%] px-1">
+                                      <div className="flex flex-col items-center justify-center text-[9px] md:text-[10px] leading-tight">
+                                        <div className="text-gray-400 text-nowrap">
+                                          MIN: 100
+                                        </div>
+                                        <div className="text-gray-400 text-nowrap">
+                                          MAX: 25K
+                                        </div>
+                                      </div>
+                                    </td>
+                                    <td
+                                      colSpan={2}
+                                      className="relative w-[16%]"
                                     >
-                                      <g id="63d691358b4e4026f6539708_stairs 1">
-                                        <path
-                                          id="Vector"
-                                          d="M5.21875 3.13672V13.1367"
-                                          stroke="var(--color-text-primary)"
-                                        ></path>
-                                        <path
-                                          id="Vector_2"
-                                          d="M5.21875 5.48047H10.5312"
-                                          stroke="var(--color-text-primary)"
-                                        ></path>
-                                        <path
-                                          id="Vector_3"
-                                          d="M5.21875 8.13672H10.5312"
-                                          stroke="var(--color-text-primary)"
-                                        ></path>
-                                        <path
-                                          id="Vector_4"
-                                          d="M5.21875 11.1055H10.5312"
-                                          stroke="var(--color-text-primary)"
-                                        ></path>
-                                        <path
-                                          id="Vector_5"
-                                          d="M10.5312 3.13672V13.1367"
-                                          stroke="var(--color-text-primary)"
-                                        ></path>
-                                      </g>
-                                    </svg>
-                                  </div>
-                                </span>
-                              )}
-                            </span>
-                            {pnl && (
-                              <div
-                                className={`  ${
-                                  pnl?.pnl > 0
-                                    ? "text-green-500"
-                                    : "text-red-500"
-                                }`}
-                              >
-                                {pnl?.pnl}
-                              </div>
-                            )}
-
-                            <div className="text-left text-[10px] md:hidden">
-                              <span className="font-extrabold text-blue-700">
-                                Min Max{" "}
-                              </span>
-                              <span className="text-gray-700 font-bold">
-                                {game?.minLiabilityPerBet}-
-                                {game?.maxLiabilityPerBet}
-                              </span>
+                                      <div className="flex">
+                                        <div className="w-1/2">
+                                          <div className="fancy-market-col text-center market-btn w-full ">
+                                            <div className="w-[70px] h-[40px] flex items-center justify-center py-3 px-2 cursor-pointer hover:opacity-80 transition-opacity bg-fancyNoMarketBg border border-fancyNoMarketBorder rounded-md">
+                                              <div className="flex flex-col items-center">
+                                                <span className="text-black text-xs font-semibold leading-[1.0769230769230769em] text-center">
+                                                  63
+                                                </span>
+                                                <div className="text-[9px] text-center text-fancyBetsCountText leading-none mt-1">
+                                                  100
+                                                </div>
+                                              </div>
+                                            </div>
+                                          </div>
+                                        </div>
+                                        <div className="w-1/2">
+                                          <div className="fancy-market-col text-center market-btn w-full ">
+                                            <div className="w-[70px] h-[40px] flex items-center justify-center py-3 px-2 cursor-pointer hover:opacity-80 transition-opacity bg-fancyYesMarketBg border border-fancyYesMarketBorder rounded-md">
+                                              <div className="flex flex-col items-center">
+                                                <span className="text-black text-xs font-semibold leading-[1.0769230769230769em] text-center">
+                                                  65
+                                                </span>
+                                                <div className="text-[9px] text-center text-fancyBetsCountText leading-none mt-1">
+                                                  100
+                                                </div>
+                                              </div>
+                                            </div>
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </td>
+                                  </tr>
+                                  <tr className="border-b bg-sportsTitleBg">
+                                    <td className="px-2 text-[12px] md:text-[14px] w-[78%] min-w-[150px]">
+                                      10 Over Runs PBKS Adv
+                                    </td>
+                                    <td className="w-[6%] px-1">
+                                      <div className="flex flex-col items-center justify-center text-[9px] md:text-[10px] leading-tight">
+                                        <div className="text-gray-400 text-nowrap">
+                                          MIN: 100
+                                        </div>
+                                        <div className="text-gray-400 text-nowrap">
+                                          MAX: 25K
+                                        </div>
+                                      </div>
+                                    </td>
+                                    <td
+                                      colSpan={2}
+                                      className="relative w-[16%]"
+                                    >
+                                      <div className="flex">
+                                        <div className="w-1/2">
+                                          <div className="fancy-market-col text-center market-btn w-full ">
+                                            <div className="w-[70px] h-[40px] flex items-center justify-center py-3 px-2 cursor-pointer hover:opacity-80 transition-opacity bg-fancyNoMarketBg border border-fancyNoMarketBorder rounded-md">
+                                              <div className="flex flex-col items-center">
+                                                <span className="text-black text-xs font-semibold leading-[1.0769230769230769em] text-center">
+                                                  99
+                                                </span>
+                                                <div className="text-[9px] text-center text-fancyBetsCountText leading-none mt-1">
+                                                  100
+                                                </div>
+                                              </div>
+                                            </div>
+                                          </div>
+                                        </div>
+                                        <div className="w-1/2">
+                                          <div className="fancy-market-col text-center market-btn w-full ">
+                                            <div className="w-[70px] h-[40px] flex items-center justify-center py-3 px-2 cursor-pointer hover:opacity-80 transition-opacity bg-fancyYesMarketBg border border-fancyYesMarketBorder rounded-md">
+                                              <div className="flex flex-col items-center">
+                                                <span className="text-black text-xs font-semibold leading-[1.0769230769230769em] text-center">
+                                                  101
+                                                </span>
+                                                <div className="text-[9px] text-center text-fancyBetsCountText leading-none mt-1">
+                                                  100
+                                                </div>
+                                              </div>
+                                            </div>
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </td>
+                                  </tr>
+                                  <tr className="border-b bg-sportsTitleBg">
+                                    <td className="px-2 text-[12px] md:text-[14px] w-[78%] min-w-[150px]">
+                                      10 Over Runs SRH Adv
+                                    </td>
+                                    <td className="w-[6%] px-1">
+                                      <div className="flex flex-col items-center justify-center text-[9px] md:text-[10px] leading-tight">
+                                        <div className="text-gray-400 text-nowrap">
+                                          MIN: 100
+                                        </div>
+                                        <div className="text-gray-400 text-nowrap">
+                                          MAX: 25K
+                                        </div>
+                                      </div>
+                                    </td>
+                                    <td
+                                      colSpan={2}
+                                      className="relative w-[16%]"
+                                    >
+                                      <div className="flex">
+                                        <div className="w-1/2">
+                                          <div className="fancy-market-col text-center market-btn w-full ">
+                                            <div className="w-[70px] h-[40px] flex items-center justify-center py-3 px-2 cursor-pointer hover:opacity-80 transition-opacity bg-fancyNoMarketBg border border-fancyNoMarketBorder rounded-md">
+                                              <div className="flex flex-col items-center">
+                                                <span className="text-black text-xs font-semibold leading-[1.0769230769230769em] text-center">
+                                                  99
+                                                </span>
+                                                <div className="text-[9px] text-center text-fancyBetsCountText leading-none mt-1">
+                                                  100
+                                                </div>
+                                              </div>
+                                            </div>
+                                          </div>
+                                        </div>
+                                        <div className="w-1/2">
+                                          <div className="fancy-market-col text-center market-btn w-full ">
+                                            <div className="w-[70px] h-[40px] flex items-center justify-center py-3 px-2 cursor-pointer hover:opacity-80 transition-opacity bg-fancyYesMarketBg border border-fancyYesMarketBorder rounded-md">
+                                              <div className="flex flex-col items-center">
+                                                <span className="text-black text-xs font-semibold leading-[1.0769230769230769em] text-center">
+                                                  101
+                                                </span>
+                                                <div className="text-[9px] text-center text-fancyBetsCountText leading-none mt-1">
+                                                  100
+                                                </div>
+                                              </div>
+                                            </div>
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </td>
+                                  </tr>
+                                  <tr className="border-b bg-sportsTitleBg">
+                                    <td className="px-2 text-[12px] md:text-[14px] w-[78%] min-w-[150px]">
+                                      15 Over Runs PBKS Adv
+                                    </td>
+                                    <td className="w-[6%] px-1">
+                                      <div className="flex flex-col items-center justify-center text-[9px] md:text-[10px] leading-tight">
+                                        <div className="text-gray-400 text-nowrap">
+                                          MIN: 100
+                                        </div>
+                                        <div className="text-gray-400 text-nowrap">
+                                          MAX: 25K
+                                        </div>
+                                      </div>
+                                    </td>
+                                    <td
+                                      colSpan={2}
+                                      className="relative w-[16%]"
+                                    >
+                                      <div className="flex">
+                                        <div className="w-1/2">
+                                          <div className="fancy-market-col text-center market-btn w-full ">
+                                            <div className="w-[70px] h-[40px] flex items-center justify-center py-3 px-2 cursor-pointer hover:opacity-80 transition-opacity bg-fancyNoMarketBg border border-fancyNoMarketBorder rounded-md">
+                                              <div className="flex flex-col items-center">
+                                                <span className="text-black text-xs font-semibold leading-[1.0769230769230769em] text-center">
+                                                  149
+                                                </span>
+                                                <div className="text-[9px] text-center text-fancyBetsCountText leading-none mt-1">
+                                                  100
+                                                </div>
+                                              </div>
+                                            </div>
+                                          </div>
+                                        </div>
+                                        <div className="w-1/2">
+                                          <div className="fancy-market-col text-center market-btn w-full ">
+                                            <div className="w-[70px] h-[40px] flex items-center justify-center py-3 px-2 cursor-pointer hover:opacity-80 transition-opacity bg-fancyYesMarketBg border border-fancyYesMarketBorder rounded-md">
+                                              <div className="flex flex-col items-center">
+                                                <span className="text-black text-xs font-semibold leading-[1.0769230769230769em] text-center">
+                                                  151
+                                                </span>
+                                                <div className="text-[9px] text-center text-fancyBetsCountText leading-none mt-1">
+                                                  100
+                                                </div>
+                                              </div>
+                                            </div>
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </td>
+                                  </tr>
+                                  <tr className="border-b bg-sportsTitleBg">
+                                    <td className="px-2 text-[12px] md:text-[14px] w-[78%] min-w-[150px]">
+                                      15 Over Runs SRH Adv
+                                    </td>
+                                    <td className="w-[6%] px-1">
+                                      <div className="flex flex-col items-center justify-center text-[9px] md:text-[10px] leading-tight">
+                                        <div className="text-gray-400 text-nowrap">
+                                          MIN: 100
+                                        </div>
+                                        <div className="text-gray-400 text-nowrap">
+                                          MAX: 25K
+                                        </div>
+                                      </div>
+                                    </td>
+                                    <td
+                                      colSpan={2}
+                                      className="relative w-[16%]"
+                                    >
+                                      <div className="flex">
+                                        <div className="w-1/2">
+                                          <div className="fancy-market-col text-center market-btn w-full ">
+                                            <div className="w-[70px] h-[40px] flex items-center justify-center py-3 px-2 cursor-pointer hover:opacity-80 transition-opacity bg-fancyNoMarketBg border border-fancyNoMarketBorder rounded-md">
+                                              <div className="flex flex-col items-center">
+                                                <span className="text-black text-xs font-semibold leading-[1.0769230769230769em] text-center">
+                                                  147
+                                                </span>
+                                                <div className="text-[9px] text-center text-fancyBetsCountText leading-none mt-1">
+                                                  100
+                                                </div>
+                                              </div>
+                                            </div>
+                                          </div>
+                                        </div>
+                                        <div className="w-1/2">
+                                          <div className="fancy-market-col text-center market-btn w-full ">
+                                            <div className="w-[70px] h-[40px] flex items-center justify-center py-3 px-2 cursor-pointer hover:opacity-80 transition-opacity bg-fancyYesMarketBg border border-fancyYesMarketBorder rounded-md">
+                                              <div className="flex flex-col items-center">
+                                                <span className="text-black text-xs font-semibold leading-[1.0769230769230769em] text-center">
+                                                  149
+                                                </span>
+                                                <div className="text-[9px] text-center text-fancyBetsCountText leading-none mt-1">
+                                                  100
+                                                </div>
+                                              </div>
+                                            </div>
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </td>
+                                  </tr>
+                                  <tr className="border-b bg-sportsTitleBg">
+                                    <td className="px-2 text-[12px] md:text-[14px] w-[78%] min-w-[150px]">
+                                      20 Over Runs PBKS Adv
+                                    </td>
+                                    <td className="w-[6%] px-1">
+                                      <div className="flex flex-col items-center justify-center text-[9px] md:text-[10px] leading-tight">
+                                        <div className="text-gray-400 text-nowrap">
+                                          MIN: 100
+                                        </div>
+                                        <div className="text-gray-400 text-nowrap">
+                                          MAX: 25K
+                                        </div>
+                                      </div>
+                                    </td>
+                                    <td
+                                      colSpan={2}
+                                      className="relative w-[16%]"
+                                    >
+                                      <div className="flex">
+                                        <div className="w-1/2">
+                                          <div className="fancy-market-col text-center market-btn w-full ">
+                                            <div className="w-[70px] h-[40px] flex items-center justify-center py-3 px-2 cursor-pointer hover:opacity-80 transition-opacity bg-fancyNoMarketBg border border-fancyNoMarketBorder rounded-md">
+                                              <div className="flex flex-col items-center">
+                                                <span className="text-black text-xs font-semibold leading-[1.0769230769230769em] text-center">
+                                                  208
+                                                </span>
+                                                <div className="text-[9px] text-center text-fancyBetsCountText leading-none mt-1">
+                                                  100
+                                                </div>
+                                              </div>
+                                            </div>
+                                          </div>
+                                        </div>
+                                        <div className="w-1/2">
+                                          <div className="fancy-market-col text-center market-btn w-full ">
+                                            <div className="w-[70px] h-[40px] flex items-center justify-center py-3 px-2 cursor-pointer hover:opacity-80 transition-opacity bg-fancyYesMarketBg border border-fancyYesMarketBorder rounded-md">
+                                              <div className="flex flex-col items-center">
+                                                <span className="text-black text-xs font-semibold leading-[1.0769230769230769em] text-center">
+                                                  211
+                                                </span>
+                                                <div className="text-[9px] text-center text-fancyBetsCountText leading-none mt-1">
+                                                  100
+                                                </div>
+                                              </div>
+                                            </div>
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </td>
+                                  </tr>
+                                  <tr className="border-b bg-sportsTitleBg">
+                                    <td className="px-2 text-[12px] md:text-[14px] w-[78%] min-w-[150px]">
+                                      20 Over Runs SRH Adv
+                                    </td>
+                                    <td className="w-[6%] px-1">
+                                      <div className="flex flex-col items-center justify-center text-[9px] md:text-[10px] leading-tight">
+                                        <div className="text-gray-400 text-nowrap">
+                                          MIN: 100
+                                        </div>
+                                        <div className="text-gray-400 text-nowrap">
+                                          MAX: 25K
+                                        </div>
+                                      </div>
+                                    </td>
+                                    <td
+                                      colSpan={2}
+                                      className="relative w-[16%]"
+                                    >
+                                      <div className="flex">
+                                        <div className="w-1/2">
+                                          <div className="fancy-market-col text-center market-btn w-full ">
+                                            <div className="w-[70px] h-[40px] flex items-center justify-center py-3 px-2 cursor-pointer hover:opacity-80 transition-opacity bg-fancyNoMarketBg border border-fancyNoMarketBorder rounded-md">
+                                              <div className="flex flex-col items-center">
+                                                <span className="text-black text-xs font-semibold leading-[1.0769230769230769em] text-center">
+                                                  206
+                                                </span>
+                                                <div className="text-[9px] text-center text-fancyBetsCountText leading-none mt-1">
+                                                  100
+                                                </div>
+                                              </div>
+                                            </div>
+                                          </div>
+                                        </div>
+                                        <div className="w-1/2">
+                                          <div className="fancy-market-col text-center market-btn w-full ">
+                                            <div className="w-[70px] h-[40px] flex items-center justify-center py-3 px-2 cursor-pointer hover:opacity-80 transition-opacity bg-fancyYesMarketBg border border-fancyYesMarketBorder rounded-md">
+                                              <div className="flex flex-col items-center">
+                                                <span className="text-black text-xs font-semibold leading-[1.0769230769230769em] text-center">
+                                                  209
+                                                </span>
+                                                <div className="text-[9px] text-center text-fancyBetsCountText leading-none mt-1">
+                                                  100
+                                                </div>
+                                              </div>
+                                            </div>
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </td>
+                                  </tr>
+                                  <tr className="border-b bg-sportsTitleBg">
+                                    <td className="px-2 text-[12px] md:text-[14px] w-[78%] min-w-[150px]">
+                                      Match 1st Over Run Adv
+                                    </td>
+                                    <td className="w-[6%] px-1">
+                                      <div className="flex flex-col items-center justify-center text-[9px] md:text-[10px] leading-tight">
+                                        <div className="text-gray-400 text-nowrap">
+                                          MIN: 100
+                                        </div>
+                                        <div className="text-gray-400 text-nowrap">
+                                          MAX: 25K
+                                        </div>
+                                      </div>
+                                    </td>
+                                    <td
+                                      colSpan={2}
+                                      className="relative w-[16%]"
+                                    >
+                                      <div className="flex">
+                                        <div className="w-1/2">
+                                          <div className="fancy-market-col text-center market-btn w-full ">
+                                            <div className="w-[70px] h-[40px] flex items-center justify-center py-3 px-2 cursor-pointer hover:opacity-80 transition-opacity bg-fancyNoMarketBg border border-fancyNoMarketBorder rounded-md">
+                                              <div className="flex flex-col items-center">
+                                                <span className="text-black text-xs font-semibold leading-[1.0769230769230769em] text-center">
+                                                  8
+                                                </span>
+                                                <div className="text-[9px] text-center text-fancyBetsCountText leading-none mt-1">
+                                                  100
+                                                </div>
+                                              </div>
+                                            </div>
+                                          </div>
+                                        </div>
+                                        <div className="w-1/2">
+                                          <div className="fancy-market-col text-center market-btn w-full ">
+                                            <div className="w-[70px] h-[40px] flex items-center justify-center py-3 px-2 cursor-pointer hover:opacity-80 transition-opacity bg-fancyYesMarketBg border border-fancyYesMarketBorder rounded-md">
+                                              <div className="flex flex-col items-center">
+                                                <span className="text-black text-xs font-semibold leading-[1.0769230769230769em] text-center">
+                                                  9
+                                                </span>
+                                                <div className="text-[9px] text-center text-fancyBetsCountText leading-none mt-1">
+                                                  100
+                                                </div>
+                                              </div>
+                                            </div>
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </td>
+                                  </tr>
+                                  <tr className="border-b bg-sportsTitleBg">
+                                    <td className="px-2 text-[12px] md:text-[14px] w-[78%] min-w-[150px]">
+                                      Only 1 Over Runs PBKS Adv
+                                    </td>
+                                    <td className="w-[6%] px-1">
+                                      <div className="flex flex-col items-center justify-center text-[9px] md:text-[10px] leading-tight">
+                                        <div className="text-gray-400 text-nowrap">
+                                          MIN: 100
+                                        </div>
+                                        <div className="text-gray-400 text-nowrap">
+                                          MAX: 25K
+                                        </div>
+                                      </div>
+                                    </td>
+                                    <td
+                                      colSpan={2}
+                                      className="relative w-[16%]"
+                                    >
+                                      <div className="flex">
+                                        <div className="w-1/2">
+                                          <div className="fancy-market-col text-center market-btn w-full ">
+                                            <div className="w-[70px] h-[40px] flex items-center justify-center py-3 px-2 cursor-pointer hover:opacity-80 transition-opacity bg-fancyNoMarketBg border border-fancyNoMarketBorder rounded-md">
+                                              <div className="flex flex-col items-center">
+                                                <span className="text-black text-xs font-semibold leading-[1.0769230769230769em] text-center">
+                                                  8
+                                                </span>
+                                                <div className="text-[9px] text-center text-fancyBetsCountText leading-none mt-1">
+                                                  100
+                                                </div>
+                                              </div>
+                                            </div>
+                                          </div>
+                                        </div>
+                                        <div className="w-1/2">
+                                          <div className="fancy-market-col text-center market-btn w-full ">
+                                            <div className="w-[70px] h-[40px] flex items-center justify-center py-3 px-2 cursor-pointer hover:opacity-80 transition-opacity bg-fancyYesMarketBg border border-fancyYesMarketBorder rounded-md">
+                                              <div className="flex flex-col items-center">
+                                                <span className="text-black text-xs font-semibold leading-[1.0769230769230769em] text-center">
+                                                  9
+                                                </span>
+                                                <div className="text-[9px] text-center text-fancyBetsCountText leading-none mt-1">
+                                                  100
+                                                </div>
+                                              </div>
+                                            </div>
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </td>
+                                  </tr>
+                                  <tr className="border-b bg-sportsTitleBg">
+                                    <td className="px-2 text-[12px] md:text-[14px] w-[78%] min-w-[150px]">
+                                      Only 1 Over Runs SRH Adv
+                                    </td>
+                                    <td className="w-[6%] px-1">
+                                      <div className="flex flex-col items-center justify-center text-[9px] md:text-[10px] leading-tight">
+                                        <div className="text-gray-400 text-nowrap">
+                                          MIN: 100
+                                        </div>
+                                        <div className="text-gray-400 text-nowrap">
+                                          MAX: 25K
+                                        </div>
+                                      </div>
+                                    </td>
+                                    <td
+                                      colSpan={2}
+                                      className="relative w-[16%]"
+                                    >
+                                      <div className="flex">
+                                        <div className="w-1/2">
+                                          <div className="fancy-market-col text-center market-btn w-full ">
+                                            <div className="w-[70px] h-[40px] flex items-center justify-center py-3 px-2 cursor-pointer hover:opacity-80 transition-opacity bg-fancyNoMarketBg border border-fancyNoMarketBorder rounded-md">
+                                              <div className="flex flex-col items-center">
+                                                <span className="text-black text-xs font-semibold leading-[1.0769230769230769em] text-center">
+                                                  8
+                                                </span>
+                                                <div className="text-[9px] text-center text-fancyBetsCountText leading-none mt-1">
+                                                  100
+                                                </div>
+                                              </div>
+                                            </div>
+                                          </div>
+                                        </div>
+                                        <div className="w-1/2">
+                                          <div className="fancy-market-col text-center market-btn w-full ">
+                                            <div className="w-[70px] h-[40px] flex items-center justify-center py-3 px-2 cursor-pointer hover:opacity-80 transition-opacity bg-fancyYesMarketBg border border-fancyYesMarketBorder rounded-md">
+                                              <div className="flex flex-col items-center">
+                                                <span className="text-black text-xs font-semibold leading-[1.0769230769230769em] text-center">
+                                                  9
+                                                </span>
+                                                <div className="text-[9px] text-center text-fancyBetsCountText leading-none mt-1">
+                                                  100
+                                                </div>
+                                              </div>
+                                            </div>
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </td>
+                                  </tr>
+                                </tbody>
+                              </table>
                             </div>
-                          </td>
-                          <td
-                            colSpan={2}
-                            className="relative w-[40%] md:w-[20%] h-[43px] p-0"
-                          >
-                            <div className="flex w-full h-full">
-                              <div
-                                onClick={() =>
-                                  handleBetSlip(
-                                    "lay",
-                                    game,
-                                    game?.runners?.[0],
-                                    game?.runners?.[0]?.lay?.[0]?.line,
-                                    game?.runners?.[0]?.lay?.[0]?.price,
-                                  )
-                                }
-                                className="w-1/2 text-center h-full "
-                              >
-                                <div
-                                  className="w-full h-full  exch-odd-button cursor-pointer flex justify-center items-center  
-              text-white bg-pink1"
-                                >
-                                  <div className="flex flex-col justify-center items-center gap-1  undefined ">
-                                    <div className="text-[11px] text-black font-[700]">
-                                      {game?.runners?.[0]?.lay?.[0]?.line}
-                                    </div>
-                                    <div className="text-[10px] text-[#292929] leading-none ">
-                                      {game?.runners?.[0]?.lay?.[0]?.price}
-                                    </div>
-                                  </div>
-                                </div>
-                              </div>
-                              <div
-                                onClick={() =>
-                                  handleBetSlip(
-                                    "back",
-                                    game,
-                                    game?.runners?.[0],
-                                    game?.runners?.[0]?.back?.[0]?.line,
-                                    game?.runners?.[0]?.back?.[0]?.price,
-                                  )
-                                }
-                                className="w-1/2 text-center h-full "
-                              >
-                                <div
-                                  className="w-full h-full  exch-odd-button cursor-pointer flex justify-center items-center  
-              text-white bg-blue13"
-                                >
-                                  <div className="flex flex-col justify-center items-center gap-1  undefined ">
-                                    <div className="text-[11px] text-black font-[700]">
-                                      {game?.runners?.[0]?.back?.[0]?.line}
-                                    </div>
-                                    <div className="text-[10px] text-[#292929] leading-none ">
-                                      {game?.runners?.[0]?.back?.[0]?.price}
-                                    </div>
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-                            {game?.status !== "OPEN" && (
-                              <div className="absolute top-0 left-0 w-full h-full bg-black bg-opacity-25 flex items-center justify-center text-white  font-sans text-[13px] z-10 pointer-events-none">
-                                {game?.status}
-                              </div>
-                            )}
-                          </td>
-                          <td className="hidden md:table-cell md:w-[20%] text-[9px] font-[700]">
-                            <div className="text-left font-bold pl-8">
-                              <div className="text-gray-400 font-medium capitalize">
-                                min/max{" "}
-                              </div>
-                              {game?.minLiabilityPerBet}/
-                              {game?.maxLiabilityPerBet}
-                            </div>
-                          </td>
-                        </tr>
-                        {game?.id === runnerId && (
-                          <BetSlip currentPlaceBetEvent={game} />
-                        )}
-                      </Fragment>
-                    );
-                  })}
-                </tbody>
-              </table>
-            </div>
-          </div>
-        </div>
-      )}
-    </Fragment>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
   );
 };

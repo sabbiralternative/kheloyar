@@ -40,7 +40,7 @@ const Complaint = ({ setComplaintId, method, complaintId }) => {
     >
       <div
         ref={complaintRef}
-        className="z-2 popUpBoxShadow popUpOpenAnimation absolute w-[90%] sm:w-[85%] md:w-[70%] lg:w-[450px] rounded-[5px] bg-bg_Quaternary p-2 xs:p-5 rounded-md"
+        className="z-2 popUpBoxShadow popUpOpenAnimation absolute w-[90%] sm:w-[85%] md:w-[70%] lg:w-[450px] rounded-[5px] bg-sidebarBg p-2 xs:p-5 rounded-md"
       >
         <div
           onClick={closeModal}
@@ -50,7 +50,7 @@ const Complaint = ({ setComplaintId, method, complaintId }) => {
             className="cursor-pointer z-50"
             height="24"
             width="24"
-            fill="var(--color-quaternary)"
+            fill="#000"
             aria-hidden="true"
             focusable="false"
             data-prefix="fad"
@@ -61,11 +61,11 @@ const Complaint = ({ setComplaintId, method, complaintId }) => {
           >
             <g className="fa-duotone-group">
               <path
-                fill="currentColor"
+                fill="white"
                 d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM175 175c9.4-9.4 24.6-9.4 33.9 0l47 47 47-47c9.4-9.4 24.6-9.4 33.9 0s9.4 24.6 0 33.9l-47 47 47 47c9.4 9.4 9.4 24.6 0 33.9s-24.6 9.4-33.9 0l-47-47-47 47c-9.4 9.4-24.6 9.4-33.9 0s-9.4-24.6 0-33.9l47-47-47-47c-9.4-9.4-9.4-24.6 0-33.9z"
               ></path>
               <path
-                fill="white"
+                fill="#000"
                 d="M209 175c-9.4-9.4-24.6-9.4-33.9 0s-9.4 24.6 0 33.9l47 47-47 47c-9.4 9.4-9.4 24.6 0 33.9s24.6 9.4 33.9 0l47-47 47 47c9.4 9.4 24.6 9.4 33.9 0s9.4-24.6 0-33.9l-47-47 47-47c9.4-9.4 9.4-24.6 0-33.9s-24.6-9.4-33.9 0l-47 47-47-47z"
               ></path>
             </g>
@@ -99,7 +99,7 @@ const Complaint = ({ setComplaintId, method, complaintId }) => {
               <div title="loginButton" className="w-full">
                 <button
                   type="submit"
-                  className="inline-block leading-normal relative overflow-hidden transition duration-150 ease-in-out w-full text-primary bg-primary shadow-lg rounded-md xs:text-[15px] px-5 py-2 flex items-center justify-center gap-x-2  font-medium text-base cursor-pointer"
+                  className="inline-block leading-normal relative overflow-hidden transition duration-150 ease-in-out w-full text-primary bg-buttonGradient shadow-lg rounded-md xs:text-[15px] px-5 py-2 flex items-center justify-center gap-x-2  font-medium text-base cursor-pointer"
                 >
                   <span>Submit</span>
                 </button>

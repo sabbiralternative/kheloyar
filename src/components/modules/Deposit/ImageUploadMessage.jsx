@@ -6,7 +6,7 @@ const ImageUploadMessage = ({ imageUploadMessage }) => {
       id="popup-modal"
       className="z-[1000] fixed top-0 right-[0.5px] md:right-0 overflow-hidden flex w-full h-screen min-h-[100dvh] items-center justify-center bg-bg_CasinoPopupBg"
     >
-      <div className="z-2 popUpBoxShadow popUpOpenAnimation fixed w-[90%] sm:w-[85%] md:w-[70%] lg:w-[450px] rounded-[5px] bg-bg_Quaternary p-2 xs:p-5 rounded-md  overflow-hidden pb-10">
+      <div className="z-2 popUpBoxShadow popUpOpenAnimation fixed w-[90%] sm:w-[85%] md:w-[70%] lg:w-[450px] rounded-[5px] bg-sidebarBg p-2 xs:p-5 rounded-md  overflow-hidden pb-10">
         <div className="flex gap-10 items-start h-[95%] w-full overflow-auto pb-10">
           <div
             title="mobileLogin"

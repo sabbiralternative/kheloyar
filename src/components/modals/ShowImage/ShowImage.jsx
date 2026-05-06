@@ -14,7 +14,7 @@ const ShowImage = ({ setShowImage, image }) => {
     >
       <div
         ref={showImageRef}
-        className="z-2 popUpBoxShadow popUpOpenAnimation absolute w-[90%] sm:w-[85%] md:w-[70%] lg:w-[450px] rounded-[5px] bg-bg_Quaternary p-2 xs:p-5 h-[90%]"
+        className="z-2 popUpBoxShadow popUpOpenAnimation absolute w-[90%] sm:w-[85%] md:w-[70%] lg:w-[450px] rounded-[5px] bg-sidebarBg p-2 xs:p-5 h-[90%]"
       >
         <div
           onClick={() => setShowImage("")}
@@ -24,7 +24,7 @@ const ShowImage = ({ setShowImage, image }) => {
             className="cursor-pointer z-50"
             height="24"
             width="24"
-            fill="var(--color-quaternary)"
+            fill="#000"
             aria-hidden="true"
             focusable="false"
             data-prefix="fad"
@@ -39,7 +39,7 @@ const ShowImage = ({ setShowImage, image }) => {
                 d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM175 175c9.4-9.4 24.6-9.4 33.9 0l47 47 47-47c9.4-9.4 24.6-9.4 33.9 0s9.4 24.6 0 33.9l-47 47 47 47c9.4 9.4 9.4 24.6 0 33.9s-24.6 9.4-33.9 0l-47-47-47 47c-9.4 9.4-24.6 9.4-33.9 0s-9.4-24.6 0-33.9l47-47-47-47c-9.4-9.4-9.4-24.6 0-33.9z"
               ></path>
               <path
-                fill="white"
+                fill="#000"
                 d="M209 175c-9.4-9.4-24.6-9.4-33.9 0s-9.4 24.6 0 33.9l47 47-47 47c-9.4 9.4-9.4 24.6 0 33.9s24.6 9.4 33.9 0l47-47 47 47c9.4 9.4 24.6 9.4 33.9 0s9.4-24.6 0-33.9l-47-47 47-47c9.4-9.4 9.4-24.6 0-33.9s-24.6-9.4-33.9 0l-47 47-47-47z"
               ></path>
             </g>

@@ -45,7 +45,7 @@ const OpenBets = () => {
                         return (
                           <div
                             key={i}
-                            className="bg-bg_Quaternary rounded-md divide-y w-full shadow"
+                            className="bg-sidebarBg rounded-md divide-y w-full shadow"
                           >
                             <div
                               onClick={() => {
@@ -93,7 +93,7 @@ const OpenBets = () => {
                   myBets?.length === 0 &&
                   orderedBets?.length === 0 && (
                     <div className="w-full origin-top scaleVerticalOpen">
-                      <div className="w-full font-medium text-sm bg-bg_Quaternary rounded px-4 py-3 shadow text-text_Ternary">
+                      <div className="w-full font-medium text-sm bg-sidebarBg rounded px-4 py-3 shadow text-text_Ternary">
                         You have no Open Bets.
                       </div>
                     </div>

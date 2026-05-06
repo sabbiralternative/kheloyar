@@ -15,7 +15,7 @@ const ChooseAmount = ({ setShowBanks, setAmount, amount }) => {
   };
   return (
     <div className="px-2 pb-2 flex flex-col items-start justify-start gap-y-2 mt-1 md:mt-[0px] w-full">
-      <div className="w-full flex flex-col gap-2 pt-2 pb-1 px-4 rounded-lg bg-bg_Quaternary">
+      <div className="w-full flex flex-col gap-2 pt-2 pb-1 px-4 rounded-lg bg-sidebarBg">
         <div className=" font-medium text-base leading-5">Withdraw Funds</div>
         <div className="w-full flex flex-col text-xs text-text_Ternary transition-all ease-in-out duration-100">
           <div className="text-xs md:text-sm  pt-1 font-medium leading-4">
@@ -61,9 +61,9 @@ const ChooseAmount = ({ setShowBanks, setAmount, amount }) => {
         className="w-full flex flex-col items-start justify-start gap-y-4"
         data-gtm-form-interact-id="0"
       >
-        <div className="rounded-lg bg-bg_Quaternary py-2 px-3.5 pb-5 flex flex-col items-start justify-start w-full gap-y-2">
+        <div className="rounded-lg bg-sidebarBg py-2 px-3.5 pb-5 flex flex-col items-start justify-start w-full gap-y-2">
           <div className="w-full flex items-start justify-start gap-y-[0.5] flex-col">
-            <span className="text-sm mt-1 bg-primary rounded  shadow-md text-black px-2 py-1 my-1">
+            <span className="text-sm mt-1 bg-primary rounded  shadow-md  px-2 py-1 my-1">
               Available to withdrawal : ₹ {withdrawBreakdown?.mainWallet}
             </span>
             <div className="flex flex-col w-full">
@@ -80,7 +80,7 @@ const ChooseAmount = ({ setShowBanks, setAmount, amount }) => {
                   label="Amount"
                   required=""
                   placeholder="Enter Amount"
-                  className="block w-full focus:outline-none py-2  border rounded-lg pl-10 pr-8 ml-0 mr-0 placeholder:text-gray-300 border-primary"
+                  className="block w-full focus:outline-none py-2  border rounded-lg pl-10 pr-8 ml-0 mr-0 placeholder:text-gray-300 border-primary bg-transparent"
                   type="number"
                   value={amount}
                 />
@@ -133,7 +133,7 @@ const ChooseAmount = ({ setShowBanks, setAmount, amount }) => {
         <div className="w-full text-center">
           <div
             onClick={handleShowBank}
-            className={`inline-block leading-normal relative overflow-hidden transition duration-150 ease-in-out bg-bg_Primary w-full text-primary h-10 text-base shadow-lg  rounded-md font-medium leading-4  flex gap-x-1 items-center justify-center  ${
+            className={`inline-block leading-normal relative overflow-hidden transition duration-150 ease-in-out bg-buttonGradient w-full text-primary h-10 text-base shadow-lg  rounded-md font-medium leading-4  flex gap-x-1 items-center justify-center  ${
               amount < withdrawBreakdown?.minimumWithdraw ||
               amount > withdrawBreakdown?.mainWallet
                 ? "cursor-not-allowed opacity-70"

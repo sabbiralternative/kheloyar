@@ -22,7 +22,7 @@ const BankAccounts = ({ amount }) => {
   return (
     <div className="w-full md:mt-[0px] lg:overflow-auto ">
       <div className="px-2 pb-2 flex flex-col items-start justify-start gap-y-2 mt-1 md:mt-[0px]">
-        <div className="w-full flex flex-col gap-2 pt-2 pb-1 px-4 rounded-lg bg-bg_Quaternary">
+        <div className="w-full flex flex-col gap-2 pt-2 pb-1 px-4 rounded-lg bg-sidebarBg">
           <div className=" font-medium text-base leading-5">Withdraw Funds</div>
           <div className="w-full flex flex-col text-xs text-text_Ternary transition-all ease-in-out duration-100">
             <div className="text-xs md:text-sm  pt-1 font-medium leading-4">
@@ -66,7 +66,7 @@ const BankAccounts = ({ amount }) => {
           <div className=" text-sm w-full">
             <div
               id="step-selectMode"
-              className="relative flex w-[100%] rounded-lg border shadow bg-bg_Quaternary overflow-clip undefined"
+              className="relative flex w-[100%] rounded-lg border shadow bg-sidebarBg overflow-clip undefined"
             >
               <button
                 onClick={() => setTabs("add-bank-account")}
@@ -110,7 +110,7 @@ const BankAccounts = ({ amount }) => {
                 }`}
                 style={{ zIndex: 9, width: "35%", bottom: "0px" }}
               >
-                <div className="w-full h-full bg-bg_Primary rounded-lg"></div>
+                <div className="w-full h-full bg-buttonGradient rounded-lg"></div>
               </div>
             </div>
           </div>

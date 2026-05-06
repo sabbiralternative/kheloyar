@@ -45,7 +45,7 @@ const OldAccount = ({ amount, bankAccounts }) => {
                 className="w-full flex items-center gap-x-2 overflow-x-auto scroll-smooth no-scrollbar whitespace-nowrap"
               >
                 <div
-                  className={`cursor-pointer bg-bg_Quaternary border-2 shadow rounded-lg p-2 w-full flex items-center justify-between gap-x-4 ${
+                  className={`cursor-pointer bg-sidebarBg border-2 shadow rounded-lg p-2 w-full flex items-center justify-between gap-x-4 ${
                     account?.bankId === bankId ? "border-green-500" : ""
                   }`}
                 >
@@ -145,7 +145,7 @@ const OldAccount = ({ amount, bankAccounts }) => {
               type="submit"
               style={{ cursor: !bankId || disable ? "not-allowed" : "pointer" }}
               disabled={!bankId || disable}
-              className="inline-block leading-normal relative overflow-hidden transition duration-150 ease-in-out bg-bg_Primary w-full text-primary h-10 text-base shadow-lg  rounded-md font-medium leading-4 disabled:opacity-70 flex gap-x-1 items-center justify-center cursor-pointer"
+              className="inline-block leading-normal relative overflow-hidden transition duration-150 ease-in-out bg-buttonGradient w-full text-primary h-10 text-base shadow-lg  rounded-md font-medium leading-4 disabled:opacity-70 flex gap-x-1 items-center justify-center cursor-pointer"
             >
               <span>{bankId ? "SUBMIT" : "Please select bank account"}</span>
             </button>

@@ -7,7 +7,7 @@ const WithdrawSuccess = ({ setWithdrawSuccess, amount }) => {
       id="popup-modal"
       className="z-[1000] absolute top-0 right-[0.5px] md:right-0 overflow-hidden flex w-full h-screen min-h-[100dvh] items-center justify-center bg-bg_CasinoPopupBg"
     >
-      <div className="z-2 popUpBoxShadow popUpOpenAnimation absolute w-[351px] bg-bg_Quaternary shadow-[0px_0px_0px_1px_rgba(0,0,0,0.06),0px_1px_1px_-0.5px_rgba(0,0,0,0.06),0px_3px_3px_-1.5px_rgba(0,0,0,0.06),_0px_6px_6px_-3px_rgba(0,0,0,0.06),0px_12px_12px_-6px_rgba(0,0,0,0.06),0px_24px_24px_-12px_rgba(0,0,0,0.06)] rounded-lg undefined p-2 xs:p-5 rounded-md">
+      <div className="z-2 popUpBoxShadow popUpOpenAnimation absolute w-[351px] bg-sidebarBg shadow-[0px_0px_0px_1px_rgba(0,0,0,0.06),0px_1px_1px_-0.5px_rgba(0,0,0,0.06),0px_3px_3px_-1.5px_rgba(0,0,0,0.06),_0px_6px_6px_-3px_rgba(0,0,0,0.06),0px_12px_12px_-6px_rgba(0,0,0,0.06),0px_24px_24px_-12px_rgba(0,0,0,0.06)] rounded-lg undefined p-2 xs:p-5 rounded-md">
         <div
           onClick={() => setWithdrawSuccess(false)}
           className="transition-all mb-2 ease-in-out duration-200 hover:scale-105 absolute top-2 right-2"

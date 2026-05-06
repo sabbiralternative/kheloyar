@@ -64,7 +64,7 @@ const WithdrawReport = () => {
                     return (
                       <>
                         <div className="flex justify-center items-center sticky top-12">
-                          <div className="text-center bg-bg_Quaternary px-2.5 py-1 font-bold rounded text-[10px] shadow-sm">
+                          <div className="text-center bg-sidebarBg px-2.5 py-1 font-bold rounded text-[10px] shadow-sm">
                             {category}
                           </div>
                         </div>
@@ -76,7 +76,7 @@ const WithdrawReport = () => {
                             return (
                               <div
                                 key={i}
-                                className="flex  flex-col  border bg-bg_Quaternary rounded overflow-hidden shadow-lg"
+                                className="flex  flex-col  border bg-sidebarBg rounded overflow-hidden shadow-lg"
                               >
                                 <div className="flex justify-between items-start text-[10px] font-bold h-full">
                                   <div className="text-base px-3 py-1">

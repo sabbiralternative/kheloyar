@@ -103,7 +103,7 @@ const PaymentMethod = ({
     <div className="w-full mt-[4px] lg:overflow-auto">
       <div className="mx-2">
         <form>
-          <div className="rounded-lg bg-bg_Quaternary overflow-hidden transition-height duration-500 ease-in-out h-max px-3 pt-[15px] pb-[20px]">
+          <div className="rounded-lg bg-sidebarBg overflow-hidden transition-height duration-500 ease-in-out h-max px-3 pt-[15px] pb-[20px]">
             <div
               id="payMentOptions"
               className="flex flex-col gap-y-2 items-center gap-x-1.5 pt-[18px] pb-[8px] overflow-x-auto no-scrollbar scroll-smooth cursor-pointer w-full transition-all ease-in-out duration-150"
@@ -116,7 +116,7 @@ const PaymentMethod = ({
                       <div
                         onClick={(e) => handleVisibleBankMethod(e, method)}
                         key={i}
-                        className={`flex  justify-between items-center  gap-y-2 rounded-[10px] bg-bg_Quaternary py-2 w-full  px-2 md:px-4 relative border ${
+                        className={`flex  justify-between items-center  gap-y-2 rounded-[10px] bg-sidebarBg py-2 w-full  px-2 md:px-4 relative border ${
                           paymentId === method?.paymentId
                             ? "border-green-500  "
                             : "border-quinary"
@@ -202,7 +202,7 @@ const PaymentMethod = ({
           {/* details */}
           <div ref={paymentMethodRef}>
             {tabs === "bank" && (
-              <div className="w-full mt-2.5 rounded-[10px] bg-bg_Quaternary px-3 py-[15px]">
+              <div className="w-full mt-2.5 rounded-[10px] bg-sidebarBg px-3 py-[15px]">
                 <div className=" font-medium mt-[4px] text-base leading-5">
                   Payment Details
                 </div>
@@ -383,7 +383,7 @@ const PaymentMethod = ({
               </div>
             )}
             {tabs === "upi" && (
-              <div className="w-full mt-2.5 rounded-[10px] bg-bg_Quaternary px-3 py-[15px]">
+              <div className="w-full mt-2.5 rounded-[10px] bg-sidebarBg px-3 py-[15px]">
                 <div className=" font-medium mt-[4px] text-base leading-5">
                   Payment Details
                 </div>
@@ -478,7 +478,7 @@ const PaymentMethod = ({
               </div>
             )}
             {tabs === "qr" && (
-              <div className="w-full mt-2.5 rounded-[10px] bg-bg_Quaternary px-3 py-[15px]">
+              <div className="w-full mt-2.5 rounded-[10px] bg-sidebarBg px-3 py-[15px]">
                 <div className=" font-medium mt-[4px] text-base leading-5">
                   QR code for payment
                 </div>
@@ -545,7 +545,7 @@ const PaymentMethod = ({
               </div>
             )}
             {tabs === "usdt" || tabs === "usdt_bep20" ? (
-              <div className="w-full mt-2.5 rounded-[10px] bg-bg_Quaternary px-3 py-[15px]">
+              <div className="w-full mt-2.5 rounded-[10px] bg-sidebarBg px-3 py-[15px]">
                 {depositData?.token && (
                   <span className="flex flex-col items-start justify-start">
                     <span className="text-AccountDetailsHeadings text-[10px]  leading-4 sm:text-xs md:text-sm">
@@ -704,7 +704,7 @@ const PaymentMethod = ({
                   setUploadTransaction(true);
                 }}
                 type="submit"
-                className="inline-block leading-normal relative overflow-hidden transition duration-150 ease-in-out bg-bg_Primary flex items-center justify-center gap-x-2 w-full text-primary h-10 text-base rounded-md font-[500] leading-4 disabled:bg-bg_Quinary cursor-pointer"
+                className="inline-block leading-normal relative overflow-hidden transition duration-150 ease-in-out bg-buttonGradient flex items-center justify-center gap-x-2 w-full text-primary h-10 text-base rounded-md font-[500] leading-4 disabled:bg-bg_Quinary cursor-pointer"
               >
                 <span>I have made the payment</span>
               </button>

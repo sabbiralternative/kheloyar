@@ -14,7 +14,7 @@ const CommissionInfo = ({ setOpenCommissionModal }) => {
     >
       <div
         ref={ref}
-        className="z-2 popUpBoxShadow popUpOpenAnimation fixed w-[90%] sm:w-[85%] md:w-[70%] lg:w-[450px] rounded-[5px] bg-bg_Quaternary p-2 xs:p-5 rounded-md"
+        className="z-2 popUpBoxShadow popUpOpenAnimation fixed w-[90%] sm:w-[85%] md:w-[70%] lg:w-[450px] rounded-[5px] bg-sidebarBg p-2 xs:p-5 rounded-md"
       >
         <h2 className="mb-5 text-base md:text-xl font-medium">
           How to get commission ?

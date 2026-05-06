@@ -30,7 +30,7 @@ const AffiliateUserStatement = () => {
                 <div className="app-bg flex-row w-full h-full flex">
                   <div className="w-[34px] h-full flex items-center justify-center">
                     <button
-                      className="inline-block leading-normal relative overflow-hidden transition duration-150 ease-in-out w-8 rounded-sm h-6 flex ml-[4px] items-center justify-center bg-bg_Primary2 active:scale-150 cursor-pointer primary-icon-color"
+                      className="inline-block leading-normal relative overflow-hidden transition duration-150 ease-in-out w-8 rounded-sm h-6 flex ml-[4px] items-center justify-center bg-buttonGradient2 active:scale-150 cursor-pointer primary-icon-color"
                       type="button"
                     >
                       <svg

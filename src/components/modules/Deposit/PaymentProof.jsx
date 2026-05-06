@@ -130,7 +130,7 @@ const PaymentProof = ({ paymentId, amount, tabs }) => {
         <div className="mx-2">
           <div>
             {!filePath && !loading && (
-              <div className="w-full mt-2.5 rounded-md bg-bg_Quaternary py-3.5 px-3">
+              <div className="w-full mt-2.5 rounded-md bg-sidebarBg py-3.5 px-3">
                 <div className=" font-medium text-base leading-5 mb-2">
                   Upload your payment slip below
                   <span className="text-green-500">*</span>
@@ -176,7 +176,7 @@ const PaymentProof = ({ paymentId, amount, tabs }) => {
               </div>
             )}
             {filePath && !loading && (
-              <div className="w-full mt-2.5 rounded-md bg-bg_Quaternary py-3.5 px-3">
+              <div className="w-full mt-2.5 rounded-md bg-sidebarBg py-3.5 px-3">
                 <div className=" font-medium text-base leading-5 relative">
                   <div
                     onClick={() => {
@@ -222,7 +222,7 @@ const PaymentProof = ({ paymentId, amount, tabs }) => {
               </div>
             )}
             {loading && (
-              <div className="w-full mt-2.5 rounded-md bg-bg_Quaternary py-3.5 px-3">
+              <div className="w-full mt-2.5 rounded-md bg-sidebarBg py-3.5 px-3">
                 <div className=" font-medium text-base leading-5 flex items-center w-full justify-center">
                   <FaSpinner className="animate-spin" size={30} />
                 </div>
@@ -231,18 +231,18 @@ const PaymentProof = ({ paymentId, amount, tabs }) => {
               </div>
             )}
 
-            <div className="w-full mt-2.5 bg-bg_Quaternary rounded-md px-3 py-3.5">
+            <div className="w-full mt-2.5 bg-sidebarBg rounded-md px-3 py-3.5">
               <div className=" font-medium text-sm mb-2 leading-5">
                 {tabs === "usdt" || tabs === "usdt_bep20"
                   ? "Hash Code"
                   : " Unique Transaction Reference"}
 
-                <span className="text-primary">*</span>
+                <span className="">*</span>
               </div>
               <div className="w-full relative ">
                 <input
                   onChange={handleUTRChange}
-                  className="block w-full focus:outline-none border-[1px]  px-3 py-2.5 rounded-[4px]  placeholder: font-medium text-base border-quinary focus:border-ternary"
+                  className="block w-full focus:outline-none border-[1px]  px-3 py-2.5 rounded-[4px]  placeholder: font-medium text-base border-quinary focus:border-ternary bg-transparent"
                   placeholder={
                     tabs === "usdt" || tabs === "usdt_bep20"
                       ? "Enter Hash code"
@@ -255,7 +255,7 @@ const PaymentProof = ({ paymentId, amount, tabs }) => {
               </div>
             </div>
             {/* {tabs === "usdt" || tabs === "usdt_bep20" ? (
-            <div className="w-full mt-2.5 bg-bg_Quaternary rounded-md px-3 py-3.5">
+            <div className="w-full mt-2.5 bg-sidebarBg rounded-md px-3 py-3.5">
               <div className=" font-medium text-sm mb-2 leading-5">
                 Receipt Number
               </div>
@@ -316,7 +316,7 @@ const PaymentProof = ({ paymentId, amount, tabs }) => {
                   cursor: `${!filePath || !utr ? "not-allowed" : "pointer"}`,
                 }}
                 onClick={handleDepositSubmit}
-                className="inline-block leading-normal relative overflow-hidden transition duration-150 ease-in-out bg-bg_Primary flex items-center justify-center gap-x-2 w-full text-primary h-10 text-base rounded-md font-[500] leading-4 disabled:bg-bg_Quinary cursor-pointer"
+                className="inline-block leading-normal relative overflow-hidden transition duration-150 ease-in-out bg-buttonGradient flex items-center justify-center gap-x-2 w-full text-primary h-10 text-base rounded-md font-[500] leading-4 disabled:bg-bg_Quinary cursor-pointer"
               >
                 <span>I have made the payment</span>
               </button>

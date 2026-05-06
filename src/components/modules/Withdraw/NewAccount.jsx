@@ -129,7 +129,7 @@ const NewAccount = ({ setTabs, refetchBankAccounts }) => {
       className="w-full flex flex-col items-start justify-start gap-y-4"
       data-gtm-form-interact-id="0"
     >
-      <div className="rounded-lg bg-bg_Quaternary py-2 px-3.5 pb-5 flex flex-col items-start justify-start w-full gap-y-2">
+      <div className="rounded-lg bg-sidebarBg py-2 px-3.5 pb-5 flex flex-col items-start justify-start w-full gap-y-2">
         <div className="w-full relative h-full">
           <div className="flex flex-col w-full">
             <div className="ml-1 text-sm">
@@ -275,7 +275,7 @@ const NewAccount = ({ setTabs, refetchBankAccounts }) => {
                   {timer ? (
                     <button
                       onClick={getOtp}
-                      className="inline-block leading-normal relative overflow-hidden transition duration-150 ease-in-out -bold h-fit bg-bg_Primary text-primary transition-all ease-in-out text-xs whitespace-nowrap mr-1 py-1 px-3 rounded active:scale-[0.98] active:opacity-95 disabled:bg-bg_Slate500 disabled:opacity-50 font-medium relative flex items-center justify-center cursor-pointer"
+                      className="inline-block leading-normal relative overflow-hidden transition duration-150 ease-in-out -bold h-fit bg-buttonGradient text-primary transition-all ease-in-out text-xs whitespace-nowrap mr-1 py-1 px-3 rounded active:scale-[0.98] active:opacity-95 disabled:bg-bg_Slate500 disabled:opacity-50 font-medium relative flex items-center justify-center cursor-pointer"
                       type="button"
                     >
                       <span className=" ">Retry in {timer}</span>
@@ -285,7 +285,7 @@ const NewAccount = ({ setTabs, refetchBankAccounts }) => {
                     <div className="flex items-center">
                       <button
                         onClick={getOtp}
-                        className="inline-block leading-normal relative overflow-hidden transition duration-150 ease-in-out -bold h-fit bg-bg_Primary text-primary transition-all ease-in-out text-xs whitespace-nowrap mr-1 py-1 px-3 rounded active:scale-[0.98] active:opacity-95 disabled:bg-bg_Slate500 disabled:opacity-50 font-medium relative flex items-center justify-center cursor-pointer"
+                        className="inline-block leading-normal relative overflow-hidden transition duration-150 ease-in-out -bold h-fit bg-buttonGradient text-primary transition-all ease-in-out text-xs whitespace-nowrap mr-1 py-1 px-3 rounded active:scale-[0.98] active:opacity-95 disabled:bg-bg_Slate500 disabled:opacity-50 font-medium relative flex items-center justify-center cursor-pointer"
                         type="button"
                       >
                         <span className=" ">Get OTP Message</span>
@@ -365,7 +365,7 @@ const NewAccount = ({ setTabs, refetchBankAccounts }) => {
         <button
           type="submit"
           disabled={!isFormValid}
-          className="inline-block leading-normal relative overflow-hidden transition duration-150 ease-in-out bg-bg_Primary w-full text-primary h-10 text-base shadow-lg  rounded-md font-medium leading-4 disabled:opacity-70 flex gap-x-1 items-center justify-center cursor-pointer"
+          className="inline-block leading-normal relative overflow-hidden transition duration-150 ease-in-out bg-buttonGradient w-full text-primary h-10 text-base shadow-lg  rounded-md font-medium leading-4 disabled:opacity-70 flex gap-x-1 items-center justify-center cursor-pointer"
         >
           <span>SUBMIT</span>
         </button>

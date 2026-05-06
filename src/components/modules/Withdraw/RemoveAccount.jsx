@@ -37,7 +37,7 @@ const RemoveAccount = ({ setRemoveBank, removeBank }) => {
     >
       <div
         ref={deleteBankRef}
-        className="z-2 popUpBoxShadow popUpOpenAnimation absolute w-[351px] py-6 h-max bg-bg_Quaternary shadow-[0px_0px_0px_1px_rgba(0,0,0,0.06),0px_1px_1px_-0.5px_rgba(0,0,0,0.06),0px_3px_3px_-1.5px_rgba(0,0,0,0.06),_0px_6px_6px_-3px_rgba(0,0,0,0.06),0px_12px_12px_-6px_rgba(0,0,0,0.06),0px_24px_24px_-12px_rgba(0,0,0,0.06)] rounded-lg undefined p-2 xs:p-5 rounded-md"
+        className="z-2 popUpBoxShadow popUpOpenAnimation absolute w-[351px] py-6 h-max bg-sidebarBg shadow-[0px_0px_0px_1px_rgba(0,0,0,0.06),0px_1px_1px_-0.5px_rgba(0,0,0,0.06),0px_3px_3px_-1.5px_rgba(0,0,0,0.06),_0px_6px_6px_-3px_rgba(0,0,0,0.06),0px_12px_12px_-6px_rgba(0,0,0,0.06),0px_24px_24px_-12px_rgba(0,0,0,0.06)] rounded-lg undefined p-2 xs:p-5 rounded-md"
       >
         <div
           onClick={() => setRemoveBank("")}

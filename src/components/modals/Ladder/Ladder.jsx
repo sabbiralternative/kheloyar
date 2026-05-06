@@ -12,7 +12,7 @@ const Ladder = ({ ladderData, setLadderData, marketName }) => {
       className="z-[1000] fixed top-0 right-[0.5px] md:right-0 overflow-hidden flex w-full h-screen min-h-[100dvh]     items-center justify-center  bg-bg_CasinoPopupBg"
     >
       <div
-        className="z-2 popUpBoxShadow popUpOpenAnimation  absolute  min-w-[90%]  sm:min-w-[400px] sm:max-w-[400px] h-auto p-4 bg-bg_Quaternary p-2 xs:p-5 
+        className="z-2 popUpBoxShadow popUpOpenAnimation  absolute  min-w-[90%]  sm:min-w-[400px] sm:max-w-[400px] h-auto p-4 bg-sidebarBg p-2 xs:p-5 
         rounded-md
       "
         ref={ladderRef}

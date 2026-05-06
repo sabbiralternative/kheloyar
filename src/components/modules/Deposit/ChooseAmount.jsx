@@ -36,7 +36,7 @@ const ChooseAmount = ({ amount, setAmount, setPaymentMethods }) => {
     >
       <div className="mx-2">
         <div>
-          <div className="w-full mt-2.5 py-[15px] rounded-lg bg-bg_Quaternary px-3">
+          <div className="w-full mt-2.5 py-[15px] rounded-lg bg-sidebarBg px-3">
             <div className=" font-medium text-text_Ternary text-base leading-5">
               <p>
                 Amount<span className="text-text_Danger">*</span>
@@ -46,7 +46,7 @@ const ChooseAmount = ({ amount, setAmount, setPaymentMethods }) => {
               <input
                 onChange={(e) => setAmount(e.target.value)}
                 value={amount !== null && amount !== undefined ? amount : ""}
-                className="block  focus:outline-none col-span-11 w-full h-max  placeholder: placeholder:font-normal font-medium text-base"
+                className="block  focus:outline-none col-span-11 w-full h-max  placeholder: placeholder:font-normal font-medium text-base bg-transparent"
                 placeholder="₹ Enter Amount"
                 required=""
                 type="number"
@@ -58,42 +58,42 @@ const ChooseAmount = ({ amount, setAmount, setPaymentMethods }) => {
             <div className="w-full grid grid-cols-3 gap-[10px] mt-[18px]">
               <button
                 onClick={() => setAmount(300)}
-                className="inline-block leading-normal relative overflow-hidden  duration-150  bg-bg_Primary -all   active:scale-95 text-primary min-h-9 text-base  rounded-md font-medium  cursor-pointer"
+                className="inline-block leading-normal relative overflow-hidden  duration-150  bg-buttonGradient -all   active:scale-95 text-primary min-h-9 text-base  rounded-md font-medium  cursor-pointer"
                 type="button"
               >
                 <span>+300</span>
               </button>
               <button
                 onClick={() => setAmount(500)}
-                className="inline-block leading-normal relative overflow-hidden  duration-150  bg-bg_Primary -all   active:scale-95 text-primary min-h-9 text-base  rounded-md font-medium  cursor-pointer"
+                className="inline-block leading-normal relative overflow-hidden  duration-150  bg-buttonGradient -all   active:scale-95 text-primary min-h-9 text-base  rounded-md font-medium  cursor-pointer"
                 type="button"
               >
                 <span>+500</span>
               </button>
               <button
                 onClick={() => setAmount(1000)}
-                className="inline-block leading-normal relative overflow-hidden  duration-150  bg-bg_Primary -all   active:scale-95 text-primary min-h-9 text-base  rounded-md font-medium  cursor-pointer"
+                className="inline-block leading-normal relative overflow-hidden  duration-150  bg-buttonGradient -all   active:scale-95 text-primary min-h-9 text-base  rounded-md font-medium  cursor-pointer"
                 type="button"
               >
                 <span>+1,000</span>
               </button>
               <button
                 onClick={() => setAmount(5000)}
-                className="inline-block leading-normal relative overflow-hidden  duration-150  bg-bg_Primary -all   active:scale-95 text-primary min-h-9 text-base  rounded-md font-medium  cursor-pointer"
+                className="inline-block leading-normal relative overflow-hidden  duration-150  bg-buttonGradient -all   active:scale-95 text-primary min-h-9 text-base  rounded-md font-medium  cursor-pointer"
                 type="button"
               >
                 <span>+5,000</span>
               </button>
               <button
                 onClick={() => setAmount(10000)}
-                className="inline-block leading-normal relative overflow-hidden  duration-150  bg-bg_Primary -all   active:scale-95 text-primary min-h-9 text-base  rounded-md font-medium  cursor-pointer"
+                className="inline-block leading-normal relative overflow-hidden  duration-150  bg-buttonGradient -all   active:scale-95 text-primary min-h-9 text-base  rounded-md font-medium  cursor-pointer"
                 type="button"
               >
                 <span>+10,000</span>
               </button>
               <button
                 onClick={() => setAmount(50000)}
-                className="inline-block leading-normal relative overflow-hidden  duration-150  bg-bg_Primary -all   active:scale-95 text-primary min-h-9 text-base  rounded-md font-medium  cursor-pointer"
+                className="inline-block leading-normal relative overflow-hidden  duration-150  bg-buttonGradient -all   active:scale-95 text-primary min-h-9 text-base  rounded-md font-medium  cursor-pointer"
                 type="button"
               >
                 <span>+50,000</span>
@@ -146,7 +146,7 @@ const ChooseAmount = ({ amount, setAmount, setPaymentMethods }) => {
               //     cursor: `${!amount ? "not-allowed" : "pointer"}`,
               //     opacity: `${!amount ? "0.5" : "1"}`,
               //   }}
-              className=" leading-normal relative overflow-hidden  duration-150  bg-bg_Primary flex items-center justify-center gap-x-2 w-full text-primary h-10 text-base rounded-md font-[500]  disabled:bg-bg_Quinary cursor-pointer"
+              className=" leading-normal relative overflow-hidden  duration-150  bg-buttonGradient flex items-center justify-center gap-x-2 w-full text-primary h-10 text-base rounded-md font-[500]  disabled:bg-bg_Quinary cursor-pointer"
             >
               <span>Proceed to select payment method</span>
             </button>
