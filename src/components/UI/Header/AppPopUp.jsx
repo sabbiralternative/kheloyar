@@ -65,9 +65,9 @@ const AppPopup = () => {
 
       <button
         onClick={handleDownload}
-        className="flex rounded-full hover:opacity-100 w-max font-extrabold items-center justify-center px-4 py-1.5 bg-sidebarBg"
+        className="flex rounded-full hover:opacity-100 w-max font-extrabold items-center justify-center px-4 py-1.5 bg-primary"
       >
-        <span className="text-x text-text_Primary  md:font-medium xs:text-xs md:text-sm font-[500]">
+        <span className="text-x text-black  md:font-medium xs:text-xs md:text-sm font-[500]">
           Install
         </span>
       </button>

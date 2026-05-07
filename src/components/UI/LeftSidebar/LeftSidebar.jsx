@@ -1,11 +1,38 @@
 import { Link, useNavigate } from "react-router-dom";
 import { useLogo } from "../../../context/ApiProvider";
-
+import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { Settings } from "../../../api";
+import WarningCondition from "../../shared/WarningCondition/WarningCondition";
+import { setShowLoginModal } from "../../../redux/features/global/globalSlice";
+import { logout } from "../../../redux/features/auth/authSlice";
 const LeftSidebar = () => {
+  const dispatch = useDispatch();
+  const { token } = useSelector((state) => state.auth);
+  const [showSportsLinks, setShowSportsLinks] = useState(false);
   const navigate = useNavigate();
   const { logo } = useLogo();
+  const [showWarning, setShowWarning] = useState(false);
+  const [gameInfo, setGameInfo] = useState({ gameName: "", gameId: "" });
+
+  const handleNavigateToIFrame = (name, id) => {
+    if (token) {
+      if (Settings.casino_currency !== "AED") {
+        navigate(`/casino/${name}/${id}`);
+      } else {
+        setGameInfo({ gameName: "", gameId: "" });
+        setGameInfo({ gameName: name, gameId: id });
+        setShowWarning(true);
+      }
+    } else {
+      dispatch(setShowLoginModal(true));
+    }
+  };
   return (
     <div className="hidden xl:block w-full max-w-[224px] h-full">
+      {showWarning && (
+        <WarningCondition gameInfo={gameInfo} setShowWarning={setShowWarning} />
+      )}
       <div className="flex flex-col h-full w-full bg-sidebarBg overflow-auto">
         <div
           onClick={() => navigate("/")}
@@ -44,7 +71,10 @@ const LeftSidebar = () => {
             </Link>
           </div>
           <div className>
-            <div className="flex items-center justify-between w-full p-3 text-left transition-colors h-[44px] cursor-pointer hover:bg-dashboardGamesTabsBg">
+            <div
+              onClick={() => setShowSportsLinks(!showSportsLinks)}
+              className="flex items-center justify-between w-full p-3 text-left transition-colors h-[44px] cursor-pointer hover:bg-dashboardGamesTabsBg"
+            >
               <div className="flex items-center gap-2 flex-1">
                 <svg
                   width={20}
@@ -144,9 +174,99 @@ const LeftSidebar = () => {
               <img
                 src="data:image/svg+xml,%3csvg%20width='10'%20height='8'%20viewBox='0%200%2010%208'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3cpath%20d='M4.46885%207.00937L0.218848%202.75937C-0.0749023%202.46563%20-0.0749023%201.99062%200.218848%201.7L0.925098%200.99375C1.21885%200.7%201.69385%200.7%201.98447%200.99375L4.99697%204.00625L8.00947%200.99375C8.30322%200.7%208.77822%200.7%209.06885%200.99375L9.7751%201.7C10.0688%201.99375%2010.0688%202.46875%209.7751%202.75937L5.5251%207.00937C5.2376%207.30312%204.7626%207.30312%204.46885%207.00937Z'%20fill='white'/%3e%3c/svg%3e"
                 alt="chevron"
-                className="h-3 w-3 transition-transform "
+                className={`h-3 w-3 transition-transform  ${showSportsLinks ? "rotate-180" : ""}`}
               />
             </div>
+            {showSportsLinks && (
+              <div className="bg-sidebarBg">
+                <Link className to="/exchange_sports/in-play/?eventTypeId=4">
+                  <div className="flex items-center gap-2 w-full pl-10 pr-3 py-2 text-left transition-colors h-[40px] hover:bg-dashboardGamesTabsBg/50">
+                    <img
+                      src="data:image/webp;base64,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"
+                      alt="cricket"
+                      className="h-4 w-4"
+                    />
+                    <span className="text-sm font-medium hover:text-signupHereText">
+                      Cricket
+                    </span>
+                  </div>
+                </Link>
+                <Link className to="/exchange_sports/in-play/?eventTypeId=1">
+                  <div className="flex items-center gap-2 w-full pl-10 pr-3 py-2 text-left transition-colors h-[40px] hover:bg-dashboardGamesTabsBg/50">
+                    <img
+                      src="data:image/webp;base64,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"
+                      alt="soccer"
+                      className="h-4 w-4"
+                    />
+                    <span className="text-sm font-medium hover:text-signupHereText">
+                      Soccer
+                    </span>
+                  </div>
+                </Link>
+                <Link className to="/exchange_sports/in-play/?eventTypeId=2">
+                  <div className="flex items-center gap-2 w-full pl-10 pr-3 py-2 text-left transition-colors h-[40px] hover:bg-dashboardGamesTabsBg/50">
+                    <img
+                      src="data:image/webp;base64,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"
+                      alt="tennis"
+                      className="h-4 w-4"
+                    />
+                    <span className="text-sm font-medium hover:text-signupHereText">
+                      Tennis
+                    </span>
+                  </div>
+                </Link>
+                <Link className to="/exchange_sports/in-play/?eventTypeId=7">
+                  <div className="flex items-center gap-2 w-full pl-10 pr-3 py-2 text-left transition-colors h-[40px] hover:bg-dashboardGamesTabsBg/50">
+                    <img
+                      src="/icon/horse-racing-icon-COSNQwPF.svg"
+                      alt="horse_racing"
+                      className="h-4 w-4"
+                    />
+                    <span className="text-sm font-medium hover:text-signupHereText">
+                      Horse Racing
+                    </span>
+                  </div>
+                </Link>
+                <Link className to="/exchange_sports/in-play/?eventTypeId=4339">
+                  <div className="flex items-center gap-2 w-full pl-10 pr-3 py-2 text-left transition-colors h-[40px] hover:bg-dashboardGamesTabsBg/50">
+                    <img
+                      src="/icon/greyhound-icon-MxqiPSCA.svg"
+                      alt="greyhound"
+                      className="h-4 w-4"
+                    />
+                    <span className="text-sm font-medium hover:text-signupHereText">
+                      GreyHound
+                    </span>
+                  </div>
+                </Link>
+
+                <Link className to="/exchange_sports/in-play/?eventTypeId=5">
+                  <div className="flex items-center gap-2 w-full pl-10 pr-3 py-2 text-left transition-colors h-[40px] hover:bg-dashboardGamesTabsBg/50">
+                    <img
+                      src="data:image/svg+xml,%3csvg%20width='20'%20height='20'%20viewBox='0%200%2020%2020'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3cg%20clip-path='url(%23clip0_256_520)'%3e%3cpath%20d='M9.27343%200.15625C6.07031%200.386719%203.20702%202.11328%201.46484%204.86328C1.17577%205.32031%200.749994%206.19531%200.554681%206.73828C0.394525%207.17969%200.203118%207.89453%200.0937435%208.47656C0.0117122%208.91406%20-0.0273503%2010.8984%200.0351497%2011.3945C0.16015%2012.3359%200.414056%2013.2695%200.789056%2014.1406C1.26952%2015.2617%201.99999%2016.3359%202.89062%2017.2305C4.20702%2018.5469%205.86327%2019.4766%207.68359%2019.9062C8.07812%2020%208.11327%2020%209.98046%2020C11.8516%2020%2011.8789%2020%2012.2773%2019.9062C14.1094%2019.4727%2015.7227%2018.5664%2017.0703%2017.2266C19.7344%2014.5703%2020.6758%2010.5938%2019.4922%207.00391C18.293%203.36328%2015.0703%200.699219%2011.2891%200.21875C10.6992%200.144531%209.8164%200.117188%209.27343%200.15625ZM9.80468%207.63672V8.00781H7.55859H5.31249V7.66406C5.31249%207.47266%205.32421%207.30469%205.33984%207.29297C5.35156%207.27734%206.36327%207.26562%207.58593%207.26562H9.80468V7.63672ZM14.6406%207.64453L14.6523%208.00781H12.4023H10.1562V7.63672V7.26562L12.3945%207.27344L14.6289%207.28516L14.6406%207.64453ZM5.89843%2010.1562V11.9531H5.60546H5.31249V10.1562V8.35938H5.60546H5.89843V10.1562ZM6.78906%2010.1445L6.77734%2011.9336L6.49609%2011.9453L6.21093%2011.957V10.1562V8.35938H6.5039H6.79687L6.78906%2010.1445ZM9.80468%2010.1562V11.9531H8.45702H7.10937V10.1562V8.35938H8.45702H9.80468V10.1562ZM12.8516%2010.1562V11.9531H11.5039H10.1562V10.1562V8.35938H11.5039H12.8516V10.1562ZM13.75%2010.1562V11.957L13.4687%2011.9453L13.1836%2011.9336L13.1719%2010.1445L13.1641%208.35938H13.457H13.75V10.1562ZM14.6484%2010.1562V11.9531H14.3555H14.0625V10.1562V8.35938H14.3555H14.6484V10.1562ZM9.80468%2012.6367V13.0078H7.55859H5.31249V12.6641C5.31249%2012.4727%205.32421%2012.3047%205.33984%2012.293C5.35156%2012.2773%206.36327%2012.2656%207.58593%2012.2656H9.80468V12.6367ZM14.6406%2012.6445L14.6523%2013.0078H12.4023H10.1562V12.6367V12.2656L12.3945%2012.2734L14.6289%2012.2852L14.6406%2012.6445Z'%20fill='%23FF9800'/%3e%3cpath%20d='M5.35156%207.65625V8.00781H7.57812H9.80469V7.65625V7.30469H7.57812H5.35156V7.65625Z'%20fill='white'/%3e%3cpath%20d='M10.1562%207.65625V8.00781H12.3828H14.6094V7.65625V7.30469H12.3828H10.1562V7.65625Z'%20fill='white'/%3e%3cpath%20d='M5.35156%2010.1562V11.9141H5.60547H5.85938V10.1562V8.39844H5.60547H5.35156V10.1562Z'%20fill='white'/%3e%3cpath%20d='M6.25%2010.1562V11.9141H6.50391H6.75781V10.1562V8.39844H6.50391H6.25V10.1562Z'%20fill='white'/%3e%3cpath%20d='M7.14844%2010.1562V11.9141H8.47656H9.80469V10.1562V8.39844H8.47656H7.14844V10.1562Z'%20fill='white'/%3e%3cpath%20d='M10.1562%2010.1562V11.9141H11.4844H12.8125V10.1562V8.39844H11.4844H10.1562V10.1562Z'%20fill='white'/%3e%3cpath%20d='M13.2031%2010.1562V11.9141H13.457H13.7109V10.1562V8.39844H13.457H13.2031V10.1562Z'%20fill='white'/%3e%3cpath%20d='M14.1016%2010.1562V11.9141H14.3555H14.6094V10.1562V8.39844H14.3555H14.1016V10.1562Z'%20fill='white'/%3e%3cpath%20d='M5.35156%2012.6562V13.0078H7.57812H9.80469V12.6562V12.3047H7.57812H5.35156V12.6562Z'%20fill='white'/%3e%3cpath%20d='M10.1562%2012.6562V13.0078H12.3828H14.6094V12.6562V12.3047H12.3828H10.1562V12.6562Z'%20fill='white'/%3e%3c/g%3e%3cdefs%3e%3cclipPath%20id='clip0_256_520'%3e%3crect%20width='20'%20height='20'%20fill='white'/%3e%3c/clipPath%3e%3c/defs%3e%3c/svg%3e"
+                      alt="kabaddi"
+                      className="h-4 w-4"
+                    />
+                    <span className="text-sm font-medium hover:text-signupHereText">
+                      kabaddi
+                    </span>
+                  </div>
+                </Link>
+
+                <Link className to="/exchange_sports/in-play/?eventTypeId=6">
+                  <div className="flex items-center gap-2 w-full pl-10 pr-3 py-2 text-left transition-colors h-[40px] hover:bg-dashboardGamesTabsBg/50">
+                    <img
+                      src="data:image/svg+xml,%3csvg%20width='20'%20height='20'%20viewBox='0%200%2020%2020'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3cpath%20d='M14.0233%2018.4649L14.7841%2011.1336C14.8004%2010.9768%2014.7494%2010.8205%2014.6439%2010.7034C14.5384%2010.5863%2014.3881%2010.5195%2014.2305%2010.5195H5.76953C5.61189%2010.5195%205.46167%2010.5864%205.35613%2010.7034C5.25059%2010.8205%205.19961%2010.9768%205.21586%2011.1336L5.97593%2018.4649H14.0233V18.4649Z'%20fill='%2361729B'/%3e%3cpath%20d='M14.6439%2010.7034C14.5383%2010.5864%2014.3881%2010.5195%2014.2305%2010.5195H9.99826V18.4649H14.0233L14.7841%2011.1336C14.8004%2010.9768%2014.7494%2010.8205%2014.6439%2010.7034Z'%20fill='%2347568C'/%3e%3cpath%20d='M14.4311%208.90486C14.3836%207.1916%2012.9761%205.81224%2011.2515%205.81224H8.74845C7.0239%205.81224%205.61642%207.1916%205.56888%208.90486H14.4311Z'%20fill='%239999FF'/%3e%3cpath%20d='M9.99826%208.90486H14.4311C14.3835%207.1916%2012.9761%205.81224%2011.2515%205.81224H9.99826V8.90486Z'%20fill='%236680FF'/%3e%3cpath%20fill-rule='evenodd'%20clip-rule='evenodd'%20d='M9.12095%205.77119H10.8788L11.0946%207.934C11.1064%208.05305%2011.066%208.17139%2010.9837%208.25823L9.99977%209.29662L9.01623%208.25823C8.93399%208.17139%208.89354%208.05312%208.90542%207.93411L9.12095%205.77119Z'%20fill='%23FF405C'/%3e%3cpath%20fill-rule='evenodd'%20clip-rule='evenodd'%20d='M11.0946%207.934L10.8788%205.77119H9.99826V9.29499L9.99978%209.29659L10.9837%208.25819C11.066%208.17139%2011.1065%208.05305%2011.0946%207.934Z'%20fill='%23DB2155'/%3e%3cpath%20d='M3.91406%209.77734C3.60665%209.77734%203.35742%209.52811%203.35742%209.2207V6.84678C3.35742%206.62256%203.49194%206.42028%203.69864%206.33352L4.85067%205.85002C5.13418%205.73097%205.46037%205.86442%205.57935%206.14786C5.69832%206.43134%205.56498%206.75757%205.28151%206.87654L4.47067%207.21683V9.2207C4.4707%209.52811%204.22148%209.77734%203.91406%209.77734Z'%20fill='%23DFE7F4'/%3e%3cpath%20d='M16.0859%209.77735C15.7785%209.77735%2015.5293%209.52812%2015.5293%209.2207V7.21684L14.7185%206.87654C14.435%206.75757%2014.3016%206.43134%2014.4206%206.14786C14.5395%205.86438%2014.8658%205.73109%2015.1493%205.85002L16.3013%206.33352C16.5081%206.42028%2016.6425%206.6226%2016.6425%206.84678V9.2207C16.6426%209.52812%2016.3933%209.77735%2016.0859%209.77735Z'%20fill='%23DFE7F4'/%3e%3cpath%20d='M14.6387%2019.5H5.36133C5.05391%2019.5%204.80469%2019.2508%204.80469%2018.9434C4.80469%2018.6359%205.05391%2018.3867%205.36133%2018.3867H14.6387C14.9461%2018.3867%2015.1953%2018.6359%2015.1953%2018.9434C15.1953%2019.2508%2014.9461%2019.5%2014.6387%2019.5Z'%20fill='%236E80AA'/%3e%3cpath%20d='M16.0859%208.77933H3.91406C3.60665%208.77933%203.35742%208.94127%203.35742%209.14101V10.7781C3.35742%2010.9778%203.60665%2011.1398%203.91406%2011.1398H16.0859C16.3934%2011.1398%2016.6426%2010.9778%2016.6426%2010.7781V9.14101C16.6426%208.94127%2016.3934%208.77933%2016.0859%208.77933Z'%20fill='%233A477B'/%3e%3cpath%20d='M14.6387%2018.3867H9.99826V19.5H14.6387C14.9461%2019.5%2015.1953%2019.2508%2015.1953%2018.9434C15.1953%2018.6359%2014.9461%2018.3867%2014.6387%2018.3867Z'%20fill='%2347568C'/%3e%3cpath%20d='M16.0859%208.77933H9.99826V11.1398H16.0859C16.3934%2011.1398%2016.6426%2010.9778%2016.6426%2010.7781V9.14101C16.6426%208.94127%2016.3934%208.77933%2016.0859%208.77933Z'%20fill='%2329376D'/%3e%3cpath%20d='M7.09385%203.0116C7.07355%203.15068%207.06261%203.29277%207.06261%203.43739C7.06261%205.05707%208.38032%206.37478%2010%206.37478C11.6197%206.37478%2012.9374%205.05707%2012.9374%203.43739C12.9374%203.29277%2012.9264%203.15068%2012.9061%203.0116H7.09385Z'%20fill='%23FFE1BA'/%3e%3cpath%20d='M7.08421%203.08738H12.9158C12.7422%201.63221%2011.5012%200.5%2010%200.5C8.49881%200.5%207.25788%201.63221%207.08421%203.08738Z'%20fill='%23FFE1BA'/%3e%3cpath%20d='M12.9062%203.0116H9.99826V6.37475H10C11.6197%206.37475%2012.9374%205.05703%2012.9374%203.43735C12.9374%203.29274%2012.9264%203.15068%2012.9062%203.0116Z'%20fill='%23FFBFAB'/%3e%3cpath%20d='M9.99826%203.08738H12.9158C12.7422%201.63221%2011.5012%200.5%2010%200.5C9.99941%200.5%209.99885%200.5%209.99826%200.5V3.08738Z'%20fill='%23FFBFAB'/%3e%3c/svg%3e"
+                      alt="politics"
+                      className="h-4 w-4"
+                    />
+                    <span className="text-sm font-medium hover:text-signupHereText">
+                      Politics
+                    </span>
+                  </div>
+                </Link>
+              </div>
+            )}
           </div>
           <div className>
             <Link className to="/exchange_sports/in-play?eventTypeId=0">
@@ -204,7 +324,10 @@ const LeftSidebar = () => {
             </Link>
           </div>
           <div className>
-            <Link className to="/sportsbook">
+            <a
+              className
+              onClick={() => handleNavigateToIFrame("sportsbook", "550000")}
+            >
               <div className="flex items-center gap-2 w-full text-left transition-colors  h-[44px] p-3 false">
                 <svg
                   width={20}
@@ -431,37 +554,9 @@ const LeftSidebar = () => {
                   Sports Book
                 </span>
               </div>
-            </Link>
+            </a>
           </div>
-          <div className>
-            <Link className to="/multi-markets">
-              <div className="flex items-center gap-2 w-full text-left transition-colors  h-[44px] p-3 false">
-                <svg
-                  width={24}
-                  height={24}
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="h-5 w-5 icon-svg-class-signupHereText"
-                >
-                  <g clipPath="url(#clip0_227_18961)">
-                    <path
-                      d="M19.5 3C20.0312 3 20.5 3.20312 20.9062 3.60938C21.3125 4.01563 21.5156 4.48438 21.5156 5.01562V18.9844C21.5156 19.5156 21.3125 19.9844 20.9062 20.3906C20.5 20.7969 20.0312 21 19.5 21H4.5C3.96875 21 3.5 20.7969 3.09375 20.3906C2.6875 19.9844 2.48438 19.5156 2.48438 18.9844V5.01562C2.48438 4.48438 2.6875 4.01563 3.09375 3.60938C3.5 3.20312 3.96875 3 4.5 3H19.5ZM19.5 19.0781V5.01562H4.5V19.0781H19.5ZM17.0156 17.0156H15V12.9844H17.0156V17.0156ZM12.9844 17.0156H11.0156V6.98438H12.9844V17.0156ZM9 17.0156H6.98438V9.98438H9V17.0156Z"
-                      fill="white"
-                    />
-                  </g>
-                  <defs>
-                    <clipPath id="clip0_227_18961">
-                      <rect width={24} height={24} fill="white" />
-                    </clipPath>
-                  </defs>
-                </svg>
-                <span className="text-xs font-semibold hover:text-primarySvgColor">
-                  Multi Markets
-                </span>
-              </div>
-            </Link>
-          </div>
+
           <div className>
             <Link className to="/promotions">
               <div className="flex items-center gap-2 w-full text-left transition-colors  h-[44px] p-3 false">
@@ -553,37 +648,13 @@ const LeftSidebar = () => {
               </div>
             </Link>
           </div>
+
           <div className>
-            <Link className to="/language">
-              <div className="flex items-center gap-2 w-full text-left transition-colors  h-[44px] p-3 false">
-                <svg
-                  width={24}
-                  height={24}
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="h-5 w-5 icon-svg-class-signupHereText"
-                >
-                  <g clipPath="url(#clip0_229_19026)">
-                    <path
-                      d="M11.99 2C6.47 2 2 6.48 2 12C2 17.52 6.47 22 11.99 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 11.99 2ZM18.92 8H15.97C15.65 6.75 15.19 5.55 14.59 4.44C16.43 5.07 17.96 6.35 18.92 8ZM12 4.04C12.83 5.24 13.48 6.57 13.91 8H10.09C10.52 6.57 11.17 5.24 12 4.04ZM4.26 14C4.1 13.36 4 12.69 4 12C4 11.31 4.1 10.64 4.26 10H7.64C7.56 10.66 7.5 11.32 7.5 12C7.5 12.68 7.56 13.34 7.64 14H4.26ZM5.08 16H8.03C8.35 17.25 8.81 18.45 9.41 19.56C7.57 18.93 6.04 17.66 5.08 16ZM8.03 8H5.08C6.04 6.34 7.57 5.07 9.41 4.44C8.81 5.55 8.35 6.75 8.03 8ZM12 19.96C11.17 18.76 10.52 17.43 10.09 16H13.91C13.48 17.43 12.83 18.76 12 19.96ZM14.34 14H9.66C9.57 13.34 9.5 12.68 9.5 12C9.5 11.32 9.57 10.65 9.66 10H14.34C14.43 10.65 14.5 11.32 14.5 12C14.5 12.68 14.43 13.34 14.34 14ZM14.59 19.56C15.19 18.45 15.65 17.25 15.97 16H18.92C17.96 17.65 16.43 18.93 14.59 19.56ZM16.36 14C16.44 13.34 16.5 12.68 16.5 12C16.5 11.32 16.44 10.66 16.36 10H19.74C19.9 10.64 20 11.31 20 12C20 12.69 19.9 13.36 19.74 14H16.36Z"
-                      fill="white"
-                    />
-                  </g>
-                  <defs>
-                    <clipPath id="clip0_229_19026">
-                      <rect width={24} height={24} fill="white" />
-                    </clipPath>
-                  </defs>
-                </svg>
-                <span className="text-xs font-semibold hover:text-primarySvgColor">
-                  Language
-                </span>
-              </div>
-            </Link>
-          </div>
-          <div className>
-            <Link aria-current="page" className="active" to="/rules">
+            <a
+              aria-current="page"
+              className="active"
+              onClick={() => dispatch(logout())}
+            >
               <div className="flex items-center gap-2 w-full text-left transition-colors  h-[44px] p-3 false">
                 <svg
                   width={24}
@@ -609,7 +680,7 @@ const LeftSidebar = () => {
                   Logout
                 </span>
               </div>
-            </Link>
+            </a>
           </div>
         </div>
       </div>

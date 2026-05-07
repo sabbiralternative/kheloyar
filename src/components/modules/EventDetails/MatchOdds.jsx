@@ -253,21 +253,65 @@ export const MatchOdds = ({ data }) => {
                     {game?.name?.toUpperCase()}
                   </span>
                   <div className="hidden md:flex flex-row px-1 gap-2 text-nowrap">
-                    <button
-                      disabled
-                      className=" active:opacity-70 inline-flex items-center justify-center px-4 h-[28px] text-[11px] font-medium text-white border border-white/30 shadow-sm active:scale-95 transition-all duration-150 ease-in-out cursor-pointer whitespace-nowrap"
-                      style={{
-                        background: "rgb(112, 25, 32)",
-                        borderRadius: "5px",
-                      }}
-                    >
-                      CASHOUT{" "}
-                    </button>
+                    {Settings.cashout &&
+                      game?.runners?.length !== 3 &&
+                      game?.status === "OPEN" &&
+                      !speedCashOut && (
+                        <button
+                          onClick={() =>
+                            handleCashOutPlaceBet(
+                              game,
+                              "lay",
+                              dispatch,
+                              pnlBySelection,
+                              token,
+                              teamProfitForGame,
+                            )
+                          }
+                          className=" active:opacity-70 inline-flex items-center justify-center px-4 h-[28px] text-[11px] font-medium text-white border border-white/30 shadow-sm active:scale-95 transition-all duration-150 ease-in-out cursor-pointer whitespace-nowrap"
+                          style={{
+                            background: "rgb(112, 25, 32)",
+                            borderRadius: "5px",
+                            cursor: `${
+                              !teamProfitForGame ? "not-allowed" : "pointer"
+                            }`,
+                            opacity: `${!teamProfitForGame ? "0.6" : "1"}`,
+                          }}
+                        >
+                          CASHOUT{" "}
+                          {teamProfitForGame?.profit &&
+                            `(${teamProfitForGame.profit.toFixed(0)})`}
+                        </button>
+                      )}
+                    {Settings.cashout &&
+                      game?.runners?.length !== 3 &&
+                      game?.status === "OPEN" &&
+                      game?.name !== "toss" &&
+                      speedCashOut && (
+                        <button
+                          onClick={() =>
+                            setSpeedCashOut({
+                              ...speedCashOut,
+                              market_name: game?.name,
+                              event_name: game?.eventName,
+                            })
+                          }
+                          disabled={isGameSuspended(game)}
+                          className=" active:opacity-70 inline-flex items-center justify-center px-4 h-[28px] text-[11px] font-medium text-white border border-white/30 shadow-sm active:scale-95 transition-all duration-150 ease-in-out cursor-pointer whitespace-nowrap"
+                          style={{
+                            background: "rgb(112, 25, 32)",
+                            borderRadius: "5px",
+                          }}
+                        >
+                          Speed Cashout
+                        </button>
+                      )}
                   </div>
                 </div>
                 <div className="flex items-center gap-1 text-[10px] text-nowrap">
                   <div className="tracking-tighter leading-none">
-                    MIN: 100 | MAX: 10K
+                    MIN: {game?.minLiabilityPerBet} | MAX:{" "}
+                    {game?.maxLiabilityPerBet}
                   </div>
                 </div>
                 <div className="bg-white w-[10px] h-[10px] min-w-[10px] min-h-[10px] rounded-full flex items-center justify-center cursor-pointer text-black">
@@ -282,16 +326,59 @@ export const MatchOdds = ({ data }) => {
                 </div>
               </div>
               <div className="flex md:hidden items-center justify-end gap-2 px-2 py-1 bg-sportsTitleBg text-nowrap">
-                <button
-                  disabled
-                  className=" active:opacity-70 inline-flex items-center justify-center px-4 h-[28px] text-[11px] font-medium text-white border border-white/30 shadow-sm active:scale-95 transition-all duration-150 ease-in-out cursor-pointer whitespace-nowrap"
-                  style={{
-                    background: "rgb(112, 25, 32)",
-                    borderRadius: "5px",
-                  }}
-                >
-                  CASHOUT{" "}
-                </button>
+                {Settings.cashout &&
+                  game?.runners?.length !== 3 &&
+                  game?.status === "OPEN" &&
+                  !speedCashOut && (
+                    <button
+                      onClick={() =>
+                        handleCashOutPlaceBet(
+                          game,
+                          "lay",
+                          dispatch,
+                          pnlBySelection,
+                          token,
+                          teamProfitForGame,
+                        )
+                      }
+                      className=" active:opacity-70 inline-flex items-center justify-center px-4 h-[28px] text-[11px] font-medium text-white border border-white/30 shadow-sm active:scale-95 transition-all duration-150 ease-in-out cursor-pointer whitespace-nowrap"
+                      style={{
+                        background: "rgb(112, 25, 32)",
+                        borderRadius: "5px",
+                        cursor: `${
+                          !teamProfitForGame ? "not-allowed" : "pointer"
+                        }`,
+                        opacity: `${!teamProfitForGame ? "0.6" : "1"}`,
+                      }}
+                    >
+                      CASHOUT{" "}
+                      {teamProfitForGame?.profit &&
+                        `(${teamProfitForGame.profit.toFixed(0)})`}
+                    </button>
+                  )}
+                {Settings.cashout &&
+                  game?.runners?.length !== 3 &&
+                  game?.status === "OPEN" &&
+                  game?.name !== "toss" &&
+                  speedCashOut && (
+                    <button
+                      onClick={() =>
+                        setSpeedCashOut({
+                          ...speedCashOut,
+                          market_name: game?.name,
+                          event_name: game?.eventName,
+                        })
+                      }
+                      disabled={isGameSuspended(game)}
+                      className=" active:opacity-70 inline-flex items-center justify-center px-4 h-[28px] text-[11px] font-medium text-white border border-white/30 shadow-sm active:scale-95 transition-all duration-150 ease-in-out cursor-pointer whitespace-nowrap"
+                      style={{
+                        background: "rgb(112, 25, 32)",
+                        borderRadius: "5px",
+                      }}
+                    >
+                      CASHOUT{" "}
+                    </button>
+                  )}
               </div>
               <div className="flex flex-col px max-md:max-w-full">
                 <table className="w-full text-sm font-medium text-stone-900">
@@ -303,200 +390,190 @@ export const MatchOdds = ({ data }) => {
                     </tr>
                   </thead>
                   <tbody>
-                    <tr className="justify-between pr-6 mt-2 w-full pl-2 h-[32px] bg-sportsTitleBg">
-                      <td className="my-auto text-xs font-semibold px-2 flex-[6] text-white border-b border-black">
-                        <div>Sunrisers Hyderabad</div>
-                      </td>
-                      <td>
-                        <div className="web-view flex flex-row-reverse gap-[1px]">
-                          <div className="w-[70px] h-[40px] flex items-center justify-center py-3 px-2 cursor-pointer hover:opacity-80 transition-opacity bg-[#43CEED] rounded-md">
-                            <div className="flex flex-col items-center">
-                              <span className="text-black text-xs font-semibold leading-[1.0769230769230769em] text-center">
-                                2.06
-                              </span>
-                              <div className="text-[9px] text-center text-fancyBetsCountText leading-none mt-1">
-                                6386K
+                    {game?.runners?.map((runner) => {
+                      return (
+                        <tr
+                          key={runner?.id}
+                          className="justify-between pr-6 mt-2 w-full pl-2 h-[32px] bg-sportsTitleBg"
+                        >
+                          <td className="my-auto text-xs font-semibold px-2 flex-[6] text-white border-b border-black">
+                            <div> {runner?.name}</div>
+                          </td>
+                          <td>
+                            <div className="web-view flex flex-row-reverse gap-[1px]">
+                              <div
+                                onClick={() =>
+                                  handleBetSlip(
+                                    "back",
+                                    game,
+                                    runner,
+                                    runner?.back?.[0]?.price,
+                                  )
+                                }
+                                className="w-[70px] h-[40px] flex items-center justify-center py-3 px-2 cursor-pointer hover:opacity-80 transition-opacity bg-[#43CEED] rounded-md"
+                              >
+                                <div className="flex flex-col items-center">
+                                  <span className="text-black text-xs font-semibold leading-[1.0769230769230769em] text-center">
+                                    {runner?.back?.[0]?.price}
+                                  </span>
+                                  <div className="text-[9px] text-center text-fancyBetsCountText leading-none mt-1">
+                                    {runner?.back?.[0]?.size}
+                                  </div>
+                                </div>
+                              </div>
+                              <div
+                                onClick={() =>
+                                  handleBetSlip(
+                                    "back",
+                                    game,
+                                    runner,
+                                    runner?.back?.[1]?.price,
+                                  )
+                                }
+                                className="w-[70px] h-[40px] flex items-center justify-center py-3 px-2 cursor-pointer hover:opacity-80 transition-opacity bg-[#43CEED] rounded-md"
+                              >
+                                <div className="flex flex-col items-center">
+                                  <span className="text-black text-xs font-semibold leading-[1.0769230769230769em] text-center">
+                                    {runner?.back?.[1]?.price}
+                                  </span>
+                                  <div className="text-[9px] text-center text-fancyBetsCountText leading-none mt-1">
+                                    {runner?.back?.[1]?.size}
+                                  </div>
+                                </div>
+                              </div>
+                              <div
+                                onClick={() =>
+                                  handleBetSlip(
+                                    "back",
+                                    game,
+                                    runner,
+                                    runner?.back?.[2]?.price,
+                                  )
+                                }
+                                className="w-[70px] h-[40px] flex items-center justify-center py-3 px-2 cursor-pointer hover:opacity-80 transition-opacity bg-[#43CEED] rounded-md"
+                              >
+                                <div className="flex flex-col items-center">
+                                  <span className="text-black text-xs font-semibold leading-[1.0769230769230769em] text-center">
+                                    {runner?.back?.[2]?.price}
+                                  </span>
+                                  <div className="text-[9px] text-center text-fancyBetsCountText leading-none mt-1">
+                                    {runner?.back?.[2]?.size}
+                                  </div>
+                                </div>
                               </div>
                             </div>
-                          </div>
-                          <div className="w-[70px] h-[40px] flex items-center justify-center py-3 px-2 cursor-pointer hover:opacity-80 transition-opacity bg-[#43CEED] rounded-md">
-                            <div className="flex flex-col items-center">
-                              <span className="text-black text-xs font-semibold leading-[1.0769230769230769em] text-center">
-                                2.04
-                              </span>
-                              <div className="text-[9px] text-center text-fancyBetsCountText leading-none mt-1">
-                                13334K
+                            <div
+                              onClick={() =>
+                                handleBetSlip(
+                                  "back",
+                                  game,
+                                  runner,
+                                  runner?.back?.[0]?.price,
+                                )
+                              }
+                              className="mob-view"
+                            >
+                              <div className="w-[70px] h-[40px] flex items-center justify-center py-3 px-2 cursor-pointer hover:opacity-80 transition-opacity bg-[#43CEED] rounded-md">
+                                <div className="flex flex-col items-center">
+                                  <span className="text-black text-xs font-semibold leading-[1.0769230769230769em] text-center">
+                                    {runner?.back?.[0]?.price}
+                                  </span>
+                                  <div className="text-[9px] text-center text-fancyBetsCountText leading-none mt-1">
+                                    {runner?.back?.[0]?.size}
+                                  </div>
+                                </div>
                               </div>
                             </div>
-                          </div>
-                          <div className="w-[70px] h-[40px] flex items-center justify-center py-3 px-2 cursor-pointer hover:opacity-80 transition-opacity bg-[#43CEED] rounded-md">
-                            <div className="flex flex-col items-center">
-                              <span className="text-black text-xs font-semibold leading-[1.0769230769230769em] text-center">
-                                2.02
-                              </span>
-                              <div className="text-[9px] text-center text-fancyBetsCountText leading-none mt-1">
-                                8617K
+                          </td>
+                          <td>
+                            <div className="web-view flex gap-[1px]">
+                              <div
+                                onClick={() =>
+                                  handleBetSlip(
+                                    "lay",
+                                    game,
+                                    runner,
+                                    runner?.lay?.[0]?.price,
+                                  )
+                                }
+                                className="w-[70px] h-[40px] flex items-center justify-center py-3 px-2 cursor-pointer hover:opacity-80 transition-opacity bg-[#F796FF] rounded-md"
+                              >
+                                <div className="flex flex-col items-center">
+                                  <span className="text-black text-xs font-semibold leading-[1.0769230769230769em] text-center">
+                                    {runner?.lay?.[0]?.price}
+                                  </span>
+                                  <div className="text-[9px] text-center text-fancyBetsCountText leading-none mt-1">
+                                    {runner?.lay?.[0]?.size}
+                                  </div>
+                                </div>
+                              </div>
+                              <div
+                                onClick={() =>
+                                  handleBetSlip(
+                                    "lay",
+                                    game,
+                                    runner,
+                                    runner?.lay?.[1]?.price,
+                                  )
+                                }
+                                className="w-[70px] h-[40px] flex items-center justify-center py-3 px-2 cursor-pointer hover:opacity-80 transition-opacity bg-[#F796FF] rounded-md"
+                              >
+                                <div className="flex flex-col items-center">
+                                  <span className="text-black text-xs font-semibold leading-[1.0769230769230769em] text-center">
+                                    {runner?.lay?.[1]?.price}
+                                  </span>
+                                  <div className="text-[9px] text-center text-fancyBetsCountText leading-none mt-1">
+                                    {runner?.lay?.[1]?.size}
+                                  </div>
+                                </div>
+                              </div>
+                              <div
+                                onClick={() =>
+                                  handleBetSlip(
+                                    "lay",
+                                    game,
+                                    runner,
+                                    runner?.lay?.[2]?.price,
+                                  )
+                                }
+                                className="w-[70px] h-[40px] flex items-center justify-center py-3 px-2 cursor-pointer hover:opacity-80 transition-opacity bg-[#F796FF] rounded-md"
+                              >
+                                <div className="flex flex-col items-center">
+                                  <span className="text-black text-xs font-semibold leading-[1.0769230769230769em] text-center">
+                                    {runner?.lay?.[2]?.price}
+                                  </span>
+                                  <div className="text-[9px] text-center text-fancyBetsCountText leading-none mt-1">
+                                    {runner?.lay?.[2]?.size}
+                                  </div>
+                                </div>
                               </div>
                             </div>
-                          </div>
-                        </div>
-                        <div className="mob-view">
-                          <div className="w-[70px] h-[40px] flex items-center justify-center py-3 px-2 cursor-pointer hover:opacity-80 transition-opacity bg-[#43CEED] rounded-md">
-                            <div className="flex flex-col items-center">
-                              <span className="text-black text-xs font-semibold leading-[1.0769230769230769em] text-center">
-                                2.06
-                              </span>
-                              <div className="text-[9px] text-center text-fancyBetsCountText leading-none mt-1">
-                                6386K
+                            <div
+                              onClick={() =>
+                                handleBetSlip(
+                                  "lay",
+                                  game,
+                                  runner,
+                                  runner?.lay?.[0]?.price,
+                                )
+                              }
+                              className="mob-view"
+                            >
+                              <div className="w-[70px] h-[40px] flex items-center justify-center py-3 px-2 cursor-pointer hover:opacity-80 transition-opacity bg-[#F796FF] rounded-md">
+                                <div className="flex flex-col items-center">
+                                  <span className="text-black text-xs font-semibold leading-[1.0769230769230769em] text-center">
+                                    {runner?.lay?.[0]?.price}
+                                  </span>
+                                  <div className="text-[9px] text-center text-fancyBetsCountText leading-none mt-1">
+                                    {runner?.lay?.[0]?.size}
+                                  </div>
+                                </div>
                               </div>
                             </div>
-                          </div>
-                        </div>
-                      </td>
-                      <td>
-                        <div className="web-view flex gap-[1px]">
-                          <div className="w-[70px] h-[40px] flex items-center justify-center py-3 px-2 cursor-pointer hover:opacity-80 transition-opacity bg-[#F796FF] rounded-md">
-                            <div className="flex flex-col items-center">
-                              <span className="text-black text-xs font-semibold leading-[1.0769230769230769em] text-center">
-                                2.08
-                              </span>
-                              <div className="text-[9px] text-center text-fancyBetsCountText leading-none mt-1">
-                                121K
-                              </div>
-                            </div>
-                          </div>
-                          <div className="w-[70px] h-[40px] flex items-center justify-center py-3 px-2 cursor-pointer hover:opacity-80 transition-opacity bg-[#F796FF] rounded-md">
-                            <div className="flex flex-col items-center">
-                              <span className="text-black text-xs font-semibold leading-[1.0769230769230769em] text-center">
-                                2.10
-                              </span>
-                              <div className="text-[9px] text-center text-fancyBetsCountText leading-none mt-1">
-                                7584K
-                              </div>
-                            </div>
-                          </div>
-                          <div className="w-[70px] h-[40px] flex items-center justify-center py-3 px-2 cursor-pointer hover:opacity-80 transition-opacity bg-[#F796FF] rounded-md">
-                            <div className="flex flex-col items-center">
-                              <span className="text-black text-xs font-semibold leading-[1.0769230769230769em] text-center">
-                                2.12
-                              </span>
-                              <div className="text-[9px] text-center text-fancyBetsCountText leading-none mt-1">
-                                2750K
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                        <div className="mob-view">
-                          <div className="w-[70px] h-[40px] flex items-center justify-center py-3 px-2 cursor-pointer hover:opacity-80 transition-opacity bg-[#F796FF] rounded-md">
-                            <div className="flex flex-col items-center">
-                              <span className="text-black text-xs font-semibold leading-[1.0769230769230769em] text-center">
-                                2.08
-                              </span>
-                              <div className="text-[9px] text-center text-fancyBetsCountText leading-none mt-1">
-                                121K
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </td>
-                    </tr>
-                    <tr className="justify-between pr-6 mt-2 w-full pl-2 h-[32px] bg-sportsTitleBg">
-                      <td className="my-auto text-xs font-semibold px-2 flex-[6] text-white border-b border-black">
-                        <div>Punjab Kings</div>
-                      </td>
-                      <td>
-                        <div className="web-view flex flex-row-reverse gap-[1px]">
-                          <div className="w-[70px] h-[40px] flex items-center justify-center py-3 px-2 cursor-pointer hover:opacity-80 transition-opacity bg-[#43CEED] rounded-md">
-                            <div className="flex flex-col items-center">
-                              <span className="text-black text-xs font-semibold leading-[1.0769230769230769em] text-center">
-                                1.92
-                              </span>
-                              <div className="text-[9px] text-center text-fancyBetsCountText leading-none mt-1">
-                                2249K
-                              </div>
-                            </div>
-                          </div>
-                          <div className="w-[70px] h-[40px] flex items-center justify-center py-3 px-2 cursor-pointer hover:opacity-80 transition-opacity bg-[#43CEED] rounded-md">
-                            <div className="flex flex-col items-center">
-                              <span className="text-black text-xs font-semibold leading-[1.0769230769230769em] text-center">
-                                1.91
-                              </span>
-                              <div className="text-[9px] text-center text-fancyBetsCountText leading-none mt-1">
-                                5934K
-                              </div>
-                            </div>
-                          </div>
-                          <div className="w-[70px] h-[40px] flex items-center justify-center py-3 px-2 cursor-pointer hover:opacity-80 transition-opacity bg-[#43CEED] rounded-md">
-                            <div className="flex flex-col items-center">
-                              <span className="text-black text-xs font-semibold leading-[1.0769230769230769em] text-center">
-                                1.90
-                              </span>
-                              <div className="text-[9px] text-center text-fancyBetsCountText leading-none mt-1">
-                                3236K
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                        <div className="mob-view">
-                          <div className="w-[70px] h-[40px] flex items-center justify-center py-3 px-2 cursor-pointer hover:opacity-80 transition-opacity bg-[#43CEED] rounded-md">
-                            <div className="flex flex-col items-center">
-                              <span className="text-black text-xs font-semibold leading-[1.0769230769230769em] text-center">
-                                1.92
-                              </span>
-                              <div className="text-[9px] text-center text-fancyBetsCountText leading-none mt-1">
-                                2249K
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </td>
-                      <td>
-                        <div className="web-view flex gap-[1px]">
-                          <div className="w-[70px] h-[40px] flex items-center justify-center py-3 px-2 cursor-pointer hover:opacity-80 transition-opacity bg-[#F796FF] rounded-md">
-                            <div className="flex flex-col items-center">
-                              <span className="text-black text-xs font-semibold leading-[1.0769230769230769em] text-center">
-                                1.93
-                              </span>
-                              <div className="text-[9px] text-center text-fancyBetsCountText leading-none mt-1">
-                                466K
-                              </div>
-                            </div>
-                          </div>
-                          <div className="w-[70px] h-[40px] flex items-center justify-center py-3 px-2 cursor-pointer hover:opacity-80 transition-opacity bg-[#F796FF] rounded-md">
-                            <div className="flex flex-col items-center">
-                              <span className="text-black text-xs font-semibold leading-[1.0769230769230769em] text-center">
-                                1.94
-                              </span>
-                              <div className="text-[9px] text-center text-fancyBetsCountText leading-none mt-1">
-                                4313K
-                              </div>
-                            </div>
-                          </div>
-                          <div className="w-[70px] h-[40px] flex items-center justify-center py-3 px-2 cursor-pointer hover:opacity-80 transition-opacity bg-[#F796FF] rounded-md">
-                            <div className="flex flex-col items-center">
-                              <span className="text-black text-xs font-semibold leading-[1.0769230769230769em] text-center">
-                                1.95
-                              </span>
-                              <div className="text-[9px] text-center text-fancyBetsCountText leading-none mt-1">
-                                9983K
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                        <div className="mob-view">
-                          <div className="w-[70px] h-[40px] flex items-center justify-center py-3 px-2 cursor-pointer hover:opacity-80 transition-opacity bg-[#F796FF] rounded-md">
-                            <div className="flex flex-col items-center">
-                              <span className="text-black text-xs font-semibold leading-[1.0769230769230769em] text-center">
-                                1.93
-                              </span>
-                              <div className="text-[9px] text-center text-fancyBetsCountText leading-none mt-1">
-                                466K
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </td>
-                    </tr>
+                          </td>
+                        </tr>
+                      );
+                    })}
                   </tbody>
                 </table>
               </div>

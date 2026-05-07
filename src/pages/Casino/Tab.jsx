@@ -16,7 +16,7 @@ const Tab = ({ categories, selectedCategory }) => {
   }, [selectedCategory, categories]);
   return (
     <div className="w-full overflow-x-auto scrollbar-hide">
-      <div className="inline-flex border border-casinoProvidersBorder">
+      <div className="inline-flex gap-2">
         <div
           onClick={() => {
             navigate(`/casino?product=All&category=All`);
@@ -25,10 +25,10 @@ const Tab = ({ categories, selectedCategory }) => {
           tabIndex={0}
           role="button"
           aria-pressed="true"
-          className={`flex items-center h-[32px] px-1 py-1.5 min-w-fit whitespace-nowrap border-r border-casinoProvidersBorder last:border-r-0 transition-colors cursor-pointer  ${selectedCategory === "All" ? "bg-blue4 text-white" : "bg-white"}`}
+          className={`flex items-center h-[32px] px-2 py-1 min-w-fit whitespace-nowrap transition-colors cursor-pointer rounded-[8px]  ${selectedCategory === "All" ? "bg-buttonGradient text-reportsTableHeaderText" : "bg-reportsTableHeaderText"}`}
         >
           <div
-            className="casino-filter-text text-[13px] font-[600] px-2"
+            className="casino-filter-text text-xs font-medium px-2"
             style={{ textTransform: "uppercase" }}
           >
             All
@@ -45,10 +45,10 @@ const Tab = ({ categories, selectedCategory }) => {
               tabIndex={0}
               role="button"
               aria-pressed="false"
-              className={`flex items-center h-[32px] px-1 py-1.5 min-w-fit whitespace-nowrap border-r border-casinoProvidersBorder last:border-r-0 transition-colors cursor-pointer ${selectedCategory === category ? "bg-blue4 text-white" : "bg-white"}`}
+              className={`flex items-center h-[32px] px-2 py-1 min-w-fit whitespace-nowrap transition-colors cursor-pointer rounded-[8px]  ${selectedCategory === category ? "bg-buttonGradient text-reportsTableHeaderText" : "bg-reportsTableHeaderText"}`}
             >
               <div
-                className="casino-filter-text text-[13px] font-[600] px-2"
+                className="casino-filter-text text-xs font-medium px-2"
                 style={{ textTransform: "uppercase" }}
               >
                 {category}

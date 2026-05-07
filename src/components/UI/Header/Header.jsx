@@ -15,6 +15,7 @@ import QuickDesktopLink from "./QuickDesktopLink";
 import QuickMobileLink from "./QuickMobileLink";
 import Unauthorized from "./Unauthorized";
 import Authorized from "./Authorized";
+import Notification from "./Notification";
 
 const Header = () => {
   const location = useLocation();
@@ -62,10 +63,10 @@ const Header = () => {
 
   return (
     <Fragment>
-      {/* <Notification /> */}
+      <Notification />
       {Settings.apk_link && showAppPopUp && windowWidth < 1040 && <AppPopup />}
       {Settings.apk_link && showAPKModal && <DownloadAPK />}
-      <div className="flex flex-col gap-2">
+      <div className="flex flex-col ">
         <div className="hidden md:block" />
         <div className="flex flex-col">
           <div className="flex justify-between items-center gap-3 bg-sidebarBg h-[52px] md:h-[74px] p-2 md:p-4 lg:rounded-[5px]">

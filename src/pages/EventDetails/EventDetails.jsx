@@ -17,6 +17,7 @@ import OpenBets from "../../components/modals/OpenBets/OpenBets";
 import EventTitle from "../../components/modules/EventDetails/EventTitle";
 import RightSidebar from "../../components/modules/EventDetails/RightSidebar";
 import EventTitleMobile from "../../components/modules/EventDetails/EventTitleMobile";
+import { Bookmaker } from "../../components/modules/EventDetails/Bookmaker";
 
 const EventDetails = () => {
   const [showOpenBetsModal, setShowOpenBetsModal] = useState(false);
@@ -164,8 +165,9 @@ const EventDetails = () => {
 
                 <div className="flex flex-col gap-1">
                   {matchOdds?.length > 0 && <MatchOdds data={matchOdds} />}
-
-                  <Fancy />
+                  {bookmaker?.length > 0 && <Bookmaker data={bookmaker} />}
+                  {data?.result?.length > 0 && <Fancy data={data?.result} />}
+                  {tiedMatch?.length > 0 && <MatchOdds data={tiedMatch} />}
                 </div>
               </div>
               <RightSidebar />

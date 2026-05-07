@@ -22,7 +22,10 @@ const Authorized = () => {
         >
           <span className="my-auto uppercase">Withdraw</span>
         </button>
-        <button className=" active:opacity-70 text-center h-[36px] w-[58px] text-[9px] text-white font-bold rounded-[4px] color-blinking-button">
+        <button
+          onClick={() => navigate("/promotions")}
+          className=" active:opacity-70 text-center h-[36px] w-[58px] text-[9px] text-white font-bold rounded-[4px] color-blinking-button"
+        >
           Check Bonuses
         </button>
       </div>

@@ -1,8 +1,34 @@
-import { Link } from "react-router-dom";
-
+import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { Link, useNavigate } from "react-router-dom";
+import { setShowLoginModal } from "../../../redux/features/global/globalSlice";
+import { Settings } from "../../../api";
+import WarningCondition from "../../shared/WarningCondition/WarningCondition";
 const QuickDesktopLink = () => {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const [showWarning, setShowWarning] = useState(false);
+  const [gameInfo, setGameInfo] = useState({ gameName: "", gameId: "" });
+  const { token } = useSelector((state) => state.auth);
+  const handleNavigateToAviator = () => {
+    if (token) {
+      if (Settings.casino_currency !== "AED") {
+        navigate(`/casino/EvolutionGaming/200296`);
+      } else {
+        setGameInfo({ gameName: "", gameId: "" });
+        setGameInfo({ gameName: "EvolutionGaming", gameId: "200296" });
+        setShowWarning(true);
+      }
+    } else {
+      dispatch(setShowLoginModal(true));
+    }
+  };
+
   return (
     <div className="hidden lg:block">
+      {showWarning && (
+        <WarningCondition gameInfo={gameInfo} setShowWarning={setShowWarning} />
+      )}
       <div className="flex items-center gap-5 lg:gap-3 overflow-auto">
         <Link
           to="/"
@@ -16,9 +42,9 @@ const QuickDesktopLink = () => {
           />
           <span className="text-xs md:text-[9px]">Kheloyar Exch</span>
         </Link>
-        <Link
+        <a
+          onClick={handleNavigateToAviator}
           className="flex flex-col items-center gap-1 text-white hover:text-primarySvgColor cursor-pointer text-nowrap"
-          to="/casino?category=aviator"
         >
           <img
             src="/icon/aviator-icon-Bqkblu8x.svg"
@@ -26,10 +52,10 @@ const QuickDesktopLink = () => {
             className="w-6 h-6"
           />
           <span className="text-xs md:text-[9px]">Aviator</span>
-        </Link>
+        </a>
         <Link
           className="flex flex-col items-center gap-1 text-white hover:text-primarySvgColor cursor-pointer text-nowrap"
-          to="/casino?category=ALL&subProvider=MAC88 LIVE"
+          to="/casino?product=MAC88%20LIVE&category=All"
         >
           <img
             src="/icon/indian-casino-icon-D2C69UK4.svg"
@@ -40,7 +66,7 @@ const QuickDesktopLink = () => {
         </Link>
         <Link
           className="flex flex-col items-center gap-1 text-white hover:text-primarySvgColor cursor-pointer text-nowrap"
-          to="/casino"
+          to="/casino?product=All&category=All"
         >
           <img
             src="/icon/all-casino-icon-MF55Fj2Q.svg"
@@ -51,7 +77,7 @@ const QuickDesktopLink = () => {
         </Link>
         <Link
           className="flex flex-col items-center gap-1 text-white hover:text-primarySvgColor cursor-pointer text-nowrap"
-          to="/casino?category=teenpatti"
+          to="/casino?product=MAC88%20LIVE&category=teenpatti"
         >
           <img
             src="data:image/svg+xml,%3csvg%20width='33'%20height='24'%20viewBox='0%200%2033%2024'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3cg%20clip-path='url(%23clip0_9_57)'%3e%3cg%20clip-path='url(%23clip1_9_57)'%3e%3cg%20clip-path='url(%23clip2_9_57)'%3e%3cpath%20d='M32.5911%206.12563C32.5008%206.45332%2032.3757%207.00896%2032.1982%207.55321C30.6325%2012.2918%2029.0612%2017.0277%2027.4781%2021.7606C26.8146%2023.7467%2025.7728%2024.2482%2023.7561%2023.6127C20.462%2022.5728%2017.1678%2021.5327%2013.8737%2020.4755C11.8307%2019.8172%2011.3302%2018.8399%2011.9937%2016.8339C13.5971%2011.9784%2015.2094%207.12294%2016.8244%202.27315C17.5229%200.184499%2018.5005%20-0.299911%2020.6133%200.366864C23.9482%201.42116%2027.2744%202.48686%2030.6064%203.54117C31.7763%203.91445%2032.5998%204.55842%2032.5881%206.12563H32.5911ZM27.1987%2010.8842C27.1987%209.04063%2025.5051%207.90085%2023.8463%208.75284C22.9675%209.2059%2022.7725%208.88676%2022.4029%208.22283C21.5475%206.74967%2019.7664%206.62713%2018.6432%207.94074C18.0175%208.67305%2017.7498%209.63332%2017.9098%2010.5765C18.1601%2012.4201%2019.0827%2013.9559%2020.2001%2015.4121C20.4561%2015.8537%2021.0149%2016.0304%2021.4863%2015.8223C22.7696%2015.4577%2023.9919%2014.9019%2025.1035%2014.1782C26.253%2013.3803%2027.1959%2012.3973%2027.2016%2010.8871L27.1987%2010.8842Z'%20fill='white'/%3e%3cpath%20d='M9.74024%2021.0221C7.42966%2022.1619%206.18125%2021.6691%205.43046%2019.4351C3.84448%2014.7049%202.27015%209.96913%200.713279%205.22193C-0.107353%202.72864%200.337883%201.92795%202.84343%201.113C3.79211%200.80526%204.75533%200.53741%205.69236%200.192625C6.5712%20-0.132213%206.94659%200.121388%206.92622%201.03322C6.90876%202.17585%206.92622%203.31849%206.92622%204.46967V15.6168C6.93204%2017.9039%207.87005%2019.7057%209.74024%2021.0221Z'%20fill='white'/%3e%3cpath%20d='M12.0902%2021.2848C9.78551%2021.8947%208.36251%2020.9145%208.36251%2018.6691C8.35377%2013.4403%208.35377%208.20869%208.36251%202.97708C8.36251%201.11923%209.21514%200.275788%2011.0892%200.235895C12.2154%200.2131%2013.3445%200.281486%2014.4678%200.215949C15.658%200.15041%2015.7802%200.614874%2015.4426%201.60363C13.9643%205.94337%2012.5356%2010.2973%2011.0834%2014.6457C9.86699%2018.3272%209.85245%2018.3272%2012.0902%2021.2848Z'%20fill='white'/%3e%3c/g%3e%3c/g%3e%3c/g%3e%3cdefs%3e%3cclipPath%20id='clip0_9_57'%3e%3crect%20width='32.73'%20height='24'%20fill='white'/%3e%3c/clipPath%3e%3cclipPath%20id='clip1_9_57'%3e%3crect%20width='32.73'%20height='24'%20fill='white'/%3e%3c/clipPath%3e%3cclipPath%20id='clip2_9_57'%3e%3crect%20width='32.7273'%20height='24'%20fill='white'%20transform='translate(0.00146484)'/%3e%3c/clipPath%3e%3c/defs%3e%3c/svg%3e"
@@ -62,7 +88,7 @@ const QuickDesktopLink = () => {
         </Link>
         <Link
           className="flex flex-col items-center gap-1 text-white hover:text-primarySvgColor cursor-pointer text-nowrap"
-          to="/casino?category=Slot Games"
+          to="/casino?product=All&category=slots"
         >
           <img
             src="data:image/svg+xml,%3csvg%20width='28'%20height='24'%20viewBox='0%200%2028%2024'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3cg%20clip-path='url(%23clip0_9_69)'%3e%3cg%20clip-path='url(%23clip1_9_69)'%3e%3cpath%20d='M26.5076%201.41817C26.0712%200.545444%2025.1985%200.10908%2024.2167%200.10908C23.2349%200.10908%2022.3621%200.872717%2022.1439%201.85453C21.8167%202.72726%2022.1439%203.81817%2022.9076%204.36363C23.1258%204.47272%2023.1258%204.58181%2023.1258%204.79999C23.1258%206.87272%2023.1258%209.05453%2023.1258%2011.1273C23.1258%2013.3091%2023.1258%2015.4909%2023.1258%2017.7818C23.1258%2017.8909%2023.1258%2018%2022.9076%2018C21.8167%2018%2020.8349%2018%2019.7439%2018C19.6349%2018%2019.5258%2018%2019.5258%2017.7818C19.5258%2017.1273%2019.5258%2016.4727%2019.5258%2015.7091C19.5258%2015.6%2019.5258%2015.6%2019.6349%2015.4909C20.3985%2015.3818%2020.7258%2014.9454%2020.7258%2014.1818C20.7258%2010.6909%2020.7258%207.19999%2020.7258%203.70908C20.7258%202.83635%2020.2894%202.39999%2019.4167%202.39999C17.9985%202.39999%2016.6894%202.39999%2015.2712%202.39999C15.053%202.39999%2014.9439%202.39999%2014.8349%202.18181C12.653%20-0.654556%208.39849%20-0.654556%206.32576%202.18181C6.32576%202.39999%206.21667%202.50908%205.99849%202.50908C4.58031%202.50908%203.16213%202.50908%201.85304%202.50908C1.19849%202.50908%200.871218%202.72726%200.653036%203.27272C0.543945%203.38181%200.543945%203.59999%200.543945%203.81817C0.543945%207.30908%200.543945%2010.6909%200.543945%2014.1818C0.543945%2014.2909%200.543945%2014.4%200.543945%2014.5091C0.653036%2015.0545%200.980309%2015.3818%201.41667%2015.4909C1.63485%2015.4909%201.63485%2015.6%201.63485%2015.8182C1.63485%2018.4364%201.63485%2020.9454%201.63485%2023.5636C1.63485%2023.7818%201.63485%2023.8909%201.96213%2023.8909C4.79849%2023.8909%207.74395%2023.8909%2010.5803%2023.8909C13.4167%2023.8909%2016.3621%2023.8909%2019.1985%2023.8909C19.5258%2023.8909%2019.5258%2023.7818%2019.5258%2023.5636C19.5258%2022.5818%2019.5258%2021.6%2019.5258%2020.6182C19.5258%2020.4%2019.6349%2020.4%2019.7439%2020.4C20.8349%2020.4%2021.8167%2020.4%2022.9076%2020.4C23.1258%2020.4%2023.3439%2020.4%2023.5621%2020.4C24.7621%2020.1818%2025.5258%2019.2%2025.5258%2018C25.5258%2013.7454%2025.5258%209.38181%2025.5258%205.12726C25.5258%204.79999%2025.5258%204.58181%2025.853%204.47272C25.9621%204.36363%2026.0712%204.25454%2026.1803%204.14544C26.8349%203.16363%2026.9439%202.2909%2026.5076%201.41817ZM14.6167%2020.2909C13.3076%2020.2909%2011.9985%2020.2909%2010.6894%2020.2909C9.38031%2020.2909%208.07122%2020.2909%206.76213%2020.2909C6.54395%2020.2909%206.54395%2020.2909%206.54395%2020.0727C6.54395%2019.4182%206.54395%2018.7636%206.54395%2018.1091C6.54395%2018%206.54395%2017.8909%206.76213%2017.8909C9.38031%2017.8909%2012.1076%2017.8909%2014.7258%2017.8909C14.9439%2017.8909%2014.9439%2018%2014.9439%2018.1091C14.9439%2018.7636%2014.9439%2019.4182%2014.9439%2020.0727C14.8349%2020.2909%2014.7258%2020.2909%2014.6167%2020.2909ZM18.4349%2012.8727C18.4349%2013.0909%2018.4349%2013.2%2018.2167%2013.2C15.7076%2013.2%2013.1985%2013.2%2010.6894%2013.2C8.18031%2013.2%205.67122%2013.2%203.27122%2013.2C3.05304%2013.2%202.94395%2013.2%202.94395%2012.8727C2.94395%2010.2545%202.94395%207.63635%202.94395%205.12726C2.94395%204.90908%202.94395%204.90908%203.16213%204.90908C8.18031%204.90908%2013.0894%204.90908%2018.1076%204.90908C18.3258%204.90908%2018.4349%204.90908%2018.4349%205.23635C18.4349%207.74544%2018.4349%2010.3636%2018.4349%2012.8727Z'%20fill='white'/%3e%3cpath%20d='M6.3257%207.30908H3.70752V6.21817H7.74388V7.0909L5.23479%2011.7818H3.81661L6.3257%207.30908Z'%20fill='white'/%3e%3cpath%20d='M11.2349%207.30908H8.6167V6.21817H12.6531V7.0909L10.144%2011.7818H8.72579L11.2349%207.30908Z'%20fill='white'/%3e%3cpath%20d='M16.1441%207.30908H13.5259V6.21817H17.5622V7.0909L15.0532%2011.7818H13.635L16.1441%207.30908Z'%20fill='white'/%3e%3c/g%3e%3c/g%3e%3cdefs%3e%3cclipPath%20id='clip0_9_69'%3e%3crect%20width='27.27'%20height='24'%20fill='white'/%3e%3c/clipPath%3e%3cclipPath%20id='clip1_9_69'%3e%3crect%20width='27.27'%20height='24'%20fill='white'/%3e%3c/clipPath%3e%3c/defs%3e%3c/svg%3e"
@@ -73,7 +99,7 @@ const QuickDesktopLink = () => {
         </Link>
         <Link
           className="flex flex-col items-center gap-1 text-white hover:text-primarySvgColor cursor-pointer text-nowrap"
-          to="/casino?category=Table Games"
+          to="/casino?product=All&category=other%20table%20games"
         >
           <img
             src="/icon/table-game-icon-C7pyrdXl.svg"
@@ -84,7 +110,7 @@ const QuickDesktopLink = () => {
         </Link>
         <Link
           className="flex flex-col items-center gap-1 text-white hover:text-primarySvgColor cursor-pointer text-nowrap"
-          to="/casino"
+          to="/casino?product=All&category=live"
         >
           <img
             src="/icon/live-casino-icon-BrlzYVBr.svg"

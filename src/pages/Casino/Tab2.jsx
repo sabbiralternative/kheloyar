@@ -16,19 +16,22 @@ const Tab2 = ({ subCategories, product, selectedSubCategory }) => {
   }, [selectedSubCategory, subCategories, product]);
   return (
     <div className="w-full overflow-x-auto scrollbar-hide">
-      <div className="inline-flex border border-casinoProvidersBorder">
+      <div className="inline-flex gap-2">
         <div
           ref={selectedSubCategory === "All" ? activeRef : null}
           onClick={() => {
             navigate(`/casino?product=${product}&category=All`);
           }}
-          className={`flex flex-col justify-center items-center h-[52.5px] px-3 py-1.5 min-w-fit whitespace-nowrap border-r border-casinoProvidersBorder last:border-r-0 transition-colors cursor-pointer  ${
-            selectedSubCategory === "All" ? "bg-blue4 text-white " : "bg-white"
+          className={`flex flex-col justify-center items-center h-[52.5px] px-2 py-1 min-w-fit whitespace-nowrap transition-colors cursor-pointer rounded-[8px]   ${
+            selectedSubCategory === "All"
+              ? "bg-buttonGradient text-reportsTableHeaderText "
+              : "bg-reportsTableHeaderText"
           }`}
         >
-          <img className="size-5" src={`/icon/all.svg`} />
-          <div className="text-[13px] w-fit text-center uppercase ">all</div>
+          <img className="h-5 w-5 " src="/icon/all.svg" alt="cat-icon" />
+          <div className="text-[13px] w-fit text-center uppercase">All</div>
         </div>
+
         {subCategories?.map((category) => {
           return (
             <div
@@ -37,14 +40,14 @@ const Tab2 = ({ subCategories, product, selectedSubCategory }) => {
               onClick={() => {
                 navigate(`/casino?product=${product}&category=${category}`);
               }}
-              className={`flex flex-col justify-center items-center h-[52.5px] px-3 py-1.5 min-w-fit whitespace-nowrap border-r border-casinoProvidersBorder last:border-r-0 transition-colors cursor-pointer ${
+              className={`flex flex-col justify-center items-center h-[52.5px] px-2 py-1 min-w-fit whitespace-nowrap transition-colors cursor-pointer rounded-[8px] ${
                 selectedSubCategory === category
-                  ? "bg-blue4 text-white "
-                  : "bg-white"
+                  ? "bg-buttonGradient text-reportsTableHeaderText "
+                  : "bg-reportsTableHeaderText"
               }`}
             >
               <img
-                className="size-5"
+                className="h-5 w-5 selected-category"
                 src={`/icon/${category?.split(" ").join("").toLowerCase()}.svg`}
                 onError={(e) => {
                   if (e.target.src.endsWith(".svg")) {
@@ -65,8 +68,9 @@ const Tab2 = ({ subCategories, product, selectedSubCategory }) => {
                     e.target.src = `/icon/all.svg`;
                   }
                 }}
+                alt="cat-icon"
               />
-              <div className="text-[13px] w-fit text-center uppercase ">
+              <div className="text-[13px] w-fit text-center uppercase">
                 {category}
               </div>
             </div>
