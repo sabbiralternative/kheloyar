@@ -175,7 +175,7 @@ const InPlay = () => {
               </div>
               <div className="flex flex-col gap-2 w-full h-full">
                 <div className="flex flex-col gap-1 h-full">
-                  {eventTypeId != "7" && eventTypeId != "4339" ? (
+                  {eventTypeId != "7" && eventTypeId != "4339" && (
                     <div className="flex flex-col gap-2 w-full max-w-full">
                       {categories?.map((category) => {
                         const groupedData = Object.entries(data)
@@ -553,9 +553,11 @@ const InPlay = () => {
                         );
                       })}
                     </div>
-                  ) : (
-                    <HorseGreyhound data={data} eventTypeId={eventTypeId} />
                   )}
+                  {(eventTypeId === "7" || eventTypeId === "4339") &&
+                    data?.length > 0 && (
+                      <HorseGreyhound data={data} eventTypeId={eventTypeId} />
+                    )}
                 </div>
               </div>
             </div>

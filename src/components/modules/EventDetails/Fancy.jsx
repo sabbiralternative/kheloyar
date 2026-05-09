@@ -131,6 +131,13 @@ export const Fancy = ({ data }) => {
   };
   return (
     <Fragment>
+      {ladderData?.length > 0 && (
+        <Ladder
+          ladderData={ladderData}
+          setLadderData={setLadderData}
+          marketName={marketName}
+        />
+      )}
       {fancyData?.length > 0 && (
         <div className="flex lg:flex-row flex-col w-full">
           <div className="w-full flex gap-1">
@@ -162,11 +169,35 @@ export const Fancy = ({ data }) => {
                       </thead>
                       <tbody className="w-full">
                         {fancyData.map((game) => {
+                          const pnl = pnlBySelection?.find(
+                            (pnl) => pnl?.MarketId === game?.id,
+                          );
                           return (
                             <Fragment key={game?.id}>
                               <tr className="border-b bg-sportsTitleBg">
                                 <td className="px-2 text-[12px] md:text-[14px] w-[78%] min-w-[150px]">
                                   {game?.name}
+                                  {pnl && (
+                                    <span
+                                      className={`pl-2  ${
+                                        pnl?.pnl > 0
+                                          ? "text-[#1b891b]"
+                                          : "text-[#ff3a3a]"
+                                      }`}
+                                    >
+                                      {pnl?.pnl}
+                                    </span>
+                                  )}
+                                  {pnl && (
+                                    <button
+                                      onClick={() =>
+                                        handleGetLadder(pnl, game?.name)
+                                      }
+                                      className=" active:opacity-70 ml-1 px-2 bg-[#d45f5f] text-white rounded"
+                                    >
+                                      Book
+                                    </button>
+                                  )}
                                 </td>
                                 <td className="w-[6%] px-1">
                                   <div className="flex flex-col items-center justify-center text-[9px] md:text-[10px] leading-tight">

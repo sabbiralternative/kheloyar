@@ -11,7 +11,7 @@ import { Settings } from "../../../api";
 import { isGameSuspended } from "../../../utils/isOddSuspended";
 import { handleCashOutPlaceBet } from "../../../utils/handleCashoutPlaceBet";
 import SpeedCashOut from "../../modals/SpeedCashOut/SpeedCashOut";
-import DesktopBetSlip from "./DesktopBetslip";
+import DesktopBetSlip from "./DesktopBetSlip";
 
 export const Bookmaker = ({ data }) => {
   const [speedCashOut, setSpeedCashOut] = useState(null);
@@ -20,7 +20,6 @@ export const Bookmaker = ({ data }) => {
   const dispatch = useDispatch();
   const { runnerId, stake, predictOdd } = useSelector((state) => state.event);
   const { token } = useSelector((state) => state.auth);
-  const { windowWidth } = useSelector((state) => state.global);
   const { data: exposure } = useExposure(eventId);
 
   const handleBetSlip = (betType, games, runner, price) => {
@@ -222,6 +221,12 @@ export const Bookmaker = ({ data }) => {
   }
   return (
     <Fragment>
+      {speedCashOut && (
+        <SpeedCashOut
+          speedCashOut={speedCashOut}
+          setSpeedCashOut={setSpeedCashOut}
+        />
+      )}
       {data?.map((game) => {
         const teamProfitForGame = teamProfit?.find(
           (profit) =>
@@ -392,11 +397,42 @@ export const Bookmaker = ({ data }) => {
                   </thead>
                   <tbody>
                     {game?.runners?.map((runner) => {
+                      const pnl = pnlBySelection?.find(
+                        (pnl) => pnl?.RunnerId === runner?.id,
+                      );
+                      const predictOddValues = predictOdd?.find(
+                        (val) => val?.id === runner?.id,
+                      );
                       return (
                         <Fragment key={runner?.id}>
                           <tr className="justify-between pr-6 mt-2 w-full pl-2 h-[32px] bg-sportsTitleBg relative">
                             <td className="my-auto text-xs font-semibold px-2 flex-[6] text-white border-b border-black">
-                              <div> {runner?.name}</div>
+                              <div>
+                                {" "}
+                                {runner?.name}{" "}
+                                {pnl && (
+                                  <span
+                                    className={`pl-2  ${
+                                      pnl?.pnl > 0
+                                        ? "text-[#1b891b]"
+                                        : "text-[#ff3a3a]"
+                                    }`}
+                                  >
+                                    {pnl?.pnl}
+                                  </span>
+                                )}
+                                {stake && runnerId && predictOddValues && (
+                                  <span
+                                    className={`pl-2   ${
+                                      predictOddValues?.exposure > 0
+                                        ? "text-[#1b891b]"
+                                        : "text-[#ff3a3a]"
+                                    }`}
+                                  >
+                                    » {predictOddValues?.exposure}
+                                  </span>
+                                )}
+                              </div>
                             </td>
                             <td>
                               <div className="web-view flex flex-row-reverse gap-[1px]">

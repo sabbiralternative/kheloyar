@@ -1,7 +1,38 @@
+import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { Settings } from "../../../api";
+import { setShowLoginModal } from "../../../redux/features/global/globalSlice";
+import WarningCondition from "../../shared/WarningCondition/WarningCondition";
+
 const HomeLinkSlider = () => {
+  const dispatch = useDispatch();
+  const { token } = useSelector((state) => state.auth);
+  const navigate = useNavigate();
+  const [showWarning, setShowWarning] = useState(false);
+  const [gameInfo, setGameInfo] = useState({ gameName: "", gameId: "" });
+  const handleNavigateToIFrame = (name, id) => {
+    if (token) {
+      if (Settings.casino_currency !== "AED") {
+        navigate(`/casino/${name}/${id}`);
+      } else {
+        setGameInfo({ gameName: "", gameId: "" });
+        setGameInfo({ gameName: name, gameId: id });
+        setShowWarning(true);
+      }
+    } else {
+      dispatch(setShowLoginModal(true));
+    }
+  };
   return (
     <div className="flex items-center gap-2 overflow-auto hide-scrollbar">
-      <div className="flex items-center justify-between gap-2 h-[40px] min-w-[150px] md:min-w-[280px] text-white text-xs font-medium px-2 py-1 rounded-md cursor-pointer bg-sportsbookQuickLinkBg">
+      {showWarning && (
+        <WarningCondition gameInfo={gameInfo} setShowWarning={setShowWarning} />
+      )}
+      <div
+        onClick={() => handleNavigateToIFrame("sportsbook", "550000")}
+        className="flex items-center justify-between gap-2 h-[40px] min-w-[150px] md:min-w-[280px] text-white text-xs font-medium px-2 py-1 rounded-md cursor-pointer bg-sportsbookQuickLinkBg"
+      >
         <span>Sportsbook</span>
         <img
           loading="lazy"
@@ -10,7 +41,7 @@ const HomeLinkSlider = () => {
           className="h-[25px] w-[25px]"
         />
       </div>
-      <div className="flex items-center justify-between gap-2 h-[40px] min-w-[150px] md:min-w-[280px] text-white text-xs font-medium px-2 py-1 rounded-md cursor-pointer bg-casinoLobbyQuickLinkBg">
+      {/* <div className="flex items-center justify-between gap-2 h-[40px] min-w-[150px] md:min-w-[280px] text-white text-xs font-medium px-2 py-1 rounded-md cursor-pointer bg-casinoLobbyQuickLinkBg">
         <span>Casino Lobby</span>
         <img
           loading="lazy"
@@ -18,8 +49,11 @@ const HomeLinkSlider = () => {
           alt="casino_lobby"
           className="h-[25px] w-[25px]"
         />
-      </div>
-      <div className="flex items-center justify-between gap-2 h-[40px] min-w-[150px] md:min-w-[280px] text-white text-xs font-medium px-2 py-1 rounded-md cursor-pointer bg-indianCasinoQuickLinkBg">
+      </div> */}
+      <div
+        onClick={() => navigate("/casino?product=MAC88%20LIVE&category=All")}
+        className="flex items-center justify-between gap-2 h-[40px] min-w-[150px] md:min-w-[280px] text-white text-xs font-medium px-2 py-1 rounded-md cursor-pointer bg-indianCasinoQuickLinkBg"
+      >
         <span>Indian Casino</span>
         <img
           loading="lazy"
@@ -28,7 +62,7 @@ const HomeLinkSlider = () => {
           className="h-[25px] w-[25px]"
         />
       </div>
-      <div className="flex items-center justify-between gap-2 h-[40px] min-w-[150px] md:min-w-[280px] text-white text-xs font-medium px-2 py-1 rounded-md cursor-pointer bg-virtualsQuickLinkBg">
+      {/* <div className="flex items-center justify-between gap-2 h-[40px] min-w-[150px] md:min-w-[280px] text-white text-xs font-medium px-2 py-1 rounded-md cursor-pointer bg-virtualsQuickLinkBg">
         <span>Virtuals</span>
         <img
           loading="lazy"
@@ -36,8 +70,11 @@ const HomeLinkSlider = () => {
           alt="virtuals"
           className="h-[25px] w-[25px]"
         />
-      </div>
-      <div className="flex items-center justify-between gap-2 h-[40px] min-w-[150px] md:min-w-[280px] text-white text-xs font-medium px-2 py-1 rounded-md cursor-pointer bg-liveCasinoQuickLinkBg">
+      </div> */}
+      <div
+        onClick={() => navigate("/casino?product=All&category=live")}
+        className="flex items-center justify-between gap-2 h-[40px] min-w-[150px] md:min-w-[280px] text-white text-xs font-medium px-2 py-1 rounded-md cursor-pointer bg-liveCasinoQuickLinkBg"
+      >
         <span>Live Casino</span>
         <img
           loading="lazy"

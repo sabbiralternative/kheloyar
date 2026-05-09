@@ -1,10 +1,54 @@
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { setShowLoginModal } from "../../../redux/features/global/globalSlice";
+import {
+  setShowBanner,
+  setShowLoginModal,
+} from "../../../redux/features/global/globalSlice";
+import { Settings } from "../../../api";
+import { useLoginMutation } from "../../../redux/features/auth/authApi";
+import { setUser } from "../../../redux/features/auth/authSlice";
+import toast from "react-hot-toast";
 
 const Unauthorized = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const { closePopupForForever } = useSelector((state) => state.global);
+  const [handleLogin] = useLoginMutation();
+  const loginWithDemo = async () => {
+    /* Random token generator */
+    /* Encrypted the post data */
+    const loginData = {
+      username: "demo",
+      password: "",
+      b2c: Settings.b2c,
+      apk: closePopupForForever ? true : false,
+      nonce: crypto.randomUUID(),
+    };
+    const result = await handleLogin(loginData).unwrap();
+
+    if (result.success) {
+      const token = result?.result?.token;
+      const bonusToken = result?.result?.bonusToken;
+      const user = result?.result?.loginName;
+      const game = result?.result?.buttonValue?.game;
+      const banner = result?.result?.banner;
+
+      dispatch(setUser({ user, token }));
+      localStorage.setItem("buttonValue", JSON.stringify(game));
+      localStorage.setItem("token", token);
+
+      localStorage.setItem("bonusToken", bonusToken);
+      if (banner) {
+        localStorage.setItem("banner", banner);
+        dispatch(setShowBanner(true));
+      }
+      if (token && user) {
+        toast.success("Login successful");
+      }
+    } else {
+      toast.error(result?.error);
+    }
+  };
   return (
     <div className="flex items-center gap-2">
       <div className="flex items-center gap-2">
@@ -58,9 +102,12 @@ const Unauthorized = () => {
             </select>
           </div>
         </div> */}
-        {/* <button className="active:opacity-70 lg:hidden text-center h-[36px] w-[44px] text-[9px] text-black font-bold rounded-[4px] bg-buttonGradient">
+        <button
+          onClick={loginWithDemo}
+          className="active:opacity-70 lg:hidden text-center h-[36px] w-[44px] text-[9px] text-black font-bold rounded-[4px] bg-buttonGradient"
+        >
           Demo
-        </button> */}
+        </button>
         <div className="flex rounded-md border border-signupHereText">
           <a
             aria-current="page"

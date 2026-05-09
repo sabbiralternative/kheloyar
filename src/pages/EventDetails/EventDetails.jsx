@@ -1,7 +1,7 @@
 import { MatchOdds } from "../../components/modules/EventDetails/MatchOdds";
 import { Fancy } from "../../components/modules/EventDetails/Fancy";
 import { useParams } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { Fragment, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
   useGetEventDetailsQuery,
@@ -15,10 +15,13 @@ import EventTitle from "../../components/modules/EventDetails/EventTitle";
 import RightSidebar from "../../components/modules/EventDetails/RightSidebar";
 import EventTitleMobile from "../../components/modules/EventDetails/EventTitleMobile";
 import { Bookmaker } from "../../components/modules/EventDetails/Bookmaker";
+import { useCurrentBets } from "../../hooks/currentBets";
 
 const EventDetails = () => {
+  const [tab, setTab] = useState("odds");
   const [sportsVideo, { data: iframe }] = useVideoMutation();
   const { eventTypeId, eventId } = useParams();
+  const { data: currentBets } = useCurrentBets(eventId);
   const [profit, setProfit] = useState(0);
   const dispatch = useDispatch();
   const { placeBetValues, price, stake } = useSelector((state) => state.event);
@@ -156,13 +159,19 @@ const EventDetails = () => {
               <div className="relative w-full md:col-span-3 lg:col-span-4 xl:col-span-5 pb-[10px] md:pb-0">
                 <EventTitle data={data?.result?.[0]} />
                 <EventTitleMobile data={data?.result?.[0]} />
-                <div className="md:hidden bg-secondary text-white flex justify-between">
+                <div className="md:hidden bg-secondary text-white flex justify-between mt-2">
                   <div className="flex">
-                    <div className="font-black border-t border-t-white  px-2 text-[13px] py-1 cursor-pointer">
+                    <div
+                      onClick={() => setTab("odds")}
+                      className={`font-black   px-2 text-[13px] py-1 cursor-pointer ${tab === "odds" ? "border-t border-t-white" : ""}`}
+                    >
                       Odds
                     </div>
-                    <div className="font-bold px-2 text-[13px]  py-1 cursor-pointer">
-                      Matched Bet (0)
+                    <div
+                      onClick={() => setTab("bet")}
+                      className={`font-black   px-2 text-[13px] py-1 cursor-pointer ${tab !== "odds" ? "border-t border-t-white" : ""}`}
+                    >
+                      Matched Bet ({currentBets?.length})
                     </div>
                   </div>
                   <div className="flex flex-row justify-center items-center gap-2">
@@ -185,38 +194,82 @@ const EventDetails = () => {
                     </svg>
                   </div>
                 </div>
-                {eventTypeId == 4 && data?.iscore && (
-                  <Score iscore={data?.iscore} />
+
+                {tab === "odds" && (
+                  <Fragment>
+                    {eventTypeId == 4 && data?.iscore && (
+                      <Score iscore={data?.iscore} />
+                    )}
+                    {data?.score && data?.score?.tracker !== null && (
+                      <div className="w-full overflow-hidden h-[125px]">
+                        <iframe
+                          id="videoComponent"
+                          className="w-full h-auto relative overflow-hidden   bg-transparent"
+                          src={data?.score?.tracker}
+                          width="100%"
+                          allowfullscreen=""
+                        ></iframe>
+                      </div>
+                    )}
+                    {iframe?.result?.url && data?.score?.hasVideo && (
+                      <iframe
+                        id="videoComponent"
+                        className="md:hidden w-full max-h-[309px] sm:max-h-[144px] lg:max-h-[309px] relative overflow-hidden h-[55vw] md:h-[58vw] bg-transparent"
+                        src={iframe?.result?.url}
+                        width="100%"
+                        allowfullscreen=""
+                      ></iframe>
+                    )}
+                    <div className="flex flex-col gap-1">
+                      {matchOdds?.length > 0 && <MatchOdds data={matchOdds} />}
+                      {bookmaker?.length > 0 && <Bookmaker data={bookmaker} />}
+                      {data?.result?.length > 0 && (
+                        <Fancy data={data?.result} />
+                      )}
+                      {eventTypeId == 7 || eventTypeId == 4339 ? (
+                        <HorseGreyhoundEventDetails data={data?.result} />
+                      ) : null}
+                      {tiedMatch?.length > 0 && <MatchOdds data={tiedMatch} />}
+                    </div>
+                  </Fragment>
                 )}
-                {data?.score && data?.score?.tracker !== null && (
-                  <div className="w-full overflow-hidden h-[125px]">
-                    <iframe
-                      id="videoComponent"
-                      className="w-full h-auto relative overflow-hidden   bg-transparent"
-                      src={data?.score?.tracker}
-                      width="100%"
-                      allowfullscreen=""
-                    ></iframe>
-                  </div>
+                {tab === "bet" && currentBets?.length > 0 && (
+                  <table className=" text-black w-full text-[14px]">
+                    <thead>
+                      <tr className=" text-[#000] bg-neutral-200 text-[14px] font-medium h-[30px]">
+                        <th className=" border-r border-[#e0e0e0] text-left pl-2">
+                          Market
+                        </th>
+                        <th className=" border-r border-[#e0e0e0] text-left pl-2">
+                          Odds
+                        </th>
+                        <th className=" border-r border-[#e0e0e0] text-left pl-2">
+                          Amount
+                        </th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {currentBets?.map((bet) => {
+                        return (
+                          <tr
+                            key={bet?.betId}
+                            className={`h-[30px]   bg-opacity-60 ${bet?.betType === "Back" ? "bg-sky1" : "bg-pink1"}`}
+                          >
+                            <td className=" pl-2 border-r border-white">
+                              {bet?.title}
+                            </td>
+                            <td className=" pl-2 border-r border-white">
+                              {bet?.userRate}
+                            </td>
+                            <td className=" pl-2 border-r border-white">
+                              {bet?.amount}
+                            </td>
+                          </tr>
+                        );
+                      })}
+                    </tbody>
+                  </table>
                 )}
-                {iframe?.result?.url && data?.score?.hasVideo && (
-                  <iframe
-                    id="videoComponent"
-                    className="md:hidden w-full max-h-[309px] sm:max-h-[144px] lg:max-h-[309px] relative overflow-hidden h-[55vw] md:h-[58vw] bg-transparent"
-                    src={iframe?.result?.url}
-                    width="100%"
-                    allowfullscreen=""
-                  ></iframe>
-                )}
-                <div className="flex flex-col gap-1">
-                  {matchOdds?.length > 0 && <MatchOdds data={matchOdds} />}
-                  {bookmaker?.length > 0 && <Bookmaker data={bookmaker} />}
-                  {data?.result?.length > 0 && <Fancy data={data?.result} />}
-                  {eventTypeId == 7 || eventTypeId == 4339 ? (
-                    <HorseGreyhoundEventDetails data={data?.result} />
-                  ) : null}
-                  {tiedMatch?.length > 0 && <MatchOdds data={tiedMatch} />}
-                </div>
               </div>
               <RightSidebar data={data} iframe={iframe} />
             </div>

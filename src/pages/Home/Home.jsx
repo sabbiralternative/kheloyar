@@ -7,9 +7,12 @@ import CasinoSections from "../../components/modules/Home/CasinoSections";
 import Footer from "../../components/modules/Home/Footer";
 import { useState } from "react";
 import WhatsApp from "../../components/modules/Home/WhatsApp";
+import MiniGames from "../../components/modules/Home/MiniGames";
 
 const Home = () => {
+  const [showMiniGames, setShowMiniGames] = useState(false);
   const [isInPlay, setIsInPlay] = useState(true);
+
   return (
     <div className="relative flex flex-col gap-1 px-[1px] h-full md:pb-0 overflow-auto scrollbar-hide w-full">
       <div
@@ -44,6 +47,18 @@ const Home = () => {
                 <CasinoSections />
                 <Footer />
                 <WhatsApp />
+                <div className="fixed bottom-[117px] left-2 w-[48px] h-fit">
+                  <img
+                    onClick={() => setShowMiniGames(true)}
+                    loading="lazy"
+                    src="/icon/uv_games-CkYT1PYz.gif"
+                    alt="mini-games-gif"
+                    className="absolute"
+                  />
+                </div>
+                {showMiniGames && (
+                  <MiniGames setShowMiniGames={setShowMiniGames} />
+                )}
               </div>
             </div>
           </div>

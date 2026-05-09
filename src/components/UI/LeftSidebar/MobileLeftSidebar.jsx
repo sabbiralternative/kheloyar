@@ -1,12 +1,20 @@
+import { useRef } from "react";
 import { useLogo } from "../../../context/ApiProvider";
 import SidebarContent from "./SidebarContent";
+import useCloseModalClickOutside from "../../../hooks/closeModal";
 
 const MobileLeftSidebar = ({ setShowMobileLeftSidebar }) => {
+  const ref = useRef();
   const { logo } = useLogo();
+
+  useCloseModalClickOutside(ref, () => setShowMobileLeftSidebar(false));
   return (
     <div className="fixed inset-0 z-50 text-white xl:hidden">
       <div className="absolute inset-0 bg-black bg-opacity-50" />
-      <div className="absolute left-0 top-0 flex gap-0.5 h-full w-[80%] md:w-[30%] lg:w-[20%] shadow-lg">
+      <div
+        ref={ref}
+        className="absolute left-0 top-0 flex gap-0.5 h-full w-[80%] md:w-[30%] lg:w-[20%] shadow-lg"
+      >
         <div className="flex flex-col bg-headerBg w-full">
           <div className="flex flex-col h-full w-full bg-sidebarBg overflow-auto">
             <div className="flex items-center justify-between p-4">

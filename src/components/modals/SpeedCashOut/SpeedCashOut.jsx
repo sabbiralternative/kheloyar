@@ -70,7 +70,7 @@ const SpeedCashOut = ({ speedCashOut, setSpeedCashOut }) => {
             className="cursor-pointer z-50"
             height="24"
             width="24"
-            fill="var(--color-quaternary)"
+            fill="black"
             aria-hidden="true"
             focusable="false"
             data-prefix="fad"
@@ -85,7 +85,7 @@ const SpeedCashOut = ({ speedCashOut, setSpeedCashOut }) => {
                 d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM175 175c9.4-9.4 24.6-9.4 33.9 0l47 47 47-47c9.4-9.4 24.6-9.4 33.9 0s9.4 24.6 0 33.9l-47 47 47 47c9.4 9.4 9.4 24.6 0 33.9s-24.6 9.4-33.9 0l-47-47-47 47c-9.4 9.4-24.6 9.4-33.9 0s-9.4-24.6 0-33.9l47-47-47-47c-9.4-9.4-9.4-24.6 0-33.9z"
               ></path>
               <path
-                fill="white"
+                fill="black"
                 d="M209 175c-9.4-9.4-24.6-9.4-33.9 0s-9.4 24.6 0 33.9l47 47-47 47c-9.4 9.4-9.4 24.6 0 33.9s24.6 9.4 33.9 0l47-47 47 47c9.4 9.4 24.6 9.4 33.9 0s9.4-24.6 0-33.9l-47-47 47-47c9.4-9.4 9.4-24.6 0-33.9s-24.6-9.4-33.9 0l-47 47-47-47z"
               ></path>
             </g>
@@ -108,7 +108,7 @@ const SpeedCashOut = ({ speedCashOut, setSpeedCashOut }) => {
                       _ngcontent-ng-c526813732=""
                       className="modal-header"
                       style={{
-                        backgroundColor: "white",
+                        backgroundColor: "black",
                         alignItems: "start",
                         justifyContent: "start",
                         paddingLeft: "10px",
@@ -126,7 +126,7 @@ const SpeedCashOut = ({ speedCashOut, setSpeedCashOut }) => {
                       _ngcontent-ng-c526813732=""
                       className="modal-body"
                       style={{
-                        backgroundColor: "white",
+                        backgroundColor: "black",
                         paddingLeft: "0px",
                         paddingRight: "0px",
                         paddingBottom: "0px",
@@ -218,7 +218,7 @@ const SpeedCashOut = ({ speedCashOut, setSpeedCashOut }) => {
                           }}
                           onClick={handleSpeedCashOut}
                           _ngcontent-ng-c526813732=""
-                          className="btn secondary-btn text-primary"
+                          className="btn bg-primary text-primary"
                         >
                           Speed Cash : {amount}
                         </button>

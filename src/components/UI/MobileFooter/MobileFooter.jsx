@@ -15,7 +15,7 @@ const MobileFooter = () => {
     }
   };
   return (
-    <div className="md:hidden absolute bottom-0 w-full h-[70px] p-2.5 bg-sidebarBg rounded-t-[20px] z-30">
+    <div className="md:hidden absolute bottom-0 w-full h-[70px] p-2.5 bg-sidebarBg rounded-t-[20px] z-[9999]">
       {showMenu && <Menu setShowMenu={setShowMenu} />}
       <div className="grid grid-cols-5 bg-black rounded-[25px] h-[50px]">
         <Link
