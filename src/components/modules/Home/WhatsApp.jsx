@@ -19,7 +19,7 @@ const WhatsApp = () => {
         <div
           onClick={() => window.open(Settings?.instagramLink, "_blank")}
           title="WhatsAppContact"
-          className="fixed cursor-pointer top-[calc(100dvh-265px)] left-4 z-50 flex w-max h-max items-center justify-center rounded-full transition-all duration-500"
+          className="fixed cursor-pointer top-[calc(100dvh-225px)] left-4 z-30 flex w-max h-max items-center justify-center rounded-full transition-all duration-500"
         >
           <div className="h-full bg-transparent mt-[-3px] ml-[-3px]">
             <img className="h-11 w-11" src={images.instagram} alt="" />
@@ -30,7 +30,7 @@ const WhatsApp = () => {
         <div
           onClick={() => window.open(Settings?.telegramLink, "_blank")}
           title="WhatsAppContact"
-          className="fixed cursor-pointer top-[calc(100dvh-220px)] left-4 z-50 flex w-max h-max items-center justify-center rounded-full transition-all duration-500"
+          className="fixed cursor-pointer top-[calc(100dvh-175px)] left-4 z-30 flex w-max h-max items-center justify-center rounded-full transition-all duration-500"
         >
           <div className="h-full bg-transparent mt-[-3px] ml-[-3px]">
             <img className="h-11 w-11" src={images.telegram} alt="" />
@@ -41,7 +41,7 @@ const WhatsApp = () => {
         <div
           onClick={navigateWhatsApp}
           title="WhatsAppContact"
-          className="fixed cursor-pointer top-[calc(100dvh-180px)] left-3 z-50 flex w-max h-max items-center justify-center rounded-full transition-all duration-500"
+          className="fixed cursor-pointer top-[calc(100dvh-130px)] left-3 z-30 flex w-max h-max items-center justify-center rounded-full transition-all duration-500"
         >
           <div className="h-full bg-transparent mt-[-3px] ml-[-3px]">
             <svg

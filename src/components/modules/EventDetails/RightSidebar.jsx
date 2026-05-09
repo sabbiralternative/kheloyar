@@ -1,23 +1,32 @@
-const RightSidebar = () => {
+import { useSelector } from "react-redux";
+import DesktopBetSlip from "./DesktopBetslip";
+
+const RightSidebar = ({ data, iframe }) => {
+  const { placeBetValues } = useSelector((state) => state?.event);
   return (
-    <div className="relative md:col-span-2">
+    <div className="relative md:col-span-2 hidden md:block">
       <div className="flex flex-col px-1 pb-2 rounded-lg bg-betsInfoBg sticky top-4">
         <div className="border-b-[2px] border-b-sportsTitleBorder" />
-        <div className="p-2 text-white border-b-[2px] border-b-sportsTitleBorder">
-          <div className="w-fit">
-            <label className="flex items-center gap-2 cursor-pointer ">
-              <input
-                type="checkbox"
-                className="accent-blue-500 h-5 w-5 cursor-pointer"
-              />
-              <span className="text-sm">1 Click Betting Enabled</span>
-            </label>
-          </div>
+
+        <div className="w-full border-b-[2px] border-b-sportsTitleBorder">
+          {/* <div className="h-fit text-nowrap rounded px-2 py-1 text-white">
+            <FaTv />
+          </div> */}
+          {iframe?.result?.url && data?.score?.hasVideo && (
+            <iframe
+              id="videoComponent"
+              className="w-full max-h-[309px] sm:max-h-[144px] lg:max-h-[309px] relative overflow-hidden h-[55vw] md:h-[58vw] bg-transparent"
+              src={iframe?.result?.url}
+              width="100%"
+              allowfullscreen=""
+            ></iframe>
+          )}
         </div>
         <div className="w-full border-b-[2px] border-b-sportsTitleBorder">
           <div className="h-fit text-nowrap rounded px-2 py-1 text-white">
             Place Bet
           </div>
+          {placeBetValues && <DesktopBetSlip />}
         </div>
         <div className="w-full border-b-[2px] border-b-sportsTitleBorder">
           <div className="h-fit text-nowrap rounded px-2 py-1 text-white">

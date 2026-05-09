@@ -37,7 +37,7 @@ const ExchangeSports = ({ isInPlay }) => {
 
   return (
     <div className="flex flex-col gap-1 h-full">
-      {eventTypeId != "7" && eventTypeId != "4339" ? (
+      {eventTypeId != "7" && eventTypeId != "4339" && (
         <div className="w-full max-w-full">
           <div className="flex flex-col gap-1">
             {Object.entries(finalData).map(([key, value]) => {
@@ -305,9 +305,11 @@ const ExchangeSports = ({ isInPlay }) => {
             })}
           </div>
         </div>
-      ) : (
-        <HorseGreyhound data={data} eventTypeId={eventTypeId} />
       )}
+      {eventTypeId === "7" ||
+        (eventTypeId === "4339" && data?.length > 0 && (
+          <HorseGreyhound data={data} eventTypeId={eventTypeId} />
+        ))}
     </div>
   );
 };

@@ -6,12 +6,12 @@ import {
   setPlaceBetValues,
   setRunnerId,
 } from "../../../redux/features/events/eventSlice";
-import BetSlip from "./BetSlip";
 import toast from "react-hot-toast";
 import { Settings } from "../../../api";
 import { isGameSuspended } from "../../../utils/isOddSuspended";
 import { handleCashOutPlaceBet } from "../../../utils/handleCashoutPlaceBet";
 import SpeedCashOut from "../../modals/SpeedCashOut/SpeedCashOut";
+import DesktopBetSlip from "./DesktopBetslip";
 
 export const Bookmaker = ({ data }) => {
   const [speedCashOut, setSpeedCashOut] = useState(null);
@@ -393,15 +393,74 @@ export const Bookmaker = ({ data }) => {
                   <tbody>
                     {game?.runners?.map((runner) => {
                       return (
-                        <tr
-                          key={runner?.id}
-                          className="justify-between pr-6 mt-2 w-full pl-2 h-[32px] bg-sportsTitleBg"
-                        >
-                          <td className="my-auto text-xs font-semibold px-2 flex-[6] text-white border-b border-black">
-                            <div> {runner?.name}</div>
-                          </td>
-                          <td>
-                            <div className="web-view flex flex-row-reverse gap-[1px]">
+                        <Fragment key={runner?.id}>
+                          <tr className="justify-between pr-6 mt-2 w-full pl-2 h-[32px] bg-sportsTitleBg relative">
+                            <td className="my-auto text-xs font-semibold px-2 flex-[6] text-white border-b border-black">
+                              <div> {runner?.name}</div>
+                            </td>
+                            <td>
+                              <div className="web-view flex flex-row-reverse gap-[1px]">
+                                <div
+                                  onClick={() =>
+                                    handleBetSlip(
+                                      "back",
+                                      game,
+                                      runner,
+                                      runner?.back?.[0]?.price,
+                                    )
+                                  }
+                                  className="w-[70px] h-[40px] flex items-center justify-center py-3 px-2 cursor-pointer hover:opacity-80 transition-opacity bg-[#43CEED] rounded-md"
+                                >
+                                  <div className="flex flex-col items-center">
+                                    <span className="text-black text-xs font-semibold leading-[1.0769230769230769em] text-center">
+                                      {runner?.back?.[0]?.price}
+                                    </span>
+                                    <div className="text-[9px] text-center text-fancyBetsCountText leading-none mt-1">
+                                      {runner?.back?.[0]?.size}
+                                    </div>
+                                  </div>
+                                </div>
+                                <div
+                                  onClick={() =>
+                                    handleBetSlip(
+                                      "back",
+                                      game,
+                                      runner,
+                                      runner?.back?.[1]?.price,
+                                    )
+                                  }
+                                  className="w-[70px] h-[40px] flex items-center justify-center py-3 px-2 cursor-pointer hover:opacity-80 transition-opacity bg-[#43CEED] rounded-md"
+                                >
+                                  <div className="flex flex-col items-center">
+                                    <span className="text-black text-xs font-semibold leading-[1.0769230769230769em] text-center">
+                                      {runner?.back?.[1]?.price}
+                                    </span>
+                                    <div className="text-[9px] text-center text-fancyBetsCountText leading-none mt-1">
+                                      {runner?.back?.[1]?.size}
+                                    </div>
+                                  </div>
+                                </div>
+                                <div
+                                  onClick={() =>
+                                    handleBetSlip(
+                                      "back",
+                                      game,
+                                      runner,
+                                      runner?.back?.[2]?.price,
+                                    )
+                                  }
+                                  className="w-[70px] h-[40px] flex items-center justify-center py-3 px-2 cursor-pointer hover:opacity-80 transition-opacity bg-[#43CEED] rounded-md"
+                                >
+                                  <div className="flex flex-col items-center">
+                                    <span className="text-black text-xs font-semibold leading-[1.0769230769230769em] text-center">
+                                      {runner?.back?.[2]?.price}
+                                    </span>
+                                    <div className="text-[9px] text-center text-fancyBetsCountText leading-none mt-1">
+                                      {runner?.back?.[2]?.size}
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
                               <div
                                 onClick={() =>
                                   handleBetSlip(
@@ -411,83 +470,83 @@ export const Bookmaker = ({ data }) => {
                                     runner?.back?.[0]?.price,
                                   )
                                 }
-                                className="w-[70px] h-[40px] flex items-center justify-center py-3 px-2 cursor-pointer hover:opacity-80 transition-opacity bg-[#43CEED] rounded-md"
+                                className="mob-view"
                               >
-                                <div className="flex flex-col items-center">
-                                  <span className="text-black text-xs font-semibold leading-[1.0769230769230769em] text-center">
-                                    {runner?.back?.[0]?.price}
-                                  </span>
-                                  <div className="text-[9px] text-center text-fancyBetsCountText leading-none mt-1">
-                                    {runner?.back?.[0]?.size}
+                                <div className="w-[70px] h-[40px] flex items-center justify-center py-3 px-2 cursor-pointer hover:opacity-80 transition-opacity bg-[#43CEED] rounded-md">
+                                  <div className="flex flex-col items-center">
+                                    <span className="text-black text-xs font-semibold leading-[1.0769230769230769em] text-center">
+                                      {runner?.back?.[0]?.price}
+                                    </span>
+                                    <div className="text-[9px] text-center text-fancyBetsCountText leading-none mt-1">
+                                      {runner?.back?.[0]?.size}
+                                    </div>
                                   </div>
                                 </div>
                               </div>
-                              <div
-                                onClick={() =>
-                                  handleBetSlip(
-                                    "back",
-                                    game,
-                                    runner,
-                                    runner?.back?.[1]?.price,
-                                  )
-                                }
-                                className="w-[70px] h-[40px] flex items-center justify-center py-3 px-2 cursor-pointer hover:opacity-80 transition-opacity bg-[#43CEED] rounded-md"
-                              >
-                                <div className="flex flex-col items-center">
-                                  <span className="text-black text-xs font-semibold leading-[1.0769230769230769em] text-center">
-                                    {runner?.back?.[1]?.price}
-                                  </span>
-                                  <div className="text-[9px] text-center text-fancyBetsCountText leading-none mt-1">
-                                    {runner?.back?.[1]?.size}
+                            </td>
+                            <td>
+                              <div className="web-view flex gap-[1px]">
+                                <div
+                                  onClick={() =>
+                                    handleBetSlip(
+                                      "lay",
+                                      game,
+                                      runner,
+                                      runner?.lay?.[0]?.price,
+                                    )
+                                  }
+                                  className="w-[70px] h-[40px] flex items-center justify-center py-3 px-2 cursor-pointer hover:opacity-80 transition-opacity bg-[#F796FF] rounded-md"
+                                >
+                                  <div className="flex flex-col items-center">
+                                    <span className="text-black text-xs font-semibold leading-[1.0769230769230769em] text-center">
+                                      {runner?.lay?.[0]?.price}
+                                    </span>
+                                    <div className="text-[9px] text-center text-fancyBetsCountText leading-none mt-1">
+                                      {runner?.lay?.[0]?.size}
+                                    </div>
+                                  </div>
+                                </div>
+                                <div
+                                  onClick={() =>
+                                    handleBetSlip(
+                                      "lay",
+                                      game,
+                                      runner,
+                                      runner?.lay?.[1]?.price,
+                                    )
+                                  }
+                                  className="w-[70px] h-[40px] flex items-center justify-center py-3 px-2 cursor-pointer hover:opacity-80 transition-opacity bg-[#F796FF] rounded-md"
+                                >
+                                  <div className="flex flex-col items-center">
+                                    <span className="text-black text-xs font-semibold leading-[1.0769230769230769em] text-center">
+                                      {runner?.lay?.[1]?.price}
+                                    </span>
+                                    <div className="text-[9px] text-center text-fancyBetsCountText leading-none mt-1">
+                                      {runner?.lay?.[1]?.size}
+                                    </div>
+                                  </div>
+                                </div>
+                                <div
+                                  onClick={() =>
+                                    handleBetSlip(
+                                      "lay",
+                                      game,
+                                      runner,
+                                      runner?.lay?.[2]?.price,
+                                    )
+                                  }
+                                  className="w-[70px] h-[40px] flex items-center justify-center py-3 px-2 cursor-pointer hover:opacity-80 transition-opacity bg-[#F796FF] rounded-md"
+                                >
+                                  <div className="flex flex-col items-center">
+                                    <span className="text-black text-xs font-semibold leading-[1.0769230769230769em] text-center">
+                                      {runner?.lay?.[2]?.price}
+                                    </span>
+                                    <div className="text-[9px] text-center text-fancyBetsCountText leading-none mt-1">
+                                      {runner?.lay?.[2]?.size}
+                                    </div>
                                   </div>
                                 </div>
                               </div>
-                              <div
-                                onClick={() =>
-                                  handleBetSlip(
-                                    "back",
-                                    game,
-                                    runner,
-                                    runner?.back?.[2]?.price,
-                                  )
-                                }
-                                className="w-[70px] h-[40px] flex items-center justify-center py-3 px-2 cursor-pointer hover:opacity-80 transition-opacity bg-[#43CEED] rounded-md"
-                              >
-                                <div className="flex flex-col items-center">
-                                  <span className="text-black text-xs font-semibold leading-[1.0769230769230769em] text-center">
-                                    {runner?.back?.[2]?.price}
-                                  </span>
-                                  <div className="text-[9px] text-center text-fancyBetsCountText leading-none mt-1">
-                                    {runner?.back?.[2]?.size}
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-                            <div
-                              onClick={() =>
-                                handleBetSlip(
-                                  "back",
-                                  game,
-                                  runner,
-                                  runner?.back?.[0]?.price,
-                                )
-                              }
-                              className="mob-view"
-                            >
-                              <div className="w-[70px] h-[40px] flex items-center justify-center py-3 px-2 cursor-pointer hover:opacity-80 transition-opacity bg-[#43CEED] rounded-md">
-                                <div className="flex flex-col items-center">
-                                  <span className="text-black text-xs font-semibold leading-[1.0769230769230769em] text-center">
-                                    {runner?.back?.[0]?.price}
-                                  </span>
-                                  <div className="text-[9px] text-center text-fancyBetsCountText leading-none mt-1">
-                                    {runner?.back?.[0]?.size}
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-                          </td>
-                          <td>
-                            <div className="web-view flex gap-[1px]">
                               <div
                                 onClick={() =>
                                   handleBetSlip(
@@ -497,82 +556,37 @@ export const Bookmaker = ({ data }) => {
                                     runner?.lay?.[0]?.price,
                                   )
                                 }
-                                className="w-[70px] h-[40px] flex items-center justify-center py-3 px-2 cursor-pointer hover:opacity-80 transition-opacity bg-[#F796FF] rounded-md"
+                                className="mob-view"
                               >
-                                <div className="flex flex-col items-center">
-                                  <span className="text-black text-xs font-semibold leading-[1.0769230769230769em] text-center">
-                                    {runner?.lay?.[0]?.price}
-                                  </span>
-                                  <div className="text-[9px] text-center text-fancyBetsCountText leading-none mt-1">
-                                    {runner?.lay?.[0]?.size}
+                                <div className="w-[70px] h-[40px] flex items-center justify-center py-3 px-2 cursor-pointer hover:opacity-80 transition-opacity bg-[#F796FF] rounded-md">
+                                  <div className="flex flex-col items-center">
+                                    <span className="text-black text-xs font-semibold leading-[1.0769230769230769em] text-center">
+                                      {runner?.lay?.[0]?.price}
+                                    </span>
+                                    <div className="text-[9px] text-center text-fancyBetsCountText leading-none mt-1">
+                                      {runner?.lay?.[0]?.size}
+                                    </div>
                                   </div>
                                 </div>
                               </div>
-                              <div
-                                onClick={() =>
-                                  handleBetSlip(
-                                    "lay",
-                                    game,
-                                    runner,
-                                    runner?.lay?.[1]?.price,
-                                  )
-                                }
-                                className="w-[70px] h-[40px] flex items-center justify-center py-3 px-2 cursor-pointer hover:opacity-80 transition-opacity bg-[#F796FF] rounded-md"
-                              >
-                                <div className="flex flex-col items-center">
-                                  <span className="text-black text-xs font-semibold leading-[1.0769230769230769em] text-center">
-                                    {runner?.lay?.[1]?.price}
+                              {runner?.status === "SUSPENDED" && (
+                                <div className="absolute top-0 right-0 w-[143px] lg:w-[30.5rem] h-full flex items-center justify-center bg-black bg-opacity-50 z-10">
+                                  <span className="text-red-600 font-extrabold text-sm uppercase">
+                                    Suspended
                                   </span>
-                                  <div className="text-[9px] text-center text-fancyBetsCountText leading-none mt-1">
-                                    {runner?.lay?.[1]?.size}
-                                  </div>
                                 </div>
-                              </div>
-                              <div
-                                onClick={() =>
-                                  handleBetSlip(
-                                    "lay",
-                                    game,
-                                    runner,
-                                    runner?.lay?.[2]?.price,
-                                  )
-                                }
-                                className="w-[70px] h-[40px] flex items-center justify-center py-3 px-2 cursor-pointer hover:opacity-80 transition-opacity bg-[#F796FF] rounded-md"
-                              >
-                                <div className="flex flex-col items-center">
-                                  <span className="text-black text-xs font-semibold leading-[1.0769230769230769em] text-center">
-                                    {runner?.lay?.[2]?.price}
-                                  </span>
-                                  <div className="text-[9px] text-center text-fancyBetsCountText leading-none mt-1">
-                                    {runner?.lay?.[2]?.size}
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-                            <div
-                              onClick={() =>
-                                handleBetSlip(
-                                  "lay",
-                                  game,
-                                  runner,
-                                  runner?.lay?.[0]?.price,
-                                )
-                              }
-                              className="mob-view"
-                            >
-                              <div className="w-[70px] h-[40px] flex items-center justify-center py-3 px-2 cursor-pointer hover:opacity-80 transition-opacity bg-[#F796FF] rounded-md">
-                                <div className="flex flex-col items-center">
-                                  <span className="text-black text-xs font-semibold leading-[1.0769230769230769em] text-center">
-                                    {runner?.lay?.[0]?.price}
-                                  </span>
-                                  <div className="text-[9px] text-center text-fancyBetsCountText leading-none mt-1">
-                                    {runner?.lay?.[0]?.size}
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-                          </td>
-                        </tr>
+                              )}
+                            </td>
+                          </tr>
+                          {runner?.id === runnerId && (
+                            <tr className="inline-betslip md:hidden">
+                              <td colSpan={3}>
+                                {" "}
+                                <DesktopBetSlip currentPlaceBetEvent={game} />
+                              </td>
+                            </tr>
+                          )}
+                        </Fragment>
                       );
                     })}
                   </tbody>

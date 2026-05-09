@@ -57,6 +57,7 @@ const Authorized = () => {
         </div>
         <div onMouseLeave={() => setShowDropdown(false)}>
           <button
+            onClick={() => setShowDropdown(!showDropdown)}
             onMouseEnter={() => setShowDropdown(true)}
             className=" active:opacity-70 flex justify-center items-center gap-2 w-full"
           >

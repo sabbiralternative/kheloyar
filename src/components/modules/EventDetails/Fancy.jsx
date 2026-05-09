@@ -8,9 +8,9 @@ import {
   setRunnerId,
 } from "../../../redux/features/events/eventSlice";
 
-import BetSlip from "./BetSlip";
 import toast from "react-hot-toast";
 import Ladder from "../../modals/Ladder/Ladder";
+import DesktopBetSlip from "./DesktopBetSlip";
 
 export const Fancy = ({ data }) => {
   const fancyData = data?.filter(
@@ -163,87 +163,106 @@ export const Fancy = ({ data }) => {
                       <tbody className="w-full">
                         {fancyData.map((game) => {
                           return (
-                            <tr
-                              key={game?.id}
-                              className="border-b bg-sportsTitleBg"
-                            >
-                              <td className="px-2 text-[12px] md:text-[14px] w-[78%] min-w-[150px]">
-                                {game?.name}
-                              </td>
-                              <td className="w-[6%] px-1">
-                                <div className="flex flex-col items-center justify-center text-[9px] md:text-[10px] leading-tight">
-                                  <div className="text-gray-400 text-nowrap">
-                                    MIN: {game?.minLiabilityPerBet}
+                            <Fragment key={game?.id}>
+                              <tr className="border-b bg-sportsTitleBg">
+                                <td className="px-2 text-[12px] md:text-[14px] w-[78%] min-w-[150px]">
+                                  {game?.name}
+                                </td>
+                                <td className="w-[6%] px-1">
+                                  <div className="flex flex-col items-center justify-center text-[9px] md:text-[10px] leading-tight">
+                                    <div className="text-gray-400 text-nowrap">
+                                      MIN: {game?.minLiabilityPerBet}
+                                    </div>
+                                    <div className="text-gray-400 text-nowrap">
+                                      MAX: {game?.maxLiabilityPerBet}
+                                    </div>
                                   </div>
-                                  <div className="text-gray-400 text-nowrap">
-                                    MAX: {game?.maxLiabilityPerBet}
-                                  </div>
-                                </div>
-                              </td>
-                              <td colSpan={2} className="relative w-[16%]">
-                                <div className="flex">
-                                  <div
-                                    onClick={() =>
-                                      handleBetSlip(
-                                        "lay",
-                                        game,
-                                        game?.runners?.[0],
-                                        game?.runners?.[0]?.lay?.[0]?.line,
-                                        game?.runners?.[0]?.lay?.[0]?.price,
-                                      )
-                                    }
-                                    className="w-1/2"
-                                  >
-                                    <div className="fancy-market-col text-center market-btn w-full ">
-                                      <div className="w-[70px] h-[40px] flex items-center justify-center py-3 px-2 cursor-pointer hover:opacity-80 transition-opacity bg-fancyNoMarketBg border border-fancyNoMarketBorder rounded-md">
-                                        <div className="flex flex-col items-center">
-                                          <span className="text-black text-xs font-semibold leading-[1.0769230769230769em] text-center">
-                                            {game?.runners?.[0]?.lay?.[0]?.line}
-                                          </span>
-                                          <div className="text-[9px] text-center text-fancyBetsCountText leading-none mt-1">
-                                            {
-                                              game?.runners?.[0]?.lay?.[0]
-                                                ?.price
-                                            }
+                                </td>
+                                <td colSpan={2} className="relative w-[16%]">
+                                  <div className="flex">
+                                    <div
+                                      onClick={() =>
+                                        handleBetSlip(
+                                          "lay",
+                                          game,
+                                          game?.runners?.[0],
+                                          game?.runners?.[0]?.lay?.[0]?.line,
+                                          game?.runners?.[0]?.lay?.[0]?.price,
+                                        )
+                                      }
+                                      className="w-1/2"
+                                    >
+                                      <div className="fancy-market-col text-center market-btn w-full ">
+                                        <div className="w-[70px] h-[40px] flex items-center justify-center py-3 px-2 cursor-pointer hover:opacity-80 transition-opacity bg-fancyNoMarketBg border border-fancyNoMarketBorder rounded-md">
+                                          <div className="flex flex-col items-center">
+                                            <span className="text-black text-xs font-semibold leading-[1.0769230769230769em] text-center">
+                                              {
+                                                game?.runners?.[0]?.lay?.[0]
+                                                  ?.line
+                                              }
+                                            </span>
+                                            <div className="text-[9px] text-center text-fancyBetsCountText leading-none mt-1">
+                                              {
+                                                game?.runners?.[0]?.lay?.[0]
+                                                  ?.price
+                                              }
+                                            </div>
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </div>
+                                    <div
+                                      onClick={() =>
+                                        handleBetSlip(
+                                          "back",
+                                          game,
+                                          game?.runners?.[0],
+                                          game?.runners?.[0]?.back?.[0]?.line,
+                                          game?.runners?.[0]?.back?.[0]?.price,
+                                        )
+                                      }
+                                      className="w-1/2"
+                                    >
+                                      <div className="fancy-market-col text-center market-btn w-full ">
+                                        <div className="w-[70px] h-[40px] flex items-center justify-center py-3 px-2 cursor-pointer hover:opacity-80 transition-opacity bg-fancyYesMarketBg border border-fancyYesMarketBorder rounded-md">
+                                          <div className="flex flex-col items-center">
+                                            <span className="text-black text-xs font-semibold leading-[1.0769230769230769em] text-center">
+                                              {
+                                                game?.runners?.[0]?.back?.[0]
+                                                  ?.line
+                                              }
+                                            </span>
+                                            <div className="text-[9px] text-center text-fancyBetsCountText leading-none mt-1">
+                                              {
+                                                game?.runners?.[0]?.back?.[0]
+                                                  ?.price
+                                              }
+                                            </div>
                                           </div>
                                         </div>
                                       </div>
                                     </div>
                                   </div>
-                                  <div
-                                    onClick={() =>
-                                      handleBetSlip(
-                                        "back",
-                                        game,
-                                        game?.runners?.[0],
-                                        game?.runners?.[0]?.back?.[0]?.line,
-                                        game?.runners?.[0]?.back?.[0]?.price,
-                                      )
-                                    }
-                                    className="w-1/2"
-                                  >
-                                    <div className="fancy-market-col text-center market-btn w-full ">
-                                      <div className="w-[70px] h-[40px] flex items-center justify-center py-3 px-2 cursor-pointer hover:opacity-80 transition-opacity bg-fancyYesMarketBg border border-fancyYesMarketBorder rounded-md">
-                                        <div className="flex flex-col items-center">
-                                          <span className="text-black text-xs font-semibold leading-[1.0769230769230769em] text-center">
-                                            {
-                                              game?.runners?.[0]?.back?.[0]
-                                                ?.line
-                                            }
-                                          </span>
-                                          <div className="text-[9px] text-center text-fancyBetsCountText leading-none mt-1">
-                                            {
-                                              game?.runners?.[0]?.back?.[0]
-                                                ?.price
-                                            }
-                                          </div>
-                                        </div>
-                                      </div>
+                                  {game?.status === "SUSPENDED" && (
+                                    <div className="absolute top-0 right-0 w-full h-full flex items-center justify-center bg-black bg-opacity-50 z-10">
+                                      <span className="text-red-600 font-extrabold text-sm uppercase">
+                                        Suspended
+                                      </span>
                                     </div>
-                                  </div>
-                                </div>
-                              </td>
-                            </tr>
+                                  )}
+                                </td>
+                              </tr>
+                              {game?.id === runnerId && (
+                                <tr className="inline-betslip md:hidden">
+                                  <td colSpan={4}>
+                                    {" "}
+                                    <DesktopBetSlip
+                                      currentPlaceBetEvent={game}
+                                    />
+                                  </td>
+                                </tr>
+                              )}
+                            </Fragment>
                           );
                         })}
                       </tbody>

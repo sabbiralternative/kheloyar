@@ -1,37 +1,26 @@
 import { useState } from "react";
-import toast from "react-hot-toast";
-import { useSelector } from "react-redux";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { Settings } from "../../../api";
-import WarningCondition from "../../shared/WarningCondition/WarningCondition";
+import Menu from "../../modals/Menu/Menu";
 
 const MobileFooter = () => {
-  const navigate = useNavigate();
-  const [showWarning, setShowWarning] = useState(false);
-  const [gameInfo, setGameInfo] = useState({ gameName: "", gameId: "" });
-  const { token, bonusToken } = useSelector((state) => state.auth);
-  const handleNavigateToIFrame = (name, id) => {
-    if (token) {
-      if (bonusToken) {
-        return toast.error("Bonus wallet is available only on sports.");
-      }
-      if (Settings.casino_currency !== "AED") {
-        navigate(`/casino/${name}/${id}`);
-      } else {
-        setGameInfo({ gameName: "", gameId: "" });
-        setGameInfo({ gameName: name, gameId: id });
-        setShowWarning(true);
-      }
+  const [showMenu, setShowMenu] = useState(false);
+  const { pathname } = useLocation();
+
+  const handleOpenSocialLink = () => {
+    if (Settings?.branchWhatsapplink) {
+      window.open(Settings?.branchWhatsapplink, "_blank");
     } else {
-      toast.error("Please login to access the game");
+      window.open(Settings?.whatsapplink, "_blank");
     }
   };
   return (
     <div className="md:hidden absolute bottom-0 w-full h-[70px] p-2.5 bg-sidebarBg rounded-t-[20px] z-30">
+      {showMenu && <Menu setShowMenu={setShowMenu} />}
       <div className="grid grid-cols-5 bg-black rounded-[25px] h-[50px]">
-        <a
+        <Link
           className="flex flex-col gap-0.5 justify-center items-center rounded-tl-[10px] active"
-          href="/"
+          to="/"
           aria-current="page"
         >
           <svg
@@ -40,7 +29,7 @@ const MobileFooter = () => {
             viewBox="0 0 17 17"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
-            className="h-4 w-4 icon-svg-class-signupHereText"
+            className={`h-4 w-4 ${pathname === "/" ? "icon-svg-class-signupHereText" : "icon-svg-class-white"}  `}
           >
             <g clipPath="url(#clip0_58_24917)">
               <path
@@ -59,13 +48,15 @@ const MobileFooter = () => {
               </clipPath>
             </defs>
           </svg>
-          <div className="text-[11px] text-center font-medium text-signupHereText">
+          <div
+            className={`text-[11px] text-center font-medium ${pathname === "/" ? "text-signupHereText" : "text-white"}`}
+          >
             Home
           </div>
-        </a>
-        <a
+        </Link>
+        <Link
           className="flex flex-col gap-0.5 justify-center items-center"
-          href="/exchange_sports/inplay"
+          to="/exchange_sports/in-play?eventTypeId=0"
         >
           <svg
             width={14}
@@ -73,7 +64,7 @@ const MobileFooter = () => {
             viewBox="0 0 14 17"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
-            className="h-4 w-4 icon-svg-class-white"
+            className={`h-4 w-4 ${pathname === "/exchange_sports/in-play" ? "icon-svg-class-signupHereText" : "icon-svg-class-white"}  `}
           >
             <path
               d="M11.9361 6.02664C11.91 5.99327 11.897 5.95161 11.8997 5.90944C11.9025 5.86733 11.9207 5.82761 11.9508 5.79778L13.1079 4.65264C13.1748 4.58864 13.2281 4.51213 13.2649 4.4275C13.3016 4.34287 13.3209 4.25184 13.3217 4.15978C13.3225 4.06767 13.3048 3.97634 13.2696 3.8911C13.2344 3.80586 13.1823 3.72843 13.1165 3.6633C13.0508 3.59818 12.9725 3.54667 12.8864 3.5118C12.8003 3.47693 12.7079 3.45938 12.6149 3.46018C12.5219 3.46098 12.4299 3.48011 12.3444 3.51646C12.2589 3.55281 12.1815 3.60565 12.1169 3.67189L10.9564 4.82047C10.9263 4.85018 10.8863 4.86801 10.8439 4.8707C10.8015 4.87338 10.7595 4.8607 10.7259 4.83504C9.79677 4.12515 8.69362 3.67249 7.52951 3.52346C7.48728 3.51806 7.44848 3.49763 7.42031 3.46598C7.39219 3.43431 7.37671 3.3936 7.37671 3.35145V1.56129C7.37665 1.53845 7.38111 1.51584 7.38985 1.49471C7.39859 1.4736 7.41151 1.4544 7.42779 1.43823C7.44408 1.42205 7.46339 1.40921 7.48471 1.40046C7.50602 1.3917 7.52888 1.38719 7.55191 1.38719H8.77825C8.96414 1.38719 9.14236 1.31411 9.27391 1.18404C9.40528 1.05397 9.47911 0.877549 9.47911 0.6936C9.47911 0.509651 9.40528 0.333229 9.27391 0.203149C9.14236 0.0730743 8.96414 0 8.77825 0H4.57356C4.38768 0 4.20945 0.0730743 4.07802 0.203149C3.94659 0.333229 3.87276 0.509651 3.87276 0.6936C3.87276 0.877549 3.94659 1.05397 4.07802 1.18404C4.20945 1.31411 4.38768 1.38719 4.57356 1.38719H5.79991C5.84642 1.38719 5.89094 1.40546 5.92379 1.43798C5.95665 1.4705 5.97511 1.5146 5.97511 1.56059V3.35145C5.97528 3.39365 5.95985 3.43444 5.93168 3.46613C5.90356 3.49781 5.86465 3.51821 5.82236 3.52346C4.36414 3.70773 3.00836 4.36384 1.96595 5.38973C0.92353 6.41561 0.252959 7.75378 0.0585585 9.19595C-0.135841 10.6381 0.156833 12.1034 0.891033 13.364C1.62524 14.6244 2.75979 15.6093 4.11819 16.1656C5.47659 16.7217 6.98265 16.818 8.40202 16.4392C9.82139 16.0604 11.0745 15.2281 11.9664 14.0714C12.8581 12.9148 13.3388 11.4989 13.3333 10.044C13.3277 8.58904 12.8367 7.17664 11.9361 6.02664ZM6.67591 15.259C5.63642 15.259 4.62019 14.954 3.75585 14.3824C2.89151 13.8108 2.21787 12.9983 1.82006 12.0478C1.42224 11.0973 1.31816 10.0513 1.52096 9.0423C1.72376 8.03321 2.22435 7.1063 2.95939 6.37881C3.69448 5.65127 4.63099 5.15584 5.65054 4.95515C6.67008 4.75441 7.72688 4.85744 8.68728 5.25115C9.64774 5.64487 10.4685 6.31161 11.0461 7.1671C11.6236 8.02253 11.9319 9.0283 11.9319 10.0572C11.9304 11.4363 11.3761 12.7586 10.3908 13.7338C9.40551 14.709 8.06945 15.2576 6.67591 15.259Z"
@@ -84,11 +75,16 @@ const MobileFooter = () => {
               fill="white"
             />
           </svg>
-          <div className="text-[11px] text-center font-medium text-white">
+          <div
+            className={`text-[11px] text-center font-medium ${pathname === "/exchange_sports/in-play" ? "text-signupHereText" : "text-white"}`}
+          >
             Exchange
           </div>
-        </a>
-        <div className="flex flex-col gap-0.5 justify-center items-center relative flex items-center justify-center">
+        </Link>
+        <div
+          onClick={handleOpenSocialLink}
+          className="flex flex-col gap-0.5 justify-center items-center relative flex items-center justify-center"
+        >
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
@@ -205,9 +201,9 @@ const MobileFooter = () => {
           </svg>
           <div className="absolute h-[40px] w-[40px] rounded-full border-[1px] border-chatButtonBg animate-pulse-ring" />
         </div>
-        <a
+        <Link
           className="flex flex-col gap-0.5 justify-center items-center"
-          href="/casino"
+          to="/casino?product=All&category=All"
         >
           <svg
             width={23}
@@ -215,7 +211,7 @@ const MobileFooter = () => {
             viewBox="0 0 23 20"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
-            className="h-4 w-4 icon-svg-class-white"
+            className={`h-4 w-4 ${pathname === "/casino" ? "icon-svg-class-signupHereText" : "icon-svg-class-white"}  `}
           >
             <path
               d="M22.7628 9.28804C22.4716 6.2512 19.7718 4.0246 16.7349 4.31737C16.6337 4.32685 16.5308 4.33952 16.4296 4.35534C15.5085 4.48511 14.6366 4.85068 13.8975 5.41563C14.1856 6.46009 14.4214 7.51404 14.6144 8.5775C15.3044 7.12159 17.0436 6.49965 18.4995 7.18963C19.9554 7.87961 20.5773 9.61879 19.8873 11.0747C19.3905 12.1255 18.3159 12.7791 17.1544 12.7411C16.3757 12.7253 15.6367 12.3914 15.1097 11.817C15.173 12.3296 15.2347 12.8455 15.2932 13.3631C15.3297 13.3931 15.3692 13.4184 15.4103 13.439C15.6415 13.5624 15.882 13.6637 16.132 13.7444C16.2 13.7634 16.276 13.7776 16.2491 13.8615C16.2096 14.0451 16.1748 14.2096 16.1415 14.3743C16.1209 14.474 16.0592 14.4707 15.9832 14.4486C15.7776 14.3853 15.5829 14.3125 15.3898 14.2303C15.4184 14.5087 15.4499 14.7873 15.4785 15.0547C16.0276 15.2367 16.602 15.3333 17.1812 15.3427C18.0374 15.3633 18.8871 15.175 19.6547 14.7936C20.8637 14.2144 21.8228 13.2143 22.3497 11.9815C22.5269 11.5321 22.6615 11.0668 22.7517 10.592L22.7881 9.40515C22.7628 9.37033 22.7628 9.32603 22.7628 9.28804ZM16.5782 5.79543C16.0877 5.86664 15.6177 6.04072 15.2015 6.30817C15.1382 6.34773 15.086 6.35564 15.0401 6.28285C14.9467 6.14042 14.8549 6.00117 14.7584 5.86981C14.7094 5.79543 14.7378 5.75587 14.8059 5.71948C15.3345 5.42195 15.9089 5.21307 16.5039 5.10071C16.5799 5.08647 16.6258 5.10071 16.6337 5.19091C16.6527 5.35233 16.6748 5.51217 16.6954 5.67517C16.716 5.77328 16.6464 5.78752 16.5782 5.79543ZM19.9158 6.0977C19.8161 6.21163 19.7244 6.33191 19.6372 6.45692C19.5771 6.53763 19.5265 6.55662 19.4316 6.49015C19.1008 6.2417 18.7258 6.05655 18.327 5.94578C18.2431 5.92045 18.1846 5.88563 18.2051 5.7891C18.2399 5.62452 18.2779 5.45994 18.3127 5.29378C18.3127 5.24472 18.338 5.20041 18.4061 5.21149C18.5485 5.25897 18.6941 5.30169 18.8349 5.3555C19.1989 5.48842 19.5487 5.65933 19.8778 5.86507C19.9855 5.9347 20.0187 5.99009 19.9237 6.0977H19.9158ZM19.6499 13.9485C19.2068 14.1827 18.7274 14.3378 18.232 14.406C18.1324 14.4202 18.107 14.379 18.0959 14.2983C18.0817 14.167 18.0642 14.0324 18.0485 13.8711C18.0295 13.8093 18.0769 13.7713 18.1577 13.754C18.5422 13.6605 18.9109 13.5165 19.259 13.3266C19.3335 13.2902 19.3809 13.2792 19.43 13.3614C19.517 13.5054 19.612 13.6432 19.7085 13.7745C19.7497 13.8584 19.7417 13.9043 19.6562 13.947L19.6499 13.9485ZM20.7719 7.48081C20.889 7.40643 21.0078 7.33048 21.1186 7.24819C21.2294 7.16589 21.2562 7.20545 21.3116 7.29408C21.6201 7.7989 21.8259 8.35911 21.9161 8.94305C21.9351 9.05859 21.9161 9.10764 21.7958 9.1203L21.2783 9.17727C21.2499 9.17727 21.2325 9.12347 21.223 9.06174C21.1344 8.56959 20.965 8.09483 20.7214 7.65805C20.6801 7.5631 20.7007 7.52354 20.7767 7.48081H20.7719ZM21.6787 11.5843C21.5569 11.8422 21.4112 12.0875 21.2451 12.3202C21.1708 12.4231 21.1106 12.4246 21.022 12.3486C20.9017 12.2457 20.7245 12.1714 20.6722 12.0432C20.62 11.9151 20.7894 11.7726 20.8558 11.6302C20.9951 11.3612 21.1106 11.0811 21.2008 10.793C21.2325 10.6886 21.2799 10.6522 21.3907 10.6838C21.5347 10.7266 21.685 10.7471 21.8338 10.7788C21.8876 10.7788 21.9382 10.7978 21.9335 10.8627C21.8781 11.1111 21.7942 11.3516 21.6867 11.5827L21.6787 11.5843Z"
@@ -230,11 +226,16 @@ const MobileFooter = () => {
               fill="white"
             />
           </svg>
-          <div className="text-[11px] text-center font-medium text-white">
+          <div
+            className={`text-[11px] text-center font-medium ${pathname === "/casino" ? "text-signupHereText" : "text-white"}`}
+          >
             All Casino
           </div>
-        </a>
-        <button className="flex flex-col gap-0.5 justify-center items-center rounded-tr-[10px]">
+        </Link>
+        <button
+          onClick={() => setShowMenu(true)}
+          className="flex flex-col gap-0.5 justify-center items-center rounded-tr-[10px]"
+        >
           <svg
             width={20}
             height={20}

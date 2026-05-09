@@ -5,7 +5,7 @@ import { useSelector } from "react-redux";
 import { Settings } from "../api";
 import Header from "../components/UI/Header/Header";
 import MobileFooter from "../components/UI/MobileFooter/MobileFooter";
-import LeftSidebar from "../components/UI/LeftSidebar/LeftSidebar";
+import DesktopLeftSidebar from "../components/UI/LeftSidebar/DesktopLeftSidebar";
 import Login from "../components/modals/Login/Login";
 
 const MainLayout = () => {
@@ -42,7 +42,7 @@ const MainLayout = () => {
     <div className="h-full font-poppinsFont">
       {showLoginModal && <Login />}
       <div className="relative flex xl:gap-4 h-full w-full md:pt-4 bg-black text-white">
-        <LeftSidebar />
+        <DesktopLeftSidebar />
         <div className="flex flex-col h-full w-full overflow-auto scrollbar-hide">
           <Header />
           <Outlet />

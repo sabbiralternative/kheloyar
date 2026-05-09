@@ -1,10 +1,10 @@
 import { useDispatch, useSelector } from "react-redux";
 import { Settings } from "../../../api";
 import { useLogo } from "../../../context/ApiProvider";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import AppPopup from "./AppPopUp";
 import DownloadAPK from "../../modals/DownloadAPK/DownloadAPK";
-import { Fragment, useEffect } from "react";
+import { Fragment, useEffect, useState } from "react";
 import {
   setClosePopUpForForever,
   setShowAPKModal,
@@ -16,8 +16,11 @@ import QuickMobileLink from "./QuickMobileLink";
 import Unauthorized from "./Unauthorized";
 import Authorized from "./Authorized";
 import Notification from "./Notification";
+import MobileLeftSidebar from "../LeftSidebar/MobileLeftSidebar";
 
 const Header = () => {
+  const [showMobileLeftSidebar, setShowMobileLeftSidebar] = useState(false);
+  const navigate = useNavigate();
   const location = useLocation();
   const { logo } = useLogo();
   const { token } = useSelector((state) => state.auth);
@@ -72,12 +75,14 @@ const Header = () => {
           <div className="flex justify-between items-center gap-3 bg-sidebarBg h-[52px] md:h-[74px] p-2 md:p-4 lg:rounded-[5px]">
             <div className="flex items-center gap-2">
               <img
+                onClick={() => setShowMobileLeftSidebar(true)}
                 loading="lazy"
                 src="data:image/svg+xml,%3csvg%20width='18'%20height='12'%20viewBox='0%200%2018%2012'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3cpath%20d='M0%200H18V2.01562H0V0ZM0%206.98438V5.01562H18V6.98438H0ZM0%2012V9.98438H18V12H0Z'%20fill='white'/%3e%3c/svg%3e"
                 alt="Hamburger-Icon"
                 className="h-[10px] cursor-pointer block xl:hidden"
               />
               <img
+                onClick={() => navigate("/")}
                 loading="lazy"
                 src={logo}
                 alt="Brand-Logo"
@@ -90,6 +95,11 @@ const Header = () => {
           <QuickMobileLink />
         </div>
       </div>
+      {showMobileLeftSidebar && (
+        <MobileLeftSidebar
+          setShowMobileLeftSidebar={setShowMobileLeftSidebar}
+        />
+      )}
     </Fragment>
   );
 };

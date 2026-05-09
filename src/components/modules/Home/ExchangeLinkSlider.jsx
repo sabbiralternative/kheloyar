@@ -52,7 +52,7 @@ const ExchangeLinkSlider = () => {
         className={`flex flex-col items-center justify-center h-[45px] gap-0.5 px-2.5 py-1.5 border border-dashboardGamesTabsBg rounded-md cursor-pointer  hover:bg-buttonGradient  ${eventTypeId === "7" ? "bg-buttonGradient text-black" : ""}`}
       >
         <img
-          src="/icon/horse-racing-icon-COSNQwPF.svg"
+          src="/icon/7.svg"
           alt="Horse Racing"
           className="h-[15px] object-contain"
         />
@@ -65,7 +65,7 @@ const ExchangeLinkSlider = () => {
         className={`flex flex-col items-center justify-center h-[45px] gap-0.5 px-2.5 py-1.5 border border-dashboardGamesTabsBg rounded-md cursor-pointer  hover:bg-buttonGradient  ${eventTypeId === "4339" ? "bg-buttonGradient text-black" : ""}`}
       >
         <img
-          src="/icon/greyhound-icon-MxqiPSCA.svg"
+          src="/icon/4339.svg"
           alt="Greyhound Racing"
           className="h-[15px] object-contain"
         />

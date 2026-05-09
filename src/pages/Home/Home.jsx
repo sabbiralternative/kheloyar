@@ -6,6 +6,7 @@ import ExchangeSports from "../../components/modules/Home/ExchangeSports";
 import CasinoSections from "../../components/modules/Home/CasinoSections";
 import Footer from "../../components/modules/Home/Footer";
 import { useState } from "react";
+import WhatsApp from "../../components/modules/Home/WhatsApp";
 
 const Home = () => {
   const [isInPlay, setIsInPlay] = useState(true);
@@ -42,6 +43,7 @@ const Home = () => {
                 <ExchangeSports isInPlay={isInPlay} />
                 <CasinoSections />
                 <Footer />
+                <WhatsApp />
               </div>
             </div>
           </div>
