@@ -24,12 +24,16 @@ const Footer = () => {
   };
   return (
     <div className="flex flex-col items-center gap-3">
-      <img
-        loading="lazy"
-        src="/icon/download-app-image-RZUUcU2P.webp"
-        alt="Download App"
-        className="md:hidden w-full h-full"
-      />
+      {Settings.apk_link && (
+        <img
+          onClick={handleDownload}
+          loading="lazy"
+          src="/icon/download-app-image-RZUUcU2P.webp"
+          alt="Download App"
+          className="md:hidden w-full h-full"
+        />
+      )}
+
       {(Settings.branchWhatsapplink || Settings.whatsapplink) && (
         <div className="flex items-center justify-between gap-8 w-full md:max-w-[400px] p-4 rounded-[5px] bg-sidebarBg">
           <div className="flex flex-col gap-1">

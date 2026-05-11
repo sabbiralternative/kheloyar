@@ -8,8 +8,10 @@ import Footer from "../../components/modules/Home/Footer";
 import { useState } from "react";
 import WhatsApp from "../../components/modules/Home/WhatsApp";
 import MiniGames from "../../components/modules/Home/MiniGames";
+import { useSelector } from "react-redux";
 
 const Home = () => {
+  const { token } = useSelector((state) => state.auth);
   const [showMiniGames, setShowMiniGames] = useState(false);
   const [isInPlay, setIsInPlay] = useState(true);
 
@@ -47,15 +49,18 @@ const Home = () => {
                 <CasinoSections />
                 <Footer />
                 <WhatsApp />
-                <div className="fixed bottom-[117px] left-2 w-[48px] h-fit">
-                  <img
-                    onClick={() => setShowMiniGames(true)}
-                    loading="lazy"
-                    src="/icon/uv_games-CkYT1PYz.gif"
-                    alt="mini-games-gif"
-                    className="absolute"
-                  />
-                </div>
+                {token && (
+                  <div className="fixed bottom-[117px] left-2 w-[48px] h-fit">
+                    <img
+                      onClick={() => setShowMiniGames(true)}
+                      loading="lazy"
+                      src="/icon/uv_games-CkYT1PYz.gif"
+                      alt="mini-games-gif"
+                      className="absolute"
+                    />
+                  </div>
+                )}
+
                 {showMiniGames && (
                   <MiniGames setShowMiniGames={setShowMiniGames} />
                 )}
