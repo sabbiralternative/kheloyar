@@ -13,10 +13,10 @@ const QuickDesktopLink = () => {
   const handleNavigateToAviator = () => {
     if (token) {
       if (Settings.casino_currency !== "AED") {
-        navigate(`/casino/EvolutionGaming/200296`);
+        navigate(`/casino/aviator/201206`);
       } else {
         setGameInfo({ gameName: "", gameId: "" });
-        setGameInfo({ gameName: "EvolutionGaming", gameId: "200296" });
+        setGameInfo({ gameName: "aviator", gameId: "201206" });
         setShowWarning(true);
       }
     } else {
@@ -40,7 +40,7 @@ const QuickDesktopLink = () => {
             alt="Kheloyar Exch"
             className="w-6 h-6"
           />
-          <span className="text-xs md:text-[9px]">Kheloyar Exch</span>
+          <span className="text-xs md:text-[9px]">Exch</span>
         </Link>
         <a
           onClick={handleNavigateToAviator}

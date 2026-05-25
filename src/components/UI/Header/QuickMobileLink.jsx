@@ -14,10 +14,10 @@ const QuickMobileLink = () => {
   const handleNavigateToAviator = () => {
     if (token) {
       if (Settings.casino_currency !== "AED") {
-        navigate(`/casino/EvolutionGaming/200296`);
+        navigate(`/casino/aviator/201206`);
       } else {
         setGameInfo({ gameName: "", gameId: "" });
-        setGameInfo({ gameName: "EvolutionGaming", gameId: "200296" });
+        setGameInfo({ gameName: "aviator", gameId: "201206" });
         setShowWarning(true);
       }
     } else {
@@ -40,7 +40,7 @@ const QuickMobileLink = () => {
             alt="Kheloyar Exch"
             className="w-6 h-6"
           />
-          <span className="text-xs md:text-[9px]">Kheloyar Exch</span>
+          <span className="text-xs md:text-[9px]">Exch</span>
         </Link>
         <a
           className="flex flex-col items-center gap-1 text-white hover:text-primarySvgColor cursor-pointer text-nowrap"
