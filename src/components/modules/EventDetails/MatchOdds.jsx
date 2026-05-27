@@ -237,7 +237,7 @@ export const MatchOdds = ({ data }) => {
         return (
           <div key={game?.id} className="flex flex-col gap-1">
             <div className="relative">
-              <div className="flex justify-between items-center bg-sportsTitleBg text-white px-2 py-2 min-h-[35px]">
+              <div className="flex justify-between items-center bg-sportsTitleBg  px-2 py-2 min-h-[35px]">
                 <div className="flex items-center gap-1">
                   <div>
                     <svg
@@ -273,7 +273,7 @@ export const MatchOdds = ({ data }) => {
                               teamProfitForGame,
                             )
                           }
-                          className=" active:opacity-70 inline-flex items-center justify-center px-4 h-[28px] text-[11px] font-medium text-white border border-white/30 shadow-sm active:scale-95 transition-all duration-150 ease-in-out cursor-pointer whitespace-nowrap"
+                          className=" active:opacity-70 inline-flex items-center justify-center px-4 h-[28px] text-[11px] font-medium  border border-white/30 shadow-sm active:scale-95 transition-all duration-150 ease-in-out cursor-pointer whitespace-nowrap"
                           style={{
                             background: "rgb(112, 25, 32)",
                             borderRadius: "5px",
@@ -302,7 +302,7 @@ export const MatchOdds = ({ data }) => {
                             })
                           }
                           disabled={isGameSuspended(game)}
-                          className=" active:opacity-70 inline-flex items-center justify-center px-4 h-[28px] text-[11px] font-medium text-white border border-white/30 shadow-sm active:scale-95 transition-all duration-150 ease-in-out cursor-pointer whitespace-nowrap"
+                          className=" active:opacity-70 inline-flex items-center justify-center px-4 h-[28px] text-[11px] font-medium  border border-white/30 shadow-sm active:scale-95 transition-all duration-150 ease-in-out cursor-pointer whitespace-nowrap"
                           style={{
                             background: "rgb(112, 25, 32)",
                             borderRadius: "5px",
@@ -346,7 +346,7 @@ export const MatchOdds = ({ data }) => {
                           teamProfitForGame,
                         )
                       }
-                      className=" active:opacity-70 inline-flex items-center justify-center px-4 h-[28px] text-[11px] font-medium text-white border border-white/30 shadow-sm active:scale-95 transition-all duration-150 ease-in-out cursor-pointer whitespace-nowrap"
+                      className=" active:opacity-70 inline-flex items-center justify-center px-4 h-[28px] text-[11px] font-medium  border border-white/30 shadow-sm active:scale-95 transition-all duration-150 ease-in-out cursor-pointer whitespace-nowrap"
                       style={{
                         background: "rgb(112, 25, 32)",
                         borderRadius: "5px",
@@ -375,7 +375,7 @@ export const MatchOdds = ({ data }) => {
                         })
                       }
                       disabled={isGameSuspended(game)}
-                      className=" active:opacity-70 inline-flex items-center justify-center px-4 h-[28px] text-[11px] font-medium text-white border border-white/30 shadow-sm active:scale-95 transition-all duration-150 ease-in-out cursor-pointer whitespace-nowrap"
+                      className=" active:opacity-70 inline-flex items-center justify-center px-4 h-[28px] text-[11px] font-medium  border border-white/30 shadow-sm active:scale-95 transition-all duration-150 ease-in-out cursor-pointer whitespace-nowrap"
                       style={{
                         background: "rgb(112, 25, 32)",
                         borderRadius: "5px",
@@ -388,7 +388,7 @@ export const MatchOdds = ({ data }) => {
               <div className="flex flex-col px max-md:max-w-full">
                 <table className="w-full text-sm font-medium text-stone-900">
                   <thead>
-                    <tr className="text-[10px] md:text-xs font-semibold whitespace-nowrap h-[16px] md:h-[20px] bg-black text-white">
+                    <tr className="text-[10px] md:text-xs font-semibold whitespace-nowrap h-[16px] md:h-[20px]  ">
                       <th className="w-[86%]" />
                       <th className="w-[7%]">BACK</th>
                       <th className="w-[7%]">LAY</th>
@@ -405,7 +405,7 @@ export const MatchOdds = ({ data }) => {
                       return (
                         <Fragment key={runner?.id}>
                           <tr className="justify-between pr-6 mt-2 w-full pl-2 h-[32px] bg-sportsTitleBg relative">
-                            <td className="my-auto text-xs font-semibold px-2 flex-[6] text-white border-b border-black">
+                            <td className="my-auto text-xs font-semibold px-2 flex-[6]  border-b border-black">
                               <div>
                                 {" "}
                                 {runner?.name}
@@ -605,7 +605,7 @@ export const MatchOdds = ({ data }) => {
                                 </div>
                               </div>
                               {runner?.status === "SUSPENDED" && (
-                                <div className="absolute top-0 right-0 w-[143px] lg:w-[30.5rem] h-full flex items-center justify-center bg-black bg-opacity-50 z-10">
+                                <div className="absolute top-0 right-0 w-[143px] lg:w-[30.5rem] h-full flex items-center justify-center  bg-opacity-50 z-10">
                                   <span className="text-red-600 font-extrabold text-sm uppercase">
                                     Suspended
                                   </span>

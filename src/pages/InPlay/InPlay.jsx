@@ -45,7 +45,7 @@ const InPlay = () => {
         id="scrollToTopDiv"
         className="flex flex-col gap-1 h-full overflow-auto scrollbar-hide"
       >
-        <div className="flex flex-1 bg-black pb-[75px]">
+        <div className="flex flex-1  pb-[75px]">
           <div className="w-full h-full scrollbar-hide">
             <div className="flex flex-col w-full h-full gap-1 md:gap-1">
               <div className="flex w-full min-h-[45px] bg-dashboardGamesTabsBg overflow-auto hide-scrollbar">
@@ -189,7 +189,7 @@ const InPlay = () => {
                           });
                         return (
                           <div key={category} className="flex flex-col">
-                            <div className="relative grid grid-cols-6 lg:grid-cols-11 w-full bg-sportsTitleBg border-b-[2px] border-b-sportsTitleBorder text-white text-sm font-semibold min-h-[35px] lg:min-h-[42px] py-1 lg:py-1.5">
+                            <div className="relative grid grid-cols-6 lg:grid-cols-11 w-full bg-sportsTitleBg border-b-[2px] border-b-sportsTitleBorder  text-sm font-semibold min-h-[35px] lg:min-h-[42px] py-1 lg:py-1.5">
                               <div className="col-span-6 lg:col-span-8 flex items-center justify-between gap-2 ps-2 lg:ps-4 pe-6 lg:pe-2">
                                 <div className="flex items-center gap-2">
                                   <img
@@ -201,18 +201,18 @@ const InPlay = () => {
                                 </div>
                                 <div className="flex items-center justify-between gap-2 sm:justify-end px-1 text-[12px]">
                                   <div className="flex items-center gap-0.5 bg-transparent overflow-x-auto scrollbar-hide">
-                                    <button className="flex items-center gap-0.5 px-2 sm:px-2 py-0.5 border border-[#F8F9FA] rounded-[25px] transition-colors whitespace-nowrap text-white hover:bg-selectedSidebarBg hover:bg-opacity-10 text-selectedSidebarBg">
-                                      <span className="font-bold text-[10px] leading-[1.5em] text-center text-white">
+                                    <button className="flex items-center gap-0.5 px-2 sm:px-2 py-0.5 border border-[#F8F9FA] rounded-[25px] transition-colors whitespace-nowrap  hover:bg-selectedSidebarBg hover:bg-opacity-10 text-selectedSidebarBg">
+                                      <span className="font-bold text-[10px] leading-[1.5em] text-center ">
                                         LIVE
                                       </span>
                                     </button>
-                                    <button className="flex items-center gap-0.5 px-2 sm:px-2 py-0.5 border border-[#F8F9FA] rounded-[25px] transition-colors whitespace-nowrap text-white hover:bg-selectedSidebarBg hover:bg-opacity-10 text-selectedSidebarBg">
-                                      <span className="font-bold text-[10px] leading-[1.5em] text-center text-white">
+                                    <button className="flex items-center gap-0.5 px-2 sm:px-2 py-0.5 border border-[#F8F9FA] rounded-[25px] transition-colors whitespace-nowrap  hover:bg-selectedSidebarBg hover:bg-opacity-10 text-selectedSidebarBg">
+                                      <span className="font-bold text-[10px] leading-[1.5em] text-center ">
                                         VIRTUAL
                                       </span>
                                     </button>
-                                    <button className="flex items-center gap-0.5 px-2 sm:px-2 py-0.5 border border-[#F8F9FA] rounded-[25px] transition-colors whitespace-nowrap text-white hover:bg-selectedSidebarBg hover:bg-opacity-10 text-selectedSidebarBg">
-                                      <span className="font-bold text-[10px] leading-[1.5em] text-center text-white">
+                                    <button className="flex items-center gap-0.5 px-2 sm:px-2 py-0.5 border border-[#F8F9FA] rounded-[25px] transition-colors whitespace-nowrap  hover:bg-selectedSidebarBg hover:bg-opacity-10 text-selectedSidebarBg">
+                                      <span className="font-bold text-[10px] leading-[1.5em] text-center ">
                                         PREMIUM
                                       </span>
                                     </button>
@@ -318,7 +318,7 @@ const InPlay = () => {
                                           )}
 
                                           <div className="hidden lg:flex flex-col gap-1 text-xs font-semibold">
-                                            <div className="flex gap-1 text-white font-bold text-xs leading-[1.2em] hover:underline cursor-pointer truncate">
+                                            <div className="flex gap-1  font-bold text-xs leading-[1.2em] hover:underline cursor-pointer truncate">
                                               <span>{value?.player1}</span>
                                               <svg
                                                 width={20}
@@ -409,19 +409,19 @@ const InPlay = () => {
                                           )}
 
                                           {value?.isBookmaker === 1 && (
-                                            <div className="flex items-center justify-center h-5 w-5 text-white text-[8px] font-black px-2 py-1 rounded-[2px] bg-dashboardGamesTabsBg">
+                                            <div className="flex items-center justify-center h-5 w-5  text-[8px] font-black px-2 py-1 rounded-[2px] bg-dashboardGamesTabsBg">
                                               BM
                                             </div>
                                           )}
                                           {value?.isFancy === 1 && (
-                                            <div className="flex items-center justify-center h-5 w-5 text-white text-[8px] font-black px-2 py-1 rounded-[2px] bg-dashboardGamesTabsBg">
+                                            <div className="flex items-center justify-center h-5 w-5  text-[8px] font-black px-2 py-1 rounded-[2px] bg-dashboardGamesTabsBg">
                                               F
                                             </div>
                                           )}
                                         </div>
                                       </div>
                                       <div className="flex lg:hidden flex-col items-center col-span-6 pb-2 w-full gap-1 text-xs font-semibold">
-                                        <div className="flex gap-1 text-white font-bold text-xs leading-[1.2em] hover:underline cursor-pointer truncate text-wrap">
+                                        <div className="flex gap-1  font-bold text-xs leading-[1.2em] hover:underline cursor-pointer truncate text-wrap">
                                           <span>{value?.player1}</span>
                                           <svg
                                             width={20}

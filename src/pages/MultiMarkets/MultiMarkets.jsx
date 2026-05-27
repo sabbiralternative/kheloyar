@@ -7,7 +7,7 @@ const MultiMarkets = () => {
             <div className="w-full">
               <div className=" ">
                 <div className="pb-10">
-                  <div className="flex justify-between items-center gap-3 text-white bg-black1 px-2 py-1.5 md:py-1">
+                  <div className="flex justify-between items-center gap-3  1 px-2 py-1.5 md:py-1">
                     Multi Market
                   </div>
                   <div className="no-data multimarket-no-data bg-white border-gray-600 rounded-md p-4 m-2 text-gray-500 font-bold text-center">

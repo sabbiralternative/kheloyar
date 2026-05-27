@@ -34,7 +34,7 @@ const ChangePassword = () => {
             <div className="w-full">
               <div className=" ">
                 <div className="flex flex-col mt-1 bg-white  h-full sm:border rounded-[4px] text-[15px]">
-                  <div className="py-[2px] flex bg-black1 text-[14px] font-[700] flex-row justify-between items-center  w-full text-white px-2 ">
+                  <div className="py-[2px] flex 1 text-[14px] font-[700] flex-row justify-between items-center  w-full  px-2 ">
                     <div>
                       <p className="text-[14px]">Change Password</p>
                     </div>
@@ -84,7 +84,7 @@ const ChangePassword = () => {
                     </div>
                     <button
                       type="submit"
-                      className=" active:opacity-70  bg-black1  p-3 text-white w-fit px-4 py-1.5 rounded-[4px] active:bg-blue1 placeholder:text-xs undefined"
+                      className=" active:opacity-70  1  p-3  w-fit px-4 py-1.5 rounded-[4px] active:bg-blue1 placeholder:text-xs undefined"
                     >
                       Update Password
                     </button>

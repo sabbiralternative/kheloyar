@@ -45,7 +45,7 @@ const HorseGreyhound = () => {
                 <div className="flex flex-col flex-1 gap-[1px]">
                   <div className="flex flex-col md:gap-[1px] overflow-hidden" />
                   <div className="flex flex-col">
-                    <div className="flex items-center gap-3 md:mt-0 mt-[2px] py-1 text-xs text-white px-2 justify-between max-md:bg-section-gradient md:bg-goldenYellow md:text-black">
+                    <div className="flex items-center gap-3 md:mt-0 mt-[2px] py-1 text-xs  px-2 justify-between max-md:bg-section-gradient md:bg-goldenYellow md:text-black">
                       <div className="font-bold flex gap-1 items-center">
                         <img
                           src={
@@ -143,7 +143,7 @@ const HorseGreyhound = () => {
                                     `/event-details/${eventTypeId}/${children?.eventId}`,
                                   )
                                 }
-                                className=" active:opacity-70 bg-gray-400 px-3 py-1 rounded text-black "
+                                className=" active:opacity-70 bg-buttonGradient px-3 py-1 rounded text-black "
                               >
                                 {convertToIST(children?.startTime)}
                               </button>
@@ -155,7 +155,7 @@ const HorseGreyhound = () => {
                   })}
                 </div>
               </div>
-              <div className="h-[1px] mt-10 bg-black3 mx-2" />
+              <div className="h-[1px] mt-10 3 mx-2" />
               <div className="flex flex-wrap mt-3 font-sans justify-center w-full text-[14px]  text-black  text-center gap-y-2">
                 <span className="cursor-pointer text-right px-3">
                   Privacy Policy

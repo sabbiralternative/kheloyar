@@ -14,7 +14,7 @@ const RightSidebar = ({ data, iframe }) => {
         <div className="border-b-[2px] border-b-sportsTitleBorder" />
 
         <div className="w-full border-b-[2px] border-b-sportsTitleBorder">
-          {/* <div className="h-fit text-nowrap rounded px-2 py-1 text-white">
+          {/* <div className="h-fit text-nowrap rounded px-2 py-1 ">
             <FaTv />
           </div> */}
           {iframe?.result?.url && data?.score?.hasVideo && (
@@ -28,13 +28,11 @@ const RightSidebar = ({ data, iframe }) => {
           )}
         </div>
         <div className="w-full border-b-[2px] border-b-sportsTitleBorder">
-          <div className="h-fit text-nowrap rounded px-2 py-1 text-white">
-            Place Bet
-          </div>
+          <div className="h-fit text-nowrap rounded px-2 py-1 ">Place Bet</div>
           {placeBetValues && <DesktopBetSlip />}
         </div>
         <div className="w-full border-b-[2px] border-b-sportsTitleBorder">
-          <div className="h-fit text-nowrap rounded px-2 py-1 text-white">
+          <div className="h-fit text-nowrap rounded px-2 py-1 ">
             My Bets ({currentBets?.length})
           </div>
           {currentBets?.length > 0 && (

@@ -218,7 +218,7 @@ const SpeedCashOut = ({ speedCashOut, setSpeedCashOut }) => {
                           }}
                           onClick={handleSpeedCashOut}
                           _ngcontent-ng-c526813732=""
-                          className="btn bg-primary text-primary"
+                          className="btn bg-buttonGradient text-primary"
                         >
                           Speed Cash : {amount}
                         </button>

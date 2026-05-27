@@ -61,7 +61,7 @@ const Unauthorized = () => {
             />
             <select
               id="languageSelection"
-              className="w-[100px] text-xs text-languageDropdownBorder font-bold rounded-md bg-black border border-languageDropdownBorder focus:outline-none h-[42px] ps-8"
+              className="w-[100px] text-xs text-languageDropdownBorder font-bold rounded-md  border border-languageDropdownBorder focus:outline-none h-[42px] ps-8"
             >
               <option className="capitalize" value="en">
                 EN
@@ -111,7 +111,7 @@ const Unauthorized = () => {
         <div className="flex rounded-md border border-signupHereText">
           <a
             aria-current="page"
-            className="flex flex-col items-center gap-1 h-[34px] lg:h-[40px] w-[45px] py-[6px] text-white text-[8px] font-bold rounded-s-[5px] active"
+            className="flex flex-col items-center gap-1 h-[34px] lg:h-[40px] w-[45px] py-[6px]  text-[8px] font-bold rounded-s-[5px] active"
             onClick={() => dispatch(setShowLoginModal(true))}
           >
             <svg

@@ -29,7 +29,7 @@ const Dropdown = ({ setShowDropdown }) => {
         <div className="flex flex-col overflow-auto">
           <div
             onClick={() => handleNavigate("/deposit-report")}
-            className="group flex items-center gap-2 min-h-[48px] text-xs px-2 cursor-pointer text-white"
+            className="group flex items-center gap-2 min-h-[48px] text-xs px-2 cursor-pointer "
           >
             <svg
               width={24}
@@ -42,12 +42,12 @@ const Dropdown = ({ setShowDropdown }) => {
               <g clipPath="url(#clip0_229_19008)">
                 <path
                   d="M19 5V19H5V5H19ZM20.1 3H3.9C3.4 3 3 3.4 3 3.9V20.1C3 20.5 3.4 21 3.9 21H20.1C20.5 21 21 20.5 21 20.1V3.9C21 3.4 20.5 3 20.1 3ZM11 7H17V9H11V7ZM11 11H17V13H11V11ZM11 15H17V17H11V15ZM7 7H9V9H7V7ZM7 11H9V13H7V11ZM7 15H9V17H7V15Z"
-                  fill="white"
+                  fill="black"
                 />
               </g>
               <defs>
                 <clipPath id="clip0_229_19008">
-                  <rect width={24} height={24} fill="white" />
+                  <rect width={24} height={24} fill="black" />
                 </clipPath>
               </defs>
             </svg>
@@ -55,7 +55,7 @@ const Dropdown = ({ setShowDropdown }) => {
           </div>
           <div
             onClick={() => handleNavigate("/withdraw-report")}
-            className="group flex items-center gap-2 min-h-[48px] text-xs px-2 cursor-pointer text-white"
+            className="group flex items-center gap-2 min-h-[48px] text-xs px-2 cursor-pointer "
           >
             <svg
               width={24}
@@ -81,7 +81,7 @@ const Dropdown = ({ setShowDropdown }) => {
           </div>
           <div
             onClick={() => handleNavigate("/open-bets")}
-            className="group flex items-center gap-2 min-h-[48px] text-xs px-2 cursor-pointer text-white"
+            className="group flex items-center gap-2 min-h-[48px] text-xs px-2 cursor-pointer "
           >
             <svg
               width={24}
@@ -107,7 +107,7 @@ const Dropdown = ({ setShowDropdown }) => {
           </div>
           <div
             onClick={() => handleNavigate("/betting-profit-loss")}
-            className="group flex items-center gap-2 min-h-[48px] text-xs px-2 cursor-pointer text-white"
+            className="group flex items-center gap-2 min-h-[48px] text-xs px-2 cursor-pointer "
           >
             <svg
               width={24}
@@ -133,7 +133,7 @@ const Dropdown = ({ setShowDropdown }) => {
           </div>
           <div
             onClick={() => handleNavigate("/my-bank-details")}
-            className="group flex items-center gap-2 min-h-[48px] text-xs px-2 cursor-pointer text-white"
+            className="group flex items-center gap-2 min-h-[48px] text-xs px-2 cursor-pointer "
           >
             <svg
               width={24}
@@ -159,7 +159,7 @@ const Dropdown = ({ setShowDropdown }) => {
           </div>
           <div
             onClick={() => handleNavigate("/affiliate")}
-            className="group flex items-center gap-2 min-h-[48px] text-xs px-2 cursor-pointer text-white"
+            className="group flex items-center gap-2 min-h-[48px] text-xs px-2 cursor-pointer "
           >
             <svg
               width={24}
@@ -185,7 +185,7 @@ const Dropdown = ({ setShowDropdown }) => {
           </div>
           <div
             onClick={() => handleNavigate("/promotions")}
-            className="group flex items-center gap-2 min-h-[48px] text-xs px-2 cursor-pointer text-white"
+            className="group flex items-center gap-2 min-h-[48px] text-xs px-2 cursor-pointer "
           >
             <svg
               width={24}
@@ -211,7 +211,7 @@ const Dropdown = ({ setShowDropdown }) => {
           </div>
           <div
             onClick={() => handleNavigate("/bonus-statement")}
-            className="group flex items-center gap-2 min-h-[48px] text-xs px-2 cursor-pointer text-white"
+            className="group flex items-center gap-2 min-h-[48px] text-xs px-2 cursor-pointer "
           >
             <svg
               width={24}
@@ -237,7 +237,7 @@ const Dropdown = ({ setShowDropdown }) => {
           </div>
           <div
             onClick={() => handleNavigate("/lossback-bonus")}
-            className="group flex items-center gap-2 min-h-[48px] text-xs px-2 cursor-pointer text-white"
+            className="group flex items-center gap-2 min-h-[48px] text-xs px-2 cursor-pointer "
           >
             <svg
               width={24}

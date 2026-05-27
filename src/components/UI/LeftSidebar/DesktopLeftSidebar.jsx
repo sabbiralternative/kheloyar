@@ -13,7 +13,12 @@ const DesktopLeftSidebar = () => {
           onClick={() => navigate("/")}
           className="flex items-center justify-center gap-1 cursor-pointer flex-col p-4"
         >
-          <img src={logo} alt="Logo" className="h-[31px] object-contain" />
+          <img
+            src={logo}
+            alt="Logo"
+            className="h-[31px] object-contain"
+            style={{ filter: "invert(var(--invert))" }}
+          />
         </div>
         <SidebarContent />
       </div>

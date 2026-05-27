@@ -11,10 +11,14 @@ const Banner = () => {
   return (
     <Fragment>
       {data?.banner?.length > 0 && (
-        <div className="relative w-full h-full" style={{ overflow: "visible" }}>
+        <div
+          className="relative w-full h-full mt-2"
+          style={{ overflow: "visible" }}
+        >
           <div className="w-full ">
             <Swiper
-              slidesPerView="auto"
+              slidesPerView="2"
+              spaceBetween={10}
               autoplay={{
                 delay: 5000,
                 disableOnInteraction: false,

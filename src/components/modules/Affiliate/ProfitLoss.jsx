@@ -95,7 +95,7 @@ const ProfitLoss = () => {
                 title="Profit &amp; Loss Statement"
                 className="w-full px-1 my-1.5 cursor-pointer"
               >
-                <div className="w-full text-black rounded-[4px] flex items-center justify-between px-2.5 py-[9px] bg-primary">
+                <div className="w-full text-black rounded-[4px] flex items-center justify-between px-2.5 py-[9px] bg-buttonGradient">
                   <div className="text-xs   font-medium leading-[140%]">
                     {moment(date).format("Do-MMM-YYYY")}
                   </div>
@@ -109,7 +109,7 @@ const ProfitLoss = () => {
                           ? "text-green-500"
                           : totalPnl < 0
                             ? "text-red-400"
-                            : "text-white"
+                            : ""
                       }`}
                     >
                       {totalPnl}

@@ -47,6 +47,7 @@ const Tab2 = ({ subCategories, product, selectedSubCategory }) => {
               }`}
             >
               <img
+                style={{ filter: "invert(0)" }}
                 className="h-5 w-5 selected-category"
                 src={`/icon/${category?.split(" ").join("").toLowerCase()}.svg`}
                 onError={(e) => {

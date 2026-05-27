@@ -12,7 +12,7 @@ const CasinoThumbnailsSection = ({ data, title }) => {
   };
   return (
     <div className="flex flex-col gap-1">
-      <div className="flex items-center gap-2 text-white text-xs px-2 font-bold bg-sidebarBg h-[36px] w-full">
+      <div className="flex items-center gap-2  text-xs px-2 font-bold bg-sidebarBg h-[36px] w-full">
         <svg
           width={20}
           height={20}

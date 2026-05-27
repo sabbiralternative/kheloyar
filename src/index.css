@@ -186,7 +186,7 @@ html * {
   }
   .sc_cw-overs-info-mobile {
     display: flex !important;
-    border-top: 0.5px solid var(--primaryGradientColor) !important;
+    border-top: 0.5px solid var(--primary-active-bg) !important;
     padding-top: 2px !important;
     padding-bottom: 2px !important;
     color: #fff !important;
@@ -474,7 +474,7 @@ html * {
 /*!  Footer Games*/
 
 .bg-bg_ballRunning {
-  background-image: linear-gradient(90deg, #a7d8fd, #f9c9d4);
+  background: linear-gradient(90deg, #a7d8fd, #f9c9d4);
 }
 
 .animate-spin {
@@ -536,7 +536,7 @@ html * {
   display: flex;
   align-items: center;
   padding: 5px 20px;
-  background: var(--primaryGradientColor);
+  background: var(--primary-active-bg);
 }
 
 .header-content img {
@@ -585,7 +585,7 @@ html * {
   content: "✓";
   position: absolute;
   left: 0;
-  background: var(--primaryGradientColor);
+  background: var(--primary-active-bg);
   color: #000;
   width: 18px;
   height: 18px;
@@ -607,7 +607,7 @@ html * {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: var(--primaryGradientColor);
+  background: var(--primary-active-bg);
   text-decoration: none;
   padding: 10px;
   font-size: 12px;
@@ -648,11 +648,11 @@ html * {
 /*! Download apk css end  */
 
 .bg-bg_color_bonusInfo {
-  background-image: linear-gradient(91deg, #535252 -1.96%, #312626 110.45%);
+  background: linear-gradient(91deg, #535252 -1.96%, #312626 110.45%);
 }
 
 .bg-bg_color_lossback_card_bg {
-  background-image: linear-gradient(90deg, #15803d, #000, #000);
+  background: linear-gradient(90deg, #15803d, #000, #000);
 }
 
 .text-text_color_lossback_amt {
@@ -668,7 +668,7 @@ html * {
 }
 
 .bg-bg_color_GiftCardBg {
-  background-image: linear-gradient(90deg, #743899, #9b1d39);
+  background: linear-gradient(90deg, #743899, #9b1d39);
 }
 
 .bg-bg_color_giftCardInputBg {
@@ -676,7 +676,7 @@ html * {
 }
 
 .bg-bg_color_quaternary2 {
-  background-color: #545454;
+  background-color: var(--primary-bg);
 }
 
 .bg-bg_color_tertiary {
@@ -688,16 +688,17 @@ html * {
 }
 
 .bg-bg_Primary {
-  background: var(--primaryGradientColor);
+  background: var(--primary-active-bg);
 }
-.bg-primary {
-  background: var(--primaryGradientColor);
-}
+
 .border-primary {
-  border-color: var(--primaryGradientColor);
+  border-color: var(--primary-active-bg);
 }
 .text-primary {
-  color: #000;
+  color: var(--primary-color);
+}
+.placeholder\:text-primary::placeholder {
+  color: var(--primary-color);
 }
 
 .text-text_Danger {
@@ -722,12 +723,12 @@ html * {
   }
 }
 .bg-bg_transactionSuccessBg {
-  background-image: linear-gradient(89deg, #40af52, #2e924b 89.28%);
+  background: linear-gradient(89deg, #40af52, #2e924b 89.28%);
 }
 .bg-bg_transactionPendingBg {
-  background-image: linear-gradient(89deg, #fbc439, #fd9b07 89.28%);
+  background: linear-gradient(89deg, #fbc439, #fd9b07 89.28%);
 }
 
 .bg-bg_transactionFailedBg {
-  background-image: linear-gradient(89deg, #eb244f, #a90f31 89.28%);
+  background: linear-gradient(89deg, #eb244f, #a90f31 89.28%);
 }

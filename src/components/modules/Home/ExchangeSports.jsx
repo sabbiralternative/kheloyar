@@ -12,6 +12,7 @@ const ExchangeSports = ({ isInPlay }) => {
   const { data } = useGroupQuery({ sportsType: Number(eventTypeId) || 4 });
 
   const filteredData = useMemo(() => {
+    if (Array.isArray(data)) return;
     const filtered = Object.entries(data)
       .filter(([, value]) => value.visible === true)
       .reduce(
@@ -112,7 +113,7 @@ const ExchangeSports = ({ isInPlay }) => {
                         )}
 
                         <div className="hidden lg:flex flex-col gap-1 text-xs font-semibold">
-                          <div className="flex gap-1 text-white font-bold text-xs leading-[1.2em] hover:underline cursor-pointer truncate">
+                          <div className="flex gap-1  font-bold text-xs leading-[1.2em] hover:underline cursor-pointer truncate">
                             <span>{value?.player1}</span>
                             <svg
                               width={20}
@@ -191,19 +192,19 @@ const ExchangeSports = ({ isInPlay }) => {
                         )}
 
                         {value?.isBookmaker === 1 && (
-                          <div className="flex items-center justify-center h-5 w-5 text-white text-[8px] font-black px-2 py-1 rounded-[2px] bg-dashboardGamesTabsBg">
+                          <div className="flex items-center justify-center h-5 w-5  text-[8px] font-black px-2 py-1 rounded-[2px] bg-dashboardGamesTabsBg">
                             BM
                           </div>
                         )}
                         {value?.isFancy === 1 && (
-                          <div className="flex items-center justify-center h-5 w-5 text-white text-[8px] font-black px-2 py-1 rounded-[2px] bg-dashboardGamesTabsBg">
+                          <div className="flex items-center justify-center h-5 w-5  text-[8px] font-black px-2 py-1 rounded-[2px] bg-dashboardGamesTabsBg">
                             F
                           </div>
                         )}
                       </div>
                     </div>
                     <div className="flex lg:hidden flex-col items-center col-span-6 pb-2 w-full gap-1 text-xs font-semibold">
-                      <div className="flex gap-1 text-white font-bold text-xs leading-[1.2em] hover:underline cursor-pointer truncate text-wrap">
+                      <div className="flex gap-1  font-bold text-xs leading-[1.2em] hover:underline cursor-pointer truncate text-wrap">
                         <span>{value?.player1}</span>
                         <svg
                           width={20}

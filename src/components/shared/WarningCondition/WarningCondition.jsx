@@ -87,7 +87,7 @@ const WarningCondition = ({ setShowWarning, gameInfo }) => {
                 navigate("/login");
               }}
               type="button"
-              className="swal2-confirm swal2-styled bg-primary"
+              className="swal2-confirm swal2-styled bg-buttonGradient"
               aria-label=""
               style={{
                 display: "inline-flex",

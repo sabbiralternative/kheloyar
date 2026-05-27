@@ -247,7 +247,7 @@ const DesktopBetSlip = ({ currentPlaceBetEvent }) => {
                   );
                   setIsCashOut(false);
                 }}
-                className=" active:opacity-70 flex bg-primary h-[30px] px-2 w-fit text-center items-center justify-center"
+                className=" active:opacity-70 flex bg-buttonGradient h-[30px] px-2 w-fit text-center items-center justify-center"
               >
                 <svg
                   stroke="currentColor"
@@ -285,7 +285,7 @@ const DesktopBetSlip = ({ currentPlaceBetEvent }) => {
                   );
                   setIsCashOut(false);
                 }}
-                className=" active:opacity-70 flex bg-primary h-[30px] px-2 w-fit text-center items-center justify-center"
+                className=" active:opacity-70 flex bg-buttonGradient h-[30px] px-2 w-fit text-center items-center justify-center"
               >
                 <svg
                   stroke="currentColor"
@@ -341,7 +341,7 @@ const DesktopBetSlip = ({ currentPlaceBetEvent }) => {
                 ),
               )
             }
-            className=" active:opacity-70 flex-1 w-full  text-sm h-8 rounded  bg-blue-700 text-white"
+            className=" active:opacity-70 flex-1 w-full  text-sm h-8 rounded  bg-blue-700 "
           >
             Max Stake
           </button>
@@ -350,7 +350,7 @@ const DesktopBetSlip = ({ currentPlaceBetEvent }) => {
             onClick={() => {
               dispatch(setStake(null));
             }}
-            className=" active:opacity-70 flex-1 w-full  text-sm h-8 rounded bg-red-600 text-white"
+            className=" active:opacity-70 flex-1 w-full  text-sm h-8 rounded bg-red-600 "
           >
             Clear
           </button>
@@ -358,24 +358,24 @@ const DesktopBetSlip = ({ currentPlaceBetEvent }) => {
         <div className="flex justify-between pb-2 gap-1 mx-2">
           <button
             onClick={handleCancelBet}
-            className=" active:opacity-70 flex-1 text-sm h-8 w-full rounded bg-red-600 text-white"
+            className=" active:opacity-70 flex-1 text-sm h-8 w-full rounded bg-red-600 "
           >
             Reset{" "}
           </button>
           <button
             onClick={handleOrderBets}
-            className=" active:opacity-70 flex-1 h-8 w-full border border-green-700 rounded text-sm bg-green-600 text-white"
+            className=" active:opacity-70 flex-1 h-8 w-full border border-green-700 rounded text-sm bg-green-600 "
           >
             Place Bet
           </button>
         </div>
         {loading && (
-          <div className="absolute top-0 left-0 flex flex-col gap-1 items-center justify-center w-full h-full z-20 bg-black/30 backdrop-blur-[2px]">
+          <div className="absolute top-0 left-0 flex flex-col gap-1 items-center justify-center w-full h-full z-20 /30 backdrop-blur-[2px]">
             <div className="relative h-[70px] w-[70px] flex items-center justify-center">
-              <div className="absolute text-lg text-white"></div>
+              <div className="absolute text-lg "></div>
               <div className="h-[80%] w-[80%] border-4 border-white rounded-full border-dotted border-t-white border-b-oneClickLoadingSpinner border-x-oneClickLoadingSpinner animate-oneClickLoadingSpinnerAnimation" />
             </div>
-            <div className="flex flex-col items-center justify-center text-white">
+            <div className="flex flex-col items-center justify-center ">
               <div className="text-sm font-semibold">
                 Your bet is being processed...
               </div>

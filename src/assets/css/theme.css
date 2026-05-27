@@ -1,29 +1,23 @@
+/*! Light Theme  */
+/* --primary-active-bg: linear-gradient(90deg, #f2d71a 0%, #ecb024 100%); */
+
 :root {
-  --primary: black;
-  --secondary: #18325c;
-  --headerBg: black;
-  --headerText: white;
-  --titleWidth: 100px;
-  --titleMobWidth: 120px;
-  --cashoutbt: #00ff20;
-  --primarySvgColor: #ffdf02;
-  --primaryGradientColor: linear-gradient(90deg, #f2d71a 0%, #ecb024 100%);
-  --gradiantStyle: linear-gradient(180deg, rgb(0, 0, 0) 0%, #7f00ff 100%);
-  --depositButtonGradient: linear-gradient(180deg, #008000 0%, #00ac6f 100%);
-  --withdrawButtonGradient: linear-gradient(180deg, #7b0000 0%, #d10000 100%);
-  --eventRowRadialGradient: radial-gradient(
-    50% 47750.03% at 50% 50%,
-    #ffdf02 0%,
-    rgba(255, 223, 2, 0.91) 9.09%,
-    rgba(255, 223, 2, 0.81) 18.18%,
-    rgba(255, 223, 2, 0.71) 27.27%,
-    rgba(255, 223, 2, 0.61) 36.36%,
-    rgba(255, 223, 2, 0.51) 45.45%,
-    rgba(255, 223, 2, 0.41) 54.55%,
-    rgba(255, 223, 2, 0.31) 63.64%,
-    rgba(255, 223, 2, 0.21) 72.73%,
-    rgba(255, 223, 2, 0.1) 81.82%,
-    rgba(255, 223, 2, 0.1) 90.91%,
-    rgba(255, 223, 2, 0.1) 100%
-  );
+  --app-bg: #e2dbdb;
+  --primary-active-bg: #ecb024;
+  --primary-svg-color: #ecb024;
+  --active-bg: #eeebeb;
+  --primary-bg: #fff;
+  --primary-color: #000;
+  --invert: 1;
 }
+
+/*! Black Theme */
+/* :root {
+  --app-bg: #0f0f0f;
+  --primary-active-bg: #ecb024;
+  --primary-svg-color: #ffdf02;
+  --active-bg: #ffffff1a;
+  --primary-bg: #1a1a1a;
+  --primary-color: #f5f5f5;
+  --invert: 0;
+} */

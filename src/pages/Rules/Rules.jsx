@@ -19,17 +19,17 @@ const Rules = () => {
         id="scrollToTopDiv"
         className="flex flex-col gap-1 h-full overflow-auto scrollbar-hide"
       >
-        <div className="flex flex-1 bg-black pb-[75px]">
+        <div className="flex flex-1  pb-[75px]">
           <div className="w-full h-full scrollbar-hide">
-            <div className="flex flex-col w-full px-4 py-4 h-full rounded border border-[#00000020] text-white overflow-auto">
-              <div className="flex flex-0 w-full bg-black py-2 px-4">
+            <div className="flex flex-col w-full px-4 py-4 h-full rounded border border-[#00000020]  overflow-auto">
+              <div className="flex flex-0 w-full  py-2 px-4">
                 <h3 className="text-lg font-medium">Rules</h3>
               </div>
               <div className="flex flex-col mt-4 flex-1 gap-1">
                 <div>
                   <button
                     onClick={() => handleChangeIndex(0)}
-                    className=" active:opacity-70 flex justify-between items-center w-full px-2 py-2 text-left bg-loginInputGray text-white"
+                    className=" active:opacity-70 flex justify-between items-center w-full px-2 py-2 text-left bg-loginInputGray "
                   >
                     <span className="text-md">Deposit Bonus</span>
                     {index === 0 ? (
@@ -91,7 +91,7 @@ const Rules = () => {
                 <div>
                   <button
                     onClick={() => handleChangeIndex(1)}
-                    className=" active:opacity-70 flex justify-between items-center w-full px-2 py-2 text-left bg-loginInputGray text-white"
+                    className=" active:opacity-70 flex justify-between items-center w-full px-2 py-2 text-left bg-loginInputGray "
                   >
                     <span className="text-md">Deposit wagering</span>
                     {index === 1 ? (
@@ -132,7 +132,7 @@ const Rules = () => {
                 <div>
                   <button
                     onClick={() => handleChangeIndex(2)}
-                    className=" active:opacity-70 flex justify-between items-center w-full px-2 py-2 text-left bg-loginInputGray text-white"
+                    className=" active:opacity-70 flex justify-between items-center w-full px-2 py-2 text-left bg-loginInputGray "
                   >
                     <span className="text-md">Deposit Limits</span>
                     {index === 2 ? (
@@ -161,7 +161,7 @@ const Rules = () => {
                 <div>
                   <button
                     onClick={() => handleChangeIndex(3)}
-                    className=" active:opacity-70 flex justify-between items-center w-full px-2 py-2 text-left bg-loginInputGray text-white"
+                    className=" active:opacity-70 flex justify-between items-center w-full px-2 py-2 text-left bg-loginInputGray "
                   >
                     <span className="text-md">Withdraw Limits</span>
                     {index === 3 ? (
@@ -207,7 +207,7 @@ const Rules = () => {
                 <div>
                   <button
                     onClick={() => handleChangeIndex(4)}
-                    className=" active:opacity-70 flex justify-between items-center w-full px-2 py-2 text-left bg-loginInputGray text-white"
+                    className=" active:opacity-70 flex justify-between items-center w-full px-2 py-2 text-left bg-loginInputGray "
                   >
                     <span className="text-md">Football Fancy</span>
                     {index === 4 ? (
@@ -272,7 +272,7 @@ const Rules = () => {
                 <div>
                   <button
                     onClick={() => handleChangeIndex(5)}
-                    className=" active:opacity-70 flex justify-between items-center w-full px-2 py-2 text-left bg-loginInputGray text-white"
+                    className=" active:opacity-70 flex justify-between items-center w-full px-2 py-2 text-left bg-loginInputGray "
                   >
                     <span className="text-md">Big Bash League</span>
                     {index === 5 ? (
@@ -686,7 +686,7 @@ const Rules = () => {
                 <div>
                   <button
                     onClick={() => handleChangeIndex(6)}
-                    className=" active:opacity-70 flex justify-between items-center w-full px-2 py-2 text-left bg-loginInputGray text-white"
+                    className=" active:opacity-70 flex justify-between items-center w-full px-2 py-2 text-left bg-loginInputGray "
                   >
                     <span className="text-md">WBBL Tournament Rules</span>
                     {index === 6 ? (
@@ -969,7 +969,7 @@ const Rules = () => {
                 <div>
                   <button
                     onClick={() => handleChangeIndex(7)}
-                    className=" active:opacity-70 flex justify-between items-center w-full px-2 py-2 text-left bg-loginInputGray text-white"
+                    className=" active:opacity-70 flex justify-between items-center w-full px-2 py-2 text-left bg-loginInputGray "
                   >
                     <span className="text-md">Lunch Favourite</span>
                     {index === 7 ? (
@@ -1047,7 +1047,7 @@ const Rules = () => {
                 <div>
                   <button
                     onClick={() => handleChangeIndex(8)}
-                    className=" active:opacity-70 flex justify-between items-center w-full px-2 py-2 text-left bg-loginInputGray text-white"
+                    className=" active:opacity-70 flex justify-between items-center w-full px-2 py-2 text-left bg-loginInputGray "
                   >
                     <span className="text-md">Bookmaker</span>
                     {index === 8 ? (
@@ -1161,7 +1161,7 @@ const Rules = () => {
                 <div>
                   <button
                     onClick={() => handleChangeIndex(9)}
-                    className=" active:opacity-70 flex justify-between items-center w-full px-2 py-2 text-left bg-loginInputGray text-white"
+                    className=" active:opacity-70 flex justify-between items-center w-full px-2 py-2 text-left bg-loginInputGray "
                   >
                     <span className="text-md">Speed Cash Rules</span>
                     {index === 9 ? (
@@ -1223,7 +1223,7 @@ const Rules = () => {
                 <div>
                   <button
                     onClick={() => handleChangeIndex(10)}
-                    className=" active:opacity-70 flex justify-between items-center w-full px-2 py-2 text-left bg-loginInputGray text-white"
+                    className=" active:opacity-70 flex justify-between items-center w-full px-2 py-2 text-left bg-loginInputGray "
                   >
                     <span className="text-md">Politic</span>
                     {index === 10 ? (
@@ -1300,7 +1300,7 @@ const Rules = () => {
                 <div>
                   <button
                     onClick={() => handleChangeIndex(11)}
-                    className=" active:opacity-70 flex justify-between items-center w-full px-2 py-2 text-left bg-loginInputGray text-white"
+                    className=" active:opacity-70 flex justify-between items-center w-full px-2 py-2 text-left bg-loginInputGray "
                   >
                     <span className="text-md">Fancy Market Rules</span>
                     {index === 11 ? (
@@ -3447,7 +3447,7 @@ const Rules = () => {
                 <div>
                   <button
                     onClick={() => handleChangeIndex(13)}
-                    className=" active:opacity-70 flex justify-between items-center w-full px-2 py-2 text-left bg-loginInputGray text-white"
+                    className=" active:opacity-70 flex justify-between items-center w-full px-2 py-2 text-left bg-loginInputGray "
                   >
                     <span className="text-md">Ashes Special</span>
                     {index === 13 ? (
@@ -3880,7 +3880,7 @@ const Rules = () => {
                 <div>
                   <button
                     onClick={() => handleChangeIndex(14)}
-                    className=" active:opacity-70 flex justify-between items-center w-full px-2 py-2 text-left bg-loginInputGray text-white"
+                    className=" active:opacity-70 flex justify-between items-center w-full px-2 py-2 text-left bg-loginInputGray "
                   >
                     <span className="text-md">IPL SPECIAL 2026</span>
                     {index === 14 ? (
@@ -4300,7 +4300,7 @@ const Rules = () => {
                 <div>
                   <button
                     onClick={() => handleChangeIndex(15)}
-                    className=" active:opacity-70 flex justify-between items-center w-full px-2 py-2 text-left bg-loginInputGray text-white"
+                    className=" active:opacity-70 flex justify-between items-center w-full px-2 py-2 text-left bg-loginInputGray "
                   >
                     <span className="text-md">The Hundred League Rules</span>
                     {index === 15 ? (
@@ -4563,7 +4563,7 @@ const Rules = () => {
                 <div>
                   <button
                     onClick={() => handleChangeIndex(16)}
-                    className=" active:opacity-70 flex justify-between items-center w-full px-2 py-2 text-left bg-loginInputGray text-white"
+                    className=" active:opacity-70 flex justify-between items-center w-full px-2 py-2 text-left bg-loginInputGray "
                   >
                     <span className="text-md">The Hundred League Rules</span>
                     {index === 16 ? (
@@ -4826,7 +4826,7 @@ const Rules = () => {
                 <div>
                   <button
                     onClick={() => handleChangeIndex(17)}
-                    className=" active:opacity-70 flex justify-between items-center w-full px-2 py-2 text-left bg-loginInputGray text-white"
+                    className=" active:opacity-70 flex justify-between items-center w-full px-2 py-2 text-left bg-loginInputGray "
                   >
                     <span className="text-md">
                       WOMEN'S PREMIER LEAGUE (WPL)
@@ -5117,7 +5117,7 @@ const Rules = () => {
                 <div>
                   <button
                     onClick={() => handleChangeIndex(18)}
-                    className=" active:opacity-70 flex justify-between items-center w-full px-2 py-2 text-left bg-loginInputGray text-white"
+                    className=" active:opacity-70 flex justify-between items-center w-full px-2 py-2 text-left bg-loginInputGray "
                   >
                     <span className="text-md">Kabaddi</span>
                     {index === 18 ? (
@@ -5172,7 +5172,7 @@ const Rules = () => {
                 <div>
                   <button
                     onClick={() => handleChangeIndex(20)}
-                    className=" active:opacity-70 flex justify-between items-center w-full px-2 py-2 text-left bg-loginInputGray text-white"
+                    className=" active:opacity-70 flex justify-between items-center w-full px-2 py-2 text-left bg-loginInputGray "
                   >
                     <span className="text-md">BINARY</span>
                     {index === 20 ? (
@@ -5262,7 +5262,7 @@ const Rules = () => {
                 <div>
                   <button
                     onClick={() => handleChangeIndex(21)}
-                    className=" active:opacity-70 flex justify-between items-center w-full px-2 py-2 text-left bg-loginInputGray text-white"
+                    className=" active:opacity-70 flex justify-between items-center w-full px-2 py-2 text-left bg-loginInputGray "
                   >
                     <span className="text-md">MATCH</span>
                     {index === 21 ? (
@@ -5320,7 +5320,7 @@ const Rules = () => {
                 <div>
                   <button
                     onClick={() => handleChangeIndex(22)}
-                    className=" active:opacity-70 flex justify-between items-center w-full px-2 py-2 text-left bg-loginInputGray text-white"
+                    className=" active:opacity-70 flex justify-between items-center w-full px-2 py-2 text-left bg-loginInputGray "
                   >
                     <span className="text-md">KHADO</span>
                     {index === 22 ? (
@@ -5361,7 +5361,7 @@ const Rules = () => {
                 <div>
                   <button
                     onClick={() => handleChangeIndex(23)}
-                    className=" active:opacity-70 flex justify-between items-center w-full px-2 py-2 text-left bg-loginInputGray text-white"
+                    className=" active:opacity-70 flex justify-between items-center w-full px-2 py-2 text-left bg-loginInputGray "
                   >
                     <span className="text-md">ELECTION</span>
                     {index === 23 ? (
@@ -5398,7 +5398,7 @@ const Rules = () => {
                 <div>
                   <button
                     onClick={() => handleChangeIndex(24)}
-                    className=" active:opacity-70 flex justify-between items-center w-full px-2 py-2 text-left bg-loginInputGray text-white"
+                    className=" active:opacity-70 flex justify-between items-center w-full px-2 py-2 text-left bg-loginInputGray "
                   >
                     <span className="text-md">VIRTUAL TENNIS</span>
                     {index === 24 ? (
@@ -5449,7 +5449,7 @@ const Rules = () => {
                 <div>
                   <button
                     onClick={() => handleChangeIndex(25)}
-                    className=" active:opacity-70 flex justify-between items-center w-full px-2 py-2 text-left bg-loginInputGray text-white"
+                    className=" active:opacity-70 flex justify-between items-center w-full px-2 py-2 text-left bg-loginInputGray "
                   >
                     <span className="text-md">GENIE COMBO SPECIAL</span>
                     {index === 25 ? (

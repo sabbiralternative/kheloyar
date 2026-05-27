@@ -193,7 +193,7 @@ export const Fancy = ({ data }) => {
                                       onClick={() =>
                                         handleGetLadder(pnl, game?.name)
                                       }
-                                      className=" active:opacity-70 ml-1 px-2 bg-[#d45f5f] text-white rounded"
+                                      className=" active:opacity-70 ml-1 px-2 bg-[#d45f5f]  rounded"
                                     >
                                       Book
                                     </button>
@@ -275,7 +275,7 @@ export const Fancy = ({ data }) => {
                                     </div>
                                   </div>
                                   {game?.status === "SUSPENDED" && (
-                                    <div className="absolute top-0 right-0 w-full h-full flex items-center justify-center bg-black bg-opacity-50 z-10">
+                                    <div className="absolute top-0 right-0 w-full h-full flex items-center justify-center  bg-opacity-50 z-10">
                                       <span className="text-red-600 font-extrabold text-sm uppercase">
                                         Suspended
                                       </span>

@@ -37,9 +37,7 @@ const Footer = () => {
       {(Settings.branchWhatsapplink || Settings.whatsapplink) && (
         <div className="flex items-center justify-between gap-8 w-full md:max-w-[400px] p-4 rounded-[5px] bg-sidebarBg">
           <div className="flex flex-col gap-1">
-            <span className="text-[11px] text-white font-bold">
-              Customer Support
-            </span>
+            <span className="text-[11px]  font-bold">Customer Support</span>
             <span className="text-[11px] text-languageDropdownBorder font-bold">
               If you have any questions?
             </span>
@@ -55,7 +53,12 @@ const Footer = () => {
 
       <div className="flex flex-col md:flex-row items-center gap-3">
         <div className="flex items-center justify-center gap-1 cursor-pointer flex-row undefined">
-          <img src={logo} alt="Logo" className="h-[31px] object-contain" />
+          <img
+            src={logo}
+            alt="Logo"
+            className="h-[31px] object-contain"
+            style={{ filter: "invert(var(--invert))" }}
+          />
         </div>
         {Settings.apk_link && (
           <button
@@ -78,7 +81,7 @@ const Footer = () => {
         <span>Privacy Policy</span>
         <span>Terms &amp; Conditions</span>
       </div>
-      <span className="text-[13px] text-white font-bold">Follow Us</span>
+      <span className="text-[13px]  font-bold">Follow Us</span>
       <div className="flex items-center gap-2" />
       <span className="text-[11px] text-languageDropdownBorder font-bold">
         © {new Date().getFullYear()} {Settings.site_name}. All rights reserved.

@@ -17,7 +17,7 @@ const MobileFooter = () => {
   return (
     <div className="md:hidden absolute bottom-0 w-full h-[70px] p-2.5 bg-sidebarBg rounded-t-[20px] z-[9999]">
       {showMenu && <Menu setShowMenu={setShowMenu} />}
-      <div className="grid grid-cols-5 bg-black rounded-[25px] h-[50px]">
+      <div className="grid grid-cols-5  rounded-[25px] h-[50px]">
         <Link
           className="flex flex-col gap-0.5 justify-center items-center rounded-tl-[10px] active"
           to="/"
@@ -49,7 +49,7 @@ const MobileFooter = () => {
             </defs>
           </svg>
           <div
-            className={`text-[11px] text-center font-medium ${pathname === "/" ? "text-signupHereText" : "text-white"}`}
+            className={`text-[11px] text-center font-medium ${pathname === "/" ? "text-signupHereText" : ""}`}
           >
             Home
           </div>
@@ -76,7 +76,7 @@ const MobileFooter = () => {
             />
           </svg>
           <div
-            className={`text-[11px] text-center font-medium ${pathname === "/exchange_sports/in-play" ? "text-signupHereText" : "text-white"}`}
+            className={`text-[11px] text-center font-medium ${pathname === "/exchange_sports/in-play" ? "text-signupHereText" : ""}`}
           >
             Exchange
           </div>
@@ -227,7 +227,7 @@ const MobileFooter = () => {
             />
           </svg>
           <div
-            className={`text-[11px] text-center font-medium ${pathname === "/casino" ? "text-signupHereText" : "text-white"}`}
+            className={`text-[11px] text-center font-medium ${pathname === "/casino" ? "text-signupHereText" : ""}`}
           >
             All Casino
           </div>
@@ -261,9 +261,7 @@ const MobileFooter = () => {
               fill="white"
             />
           </svg>
-          <div className="text-[11px] text-center font-medium text-white">
-            Menu
-          </div>
+          <div className="text-[11px] text-center font-medium ">Menu</div>
         </button>
       </div>
     </div>

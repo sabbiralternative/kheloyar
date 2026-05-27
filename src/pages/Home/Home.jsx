@@ -21,7 +21,7 @@ const Home = () => {
         id="scrollToTopDiv"
         className="flex flex-col gap-1 h-full overflow-auto scrollbar-hide"
       >
-        <div className="flex flex-1 bg-black pb-[75px]">
+        <div className="flex flex-1  pb-[75px]">
           <div className="w-full h-full scrollbar-hide">
             <div className="flex flex-col w-full h-full gap-1 md:gap-1">
               <div className="flex flex-col gap-2 md:gap-4">
@@ -31,13 +31,13 @@ const Home = () => {
                 <div className="flex gap-1 text-[13px] font-bold">
                   <button
                     onClick={() => setIsInPlay(true)}
-                    className={`active:opacity-70 px-4 py-1 h-[36px] rounded-[4px] uppercase cursor-pointer   ${isInPlay ? "bg-buttonGradient text-reportsTableHeaderText" : "bg-gray-500 text-white"}`}
+                    className={`active:opacity-70 px-4 py-1 h-[36px] rounded-[4px] uppercase cursor-pointer   ${isInPlay ? "bg-buttonGradient text-reportsTableHeaderText" : "bg-primary "}`}
                   >
                     Inplay
                   </button>
                   <button
                     onClick={() => setIsInPlay(false)}
-                    className={`active:opacity-70 px-4 py-1 h-[36px] rounded-[4px] uppercase cursor-pointer   ${!isInPlay ? "bg-buttonGradient text-reportsTableHeaderText" : "bg-gray-500 text-white"}`}
+                    className={`active:opacity-70 px-4 py-1 h-[36px] rounded-[4px] uppercase cursor-pointer   ${!isInPlay ? "bg-buttonGradient text-reportsTableHeaderText" : "bg-primary "}`}
                   >
                     upcoming
                   </button>

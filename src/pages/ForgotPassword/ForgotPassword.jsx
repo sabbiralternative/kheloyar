@@ -96,7 +96,7 @@ const ForgotPassword = () => {
           backgroundRepeat: "no-repeat",
         }}
       >
-        <section className="flex flex-col justify-start self-center px-4 py-6 text-sm font-medium text-white bg-black rounded-lg w-full max-w-[430px] text-black-900 overflow-auto max-h-[90vh]">
+        <section className="flex flex-col justify-start self-center px-4 py-6 text-sm font-medium   rounded-lg w-full max-w-[430px] text-black-900 overflow-auto max-h-[90vh] bg-buttonGradient">
           <button
             onClick={() => navigate(-1)}
             className=" active:opacity-70 flex items-center gap-1.5 text-sm font-medium whitespace-nowrap w-[61px]"
@@ -122,6 +122,7 @@ const ForgotPassword = () => {
               style={{
                 height: Settings.logo_height,
                 width: Settings.logo_width,
+                filter: "invert(var(--invert))",
               }}
               src={logo}
               alt="Logo"
@@ -152,7 +153,7 @@ const ForgotPassword = () => {
                 />{" "}
                 <div className=" h-[44px] w-[130px] flex items-center justify-center gap-1 rounded-md bg-loginInputGray ">
                   {timer ? (
-                    <div className="px-3 w-full h-full  text-base font-semibold text-center rounded-md  bg-gray-400 text-white cursor-text">
+                    <div className="px-3 w-full h-full  text-base font-semibold text-center rounded-md  bg-buttonGradient  cursor-text">
                       Retry in {timer}
                     </div>
                   ) : (
@@ -160,7 +161,7 @@ const ForgotPassword = () => {
                       disabled={Settings.otp && mobile?.length < 10}
                       onClick={handleOTP}
                       type="button"
-                      className="px-3 w-full h-full  text-base font-semibold text-center rounded-md  bg-gray-400 text-white"
+                      className="px-3 w-full h-full  text-base font-semibold text-center rounded-md  bg-buttonGradient "
                     >
                       Get OTP
                     </button>
@@ -232,7 +233,7 @@ const ForgotPassword = () => {
             <button
               disabled={!mobile}
               type="submit"
-              className=" active:opacity-70 gap-2.5 self-stretch px-16 py-3 mt-5 text-base font-semibold text-center rounded-lg min-h-[44px] shadow-[0px_1px_2px_rgba(0,0,0,0.05)] max-md:px-5 bg-gray-400 text-white cursor-not-allowed"
+              className=" active:opacity-70 gap-2.5 self-stretch px-16 py-3 mt-5 text-base font-semibold text-center rounded-lg min-h-[44px] shadow-[0px_1px_2px_rgba(0,0,0,0.05)] max-md:px-5 bg-buttonGradient cursor-not-allowed"
             >
               Change Password
             </button>

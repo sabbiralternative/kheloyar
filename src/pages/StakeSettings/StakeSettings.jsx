@@ -38,10 +38,10 @@ const StakeSettings = () => {
         id="scrollToTopDiv"
         className="flex flex-col gap-1 h-full overflow-auto scrollbar-hide"
       >
-        <div className="flex flex-1 bg-black pb-[75px]">
+        <div className="flex flex-1  pb-[75px]">
           <div className="w-full h-full scrollbar-hide">
             <div className="flex flex-col sm:rounded-[4px] h-full">
-              <div className="flex items-center h-[35px] w-full text-white font-bold py-1 pl-2">
+              <div className="flex items-center h-[35px] w-full  font-bold py-1 pl-2">
                 <p>CHANGE BUTTON VALUES</p>
               </div>
               <form
@@ -50,15 +50,13 @@ const StakeSettings = () => {
               >
                 <div className="flex justify-between max-w-[700px] text-black">
                   <div className="flex flex-col w-1/2 pr-2">
-                    <span className="mb-2 text-white font-semibold">
-                      Price Label
-                    </span>
+                    <span className="mb-2  font-semibold">Price Label</span>
                     {stakes?.map((stake, i) => {
                       return (
                         <input
                           {...register(`buttonGameValues.${i}.label`)}
                           key={i}
-                          className="mb-2 p-2 text-white bg-loginInputGray rounded placeholder:text-xs"
+                          className="mb-2 p-2  bg-loginInputGray rounded placeholder:text-xs"
                           type="text"
                           placeholder="Enter Label"
                           defaultValue={stake?.label}
@@ -67,15 +65,13 @@ const StakeSettings = () => {
                     })}
                   </div>
                   <div className="flex flex-col w-1/2 pl-2">
-                    <span className="mb-2 text-white font-semibold">
-                      Price Value
-                    </span>
+                    <span className="mb-2  font-semibold">Price Value</span>
                     {stakes?.map((stake, i) => {
                       return (
                         <input
                           {...register(`buttonGameValues.${i}.value`)}
                           key={i}
-                          className="mb-2 p-2 text-white bg-loginInputGray rounded placeholder:text-xs"
+                          className="mb-2 p-2  bg-loginInputGray rounded placeholder:text-xs"
                           type="number"
                           defaultValue={stake?.value}
                         />

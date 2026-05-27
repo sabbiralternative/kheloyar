@@ -49,7 +49,7 @@
   flex-direction: column;
   width: calc(50% - 10px);
   white-space: normal;
-  border-right: 1px solid var(--color-bg-primary);
+  border-right: 1px solid var(--primary-active-bg);
   padding: 5px 0;
 }
 
@@ -121,7 +121,7 @@
 }
 
 .nw-affi-add-new-user-btn {
-  background: var(--color-bg-primary);
+  background: var(--primary-active-bg);
   position: relative;
   color: var(--color-text-primary);
   padding: 16px;
@@ -269,7 +269,7 @@
 }
 
 /* .affi-yellow-btn {
-  background-color: var(--color-bg-primary) !important;
+  background-color: var(--primary-active-bg) !important;
 } */
 
 .thm-but {
@@ -529,7 +529,7 @@ footer[data-v-066114c4] {
 }
 
 .affilate_footer a.active[data-v-066114c4] {
-  background: var(--color-bg-primary);
+  background: var(--primary-active-bg);
   color: #fff;
 }
 
@@ -673,7 +673,7 @@ tr.tabetdat td {
   min-height: 40px;
   width: 100%;
   border-radius: 8px;
-  /* background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAACXBIWXMAAA7DAAAOwwHHb6hkAAAAGXRFWHRTb2Z0d2FyZQB3d3cuaW5rc2NhcGUub3Jnm+48GgAAATlJREFUSIntlTEvg1EUhp8jjbIZBIMYEQwmiUXExmITob+gG4lORr+BpD/AbiYGi7EL0UjKYrLoIkKHx3JJ21TTxjf2Xe53c895nnuW70Jb1Lz6oB60n/0V9TD15NvPck1Fw8AcMA3MA1vqTY+OzdSzob4A1YhoNN9gV62bXd7UHYBQF4AK8AGcAwJFoApc9DjBdprgFAhgDxgFllFLybqfphlTG2q5RzhqWf1Sx9K+kJhHOWAy1T0BRERdXQGeexUAJeAsIuppX0vrVK5TdURU+oCTwB17mgUFda0fcJfMdBIUM4K3pFlwDDxmxJ0FTtoF1xFxmwVdXf35HsoC2C0DwUAwELQKIkPuL2uI9A4AWf1JAdbTWgt1ArgDxoF74POf8BFgEXgFlgBQl9Qr9T2DB/9dvVQXAb4B/G0i6WXchkIAAAAASUVORK5CYII=); */
+  /* background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAACXBIWXMAAA7DAAAOwwHHb6hkAAAAGXRFWHRTb2Z0d2FyZQB3d3cuaW5rc2NhcGUub3Jnm+48GgAAATlJREFUSIntlTEvg1EUhp8jjbIZBIMYEQwmiUXExmITob+gG4lORr+BpD/AbiYGi7EL0UjKYrLoIkKHx3JJ21TTxjf2Xe53c895nnuW70Jb1Lz6oB60n/0V9TD15NvPck1Fw8AcMA3MA1vqTY+OzdSzob4A1YhoNN9gV62bXd7UHYBQF4AK8AGcAwJFoApc9DjBdprgFAhgDxgFllFLybqfphlTG2q5RzhqWf1Sx9K+kJhHOWAy1T0BRERdXQGeexUAJeAsIuppX0vrVK5TdURU+oCTwB17mgUFda0fcJfMdBIUM4K3pFlwDDxmxJ0FTtoF1xFxmwVdXf35HsoC2C0DwUAwELQKIkPuL2uI9A4AWf1JAdbTWgt1ArgDxoF74POf8BFgEXgFlgBQl9Qr9T2DB/9dvVQXAb4B/G0i6WXchkIAAAAASUVORK5CYII=); */
   padding: 0px 10px;
   background-size: 14px;
   background-position: right 7px top 11px;
@@ -732,7 +732,7 @@ tr.tabetdat td {
 }
 
 .sub-header-tab.refer-earn-sec .nav-pills .nav-link.active {
-  background-color: var(--color-bg-primary);
+  background-color: var(--primary-active-bg);
   color: #000;
 }
 
@@ -790,7 +790,7 @@ tr.tabetdat td {
 }
 
 .thm-but {
-  background: var(--color-bg-primary);
+  background: var(--primary-active-bg);
   color: black;
 }
 
@@ -813,7 +813,7 @@ tr.tabetdat td {
 .rs-pagination-btn.rs-pagination-btn-active {
   color: black !important;
   background-color: transparent;
-  border: 1px solid var(--color-bg-primary) !important;
+  border: 1px solid var(--primary-active-bg) !important;
 }
 
 .rs-pagination-md .rs-pagination-btn-active {

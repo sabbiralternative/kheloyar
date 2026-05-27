@@ -45,7 +45,7 @@ const Account = () => {
             <div className="w-full">
               <div className=" ">
                 <div className="max-w-md mx-auto bg-gray-200 shadow-lg overflow-hidden">
-                  <div className="bg-black5 text-white  flex">
+                  <div className="5   flex">
                     <div className="flex p-2 items-center flex-grow">
                       <div className="w-6 h-6 bg-white  rounded-full p-1">
                         <img
@@ -230,7 +230,7 @@ const Account = () => {
                   </div>
                   <div
                     onClick={() => dispatch(logout())}
-                    className="bg-gradient-to-b text-[18px] mb-12 font-[600] font-sans from-red9 to-red10 mt-4 text-white p-4 flex items-center justify-center cursor-pointer hover:bg-red-600 transition-colors duration-200"
+                    className="bg-gradient-to-b text-[18px] mb-12 font-[600] font-sans from-red9 to-red10 mt-4  p-4 flex items-center justify-center cursor-pointer hover:bg-red-600 transition-colors duration-200"
                   >
                     <span className="font-medium mr-2">LOGOUT</span>
                     <img

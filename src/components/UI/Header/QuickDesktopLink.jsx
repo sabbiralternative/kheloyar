@@ -32,7 +32,7 @@ const QuickDesktopLink = () => {
       <div className="flex items-center gap-5 lg:gap-3 overflow-auto">
         <Link
           to="/"
-          className="flex flex-col items-center gap-1 text-white hover:text-primarySvgColor cursor-pointer text-nowrap active"
+          className="flex flex-col items-center gap-1  cursor-pointer text-nowrap active"
           aria-current="page"
         >
           <img
@@ -44,7 +44,7 @@ const QuickDesktopLink = () => {
         </Link>
         <a
           onClick={handleNavigateToAviator}
-          className="flex flex-col items-center gap-1 text-white hover:text-primarySvgColor cursor-pointer text-nowrap"
+          className="flex flex-col items-center gap-1  cursor-pointer text-nowrap"
         >
           <img
             src="/icon/aviator-icon-Bqkblu8x.svg"
@@ -54,7 +54,7 @@ const QuickDesktopLink = () => {
           <span className="text-xs md:text-[9px]">Aviator</span>
         </a>
         <Link
-          className="flex flex-col items-center gap-1 text-white hover:text-primarySvgColor cursor-pointer text-nowrap"
+          className="flex flex-col items-center gap-1  cursor-pointer text-nowrap"
           to="/casino?product=MAC88%20LIVE&category=All"
         >
           <img
@@ -65,7 +65,7 @@ const QuickDesktopLink = () => {
           <span className="text-xs md:text-[9px]">Indian Casino</span>
         </Link>
         <Link
-          className="flex flex-col items-center gap-1 text-white hover:text-primarySvgColor cursor-pointer text-nowrap"
+          className="flex flex-col items-center gap-1  cursor-pointer text-nowrap"
           to="/casino?product=All&category=All"
         >
           <img
@@ -76,7 +76,7 @@ const QuickDesktopLink = () => {
           <span className="text-xs md:text-[9px]">All Casino</span>
         </Link>
         <Link
-          className="flex flex-col items-center gap-1 text-white hover:text-primarySvgColor cursor-pointer text-nowrap"
+          className="flex flex-col items-center gap-1  cursor-pointer text-nowrap"
           to="/casino?product=MAC88%20LIVE&category=teenpatti"
         >
           <img
@@ -87,7 +87,7 @@ const QuickDesktopLink = () => {
           <span className="text-xs md:text-[9px]">Teen Patti</span>
         </Link>
         <Link
-          className="flex flex-col items-center gap-1 text-white hover:text-primarySvgColor cursor-pointer text-nowrap"
+          className="flex flex-col items-center gap-1  cursor-pointer text-nowrap"
           to="/casino?product=All&category=slots"
         >
           <img
@@ -98,7 +98,7 @@ const QuickDesktopLink = () => {
           <span className="text-xs md:text-[9px]">Slot Game</span>
         </Link>
         <Link
-          className="flex flex-col items-center gap-1 text-white hover:text-primarySvgColor cursor-pointer text-nowrap"
+          className="flex flex-col items-center gap-1  cursor-pointer text-nowrap"
           to="/casino?product=All&category=other%20table%20games"
         >
           <img
@@ -109,7 +109,7 @@ const QuickDesktopLink = () => {
           <span className="text-xs md:text-[9px]">Table Game</span>
         </Link>
         <Link
-          className="flex flex-col items-center gap-1 text-white hover:text-primarySvgColor cursor-pointer text-nowrap"
+          className="flex flex-col items-center gap-1  cursor-pointer text-nowrap"
           to="/casino?product=All&category=live"
         >
           <img

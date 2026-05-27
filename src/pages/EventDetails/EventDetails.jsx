@@ -153,13 +153,13 @@ const EventDetails = () => {
         id="scrollToTopDiv"
         className="flex flex-col gap-1 h-full overflow-auto scrollbar-hide"
       >
-        <div className="flex flex-1 bg-black pb-[75px]">
+        <div className="flex flex-1  pb-[75px]">
           <div className="w-full h-full scrollbar-hide">
             <div className="flex md:grid md:grid-cols-5 lg:grid-cols-6 xl:grid-cols-7 gap-1 h-full w-full ">
               <div className="relative w-full md:col-span-3 lg:col-span-4 xl:col-span-5 pb-[10px] md:pb-0">
                 <EventTitle data={data?.result?.[0]} />
                 <EventTitleMobile data={data?.result?.[0]} />
-                <div className="md:hidden bg-secondary text-white flex justify-between mt-2">
+                <div className="md:hidden bg-secondary  flex justify-between mt-2">
                   <div className="flex">
                     <div
                       onClick={() => setTab("odds")}
@@ -181,7 +181,7 @@ const EventDetails = () => {
                       strokeWidth={0}
                       viewBox="0 0 20 20"
                       aria-hidden="true"
-                      className="text-white "
+                      className=" "
                       height={25}
                       width={25}
                       xmlns="http://www.w3.org/2000/svg"

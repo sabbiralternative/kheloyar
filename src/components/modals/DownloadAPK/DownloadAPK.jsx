@@ -30,7 +30,7 @@ const DownloadAPK = () => {
 
   return (
     <div>
-      <div className="m-auto fixed overflow-y-scroll z-[100] inset-0 bg-black/50 flex items-center justify-center">
+      <div className="m-auto fixed overflow-y-scroll z-[100] inset-0 /50 flex items-center justify-center">
         <div className="bg-transparent rounded-lg max-w-[90%] lg:max-w-[450px]  w-full mx-auto relative max-h-[90vh] overflow-y-auto scroll ">
           <div ref={modalRef} className="relative overflow-y-auto h-fit w-full">
             <img
@@ -41,7 +41,7 @@ const DownloadAPK = () => {
             <div className="absolute top-4 right-4 z-10">
               <button
                 onClick={closeModal}
-                className=" active:opacity-70 text-lg text-white cursor-pointer hover:bg-gray-100/30 rounded-md"
+                className=" active:opacity-70 text-lg  cursor-pointer hover:bg-gray-100/30 rounded-md"
               >
                 <svg
                   className="w-6 h-6"

@@ -298,7 +298,7 @@ const CreateUSDTAccount = ({ refetchBankAccounts, setShowUSDTModal }) => {
                 <button
                   disabled={!isFormValid}
                   type="submit"
-                  className="inline-block leading-normal relative overflow-hidden transition duration-150 ease-in-out w-full text-primary bg-primary shadow-lg rounded-md xs:text-[15px] px-5 py-2 flex items-center justify-center gap-x-2  font-medium text-base cursor-pointer"
+                  className="inline-block leading-normal relative overflow-hidden transition duration-150 ease-in-out w-full text-primary bg-buttonGradient shadow-lg rounded-md xs:text-[15px] px-5 py-2 flex items-center justify-center gap-x-2  font-medium text-base cursor-pointer"
                 >
                   <span>Add USDT Wallet</span>
                 </button>

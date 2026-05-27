@@ -41,7 +41,7 @@ const MainLayout = () => {
   return (
     <div className="h-full font-poppinsFont">
       {showLoginModal && <Login />}
-      <div className="relative flex xl:gap-4 h-full w-full md:pt-4 bg-black text-white">
+      <div className="relative flex xl:gap-4 h-full w-full md:pt-4 app-bg ">
         <DesktopLeftSidebar />
         <div className="flex flex-col h-full w-full overflow-auto scrollbar-hide">
           <Header />

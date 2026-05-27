@@ -130,15 +130,20 @@ const Login = () => {
     navigate("/register");
   };
   return (
-    <div className="m-auto fixed overflow-auto z-[100] inset-0 bg-black bg-opacity-80 flex items-center justify-center pt-2">
+    <div className="m-auto fixed overflow-auto z-[100] inset-0  bg-opacity-80 flex items-center justify-center pt-2">
       <div className="flex flex-col bg-modalBg rounded-[20px] shadow-lg  max-w-[95%] mx-auto p-2 md:p-4 relative max-h-[90vh]">
         <div className="flex flex-shrink-0 justify-between items-center pb-3">
           <div className="flex items-center justify-center gap-1 cursor-pointer flex-row undefined">
-            <img src={logo} alt="Logo" className="h-[31px] object-contain" />
+            <img
+              style={{ filter: "invert(var(--invert))" }}
+              src={logo}
+              alt="Logo"
+              className="h-[31px] object-contain"
+            />
           </div>
           <button
             onClick={closeLogin}
-            className=" active:opacity-70 text-lg text-white flex items-center justify-center bg-loginInputGray rounded-full h-[48px] w-[48px]"
+            className=" active:opacity-70 text-lg  flex items-center justify-center bg-loginInputGray rounded-full h-[48px] w-[48px]"
           >
             <svg
               className="w-6 h-6"
@@ -165,7 +170,7 @@ const Login = () => {
                     <select
                       onChange={(e) => setTab(e.target.value)}
                       id="usernameOrPhone"
-                      className="h-[38px] w-full rounded p-2 pr-6 bg-loginInputGray text-white text-xs focus:outline-none appearance-none"
+                      className="h-[38px] w-full rounded p-2 pr-6 bg-loginInputGray  text-xs focus:outline-none appearance-none"
                     >
                       <option className="capitalize" value="username">
                         Username
@@ -179,7 +184,7 @@ const Login = () => {
                       fill="currentColor"
                       strokeWidth={0}
                       viewBox="0 0 24 24"
-                      className="absolute right-1 top-2.5 pointer-events-none text-white"
+                      className="absolute right-1 top-2.5 pointer-events-none "
                       height={20}
                       width={20}
                       xmlns="http://www.w3.org/2000/svg"
@@ -198,7 +203,7 @@ const Login = () => {
                           ? "Enter Username"
                           : "Enter Phone Number"
                       }
-                      className="w-full h-[38px] px-3 bg-loginInputGray rounded text-white placeholder-inputPlaceholderText placeholder:text-xs focus:outline-none focus:border-blue-300"
+                      className="w-full h-[38px] px-3 bg-loginInputGray rounded  placeholder-inputPlaceholderText placeholder:text-xs focus:outline-none focus:border-blue-300"
                     />
                   </div>
                 </div>
@@ -208,7 +213,7 @@ const Login = () => {
                       {...register("password", { required: true })}
                       type={showPassword ? "text" : "password"}
                       placeholder="Enter Your Password"
-                      className="w-full h-[38px] px-3 pr-10 bg-loginInputGray rounded text-white placeholder-inputPlaceholderText placeholder:text-xs focus:outline-none focus:border-blue-300"
+                      className="w-full h-[38px] px-3 pr-10 bg-loginInputGray rounded  placeholder-inputPlaceholderText placeholder:text-xs focus:outline-none focus:border-blue-300"
                     />
                     <button
                       onClick={() => setShowPassword(!showPassword)}
@@ -245,17 +250,14 @@ const Login = () => {
                   </div>
                 </div>
                 <div className="text-center">
-                  <a
-                    className="text-white text-xs"
-                    onClick={showForgotPassword}
-                  >
+                  <a className=" text-xs" onClick={showForgotPassword}>
                     Forgot password? पासवर्ड भूल गया?
                   </a>
                 </div>
                 <div className="space-y-3">
                   <button
                     type="submit"
-                    className=" active:opacity-70 w-full h-[40px] text-sm text-bold font-bold p-1 rounded-md transition-colors bg-disabledButtonBg border border-signupHereText text-white"
+                    className=" active:opacity-70 w-full h-[40px] text-sm text-bold font-bold p-1 rounded-md transition-colors bg-disabledButtonBg border border-signupHereText "
                   >
                     Login
                   </button>
@@ -267,9 +269,9 @@ const Login = () => {
                     Login with Demo ID
                   </button>
                 </div>
-                <div className="text-center text-white">
+                <div className="text-center ">
                   <p>
-                    <span className="text-xs text-white/60">
+                    <span className="text-xs /60">
                       Don&apos;t have an account?
                     </span>{" "}
                     <span
@@ -285,7 +287,7 @@ const Login = () => {
                     <button
                       onClick={() => getWhatsAppId(Settings?.whatsapplink)}
                       type="button"
-                      className=" active:opacity-70 w-full h-[40px] text-sm text-bold font-bold p-1 rounded-md transition-colors bg-disabledButtonBg border border-signupHereText text-white"
+                      className=" active:opacity-70 w-full h-[40px] text-sm text-bold font-bold p-1 rounded-md transition-colors bg-disabledButtonBg border border-signupHereText "
                     >
                       Whatsapp
                     </button>
@@ -294,7 +296,7 @@ const Login = () => {
                     <button
                       onClick={handleDownload}
                       type="button"
-                      className=" active:opacity-70 w-full h-[40px] text-sm text-bold font-bold p-1 rounded-md transition-colors bg-disabledButtonBg border border-signupHereText text-white"
+                      className=" active:opacity-70 w-full h-[40px] text-sm text-bold font-bold p-1 rounded-md transition-colors bg-disabledButtonBg border border-signupHereText "
                     >
                       Download .apk
                     </button>

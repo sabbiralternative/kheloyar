@@ -51,11 +51,11 @@ const Menu = ({ setShowMenu }) => {
     }
   };
   return (
-    <div className="fixed top-0 left-0 w-full h-full bg-black z-50">
+    <div className="fixed top-0 left-0 w-full h-full  z-50">
       {showWarning && (
         <WarningCondition gameInfo={gameInfo} setShowWarning={setShowWarning} />
       )}
-      <div className="flex flex-col h-full">
+      <div className="flex flex-col h-full bg-primary">
         <div className="flex flex-col flex-1 gap-2 p-2 overflow-auto">
           <div>
             <img
@@ -322,9 +322,9 @@ const Menu = ({ setShowMenu }) => {
             </div>
           </div>
         </div>
-        <div className="flex items-center justify-between gap-3 h-[70px] p-2 bg-black">
+        <div className="flex items-center justify-between gap-3 h-[70px] p-2 ">
           {token && (
-            <div className="flex items-center gap-2 text-[10px] text-white font-medium">
+            <div className="flex items-center gap-2 text-[10px]  font-medium">
               <img
                 src={`${API.assets}/${Settings.site}/favicon.png`}
                 alt="logo"
@@ -350,6 +350,7 @@ const Menu = ({ setShowMenu }) => {
               className="flex items-center justify-center h-[40px] w-[40px] rounded-full bg-modalBg cursor-pointer"
             >
               <img
+                style={{ filter: "invert(var(--invert))" }}
                 src="data:image/svg+xml,%3csvg%20width='18'%20height='16'%20viewBox='0%200%2018%2016'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3cpath%20d='M8.5625%2014.75L1.8125%208L8.5625%201.25M2.75%208H16.4375'%20stroke='white'%20stroke-width='2.25'%20stroke-linecap='round'%20stroke-linejoin='round'/%3e%3c/svg%3e"
                 alt="back"
                 className="h-[20px]"

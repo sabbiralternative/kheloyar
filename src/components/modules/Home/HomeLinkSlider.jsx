@@ -31,7 +31,7 @@ const HomeLinkSlider = () => {
       )}
       <div
         onClick={() => handleNavigateToIFrame("sportsbook", "550000")}
-        className="flex items-center justify-between gap-2 h-[40px] min-w-[150px] md:min-w-[280px] text-white text-xs font-medium px-2 py-1 rounded-md cursor-pointer bg-sportsbookQuickLinkBg"
+        className="flex items-center justify-between gap-2 h-[40px] min-w-[150px] md:min-w-[280px]  text-xs font-medium px-2 py-1 rounded-md cursor-pointer bg-sportsbookQuickLinkBg"
       >
         <span>Sportsbook</span>
         <img
@@ -41,7 +41,7 @@ const HomeLinkSlider = () => {
           className="h-[25px] w-[25px]"
         />
       </div>
-      {/* <div className="flex items-center justify-between gap-2 h-[40px] min-w-[150px] md:min-w-[280px] text-white text-xs font-medium px-2 py-1 rounded-md cursor-pointer bg-casinoLobbyQuickLinkBg">
+      {/* <div className="flex items-center justify-between gap-2 h-[40px] min-w-[150px] md:min-w-[280px]  text-xs font-medium px-2 py-1 rounded-md cursor-pointer bg-casinoLobbyQuickLinkBg">
         <span>Casino Lobby</span>
         <img
           loading="lazy"
@@ -52,7 +52,7 @@ const HomeLinkSlider = () => {
       </div> */}
       <div
         onClick={() => navigate("/casino?product=MAC88%20LIVE&category=All")}
-        className="flex items-center justify-between gap-2 h-[40px] min-w-[150px] md:min-w-[280px] text-white text-xs font-medium px-2 py-1 rounded-md cursor-pointer bg-indianCasinoQuickLinkBg"
+        className="flex items-center justify-between gap-2 h-[40px] min-w-[150px] md:min-w-[280px]  text-xs font-medium px-2 py-1 rounded-md cursor-pointer bg-indianCasinoQuickLinkBg"
       >
         <span>Indian Casino</span>
         <img
@@ -62,7 +62,7 @@ const HomeLinkSlider = () => {
           className="h-[25px] w-[25px]"
         />
       </div>
-      {/* <div className="flex items-center justify-between gap-2 h-[40px] min-w-[150px] md:min-w-[280px] text-white text-xs font-medium px-2 py-1 rounded-md cursor-pointer bg-virtualsQuickLinkBg">
+      {/* <div className="flex items-center justify-between gap-2 h-[40px] min-w-[150px] md:min-w-[280px]  text-xs font-medium px-2 py-1 rounded-md cursor-pointer bg-virtualsQuickLinkBg">
         <span>Virtuals</span>
         <img
           loading="lazy"
@@ -73,7 +73,7 @@ const HomeLinkSlider = () => {
       </div> */}
       <div
         onClick={() => navigate("/casino?product=All&category=live")}
-        className="flex items-center justify-between gap-2 h-[40px] min-w-[150px] md:min-w-[280px] text-white text-xs font-medium px-2 py-1 rounded-md cursor-pointer bg-liveCasinoQuickLinkBg"
+        className="flex items-center justify-between gap-2 h-[40px] min-w-[150px] md:min-w-[280px]  text-xs font-medium px-2 py-1 rounded-md cursor-pointer bg-liveCasinoQuickLinkBg"
       >
         <span>Live Casino</span>
         <img

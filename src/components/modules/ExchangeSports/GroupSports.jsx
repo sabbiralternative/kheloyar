@@ -59,7 +59,7 @@ export const GroupSports = () => {
       return (
         <div className="h-[34px]">
           <div
-            className={`w-full h-full exch-odd-button cursor-pointer flex justify-center items-center text-white ${
+            className={`w-full h-full exch-odd-button cursor-pointer flex justify-center items-center  ${
               type === "back" ? "bg-blue13" : "bg-pink1"
             }`}
           >
@@ -108,7 +108,7 @@ export const GroupSports = () => {
                 <div
                   onClick={() => setIsInPlay(true)}
                   className={`cursor-pointer flex-1 py-[2px] font-[600] font-sans text-center text-[13px] rounded-sm ${
-                    isInPlay ? "bg-gray-700 text-white" : "bg-white text-black"
+                    isInPlay ? "bg-gray-700 " : "bg-white text-black"
                   }`}
                 >
                   In-play
@@ -116,7 +116,7 @@ export const GroupSports = () => {
                 <div
                   onClick={() => setIsInPlay(false)}
                   className={`cursor-pointer flex-1 py-[2px] font-[600] font-sans text-center text-[13px] rounded-sm ${
-                    !isInPlay ? "bg-gray-700 text-white" : "bg-white text-black"
+                    !isInPlay ? "bg-gray-700 " : "bg-white text-black"
                   }`}
                 >
                   UPCOMING
@@ -156,7 +156,7 @@ export const GroupSports = () => {
                     <div className="flex flex-col flex-0 md:gap-[1px]">
                       <div className="flex flex-col md:gap-[1px] overflow-hidden" />
 
-                      <div className="flex items-center gap-3 md:mt-0 mt-[2px] py-1 text-xs text-white px-2 justify-between max-md:bg-section-gradient md:bg-goldenYellow md:text-black">
+                      <div className="flex items-center gap-3 md:mt-0 mt-[2px] py-1 text-xs  px-2 justify-between max-md:bg-section-gradient md:bg-goldenYellow md:text-black">
                         <div className="font-bold flex gap-1 items-center">
                           <img
                             src={`/src/assets/img/${category}.svg`}
@@ -411,7 +411,7 @@ export const GroupSports = () => {
                 );
               })}
 
-              <div className="h-[1px] mt-10 bg-black3 mx-2" />
+              <div className="h-[1px] mt-10 3 mx-2" />
               <div className="flex flex-wrap mt-3 font-sans justify-center w-full text-[14px]  text-black  text-center gap-y-2">
                 <span className="cursor-pointer text-right px-3">
                   Privacy Policy

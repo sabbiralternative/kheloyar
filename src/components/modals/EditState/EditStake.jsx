@@ -65,7 +65,7 @@ const EditStake = ({ setShowEditStakeModal }) => {
         </div>
         <div className="overflow-y-scroll h-fit">
           <div className="flex flex-col sm:border sm:rounded-[4px] h-full">
-            <div className="py-1 flex text-[14px] font-[700] flex-row justify-between items-center  w-full text-white px-2 bg-black1">
+            <div className="py-1 flex text-[14px] font-[700] flex-row justify-between items-center  w-full  px-2 1">
               <div>
                 <p className="text-[14px]">Change Button Values</p>
               </div>
@@ -108,7 +108,7 @@ const EditStake = ({ setShowEditStakeModal }) => {
               </div>
               <button
                 type="submit"
-                className=" active:opacity-70  bg-black1  p-3 text-white  px-4 py-1.5 rounded-[4px] active:bg-blue1 placeholder:text-xs w-full sm:w-fit"
+                className=" active:opacity-70  1  p-3   px-4 py-1.5 rounded-[4px] active:bg-blue1 placeholder:text-xs w-full sm:w-fit"
               >
                 Update
               </button>

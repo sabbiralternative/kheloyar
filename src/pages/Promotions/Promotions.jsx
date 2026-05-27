@@ -48,7 +48,7 @@ const Promotions = () => {
             <div className=" w-full h-max  py-3 px-2.5 flex flex-col gap-y-[15px]">
               <div className=" flex md:flex-row flex-col ring-1 ring-lossback_1 items-center w-full rounded-lg  bg-bg_color_lossback_card_bg ">
                 <div className="px-4 relative py-3 w-full md:w-fit overflow-hidden">
-                  <div className="relative text-center z-20 text-white font-black leading-normal text-base tracking-wider uppercase">
+                  <div className="relative text-center z-20  font-black leading-normal text-base tracking-wider uppercase">
                     Lossback bonus
                   </div>
                   <div className="h-[120%] aspect-square absolute bottom-0 translate-y-1/3 md:translate-y-1/2 left-0 z-10">
@@ -67,7 +67,7 @@ const Promotions = () => {
                 <div className="md:w-0.5 w-[96%] h-0.5 md:h-8 rounded-full bg-cm_primary" />
                 <div className="flex items-center gap-1.5 w-full lg:w-fit flex-1 px-2 py-2 md:py-0">
                   {!token && (
-                    <div className="flex flex-1 flex-col text-white leading-normal tracking-wider z-50">
+                    <div className="flex flex-1 flex-col  leading-normal tracking-wider z-50">
                       <div className="text-base flex items-center gap-1 text-text_color_lossback_amt font-black w-full">
                         <div className="flex-1 bg-bg_color_avlnowLossback animate-pulse text-text_color_lossback_amt px-3 py-1 text-x font-bold flex items-center gap-1 rounded-full">
                           Login to view claims
@@ -78,7 +78,7 @@ const Promotions = () => {
 
                   <button
                     onClick={() => handleNavigate("/lossback-bonus")}
-                    className="relative overflow-hidden bg-bg_color_lossbackSeeAll ml-auto active:scale-[99%] transition-all duration-300 text-white whitespace-nowrap text-sm font-bold rounded px-4 py-2"
+                    className="relative overflow-hidden bg-bg_color_lossbackSeeAll ml-auto active:scale-[99%] transition-all duration-300  whitespace-nowrap text-sm font-bold rounded px-4 py-2"
                     type="button"
                   >
                     VIEW ALL
@@ -114,18 +114,18 @@ const Promotions = () => {
                       height={60}
                     />
                   </div>
-                  <div className="flex flex-col items-start text-white gap-[0.5px]">
+                  <div className="flex flex-col items-start  gap-[0.5px]">
                     <div className="text-sm md:text-base font-bold  ">
                       Coupon Code
                     </div>
-                    <div className="leading-4 text-x sm:text-xs md:text-sm tracking-wide font-normal opacity-80  text-white">
+                    <div className="leading-4 text-x sm:text-xs md:text-sm tracking-wide font-normal opacity-80  ">
                       Type or Paste your coupon code and get rewards in your
                       wallet.
                     </div>
                   </div>
                 </div>
                 <div className="flex flex-col w-full">
-                  <div className="flex items-center w-full text-sm text-white font-normal  bg-bg_color_giftCardInputBg py-1 pl-[10px] pr-[6px] rounded-md border  focus-within:outline-none placeholder:text-white focus-within:shadow-sm cursor-text border-transparent focus-within:border-transparent ">
+                  <div className="flex items-center w-full text-sm  font-normal  bg-bg_color_giftCardInputBg py-1 pl-[10px] pr-[6px] rounded-md border  focus-within:outline-none placeholder: focus-within:shadow-sm cursor-text border-transparent focus-within:border-transparent ">
                     <input
                       value={coupon || ""}
                       onChange={(e) => setCoupon(e.target.value)}
@@ -135,7 +135,7 @@ const Promotions = () => {
                     <div className="flex-shrink-0 w-max">
                       <button
                         onClick={claimCoupon}
-                        className="relative overflow-hidden w-max px-2 py-1  text-white bg-header-gradient  text-xs md:text-sm font-bold leading-4 rounded-md flex items-center justify-center relative cursor-pointer disabled:opacity-70 flex items-center gap-x-1 shadow-sm"
+                        className="relative overflow-hidden w-max px-2 py-1   bg-header-gradient  text-xs md:text-sm font-bold leading-4 rounded-md flex items-center justify-center relative cursor-pointer disabled:opacity-70 flex items-center gap-x-1 shadow-sm"
                         type="button"
                       >
                         <div className="flex items-center gap-x-1">

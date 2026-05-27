@@ -108,7 +108,7 @@ const UserList = () => {
                                 margin: "auto",
                               }}
                               data-v-fd406c30=""
-                              className="submit-btn rounded bg-primary"
+                              className="submit-btn rounded bg-buttonGradient"
                             >
                               View
                             </button>
@@ -129,7 +129,7 @@ const UserList = () => {
                                 margin: "auto",
                               }}
                               data-v-fd406c30=""
-                              className="submit-btn rounded bg-primary"
+                              className="submit-btn rounded bg-buttonGradient"
                             >
                               View
                             </button>

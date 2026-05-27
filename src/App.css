@@ -6,12 +6,12 @@
 }
 .primary-icon-color svg,
 .back-from-iframe svg {
-  stroke: var(--color-bg-primary);
+  stroke: var(--primary-active-bg);
 }
 
 .change-password svg,
 .primary-icons svg {
-  fill: var(--color-bg-primary);
+  fill: var(--primary-active-bg);
 }
 
 .text-secondary {
@@ -37,7 +37,7 @@ input:-moz-autofill {
 }
 
 .auth-gradient {
-  background-image: var(--color-bg-gradient);
+  background: var(--color-bg-gradient);
   border-radius: 4px;
 }
 
@@ -540,7 +540,7 @@ input:-moz-autofill {
 }
 
 .dropdownBG {
-  background-color: var(--color-bg-primary) !important;
+  background-color: var(--primary-active-bg) !important;
 }
 
 .swal2-container:has(.alert-dialog) {
@@ -693,7 +693,7 @@ div:where(.swal2-container) div:where(.swal2-actions) {
 /* App pop up */
 .android-popup {
   width: 100%;
-  background: var(--color-bg-primary);
+  background: var(--primary-active-bg);
   padding: 5px;
   display: flex;
   align-items: center;
@@ -810,7 +810,7 @@ div:where(.swal2-container) div:where(.swal2-actions) {
   gap: 12px;
   flex-shrink: 0;
   border-radius: 8px;
-  background: var(--color-bg-primary);
+  background: var(--primary-active-bg);
 }
 
 .install-btn button {
@@ -830,7 +830,7 @@ div:where(.swal2-container) div:where(.swal2-actions) {
 .scorecard {
   /* width: calc(100% - 8px) !important; */
   padding: 5px !important;
-  background-image: url("/src/assets/images/scorecard-bg.png") !important;
+  background: url("/src/assets/images/scorecard-bg.png") !important;
   position: relative !important;
   background-repeat: no-repeat !important;
   background-size: cover !important;
@@ -970,7 +970,7 @@ div:where(.swal2-container) div:where(.swal2-actions) {
   width: 30px;
   height: 45px;
   top: 0;
-  background-color: var(--color-bg-primary);
+  background-color: var(--primary-active-bg);
 }
 
 button.btn {
@@ -1286,7 +1286,7 @@ html * {
   }
   .sc_cw-overs-info-mobile {
     display: flex !important;
-    border-top: 0.5px solid var(--color-bg-primary) !important;
+    border-top: 0.5px solid var(--primary-active-bg) !important;
     padding-top: 2px !important;
     padding-bottom: 2px !important;
     color: #fff !important;
@@ -1507,3 +1507,13 @@ html * {
   }
 }
 /* Horse banner */
+
+/* !Kheloyar project theme change css */
+.app-bg {
+  background: var(--app-bg);
+  color: var(--primary-color);
+}
+input::placeholder {
+  color: var(--primary-color);
+}
+/* !Kheloyar project theme change css */

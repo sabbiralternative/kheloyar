@@ -78,7 +78,7 @@ const Notification = () => {
         >
           <Marquee>
             {filteredNotification?.map((item) => (
-              <p key={item?.id} className="mr-[100vw] text-white">
+              <p key={item?.id} className="mr-[100vw] ">
                 {item?.text}
               </p>
             ))}
@@ -96,7 +96,7 @@ const Notification = () => {
         <div className="hidden md:block">
           <div className="flex flex-col md:gap-[1px] overflow-hidden">
             <div className="flex items-center px-2 gap-2 text-xs bg-gradient-to-b from-blue10 to-blue11">
-              <div className="text-white w-full md:w-full">
+              <div className=" w-full md:w-full">
                 <div className="flex w-full text-sm text-blue-400 font-bold overflow-hidden">
                   <div className="md:w-[100%] w-full md:overflow-hidden">
                     <div className="flex gap-3 text-sm animate-marquee whitespace-nowrap">

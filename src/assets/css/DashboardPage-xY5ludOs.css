@@ -1,1 +1,66 @@
-@keyframes time-badge-dash{to{stroke-dashoffset:100}}.time-badge{position:relative;isolation:isolate;border-radius:5px;overflow:visible}.time-badge__runner{position:absolute;top:-6px;right:-6px;bottom:-6px;left:-6px;width:calc(100% + 12px);height:calc(100% + 12px);pointer-events:none;z-index:0}.time-badge__runner rect{fill:none;stroke:#00b181;stroke-width:2;stroke-linecap:round;stroke-dasharray:19 80;stroke-dashoffset:0;rx:12;ry:12;animation:time-badge-dash 5s linear infinite}.time-badge__runner rect:nth-of-type(2){stroke:#00b181;animation-delay:-2.5s}@keyframes blink{0%,to{opacity:1}50%{opacity:.3}}.live-blink{animation:blink 1.5s ease-in-out infinite}@keyframes fall-in{0%{opacity:0;transform:translateY(-8px)}60%{opacity:1;transform:translateY(2px)}to{opacity:1;transform:translateY(0)}}.fall-in{animation:fall-in .4s ease-out}
+@keyframes time-badge-dash {
+  to {
+    stroke-dashoffset: 100;
+  }
+}
+.time-badge {
+  position: relative;
+  isolation: isolate;
+  border-radius: 5px;
+  overflow: visible;
+}
+.time-badge__runner {
+  position: absolute;
+  top: -6px;
+  right: -6px;
+  bottom: -6px;
+  left: -6px;
+  width: calc(100% + 12px);
+  height: calc(100% + 12px);
+  pointer-events: none;
+  z-index: 0;
+}
+.time-badge__runner rect {
+  fill: none;
+  stroke: #00b181;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-dasharray: 19 80;
+  stroke-dashoffset: 0;
+  rx: 12;
+  ry: 12;
+  animation: time-badge-dash 5s linear infinite;
+}
+.time-badge__runner rect:nth-of-type(2) {
+  stroke: #00b181;
+  animation-delay: -2.5s;
+}
+@keyframes blink {
+  0%,
+  to {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.3;
+  }
+}
+.live-blink {
+  animation: blink 1.5s ease-in-out infinite;
+}
+@keyframes fall-in {
+  0% {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  60% {
+    opacity: 1;
+    transform: translateY(2px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.fall-in {
+  animation: fall-in 0.4s ease-out;
+}

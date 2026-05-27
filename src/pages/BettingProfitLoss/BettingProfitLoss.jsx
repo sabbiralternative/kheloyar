@@ -75,7 +75,7 @@ const BettingProfitLoss = () => {
                       title="Profit &amp; Loss Statement"
                       className="w-full px-1 my-1.5 cursor-pointer"
                     >
-                      <div className="w-full text-white rounded-[4px] flex items-center justify-between px-2.5 py-[9px] bg-headerBg">
+                      <div className="w-full  rounded-[4px] flex items-center justify-between px-2.5 py-[9px] bg-headerBg">
                         <div className="text-xs   font-[600] leading-[140%]">
                           {moment(date).format("Do-MMM-YYYY")}
                         </div>
@@ -89,7 +89,7 @@ const BettingProfitLoss = () => {
                                 ? "text-text_Success"
                                 : totalPnl < 0
                                   ? "text-red-400"
-                                  : "text-white"
+                                  : ""
                             }`}
                           >
                             {totalPnl?.toFixed(2)}

@@ -43,7 +43,7 @@ const SidebarContent = ({ setSidebar }) => {
           className
           to="/"
         >
-          <div className="flex items-center gap-2 w-full text-left transition-colors  h-[44px] p-3 false">
+          <div className="flex items-center gap-2 w-full text-left transition-colors  h-[44px] p-3 false hover:bg-dashboardGamesTabsBg">
             <svg
               width={24}
               height={24}
@@ -64,9 +64,7 @@ const SidebarContent = ({ setSidebar }) => {
                 </clipPath>
               </defs>
             </svg>
-            <span className="text-xs font-semibold hover:text-primarySvgColor">
-              Home
-            </span>
+            <span className="text-xs font-semibold ">Home</span>
           </div>
         </Link>
       </div>
@@ -75,7 +73,7 @@ const SidebarContent = ({ setSidebar }) => {
           onClick={() => setShowSportsLinks(!showSportsLinks)}
           className="flex items-center justify-between w-full p-3 text-left transition-colors h-[44px] cursor-pointer hover:bg-dashboardGamesTabsBg"
         >
-          <div className="flex items-center gap-2 flex-1">
+          <div className="flex items-center gap-2 flex-1 ">
             <svg
               width={20}
               height={20}
@@ -167,13 +165,12 @@ const SidebarContent = ({ setSidebar }) => {
                 </clipPath>
               </defs>
             </svg>
-            <span className="text-xs font-semibold hover:text-signupHereText">
-              Sports
-            </span>
+            <span className="text-xs font-semibold ">Sports</span>
           </div>
           <img
             src="data:image/svg+xml,%3csvg%20width='10'%20height='8'%20viewBox='0%200%2010%208'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3cpath%20d='M4.46885%207.00937L0.218848%202.75937C-0.0749023%202.46563%20-0.0749023%201.99062%200.218848%201.7L0.925098%200.99375C1.21885%200.7%201.69385%200.7%201.98447%200.99375L4.99697%204.00625L8.00947%200.99375C8.30322%200.7%208.77822%200.7%209.06885%200.99375L9.7751%201.7C10.0688%201.99375%2010.0688%202.46875%209.7751%202.75937L5.5251%207.00937C5.2376%207.30312%204.7626%207.30312%204.46885%207.00937Z'%20fill='white'/%3e%3c/svg%3e"
             alt="chevron"
+            style={{ filter: "invert(1)" }}
             className={`h-3 w-3 transition-transform  ${showSportsLinks ? "rotate-180" : ""}`}
           />
         </div>
@@ -194,9 +191,7 @@ const SidebarContent = ({ setSidebar }) => {
                   alt="cricket"
                   className="h-4 w-4"
                 />
-                <span className="text-sm font-medium hover:text-signupHereText">
-                  Cricket
-                </span>
+                <span className="text-sm font-medium ">Cricket</span>
               </div>
             </Link>
             <Link
@@ -214,9 +209,7 @@ const SidebarContent = ({ setSidebar }) => {
                   alt="soccer"
                   className="h-4 w-4"
                 />
-                <span className="text-sm font-medium hover:text-signupHereText">
-                  Soccer
-                </span>
+                <span className="text-sm font-medium ">Soccer</span>
               </div>
             </Link>
             <Link
@@ -234,9 +227,7 @@ const SidebarContent = ({ setSidebar }) => {
                   alt="tennis"
                   className="h-4 w-4"
                 />
-                <span className="text-sm font-medium hover:text-signupHereText">
-                  Tennis
-                </span>
+                <span className="text-sm font-medium ">Tennis</span>
               </div>
             </Link>
             <Link
@@ -250,9 +241,7 @@ const SidebarContent = ({ setSidebar }) => {
             >
               <div className="flex items-center gap-2 w-full pl-10 pr-3 py-2 text-left transition-colors h-[40px] hover:bg-dashboardGamesTabsBg/50">
                 <img src="/icon/7.svg" alt="horse_racing" className="h-4 w-4" />
-                <span className="text-sm font-medium hover:text-signupHereText">
-                  Horse Racing
-                </span>
+                <span className="text-sm font-medium ">Horse Racing</span>
               </div>
             </Link>
             <Link
@@ -266,9 +255,7 @@ const SidebarContent = ({ setSidebar }) => {
             >
               <div className="flex items-center gap-2 w-full pl-10 pr-3 py-2 text-left transition-colors h-[40px] hover:bg-dashboardGamesTabsBg/50">
                 <img src="/icon/4339.svg" alt="greyhound" className="h-4 w-4" />
-                <span className="text-sm font-medium hover:text-signupHereText">
-                  GreyHound
-                </span>
+                <span className="text-sm font-medium ">GreyHound</span>
               </div>
             </Link>
 
@@ -287,9 +274,7 @@ const SidebarContent = ({ setSidebar }) => {
                   alt="kabaddi"
                   className="h-4 w-4"
                 />
-                <span className="text-sm font-medium hover:text-signupHereText">
-                  kabaddi
-                </span>
+                <span className="text-sm font-medium ">kabaddi</span>
               </div>
             </Link>
 
@@ -308,9 +293,7 @@ const SidebarContent = ({ setSidebar }) => {
                   alt="politics"
                   className="h-4 w-4"
                 />
-                <span className="text-sm font-medium hover:text-signupHereText">
-                  Politics
-                </span>
+                <span className="text-sm font-medium ">Politics</span>
               </div>
             </Link>
           </div>
@@ -326,7 +309,7 @@ const SidebarContent = ({ setSidebar }) => {
           className
           to="/exchange_sports/in-play?eventTypeId=0"
         >
-          <div className="flex items-center gap-2 w-full text-left transition-colors  h-[44px] p-3 false">
+          <div className="flex items-center gap-2 w-full text-left transition-colors  h-[44px] p-3 false hover:bg-dashboardGamesTabsBg">
             <svg
               width={20}
               height={16}
@@ -373,9 +356,7 @@ const SidebarContent = ({ setSidebar }) => {
                 </clipPath>
               </defs>
             </svg>
-            <span className="text-xs font-semibold hover:text-primarySvgColor">
-              Inplay
-            </span>
+            <span className="text-xs font-semibold ">Inplay</span>
           </div>
         </Link>
       </div>
@@ -384,7 +365,7 @@ const SidebarContent = ({ setSidebar }) => {
           className
           onClick={() => handleNavigateToIFrame("sportsbook", "550000")}
         >
-          <div className="flex items-center gap-2 w-full text-left transition-colors  h-[44px] p-3 false">
+          <div className="flex items-center gap-2 w-full text-left transition-colors  h-[44px] p-3 false hover:bg-dashboardGamesTabsBg">
             <svg
               width={20}
               height={20}
@@ -606,9 +587,7 @@ const SidebarContent = ({ setSidebar }) => {
                 </clipPath>
               </defs>
             </svg>
-            <span className="text-xs font-semibold hover:text-primarySvgColor">
-              Sports Book
-            </span>
+            <span className="text-xs font-semibold ">Sports Book</span>
           </div>
         </a>
       </div>
@@ -623,7 +602,7 @@ const SidebarContent = ({ setSidebar }) => {
           className
           to="/promotions"
         >
-          <div className="flex items-center gap-2 w-full text-left transition-colors  h-[44px] p-3 false">
+          <div className="flex items-center gap-2 w-full text-left transition-colors  h-[44px] p-3 false hover:bg-dashboardGamesTabsBg">
             <svg
               width={24}
               height={24}
@@ -644,9 +623,7 @@ const SidebarContent = ({ setSidebar }) => {
                 </clipPath>
               </defs>
             </svg>
-            <span className="text-xs font-semibold hover:text-primarySvgColor">
-              Promotions
-            </span>
+            <span className="text-xs font-semibold ">Promotions</span>
           </div>
         </Link>
       </div>
@@ -660,7 +637,7 @@ const SidebarContent = ({ setSidebar }) => {
           className
           to="/stake-settings"
         >
-          <div className="flex items-center gap-2 w-full text-left transition-colors  h-[44px] p-3 false">
+          <div className="flex items-center gap-2 w-full text-left transition-colors  h-[44px] p-3 false hover:bg-dashboardGamesTabsBg">
             <svg
               width={24}
               height={24}
@@ -681,9 +658,7 @@ const SidebarContent = ({ setSidebar }) => {
                 </clipPath>
               </defs>
             </svg>
-            <span className="text-xs font-semibold hover:text-primarySvgColor">
-              Stake Settings
-            </span>
+            <span className="text-xs font-semibold ">Stake Settings</span>
           </div>
         </Link>
       </div>
@@ -698,7 +673,7 @@ const SidebarContent = ({ setSidebar }) => {
           to="/rules"
           aria-current="page"
         >
-          <div className="flex items-center gap-2 w-full text-left transition-colors bg-dashboardGamesTabsBg text-white h-[44px] p-3 false">
+          <div className="flex items-center gap-2 w-full text-left transition-colors hover:bg-dashboardGamesTabsBg  h-[44px] p-3 false">
             <svg
               width={24}
               height={24}
@@ -723,9 +698,7 @@ const SidebarContent = ({ setSidebar }) => {
                 </clipPath>
               </defs>
             </svg>
-            <span className="text-xs font-semibold hover:text-primarySvgColor">
-              Game Rules
-            </span>
+            <span className="text-xs font-semibold ">Game Rules</span>
           </div>
         </Link>
       </div>
@@ -762,9 +735,7 @@ const SidebarContent = ({ setSidebar }) => {
                   </clipPath>
                 </defs>
               </svg>
-              <span className="text-xs font-semibold hover:text-primarySvgColor">
-                Logout
-              </span>
+              <span className="text-xs font-semibold ">Logout</span>
             </div>
           </a>
         </div>
