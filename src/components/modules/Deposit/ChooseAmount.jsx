@@ -57,25 +57,27 @@ const ChooseAmount = ({ amount, setAmount, setPaymentMethods }) => {
             </div>
             <div className="w-full grid grid-cols-3 gap-[10px] mt-[18px]">
               <button
-                onClick={() => setAmount(300)}
-                className="inline-block leading-normal relative overflow-hidden  duration-150  bg-buttonGradient -all   active:scale-95 text-primary min-h-9 text-base  rounded-md font-medium  cursor-pointer"
-                type="button"
-              >
-                <span>+300</span>
-              </button>
-              <button
                 onClick={() => setAmount(500)}
                 className="inline-block leading-normal relative overflow-hidden  duration-150  bg-buttonGradient -all   active:scale-95 text-primary min-h-9 text-base  rounded-md font-medium  cursor-pointer"
                 type="button"
               >
                 <span>+500</span>
               </button>
+
               <button
                 onClick={() => setAmount(1000)}
                 className="inline-block leading-normal relative overflow-hidden  duration-150  bg-buttonGradient -all   active:scale-95 text-primary min-h-9 text-base  rounded-md font-medium  cursor-pointer"
                 type="button"
               >
                 <span>+1,000</span>
+              </button>
+
+              <button
+                onClick={() => setAmount(2000)}
+                className="inline-block leading-normal relative overflow-hidden  duration-150  bg-buttonGradient -all   active:scale-95 text-primary min-h-9 text-base  rounded-md font-medium  cursor-pointer"
+                type="button"
+              >
+                <span>+2,000</span>
               </button>
               <button
                 onClick={() => setAmount(5000)}
@@ -92,11 +94,11 @@ const ChooseAmount = ({ amount, setAmount, setPaymentMethods }) => {
                 <span>+10,000</span>
               </button>
               <button
-                onClick={() => setAmount(50000)}
+                onClick={() => setAmount(1000000000)}
                 className="inline-block leading-normal relative overflow-hidden  duration-150  bg-buttonGradient -all   active:scale-95 text-primary min-h-9 text-base  rounded-md font-medium  cursor-pointer"
                 type="button"
               >
-                <span>+50,000</span>
+                <span>+1,000,000,000 </span>
               </button>
             </div>
           </div>
