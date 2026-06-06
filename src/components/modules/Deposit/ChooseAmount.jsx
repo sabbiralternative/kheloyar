@@ -44,7 +44,11 @@ const ChooseAmount = ({ amount, setAmount, setPaymentMethods }) => {
             </div>
             <div className="w-full mt-2 py-2 grid grid-cols-12 border rounded-[4px] px-2 items-center justify-center border-green-500">
               <input
-                onChange={(e) => setAmount(e.target.value)}
+                onChange={(e) =>
+                  setAmount(
+                    e.target.value <= 10000000 ? e.target.value : 10000000,
+                  )
+                }
                 value={amount !== null && amount !== undefined ? amount : ""}
                 className="block  focus:outline-none col-span-11 w-full h-max  placeholder: placeholder:font-normal font-medium text-base bg-transparent"
                 placeholder="₹ Enter Amount"
@@ -94,11 +98,11 @@ const ChooseAmount = ({ amount, setAmount, setPaymentMethods }) => {
                 <span>+10,000</span>
               </button>
               <button
-                onClick={() => setAmount(1000000000)}
+                onClick={() => setAmount(50000)}
                 className="inline-block leading-normal relative overflow-hidden  duration-150  bg-buttonGradient -all   active:scale-95 text-primary min-h-9 text-base  rounded-md font-medium  cursor-pointer"
                 type="button"
               >
-                <span>+1,000,000,000 </span>
+                <span>+50,000 </span>
               </button>
             </div>
           </div>
