@@ -12,8 +12,12 @@ import { IoEye } from "react-icons/io5";
 import { IoMdEyeOff } from "react-icons/io";
 import { useDispatch } from "react-redux";
 import { setShowLoginModal } from "../../redux/features/global/globalSlice";
+import { useLanguage } from "../../context/LanguageProvider";
+import { languageValue } from "../../utils/language";
+import { LanguageKey } from "../../const";
 
 const ForgotPassword = () => {
+  const { valueByLanguage } = useLanguage();
   const dispatch = useDispatch();
   const { logo } = useLogo();
   const navigate = useNavigate();
@@ -235,7 +239,7 @@ const ForgotPassword = () => {
               type="submit"
               className=" active:opacity-70 gap-2.5 self-stretch px-16 py-3 mt-5 text-base font-semibold text-center rounded-lg min-h-[44px] shadow-[0px_1px_2px_rgba(0,0,0,0.05)] max-md:px-5 bg-buttonGradient cursor-not-allowed"
             >
-              Change Password
+              {languageValue(valueByLanguage, LanguageKey.CHANGE_PASSWORD)}
             </button>
           </form>
         </section>

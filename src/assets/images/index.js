@@ -42,7 +42,9 @@ import bep from "../img/bep20.svg";
 import trc from "../img/trc20.svg";
 import upi from "../img/upi.b1dbf1b2.svg";
 import telegram from "../img/telegram.png";
+import globe from "../img/globe.gif";
 export default {
+  globe,
   telegram,
   trc,
   upi,

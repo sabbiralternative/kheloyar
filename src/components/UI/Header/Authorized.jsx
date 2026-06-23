@@ -2,8 +2,16 @@ import { useState } from "react";
 import Dropdown from "./Dropdown";
 import useBalance from "../../../hooks/balance";
 import { useNavigate } from "react-router-dom";
+import { Settings } from "../../../api";
+import { setShowLanguageModal } from "../../../redux/features/global/globalSlice";
+import { useDispatch } from "react-redux";
+import { useLanguage } from "../../../context/LanguageProvider";
+import { languageValue } from "../../../utils/language";
+import { LanguageKey } from "../../../const";
 
 const Authorized = () => {
+  const { language, valueByLanguage } = useLanguage();
+  const dispatch = useDispatch();
   const navigate = useNavigate();
   const { data } = useBalance();
   const [showDropdown, setShowDropdown] = useState(false);
@@ -14,13 +22,19 @@ const Authorized = () => {
           onClick={() => navigate("/deposit")}
           className=" active:opacity-70 text-center h-[36px] w-[58px] text-[9px] text-black font-bold rounded-[4px] bg-buttonGradient"
         >
-          <span className="my-auto uppercase">Deposit </span>
+          <span className="my-auto uppercase">
+            {" "}
+            {languageValue(valueByLanguage, LanguageKey.DEPOSIT)}{" "}
+          </span>
         </button>
         <button
           onClick={() => navigate("/withdraw")}
           className=" active:opacity-70 text-center h-[36px] w-[58px] text-[9px] text-black font-bold rounded-[4px] bg-buttonGradient"
         >
-          <span className="my-auto uppercase">Withdraw</span>
+          <span className="my-auto uppercase">
+            {" "}
+            {languageValue(valueByLanguage, LanguageKey.WITHDRAW)}
+          </span>
         </button>
         <button
           onClick={() => navigate("/promotions")}
@@ -71,6 +85,57 @@ const Authorized = () => {
           </button>
           {showDropdown && <Dropdown setShowDropdown={setShowDropdown} />}
         </div>
+        {Settings.language && (
+          <button
+            onClick={() => dispatch(setShowLanguageModal(true))}
+            className="relative overflow-hidden flex items-center ml-2 text-text_color_primary2 justify-center text-xs py-2 px-2 rounded-full bg-bg_color_secondary border border-border_color_primary capitalize"
+            type="button"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width={24}
+              height={24}
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth={2}
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              className="w-4 h-4 mr-0.5"
+            >
+              <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+              <path d="M3 12a9 9 0 1 0 18 0a9 9 0 0 0 -18 0" />
+              <path d="M3.6 9h16.8" />
+              <path d="M3.6 15h16.8" />
+              <path d="M11.5 3a17 17 0 0 0 0 18" />
+              <path d="M12.5 3a17 17 0 0 1 0 18" />
+            </svg>
+            {language}
+            <svg
+              fill="currentColor"
+              width={16}
+              height={16}
+              version="1.1"
+              id="Layer_1"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 330 330"
+              className="w-3 h-3 ml-2"
+            >
+              <g id="SVGRepo_bgCarrier" strokeWidth={0} />
+              <g
+                id="SVGRepo_tracerCarrier"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+              <g id="SVGRepo_iconCarrier">
+                <path
+                  id="XMLID_225_"
+                  d="M325.607,79.393c-5.857-5.857-15.355-5.858-21.213,0.001l-139.39,139.393L25.607,79.393 c-5.857-5.857-15.355-5.858-21.213,0.001c-5.858,5.858-5.858,15.355,0,21.213l150.004,150c2.813,2.813,6.628,4.393,10.606,4.393 s7.794-1.581,10.606-4.394l149.996-150C331.465,94.749,331.465,85.251,325.607,79.393z"
+                />
+              </g>
+            </svg>
+          </button>
+        )}
       </div>
     </div>
   );

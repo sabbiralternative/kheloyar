@@ -12,8 +12,12 @@ import {
 import toast from "react-hot-toast";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useLanguage } from "../../../context/LanguageProvider";
+import { languageValue } from "../../../utils/language";
+import { LanguageKey } from "../../../const";
 
 const Login = () => {
+  const { valueByLanguage } = useLanguage();
   const [tab, setTab] = useState("username");
   const [showPassword, setShowPassword] = useState(false);
   const { closePopupForForever } = useSelector((state) => state.global);
@@ -259,7 +263,7 @@ const Login = () => {
                     type="submit"
                     className=" active:opacity-70 w-full h-[40px] text-sm text-bold font-bold p-1 rounded-md transition-colors bg-disabledButtonBg border border-signupHereText "
                   >
-                    Login
+                    {languageValue(valueByLanguage, LanguageKey.LOGIN)}
                   </button>
                   <button
                     onClick={loginWithDemo}
@@ -278,7 +282,7 @@ const Login = () => {
                       onClick={showRegister}
                       className="text-xs text-signupHereText cursor-pointer"
                     >
-                      Signup here
+                      {languageValue(valueByLanguage, LanguageKey.REGISTER)}
                     </span>
                   </p>
                 </div>

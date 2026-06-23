@@ -11,9 +11,9 @@ const SettingsWrapper = ({ children }) => {
     mutate();
   }, [token, mutate]);
 
-  // if (!API.login) {
-  //   return null;
-  // }
+  if (!API.login) {
+    return null;
+  }
 
   return children;
 };

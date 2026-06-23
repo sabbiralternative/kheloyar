@@ -1,20 +1,23 @@
 import { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { useGroupQuery } from "../../hooks/group";
-import { EVENT_SORT_ORDER } from "../../const";
+import { EVENT_SORT_ORDER, LanguageKey } from "../../const";
 import HorseGreyhound from "../../components/modules/Home/HorseGreyhound";
+import { useLanguage } from "../../context/LanguageProvider";
+import { languageValue } from "../../utils/language";
 
 const InPlay = () => {
+  const { valueByLanguage } = useLanguage();
   const navigate = useNavigate();
   const [categories, setCategories] = useState([]);
   const location = useLocation();
   const searchParams = new URLSearchParams(location.search);
   const eventTypeId = searchParams.get("eventTypeId");
   const eventName = {
-    4: "Cricket",
-    2: "Tennis",
-    1: "Football",
-    5: "Kabaddi",
+    4: languageValue(valueByLanguage, LanguageKey.CRICKET),
+    2: languageValue(valueByLanguage, LanguageKey.TENNIS),
+    1: languageValue(valueByLanguage, LanguageKey.FOOTBALL),
+    5: languageValue(valueByLanguage, LanguageKey.KABADDI),
     6: "Politics",
   };
   const { data } = useGroupQuery({ sportsType: Number(eventTypeId) || 0 });
@@ -76,7 +79,7 @@ const InPlay = () => {
                     className="h-[15px] object-contain"
                   />
                   <span className="text-[10px] md:text-xs font-bold text-nowrap">
-                    Cricket
+                    {languageValue(valueByLanguage, LanguageKey.CRICKET)}
                   </span>
                 </div>
                 <div
@@ -91,7 +94,7 @@ const InPlay = () => {
                     className="h-[15px] object-contain"
                   />
                   <span className="text-[10px] md:text-xs font-bold text-nowrap">
-                    Soccer
+                    {languageValue(valueByLanguage, LanguageKey.FOOTBALL)}
                   </span>
                 </div>
                 <div
@@ -106,7 +109,7 @@ const InPlay = () => {
                     className="h-[15px] object-contain"
                   />
                   <span className="text-[10px] md:text-xs font-bold text-nowrap">
-                    Tennis
+                    {languageValue(valueByLanguage, LanguageKey.TENNIS)}
                   </span>
                 </div>
 
@@ -122,7 +125,7 @@ const InPlay = () => {
                     className="h-[15px] object-contain"
                   />
                   <span className="text-[10px] md:text-xs font-bold text-nowrap">
-                    Horse Racing
+                    {languageValue(valueByLanguage, LanguageKey.HORSE)}
                   </span>
                 </div>
                 <div
@@ -137,7 +140,7 @@ const InPlay = () => {
                     className="h-[15px] object-contain"
                   />
                   <span className="text-[10px] md:text-xs font-bold text-nowrap">
-                    GreyHound
+                    {languageValue(valueByLanguage, LanguageKey.GREYHOUND)}
                   </span>
                 </div>
 
@@ -153,7 +156,7 @@ const InPlay = () => {
                     className="h-[15px] object-contain"
                   />
                   <span className="text-[10px] md:text-xs font-bold text-nowrap">
-                    kabaddi
+                    {languageValue(valueByLanguage, LanguageKey.KABADDI)}
                   </span>
                 </div>
 

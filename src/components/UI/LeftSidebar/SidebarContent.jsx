@@ -5,8 +5,12 @@ import { Settings } from "../../../api";
 import { setShowLoginModal } from "../../../redux/features/global/globalSlice";
 import WarningCondition from "../../shared/WarningCondition/WarningCondition";
 import { logout } from "../../../redux/features/auth/authSlice";
+import { useLanguage } from "../../../context/LanguageProvider";
+import { languageValue } from "../../../utils/language";
+import { LanguageKey } from "../../../const";
 
 const SidebarContent = ({ setSidebar }) => {
+  const { valueByLanguage } = useLanguage();
   const dispatch = useDispatch();
   const { token } = useSelector((state) => state.auth);
   const [showSportsLinks, setShowSportsLinks] = useState(false);
@@ -64,7 +68,10 @@ const SidebarContent = ({ setSidebar }) => {
                 </clipPath>
               </defs>
             </svg>
-            <span className="text-xs font-semibold ">Home</span>
+            <span className="text-xs font-semibold ">
+              {" "}
+              {languageValue(valueByLanguage, LanguageKey.HOME)}
+            </span>
           </div>
         </Link>
       </div>
@@ -191,7 +198,10 @@ const SidebarContent = ({ setSidebar }) => {
                   alt="cricket"
                   className="h-4 w-4"
                 />
-                <span className="text-sm font-medium ">Cricket</span>
+                <span className="text-sm font-medium ">
+                  {" "}
+                  {languageValue(valueByLanguage, LanguageKey.CRICKET)}
+                </span>
               </div>
             </Link>
             <Link
@@ -209,7 +219,10 @@ const SidebarContent = ({ setSidebar }) => {
                   alt="soccer"
                   className="h-4 w-4"
                 />
-                <span className="text-sm font-medium ">Soccer</span>
+                <span className="text-sm font-medium ">
+                  {" "}
+                  {languageValue(valueByLanguage, LanguageKey.FOOTBALL)}
+                </span>
               </div>
             </Link>
             <Link
@@ -227,7 +240,10 @@ const SidebarContent = ({ setSidebar }) => {
                   alt="tennis"
                   className="h-4 w-4"
                 />
-                <span className="text-sm font-medium ">Tennis</span>
+                <span className="text-sm font-medium ">
+                  {" "}
+                  {languageValue(valueByLanguage, LanguageKey.TENNIS)}
+                </span>
               </div>
             </Link>
             <Link
@@ -241,7 +257,10 @@ const SidebarContent = ({ setSidebar }) => {
             >
               <div className="flex items-center gap-2 w-full pl-10 pr-3 py-2 text-left transition-colors h-[40px] hover:bg-dashboardGamesTabsBg/50">
                 <img src="/icon/7.svg" alt="horse_racing" className="h-4 w-4" />
-                <span className="text-sm font-medium ">Horse Racing</span>
+                <span className="text-sm font-medium ">
+                  {" "}
+                  {languageValue(valueByLanguage, LanguageKey.HORSE)}
+                </span>
               </div>
             </Link>
             <Link
@@ -255,7 +274,10 @@ const SidebarContent = ({ setSidebar }) => {
             >
               <div className="flex items-center gap-2 w-full pl-10 pr-3 py-2 text-left transition-colors h-[40px] hover:bg-dashboardGamesTabsBg/50">
                 <img src="/icon/4339.svg" alt="greyhound" className="h-4 w-4" />
-                <span className="text-sm font-medium ">GreyHound</span>
+                <span className="text-sm font-medium ">
+                  {" "}
+                  {languageValue(valueByLanguage, LanguageKey.GREYHOUND)}
+                </span>
               </div>
             </Link>
 
@@ -274,7 +296,10 @@ const SidebarContent = ({ setSidebar }) => {
                   alt="kabaddi"
                   className="h-4 w-4"
                 />
-                <span className="text-sm font-medium ">kabaddi</span>
+                <span className="text-sm font-medium ">
+                  {" "}
+                  {languageValue(valueByLanguage, LanguageKey.KABADDI)}
+                </span>
               </div>
             </Link>
 

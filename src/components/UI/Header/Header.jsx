@@ -17,16 +17,24 @@ import Unauthorized from "./Unauthorized";
 import Authorized from "./Authorized";
 import Notification from "./Notification";
 import MobileLeftSidebar from "../LeftSidebar/MobileLeftSidebar";
+import Language from "../../modals/Language/Language";
+import { useLanguage } from "../../../context/LanguageProvider";
 
 const Header = () => {
+  const { setLanguage } = useLanguage();
   const [showMobileLeftSidebar, setShowMobileLeftSidebar] = useState(false);
   const navigate = useNavigate();
   const location = useLocation();
   const { logo } = useLogo();
   const { token } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
-  const { showAppPopUp, windowWidth, showAPKModal, closePopupForForever } =
-    useSelector((state) => state?.global);
+  const {
+    showAppPopUp,
+    windowWidth,
+    showAPKModal,
+    closePopupForForever,
+    showLanguageModal,
+  } = useSelector((state) => state?.global);
 
   useEffect(() => {
     const apk_modal_shown = sessionStorage.getItem("apk_modal_shown");
@@ -60,12 +68,17 @@ const Header = () => {
     location.pathname,
   ]);
 
+  useEffect(() => {
+    setLanguage(localStorage.getItem("language") || "english");
+  }, [setLanguage]);
+
   if (Settings.app_only && !closePopupForForever) {
     return <Error />;
   }
 
   return (
     <Fragment>
+      {showLanguageModal && <Language />}
       <Notification />
       {Settings.apk_link && showAppPopUp && windowWidth < 1040 && <AppPopup />}
       {Settings.apk_link && showAPKModal && <DownloadAPK />}
