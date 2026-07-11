@@ -16,6 +16,7 @@ import RightSidebar from "../../components/modules/EventDetails/RightSidebar";
 import EventTitleMobile from "../../components/modules/EventDetails/EventTitleMobile";
 import { Bookmaker } from "../../components/modules/EventDetails/Bookmaker";
 import { useCurrentBets } from "../../hooks/currentBets";
+import Premium from "../../components/modules/EventDetails/Premium";
 
 const EventDetails = () => {
   const [tab, setTab] = useState("odds");
@@ -200,17 +201,19 @@ const EventDetails = () => {
                     {eventTypeId == 4 && data?.iscore && (
                       <Score iscore={data?.iscore} />
                     )}
-                    {data?.score && data?.score?.tracker !== null && (
-                      <div className="w-full overflow-hidden h-[125px]">
-                        <iframe
-                          id="videoComponent"
-                          className="w-full h-auto relative overflow-hidden   bg-transparent"
-                          src={data?.score?.tracker}
-                          width="100%"
-                          allowfullscreen=""
-                        ></iframe>
-                      </div>
-                    )}
+                    {data?.score &&
+                      data?.score?.tracker &&
+                      data?.score?.tracker !== null && (
+                        <div className="w-full overflow-hidden h-[125px]">
+                          <iframe
+                            id="videoComponent"
+                            className="w-full h-auto relative overflow-hidden   bg-transparent"
+                            src={data?.score?.tracker}
+                            width="100%"
+                            allowfullscreen=""
+                          ></iframe>
+                        </div>
+                      )}
                     {iframe?.result?.url && data?.score?.hasVideo && (
                       <iframe
                         id="videoComponent"
@@ -222,6 +225,9 @@ const EventDetails = () => {
                     )}
                     <div className="flex flex-col gap-1">
                       {matchOdds?.length > 0 && <MatchOdds data={matchOdds} />}
+                      {data?.premium && data?.premium?.eventId && (
+                        <Premium premium={data?.premium} />
+                      )}
                       {bookmaker?.length > 0 && <Bookmaker data={bookmaker} />}
                       {data?.result?.length > 0 && (
                         <Fancy data={data?.result} />
