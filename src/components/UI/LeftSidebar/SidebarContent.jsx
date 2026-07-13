@@ -8,6 +8,7 @@ import { logout } from "../../../redux/features/auth/authSlice";
 import { useLanguage } from "../../../context/LanguageProvider";
 import { languageValue } from "../../../utils/language";
 import { LanguageKey } from "../../../const";
+import { eventNameList } from "../../../static/event-name-list";
 
 const SidebarContent = ({ setSidebar }) => {
   const { valueByLanguage } = useLanguage();
@@ -321,6 +322,25 @@ const SidebarContent = ({ setSidebar }) => {
                 <span className="text-sm font-medium ">Politics</span>
               </div>
             </Link>
+            {eventNameList.map((item) => {
+              return (
+                <Link
+                  key={item.id}
+                  onClick={() => {
+                    if (setSidebar) {
+                      setSidebar(false);
+                    }
+                  }}
+                  className
+                  to={`/exchange_sports/in-play/?eventTypeId=${item.id}`}
+                >
+                  <div className="flex items-center gap-2 w-full pl-10 pr-3 py-2 text-left transition-colors h-[40px] hover:bg-dashboardGamesTabsBg/50">
+                    <img src={item.image} alt="tennis" className="h-4 w-4" />
+                    <span className="text-sm font-medium "> {item.name}</span>
+                  </div>
+                </Link>
+              );
+            })}
           </div>
         )}
       </div>

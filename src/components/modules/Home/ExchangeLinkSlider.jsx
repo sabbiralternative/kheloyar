@@ -2,6 +2,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { useLanguage } from "../../../context/LanguageProvider";
 import { LanguageKey } from "../../../const";
 import { languageValue } from "../../../utils/language";
+import { eventNameList } from "../../../static/event-name-list";
 
 const ExchangeLinkSlider = () => {
   const { valueByLanguage } = useLanguage();
@@ -105,6 +106,24 @@ const ExchangeLinkSlider = () => {
           Politics
         </span>
       </div>
+      {eventNameList.map((item) => {
+        return (
+          <div
+            key={item.id}
+            onClick={() => navigate(`/?eventTypeId=${item.id}`)}
+            className={`flex flex-col items-center justify-center h-[45px] gap-0.5 px-2.5 py-1.5 border border-dashboardGamesTabsBg rounded-md cursor-pointer  hover:bg-buttonGradient  ${eventTypeId === item.id ? "bg-buttonGradient text-black" : ""}`}
+          >
+            <img
+              src={item.image}
+              alt="Tennis"
+              className="h-[15px] object-contain"
+            />
+            <span className="text-[10px] md:text-xs font-bold text-nowrap">
+              {item.name}
+            </span>
+          </div>
+        );
+      })}
     </div>
   );
 };
