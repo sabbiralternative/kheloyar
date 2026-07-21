@@ -35,7 +35,7 @@ const MiniGames = ({ setShowMiniGames }) => {
   return (
     <div
       ref={ref}
-      className="bg-[#132225] fixed bottom-[36px]  w-full h-fit z-50 yuvi-lobby-ctn pb-[20px]"
+      className="bg-[#132225] fixed bottom-[0px] left-0  !w-full h-fit z-[99999999] yuvi-lobby-ctn pb-[20px]"
     >
       <div className="mx-auto h-[245px] w-[98%]">
         <div

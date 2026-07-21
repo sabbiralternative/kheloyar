@@ -14,7 +14,7 @@ import { languageValue } from "../../../utils/language";
 import { LanguageKey } from "../../../const";
 
 const Unauthorized = () => {
-  const { language, valueByLanguage } = useLanguage();
+  const { valueByLanguage } = useLanguage();
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const { closePopupForForever } = useSelector((state) => state.global);
@@ -194,7 +194,7 @@ const Unauthorized = () => {
               <path d="M11.5 3a17 17 0 0 0 0 18" />
               <path d="M12.5 3a17 17 0 0 1 0 18" />
             </svg>
-            {language}
+            {/* {language} */}
             <svg
               fill="currentColor"
               width={16}
