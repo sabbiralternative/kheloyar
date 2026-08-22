@@ -3,8 +3,11 @@ import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
 import useCloseModalClickOutside from "../../../hooks/closeModal";
 import { useRef } from "react";
+import useLanguage from "../../../hooks/use-language";
+import { LanguageKey } from "../../../const";
 
 const EditStake = ({ setShowEditStakeModal }) => {
+  const { getLanguage } = useLanguage();
   const ref = useRef(null);
   const [editButtonValue] = useEditButtonValuesMutation();
   const stakes = JSON.parse(localStorage.getItem("buttonValue"));
@@ -42,7 +45,9 @@ const EditStake = ({ setShowEditStakeModal }) => {
         className="bg-white rounded-lg z-[101] shadow-lg  max-w-[90%] mx-auto px-4 py-3 relative max-h-[90vh] overflow-y-auto scroll"
       >
         <div className="flex justify-between items-center pb-3">
-          <h2 className="text-black text-xl font-medium">Edit Stake</h2>
+          <h2 className="text-black text-xl font-medium">
+            {getLanguage(LanguageKey.EDIT_STAKE)}
+          </h2>
           <button
             onClick={() => setShowEditStakeModal(false)}
             className=" active:opacity-70 text-lg text-black"
@@ -67,7 +72,9 @@ const EditStake = ({ setShowEditStakeModal }) => {
           <div className="flex flex-col sm:border sm:rounded-[4px] h-full">
             <div className="py-1 flex text-[14px] font-[700] flex-row justify-between items-center  w-full  px-2 1">
               <div>
-                <p className="text-[14px]">Change Button Values</p>
+                <p className="text-[14px]">
+                  {getLanguage(LanguageKey.CHANGE_BUTTON_VALUES)}
+                </p>
               </div>
             </div>
             <form
@@ -76,7 +83,9 @@ const EditStake = ({ setShowEditStakeModal }) => {
             >
               <div className="flex justify-between max-w-[700px]">
                 <div className="flex flex-col w-1/2 pr-2">
-                  <span className="mb-2 font-medium">Price Label</span>
+                  <span className="mb-2 font-medium">
+                    {getLanguage(LanguageKey.STAKE_LABEL)}
+                  </span>
                   {stakes?.map((stake, i) => {
                     return (
                       <input
@@ -91,7 +100,9 @@ const EditStake = ({ setShowEditStakeModal }) => {
                   })}
                 </div>
                 <div className="flex flex-col w-1/2 pl-2">
-                  <span className="mb-2 font-medium">Price Value</span>
+                  <span className="mb-2 font-medium">
+                    {getLanguage(LanguageKey.PRICE_VALUE)}
+                  </span>
                   {stakes?.map((stake, i) => {
                     return (
                       <input
@@ -110,7 +121,7 @@ const EditStake = ({ setShowEditStakeModal }) => {
                 type="submit"
                 className=" active:opacity-70  1  p-3   px-4 py-1.5 rounded-[4px] active:bg-blue1 placeholder:text-xs w-full sm:w-fit"
               >
-                Update
+                {getLanguage(LanguageKey.UPDATE)}
               </button>
             </form>
           </div>

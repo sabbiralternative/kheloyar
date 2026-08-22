@@ -1,8 +1,11 @@
 import { useDispatch, useSelector } from "react-redux";
 import { logout } from "../../../redux/features/auth/authSlice";
 import { useNavigate } from "react-router-dom";
+import useLanguage from "../../../hooks/use-language";
+import { LanguageKey } from "../../../const";
 
 const Dropdown = ({ setShowDropdown }) => {
+  const { getLanguage } = useLanguage();
   const { user } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -51,7 +54,7 @@ const Dropdown = ({ setShowDropdown }) => {
                 </clipPath>
               </defs>
             </svg>
-            Deposit Report
+            {getLanguage(LanguageKey.DEPOSIT_STATEMENT)}
           </div>
           <div
             onClick={() => handleNavigate("/withdraw-report")}
@@ -77,7 +80,7 @@ const Dropdown = ({ setShowDropdown }) => {
                 </clipPath>
               </defs>
             </svg>
-            Withdraw Report
+            {getLanguage(LanguageKey.WITHDRAW_STATMENT)}
           </div>
           <div
             onClick={() => handleNavigate("/open-bets")}
@@ -103,7 +106,7 @@ const Dropdown = ({ setShowDropdown }) => {
                 </clipPath>
               </defs>
             </svg>
-            Open Bets
+            {getLanguage(LanguageKey.OPEN_BETS)}
           </div>
           <div
             onClick={() => handleNavigate("/betting-profit-loss")}
@@ -129,7 +132,7 @@ const Dropdown = ({ setShowDropdown }) => {
                 </clipPath>
               </defs>
             </svg>
-            Betting Profit Loss
+            {getLanguage(LanguageKey.BETTING_PROFIT_AND_LOSS)}
           </div>
           <div
             onClick={() => handleNavigate("/my-bank-details")}
@@ -155,7 +158,7 @@ const Dropdown = ({ setShowDropdown }) => {
                 </clipPath>
               </defs>
             </svg>
-            My Bank Details
+            {getLanguage(LanguageKey.MY_BANK_DETAILS)}
           </div>
           <div
             onClick={() => handleNavigate("/affiliate")}
@@ -181,7 +184,7 @@ const Dropdown = ({ setShowDropdown }) => {
                 </clipPath>
               </defs>
             </svg>
-            Affiliate
+            {getLanguage(LanguageKey.AFFILIATE)}
           </div>
           <div
             onClick={() => handleNavigate("/promotions")}
@@ -207,7 +210,7 @@ const Dropdown = ({ setShowDropdown }) => {
                 </clipPath>
               </defs>
             </svg>
-            Promotions
+            {getLanguage(LanguageKey.PROMOTIONS)}
           </div>
           <div
             onClick={() => handleNavigate("/bonus-statement")}
@@ -233,7 +236,7 @@ const Dropdown = ({ setShowDropdown }) => {
                 </clipPath>
               </defs>
             </svg>
-            Bonus Statement
+            {getLanguage(LanguageKey.BONUS_STATEMENT)}
           </div>
           <div
             onClick={() => handleNavigate("/lossback-bonus")}
@@ -259,7 +262,7 @@ const Dropdown = ({ setShowDropdown }) => {
                 </clipPath>
               </defs>
             </svg>
-            Lossback Bonus
+            {getLanguage(LanguageKey.LOSSBACK_BONUS)}
           </div>
         </div>
         <div
@@ -286,7 +289,7 @@ const Dropdown = ({ setShowDropdown }) => {
               </clipPath>
             </defs>
           </svg>
-          Logout
+          {getLanguage(LanguageKey.LOGOUT)}
         </div>
       </div>
     </div>

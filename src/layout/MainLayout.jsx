@@ -40,6 +40,8 @@ const MainLayout = () => {
 
   return (
     <div className="h-full font-poppinsFont">
+      <meta name="description" content={Settings.metaDescription} />
+      <meta name="keywords" content={Settings.metaKeywords} />
       {showLoginModal && <Login />}
       <div className="relative flex xl:gap-4 h-full w-full md:pt-4 app-bg ">
         <DesktopLeftSidebar />

@@ -1,11 +1,10 @@
 import { useLocation, useNavigate } from "react-router-dom";
-import { useLanguage } from "../../../context/LanguageProvider";
 import { LanguageKey } from "../../../const";
-import { languageValue } from "../../../utils/language";
 import { eventNameList } from "../../../static/event-name-list";
+import useLanguage from "../../../hooks/use-language";
 
 const ExchangeLinkSlider = () => {
-  const { valueByLanguage } = useLanguage();
+  const { getLanguage } = useLanguage();
   const location = useLocation();
   const searchParams = new URLSearchParams(location.search);
   const eventTypeId = searchParams.get("eventTypeId");
@@ -22,7 +21,7 @@ const ExchangeLinkSlider = () => {
           className="h-[15px] object-contain"
         />
         <span className="text-[10px] md:text-xs font-bold text-nowrap">
-          {languageValue(valueByLanguage, LanguageKey.CRICKET)}
+          {getLanguage(LanguageKey.CRICKET)}
         </span>
       </div>
       <div
@@ -35,7 +34,7 @@ const ExchangeLinkSlider = () => {
           className="h-[15px] object-contain"
         />
         <span className="text-[10px] md:text-xs font-bold text-nowrap">
-          {languageValue(valueByLanguage, LanguageKey.FOOTBALL)}
+          {getLanguage(LanguageKey.FOOTBALL)}
         </span>
       </div>
       <div
@@ -48,7 +47,7 @@ const ExchangeLinkSlider = () => {
           className="h-[15px] object-contain"
         />
         <span className="text-[10px] md:text-xs font-bold text-nowrap">
-          {languageValue(valueByLanguage, LanguageKey.TENNIS)}
+          {getLanguage(LanguageKey.TENNIS)}
         </span>
       </div>
 
@@ -62,7 +61,7 @@ const ExchangeLinkSlider = () => {
           className="h-[15px] object-contain"
         />
         <span className="text-[10px] md:text-xs font-bold text-nowrap">
-          {languageValue(valueByLanguage, LanguageKey.HORSE)}
+          {getLanguage(LanguageKey.HORSE)}
         </span>
       </div>
       <div
@@ -75,7 +74,7 @@ const ExchangeLinkSlider = () => {
           className="h-[15px] object-contain"
         />
         <span className="text-[10px] md:text-xs font-bold text-nowrap">
-          {languageValue(valueByLanguage, LanguageKey.GREYHOUND)}
+          {getLanguage(LanguageKey.GREYHOUND)}
         </span>
       </div>
 
@@ -89,7 +88,7 @@ const ExchangeLinkSlider = () => {
           className="h-[15px] object-contain"
         />
         <span className="text-[10px] md:text-xs font-bold text-nowrap">
-          {languageValue(valueByLanguage, LanguageKey.KABADDI)}
+          {getLanguage(LanguageKey.KABADDI)}
         </span>
       </div>
 
@@ -119,7 +118,7 @@ const ExchangeLinkSlider = () => {
               className="h-[15px] object-contain"
             />
             <span className="text-[10px] md:text-xs font-bold text-nowrap">
-              {item.name}
+              {getLanguage(item.name)}
             </span>
           </div>
         );

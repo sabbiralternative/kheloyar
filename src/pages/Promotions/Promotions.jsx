@@ -6,8 +6,11 @@ import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { useState } from "react";
 import useBalance from "../../hooks/balance";
+import useLanguage from "../../hooks/use-language";
+import { LanguageKey } from "../../const";
 
 const Promotions = () => {
+  const { getLanguage } = useLanguage();
   const { refetch } = useBalance();
   const [coupon, setCoupon] = useState(null);
   const { mutateAsync } = useBonusMutation();
@@ -49,7 +52,7 @@ const Promotions = () => {
               <div className=" flex md:flex-row flex-col ring-1 ring-lossback_1 items-center w-full rounded-lg  bg-bg_color_lossback_card_bg ">
                 <div className="px-4 relative py-3 w-full md:w-fit overflow-hidden">
                   <div className="relative text-center z-20  font-black leading-normal text-base tracking-wider uppercase">
-                    Lossback bonus
+                    {getLanguage(LanguageKey.LOSSBACK_BONUS)}
                   </div>
                   <div className="h-[120%] aspect-square absolute bottom-0 translate-y-1/3 md:translate-y-1/2 left-0 z-10">
                     <div className="relative overflow-hidden w-full h-full">
@@ -70,7 +73,7 @@ const Promotions = () => {
                     <div className="flex flex-1 flex-col  leading-normal tracking-wider z-50">
                       <div className="text-base flex items-center gap-1 text-text_color_lossback_amt font-black w-full">
                         <div className="flex-1 bg-bg_color_avlnowLossback animate-pulse text-text_color_lossback_amt px-3 py-1 text-x font-bold flex items-center gap-1 rounded-full">
-                          Login to view claims
+                          {getLanguage(LanguageKey.LOGIN_TO_VIEW_CLAIM)}
                         </div>
                       </div>
                     </div>
@@ -81,7 +84,7 @@ const Promotions = () => {
                     className="relative overflow-hidden bg-bg_color_lossbackSeeAll ml-auto active:scale-[99%] transition-all duration-300  whitespace-nowrap text-sm font-bold rounded px-4 py-2"
                     type="button"
                   >
-                    VIEW ALL
+                    {getLanguage(LanguageKey.VIEW_ALL)}
                   </button>
                 </div>
               </div>
@@ -116,11 +119,10 @@ const Promotions = () => {
                   </div>
                   <div className="flex flex-col items-start  gap-[0.5px]">
                     <div className="text-sm md:text-base font-bold  ">
-                      Coupon Code
+                      {getLanguage(LanguageKey.COUPON_CODE)}
                     </div>
                     <div className="leading-4 text-x sm:text-xs md:text-sm tracking-wide font-normal opacity-80  ">
-                      Type or Paste your coupon code and get rewards in your
-                      wallet.
+                      {getLanguage(LanguageKey.TYPE_OR_PASTE_COUPON_CODE)}.
                     </div>
                   </div>
                 </div>
@@ -155,7 +157,7 @@ const Promotions = () => {
                             <path d="M19 12v7a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2v-7" />
                             <path d="M7.5 8a2.5 2.5 0 0 1 0-5A4.8 8 0 0 1 12 8a4.8 8 0 0 1 4.5-5 2.5 2.5 0 0 1 0 5" />
                           </svg>
-                          <span>Redeem</span>
+                          <span>{getLanguage(LanguageKey.REDEEM)}</span>
                         </div>
                       </button>
                     </div>

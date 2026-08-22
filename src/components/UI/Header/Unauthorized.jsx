@@ -9,12 +9,11 @@ import { Settings } from "../../../api";
 import { useLoginMutation } from "../../../redux/features/auth/authApi";
 import { setUser } from "../../../redux/features/auth/authSlice";
 import toast from "react-hot-toast";
-import { useLanguage } from "../../../context/LanguageProvider";
-import { languageValue } from "../../../utils/language";
 import { LanguageKey } from "../../../const";
+import useLanguage from "../../../hooks/use-language";
 
 const Unauthorized = () => {
-  const { valueByLanguage } = useLanguage();
+  const { getLanguage } = useLanguage();
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const { closePopupForForever } = useSelector((state) => state.global);
@@ -111,7 +110,7 @@ const Unauthorized = () => {
           onClick={loginWithDemo}
           className="active:opacity-70 lg:hidden text-center h-[36px] w-[44px] text-[9px] text-black font-bold rounded-[4px] bg-buttonGradient"
         >
-          Demo
+          {getLanguage(LanguageKey.DEMO_LOGIN)}
         </button>
         <div className="flex rounded-md border border-signupHereText">
           <a
@@ -154,7 +153,7 @@ const Unauthorized = () => {
                 </clipPath>
               </defs>
             </svg>
-            {languageValue(valueByLanguage, LanguageKey.LOGIN)}
+            {getLanguage(LanguageKey.LOGIN)}
           </a>
           <a
             className="flex flex-col items-center gap-1 h-[34px] lg:h-[40px] w-[45px] py-[6px] text-black text-[8px] font-bold bg-buttonGradient rounded-e-[5px]"
@@ -166,7 +165,7 @@ const Unauthorized = () => {
               alt="signup"
               className="h-[11px] md:h-[14px]"
             />
-            {languageValue(valueByLanguage, LanguageKey.REGISTER)}
+            {getLanguage(LanguageKey.REGISTER)}
           </a>
         </div>
         {Settings.language && (

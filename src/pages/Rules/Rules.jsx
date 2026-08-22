@@ -2,8 +2,11 @@
 import { useState } from "react";
 import { FaPlus } from "react-icons/fa";
 import { FaMinus } from "react-icons/fa";
+import useLanguage from "../../hooks/use-language";
+import { LanguageKey } from "../../const";
 
 const Rules = () => {
+  const { getLanguage } = useLanguage();
   const [index, setIndex] = useState(null);
 
   const handleChangeIndex = (i) => {
@@ -23,7 +26,9 @@ const Rules = () => {
           <div className="w-full h-full scrollbar-hide">
             <div className="flex flex-col w-full px-4 py-4 h-full rounded border border-[#00000020]  overflow-auto">
               <div className="flex flex-0 w-full  py-2 px-4">
-                <h3 className="text-lg font-medium">Rules</h3>
+                <h3 className="text-lg font-medium">
+                  {getLanguage(LanguageKey.RULES)}
+                </h3>
               </div>
               <div className="flex flex-col mt-4 flex-1 gap-1">
                 <div>

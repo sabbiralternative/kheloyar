@@ -9,8 +9,11 @@ import axios from "axios";
 import useUTR from "../../../hooks/utr";
 import { useBankAccountMutation } from "../../../redux/features/deposit/event.api";
 import ImageUploadMessage from "./ImageUploadMessage";
+import useLanguage from "../../../hooks/use-language";
+import { LanguageKey } from "../../../const";
 
 const PaymentProof = ({ paymentId, amount, tabs }) => {
+  const { getLanguage } = useLanguage();
   const [imageUploadMessage, setImageUploadMessage] = useState(null);
   const { mutate: getUTR } = useUTR();
   const [handleBankDeposit] = useBankAccountMutation();
@@ -132,7 +135,7 @@ const PaymentProof = ({ paymentId, amount, tabs }) => {
             {!filePath && !loading && (
               <div className="w-full mt-2.5 rounded-md bg-sidebarBg py-3.5 px-3">
                 <div className=" font-medium text-base leading-5 mb-2">
-                  Upload your payment slip below
+                  {getLanguage(LanguageKey.UPLOAD_YOUR_PAYMENT_SLIP_BELOW)}
                   <span className="text-green-500">*</span>
                 </div>
                 <label id="fileInput" className="w-full relative mt-2">
@@ -234,7 +237,7 @@ const PaymentProof = ({ paymentId, amount, tabs }) => {
             <div className="w-full mt-2.5 bg-sidebarBg rounded-md px-3 py-3.5">
               <div className=" font-medium text-sm mb-2 leading-5">
                 {tabs === "usdt" || tabs === "usdt_bep20"
-                  ? "Hash Code"
+                  ? getLanguage(LanguageKey.HASH_CODE)
                   : " Unique Transaction Reference"}
 
                 <span className="">*</span>
@@ -318,7 +321,7 @@ const PaymentProof = ({ paymentId, amount, tabs }) => {
                 onClick={handleDepositSubmit}
                 className="inline-block leading-normal relative overflow-hidden transition duration-150 ease-in-out bg-buttonGradient flex items-center justify-center gap-x-2 w-full text-primary h-10 text-base rounded-md font-[500] leading-4 disabled:bg-bg_Quinary cursor-pointer"
               >
-                <span>I have made the payment</span>
+                <span>{getLanguage(LanguageKey.I_HAVE_MADE_THE_PAYMENT)}</span>
               </button>
             </div>
           </div>

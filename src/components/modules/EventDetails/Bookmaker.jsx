@@ -12,8 +12,11 @@ import { isGameSuspended } from "../../../utils/isOddSuspended";
 import { handleCashOutPlaceBet } from "../../../utils/handleCashoutPlaceBet";
 import SpeedCashOut from "../../modals/SpeedCashOut/SpeedCashOut";
 import DesktopBetSlip from "./DesktopBetSlip";
+import useLanguage from "../../../hooks/use-language";
+import { LanguageKey } from "../../../const";
 
 export const Bookmaker = ({ data }) => {
+  const { getLanguage } = useLanguage();
   const [speedCashOut, setSpeedCashOut] = useState(null);
   const { eventId } = useParams();
   const [teamProfit, setTeamProfit] = useState([]);
@@ -284,7 +287,7 @@ export const Bookmaker = ({ data }) => {
                             opacity: `${!teamProfitForGame ? "0.6" : "1"}`,
                           }}
                         >
-                          CASHOUT{" "}
+                          {getLanguage(LanguageKey.CASHOUT)}{" "}
                           {teamProfitForGame?.profit &&
                             `(${teamProfitForGame.profit.toFixed(0)})`}
                         </button>
@@ -309,7 +312,7 @@ export const Bookmaker = ({ data }) => {
                             borderRadius: "5px",
                           }}
                         >
-                          Speed Cashout
+                          {getLanguage(LanguageKey.SPEED_CASHOUT)}
                         </button>
                       )}
                   </div>
@@ -357,7 +360,7 @@ export const Bookmaker = ({ data }) => {
                         opacity: `${!teamProfitForGame ? "0.6" : "1"}`,
                       }}
                     >
-                      CASHOUT{" "}
+                      {getLanguage(LanguageKey.CASHOUT)}{" "}
                       {teamProfitForGame?.profit &&
                         `(${teamProfitForGame.profit.toFixed(0)})`}
                     </button>
@@ -382,7 +385,7 @@ export const Bookmaker = ({ data }) => {
                         borderRadius: "5px",
                       }}
                     >
-                      CASHOUT{" "}
+                      {getLanguage(LanguageKey.SPEED_CASHOUT)}{" "}
                     </button>
                   )}
               </div>
@@ -608,7 +611,7 @@ export const Bookmaker = ({ data }) => {
                               {runner?.status === "SUSPENDED" && (
                                 <div className="absolute top-0 right-0 w-[143px] lg:w-[30.5rem] h-full flex items-center justify-center  bg-opacity-50 z-10">
                                   <span className="text-red-600 font-extrabold text-sm uppercase">
-                                    Suspended
+                                    {getLanguage(LanguageKey.SUSPENDED)}
                                   </span>
                                 </div>
                               )}

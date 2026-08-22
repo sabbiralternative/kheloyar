@@ -1,7 +1,10 @@
 import useDepositBreakdown from "../../../hooks/depositBreakdown";
 import toast from "react-hot-toast";
+import useLanguage from "../../../hooks/use-language";
+import { LanguageKey } from "../../../const";
 
 const ChooseAmount = ({ amount, setAmount, setPaymentMethods }) => {
+  const { getLanguage } = useLanguage();
   const { mutate: handleDepositBreakdown } = useDepositBreakdown();
 
   const handleShowPaymentMethods = () => {
@@ -39,7 +42,8 @@ const ChooseAmount = ({ amount, setAmount, setPaymentMethods }) => {
           <div className="w-full mt-2.5 py-[15px] rounded-lg bg-sidebarBg px-3">
             <div className=" font-medium text-text_Ternary text-base leading-5">
               <p>
-                Amount<span className="text-text_Danger">*</span>
+                {getLanguage(LanguageKey.LOGIN)}
+                <span className="text-text_Danger">*</span>
               </p>
             </div>
             <div className="w-full mt-2 py-2 grid grid-cols-12 border rounded-[4px] px-2 items-center justify-center border-green-500">
@@ -154,7 +158,9 @@ const ChooseAmount = ({ amount, setAmount, setPaymentMethods }) => {
               //   }}
               className=" leading-normal relative overflow-hidden  duration-150  bg-buttonGradient flex items-center justify-center gap-x-2 w-full text-primary h-10 text-base rounded-md font-[500]  disabled:bg-bg_Quinary cursor-pointer"
             >
-              <span>Proceed to select payment method</span>
+              <span>
+                {getLanguage(LanguageKey.PROCEED_TO_SELECT_PAYMENT_METHOD)}
+              </span>
             </button>
           </div>
         </div>

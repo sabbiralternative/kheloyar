@@ -11,8 +11,11 @@ import {
 import toast from "react-hot-toast";
 import Ladder from "../../modals/Ladder/Ladder";
 import DesktopBetSlip from "./DesktopBetSlip";
+import useLanguage from "../../../hooks/use-language";
+import { LanguageKey } from "../../../const";
 
 export const Fancy = ({ data }) => {
+  const { getLanguage } = useLanguage();
   const fancyData = data?.filter(
     (fancy) =>
       fancy.btype === "FANCY" &&
@@ -202,10 +205,12 @@ export const Fancy = ({ data }) => {
                                 <td className="w-[6%] px-1">
                                   <div className="flex flex-col items-center justify-center text-[9px] md:text-[10px] leading-tight">
                                     <div className="text-gray-400 text-nowrap">
-                                      MIN: {game?.minLiabilityPerBet}
+                                      {getLanguage(LanguageKey.MIN)}:{" "}
+                                      {game?.minLiabilityPerBet}
                                     </div>
                                     <div className="text-gray-400 text-nowrap">
-                                      MAX: {game?.maxLiabilityPerBet}
+                                      {getLanguage(LanguageKey.MAX)}:{" "}
+                                      {game?.maxLiabilityPerBet}
                                     </div>
                                   </div>
                                 </td>

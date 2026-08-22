@@ -8,8 +8,11 @@ import {
 } from "../../../redux/features/events/eventSlice";
 import { setShowLoginModal } from "../../../redux/features/global/globalSlice";
 import DesktopBetSlip from "./DesktopBetSlip";
+import useLanguage from "../../../hooks/use-language";
+import { LanguageKey } from "../../../const";
 
 export const HorseGreyhoundEventDetails = ({ data }) => {
+  const { getLanguage } = useLanguage();
   const { eventId } = useParams();
   const { data: exposure } = useExposure(eventId);
   const { token } = useSelector((state) => state.auth);
@@ -147,7 +150,7 @@ export const HorseGreyhoundEventDetails = ({ data }) => {
           className="img-fluid"
         />
         <div className="horse-banner-detail">
-          <div className="text-success">OPEN</div>
+          <div className="text-success">{getLanguage(LanguageKey.OPEN)}</div>
           {timeDiff?.day ||
           timeDiff?.hour ||
           timeDiff?.minute ||
@@ -156,26 +159,30 @@ export const HorseGreyhoundEventDetails = ({ data }) => {
               <span style={{ display: "flex", gap: "5px" }}>
                 {timeDiff?.day > 0 && (
                   <span>
-                    {timeDiff?.day} <small>Day</small>
+                    {timeDiff?.day}{" "}
+                    <small>{getLanguage(LanguageKey.DAY)}</small>
                   </span>
                 )}
                 {timeDiff?.hour > 0 && (
                   <span>
-                    {timeDiff?.hour} <small>Hour</small>
+                    {timeDiff?.hour}{" "}
+                    <small>{getLanguage(LanguageKey.HOUR)}</small>
                   </span>
                 )}
                 {timeDiff?.minute > 0 && (
                   <span>
-                    {timeDiff?.minute} <small>Minutes</small>
+                    {timeDiff?.minute}{" "}
+                    <small>{getLanguage(LanguageKey.MINUTE)}</small>
                   </span>
                 )}
                 {timeDiff?.hour === 0 && timeDiff?.minute < 60 && (
                   <span>
-                    {timeDiff?.second} <small>Seconds</small>
+                    {timeDiff?.second}{" "}
+                    <small>{getLanguage(LanguageKey.SECOND)}</small>
                   </span>
                 )}
               </span>
-              <span>Remaining</span>
+              <span>{getLanguage(LanguageKey.REMAINING)}</span>
             </div>
           ) : null}
 
@@ -215,8 +222,8 @@ export const HorseGreyhoundEventDetails = ({ data }) => {
                 </div>
                 <div className="flex items-center gap-1 text-[10px] text-nowrap">
                   <div className="tracking-tighter leading-none">
-                    MIN: {game?.minLiabilityPerBet} | MAX:{" "}
-                    {game?.maxLiabilityPerBet}
+                    {getLanguage(LanguageKey.MIN)}: {game?.minLiabilityPerBet} |{" "}
+                    {getLanguage(LanguageKey.MAX)}: {game?.maxLiabilityPerBet}
                   </div>
                 </div>
                 <div className="bg-white w-[10px] h-[10px] min-w-[10px] min-h-[10px] rounded-full flex items-center justify-center cursor-pointer text-black">

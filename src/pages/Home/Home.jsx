@@ -9,8 +9,11 @@ import { useState } from "react";
 import WhatsApp from "../../components/modules/Home/WhatsApp";
 import MiniGames from "../../components/modules/Home/MiniGames";
 import { useSelector } from "react-redux";
+import useLanguage from "../../hooks/use-language";
+import { LanguageKey } from "../../const";
 
 const Home = () => {
+  const { getLanguage } = useLanguage();
   const { token } = useSelector((state) => state.auth);
   const [showMiniGames, setShowMiniGames] = useState(false);
   const [isInPlay, setIsInPlay] = useState(true);
@@ -33,13 +36,13 @@ const Home = () => {
                     onClick={() => setIsInPlay(true)}
                     className={`active:opacity-70 px-4 py-1 h-[36px] rounded-[4px] uppercase cursor-pointer   ${isInPlay ? "bg-buttonGradient text-reportsTableHeaderText" : "bg-primary "}`}
                   >
-                    Inplay
+                    {getLanguage(LanguageKey.IN_PLAY)}
                   </button>
                   <button
                     onClick={() => setIsInPlay(false)}
                     className={`active:opacity-70 px-4 py-1 h-[36px] rounded-[4px] uppercase cursor-pointer   ${!isInPlay ? "bg-buttonGradient text-reportsTableHeaderText" : "bg-primary "}`}
                   >
-                    upcoming
+                    {getLanguage(LanguageKey.UP_COMING)}
                   </button>
                 </div>
               </div>

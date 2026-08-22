@@ -5,13 +5,12 @@ import { Settings } from "../../../api";
 import { setShowLoginModal } from "../../../redux/features/global/globalSlice";
 import WarningCondition from "../../shared/WarningCondition/WarningCondition";
 import { logout } from "../../../redux/features/auth/authSlice";
-import { useLanguage } from "../../../context/LanguageProvider";
-import { languageValue } from "../../../utils/language";
 import { LanguageKey } from "../../../const";
 import { eventNameList } from "../../../static/event-name-list";
+import useLanguage from "../../../hooks/use-language";
 
 const SidebarContent = ({ setSidebar }) => {
-  const { valueByLanguage } = useLanguage();
+  const { getLanguage } = useLanguage();
   const dispatch = useDispatch();
   const { token } = useSelector((state) => state.auth);
   const [showSportsLinks, setShowSportsLinks] = useState(false);
@@ -71,7 +70,7 @@ const SidebarContent = ({ setSidebar }) => {
             </svg>
             <span className="text-xs font-semibold ">
               {" "}
-              {languageValue(valueByLanguage, LanguageKey.HOME)}
+              {getLanguage(LanguageKey.HOME)}
             </span>
           </div>
         </Link>
@@ -173,7 +172,9 @@ const SidebarContent = ({ setSidebar }) => {
                 </clipPath>
               </defs>
             </svg>
-            <span className="text-xs font-semibold ">Sports</span>
+            <span className="text-xs font-semibold ">
+              {getLanguage(LanguageKey.SPORTS)}
+            </span>
           </div>
           <img
             src="data:image/svg+xml,%3csvg%20width='10'%20height='8'%20viewBox='0%200%2010%208'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3cpath%20d='M4.46885%207.00937L0.218848%202.75937C-0.0749023%202.46563%20-0.0749023%201.99062%200.218848%201.7L0.925098%200.99375C1.21885%200.7%201.69385%200.7%201.98447%200.99375L4.99697%204.00625L8.00947%200.99375C8.30322%200.7%208.77822%200.7%209.06885%200.99375L9.7751%201.7C10.0688%201.99375%2010.0688%202.46875%209.7751%202.75937L5.5251%207.00937C5.2376%207.30312%204.7626%207.30312%204.46885%207.00937Z'%20fill='white'/%3e%3c/svg%3e"
@@ -201,7 +202,7 @@ const SidebarContent = ({ setSidebar }) => {
                 />
                 <span className="text-sm font-medium ">
                   {" "}
-                  {languageValue(valueByLanguage, LanguageKey.CRICKET)}
+                  {getLanguage(LanguageKey.CRICKET)}
                 </span>
               </div>
             </Link>
@@ -222,7 +223,7 @@ const SidebarContent = ({ setSidebar }) => {
                 />
                 <span className="text-sm font-medium ">
                   {" "}
-                  {languageValue(valueByLanguage, LanguageKey.FOOTBALL)}
+                  {getLanguage(LanguageKey.FOOTBALL)}
                 </span>
               </div>
             </Link>
@@ -243,7 +244,7 @@ const SidebarContent = ({ setSidebar }) => {
                 />
                 <span className="text-sm font-medium ">
                   {" "}
-                  {languageValue(valueByLanguage, LanguageKey.TENNIS)}
+                  {getLanguage(LanguageKey.TENNIS)}
                 </span>
               </div>
             </Link>
@@ -260,7 +261,7 @@ const SidebarContent = ({ setSidebar }) => {
                 <img src="/icon/7.svg" alt="horse_racing" className="h-4 w-4" />
                 <span className="text-sm font-medium ">
                   {" "}
-                  {languageValue(valueByLanguage, LanguageKey.HORSE)}
+                  {getLanguage(LanguageKey.HORSE)}
                 </span>
               </div>
             </Link>
@@ -277,7 +278,7 @@ const SidebarContent = ({ setSidebar }) => {
                 <img src="/icon/4339.svg" alt="greyhound" className="h-4 w-4" />
                 <span className="text-sm font-medium ">
                   {" "}
-                  {languageValue(valueByLanguage, LanguageKey.GREYHOUND)}
+                  {getLanguage(LanguageKey.GREYHOUND)}
                 </span>
               </div>
             </Link>
@@ -299,7 +300,7 @@ const SidebarContent = ({ setSidebar }) => {
                 />
                 <span className="text-sm font-medium ">
                   {" "}
-                  {languageValue(valueByLanguage, LanguageKey.KABADDI)}
+                  {getLanguage(LanguageKey.KABADDI)}
                 </span>
               </div>
             </Link>
@@ -336,7 +337,10 @@ const SidebarContent = ({ setSidebar }) => {
                 >
                   <div className="flex items-center gap-2 w-full pl-10 pr-3 py-2 text-left transition-colors h-[40px] hover:bg-dashboardGamesTabsBg/50">
                     <img src={item.image} alt="tennis" className="h-4 w-4" />
-                    <span className="text-sm font-medium "> {item.name}</span>
+                    <span className="text-sm font-medium ">
+                      {" "}
+                      {getLanguage(item.name)}
+                    </span>
                   </div>
                 </Link>
               );
@@ -401,7 +405,9 @@ const SidebarContent = ({ setSidebar }) => {
                 </clipPath>
               </defs>
             </svg>
-            <span className="text-xs font-semibold ">Inplay</span>
+            <span className="text-xs font-semibold ">
+              {getLanguage(LanguageKey.IN_PLAY)}
+            </span>
           </div>
         </Link>
       </div>
@@ -632,7 +638,9 @@ const SidebarContent = ({ setSidebar }) => {
                 </clipPath>
               </defs>
             </svg>
-            <span className="text-xs font-semibold ">Sports Book</span>
+            <span className="text-xs font-semibold ">
+              {getLanguage(LanguageKey.SPORTSBOOK)}
+            </span>
           </div>
         </a>
       </div>
@@ -668,7 +676,9 @@ const SidebarContent = ({ setSidebar }) => {
                 </clipPath>
               </defs>
             </svg>
-            <span className="text-xs font-semibold ">Promotions</span>
+            <span className="text-xs font-semibold ">
+              {getLanguage(LanguageKey.PROMOTIONS)}
+            </span>
           </div>
         </Link>
       </div>
@@ -703,7 +713,9 @@ const SidebarContent = ({ setSidebar }) => {
                 </clipPath>
               </defs>
             </svg>
-            <span className="text-xs font-semibold ">Stake Settings</span>
+            <span className="text-xs font-semibold ">
+              {getLanguage(LanguageKey.EDIT_STAKE)}
+            </span>
           </div>
         </Link>
       </div>
@@ -743,7 +755,9 @@ const SidebarContent = ({ setSidebar }) => {
                 </clipPath>
               </defs>
             </svg>
-            <span className="text-xs font-semibold ">Game Rules</span>
+            <span className="text-xs font-semibold ">
+              {getLanguage(LanguageKey.RULES)}
+            </span>
           </div>
         </Link>
       </div>
@@ -780,7 +794,9 @@ const SidebarContent = ({ setSidebar }) => {
                   </clipPath>
                 </defs>
               </svg>
-              <span className="text-xs font-semibold ">Logout</span>
+              <span className="text-xs font-semibold ">
+                {getLanguage(LanguageKey.LOGOUT)}
+              </span>
             </div>
           </a>
         </div>

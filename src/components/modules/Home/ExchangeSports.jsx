@@ -2,8 +2,11 @@ import { useMemo } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { useGroupQuery } from "../../../hooks/group";
 import HorseGreyhound from "./HorseGreyhound";
+import useLanguage from "../../../hooks/use-language";
+import { LanguageKey } from "../../../const";
 
 const ExchangeSports = ({ isInPlay }) => {
+  const { getLanguage } = useLanguage();
   const location = useLocation();
   const searchParams = new URLSearchParams(location.search);
   const eventTypeId = searchParams.get("eventTypeId");
@@ -103,7 +106,7 @@ const ExchangeSports = ({ isInPlay }) => {
                               />
                             </svg>
                             <span className="text-inplayLabelBg live-blink">
-                              LIVE
+                              {getLanguage(LanguageKey.LIVE)}
                             </span>
                             <div className="flex items-center gap-0.5 text-eventTimeText">
                               <span>{value?.date?.split(" ")[0]}</span> |{" "}

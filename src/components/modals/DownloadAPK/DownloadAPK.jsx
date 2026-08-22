@@ -5,7 +5,10 @@ import { setShowAPKModal } from "../../../redux/features/global/globalSlice";
 import { Settings } from "../../../api";
 import images from "../../../assets/images";
 import { GrAndroid } from "react-icons/gr";
+import useLanguage from "../../../hooks/use-language";
+import { LanguageKey } from "../../../const";
 const DownloadAPK = () => {
+  const { getLanguage } = useLanguage();
   const dispatch = useDispatch();
   const modalRef = useRef();
   useCloseModalClickOutside(modalRef, () => {
@@ -80,7 +83,9 @@ const DownloadAPK = () => {
                         />
 
                         <h1 className="main-title">
-                          Download APK for Premium Gaming Experience
+                          {getLanguage(
+                            LanguageKey.DOWNLOAD_APK_FOR_PREMIUM_GAMING_EXPERIENCE,
+                          )}
                         </h1>
                       </div>
                     </header>
@@ -126,7 +131,9 @@ const DownloadAPK = () => {
                         className="download-button text-primary"
                       >
                         <GrAndroid className="android-icon" />
-                        <span>Download Official App Now ↓</span>
+                        <span>
+                          {getLanguage(LanguageKey.DOWNLOAD_OFFICIAL_APP_NOW)} ↓
+                        </span>
                       </a>
                     </main>
                   </div>

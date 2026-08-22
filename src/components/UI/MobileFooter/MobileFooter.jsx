@@ -2,8 +2,11 @@ import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Settings } from "../../../api";
 import Menu from "../../modals/Menu/Menu";
+import useLanguage from "../../../hooks/use-language";
+import { LanguageKey } from "../../../const";
 
 const MobileFooter = () => {
+  const { getLanguage } = useLanguage();
   const [showMenu, setShowMenu] = useState(false);
   const { pathname } = useLocation();
 
@@ -51,7 +54,7 @@ const MobileFooter = () => {
           <div
             className={`text-[11px] text-center font-medium ${pathname === "/" ? "text-signupHereText" : ""}`}
           >
-            Home
+            {getLanguage(LanguageKey.HOME)}
           </div>
         </Link>
         <Link
@@ -78,7 +81,7 @@ const MobileFooter = () => {
           <div
             className={`text-[11px] text-center font-medium ${pathname === "/exchange_sports/in-play" ? "text-signupHereText" : ""}`}
           >
-            Exchange
+            {getLanguage(LanguageKey.SPORTS)}
           </div>
         </Link>
         <div
@@ -229,7 +232,7 @@ const MobileFooter = () => {
           <div
             className={`text-[11px] text-center font-medium ${pathname === "/casino" ? "text-signupHereText" : ""}`}
           >
-            All Casino
+            {getLanguage(LanguageKey.CASINO)}
           </div>
         </Link>
         <button
@@ -261,7 +264,9 @@ const MobileFooter = () => {
               fill="white"
             />
           </svg>
-          <div className="text-[11px] text-center font-medium ">Menu</div>
+          <div className="text-[11px] text-center font-medium ">
+            {getLanguage(LanguageKey.MENU)}
+          </div>
         </button>
       </div>
     </div>

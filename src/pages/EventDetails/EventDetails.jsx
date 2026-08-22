@@ -18,8 +18,11 @@ import { Bookmaker } from "../../components/modules/EventDetails/Bookmaker";
 import { useCurrentBets } from "../../hooks/currentBets";
 import Premium from "../../components/modules/EventDetails/Premium";
 import ToggleButtons from "../../components/modules/EventDetails/ToggleButtons";
+import useLanguage from "../../hooks/use-language";
+import { LanguageKey } from "../../const";
 
 const EventDetails = () => {
+  const { getLanguage } = useLanguage();
   const [fancyPremiumTab, setFancyPremiumTab] = useState("");
   const [tab, setTab] = useState("odds");
   const [sportsVideo, { data: iframe }] = useVideoMutation();
@@ -173,13 +176,14 @@ const EventDetails = () => {
                       onClick={() => setTab("odds")}
                       className={`font-black   px-2 text-[13px] py-1 cursor-pointer ${tab === "odds" ? "border-t border-t-white" : ""}`}
                     >
-                      Odds
+                      {getLanguage(LanguageKey.ODDS)}
                     </div>
                     <div
                       onClick={() => setTab("bet")}
                       className={`font-black   px-2 text-[13px] py-1 cursor-pointer ${tab !== "odds" ? "border-t border-t-white" : ""}`}
                     >
-                      Matched Bet ({currentBets?.length})
+                      {getLanguage(LanguageKey.MATCHED_BETS)} (
+                      {currentBets?.length})
                     </div>
                   </div>
                   <div className="flex flex-row justify-center items-center gap-2">
@@ -263,13 +267,13 @@ const EventDetails = () => {
                     <thead>
                       <tr className=" text-[#000] bg-neutral-200 text-[14px] font-medium h-[30px]">
                         <th className=" border-r border-[#e0e0e0] text-left pl-2">
-                          Market
+                          {getLanguage(LanguageKey.MARKET)}
                         </th>
                         <th className=" border-r border-[#e0e0e0] text-left pl-2">
-                          Odds
+                          {getLanguage(LanguageKey.ODDS)}
                         </th>
                         <th className=" border-r border-[#e0e0e0] text-left pl-2">
-                          Amount
+                          {getLanguage(LanguageKey.AMOUNT)}
                         </th>
                       </tr>
                     </thead>

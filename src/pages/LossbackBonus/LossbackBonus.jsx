@@ -3,8 +3,11 @@ import toast from "react-hot-toast";
 import { useBonusMutation, useBonusQuery } from "../../hooks/bonus";
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
+import useLanguage from "../../hooks/use-language";
+import { LanguageKey } from "../../const";
 
 const LossbackBonus = () => {
+  const { getLanguage } = useLanguage();
   const bonusMessage = [
     "Lossback can be claimed only if you have a net loss on the specified date. If your total bets result in any profit, you are not eligible for this lossback bonus.Loss is calculated after all wins, losses, and settlements for that date.",
     "लॉसबैक का दावा केवल उसी स्थिति में किया जा सकता है जब निर्धारित तिथि पर आपका कुल शुद्ध नुकसान (नेट लॉस) हो। यदि उस दिन आपकी कुल बेटिंग का परिणाम किसी भी प्रकार का मुनाफ़ा (प्रॉफिट) दिखाता है, तो आप इस लॉसबैक बोनस के लिए पात्र नहीं होंगे। लॉस की गणना उस तिथि की सभी जीत, हार और सेटलमेंट को जोड़ने के बाद की जाएगी।",
@@ -81,7 +84,7 @@ const LossbackBonus = () => {
                     >
                       <div className="flex items-start gap-3">
                         <h4 className="font-bold  text-[12px] mb-2 tracking-wide min-w-fit">
-                          Title :
+                          {getLanguage(LanguageKey.TITLE)} :
                         </h4>
                         <p className=" text-[12px] leading-relaxed ">
                           {item?.title}
@@ -89,7 +92,7 @@ const LossbackBonus = () => {
                       </div>
                       <div className="flex items-start gap-3">
                         <h4 className="font-bold  text-[12px] mb-2 tracking-wide min-w-fit">
-                          Minimum Loss Amount :
+                          {getLanguage(LanguageKey.MINIMUM_LOSS_AMOUNT)} :
                         </h4>
                         <p className=" text-[12px] leading-relaxed ">
                           {item?.minimum_loss_amount}
@@ -97,7 +100,7 @@ const LossbackBonus = () => {
                       </div>
                       <div className="flex items-start gap-3">
                         <h4 className="font-bold  text-[12px] mb-2 tracking-wide min-w-fit">
-                          Maximum Bonus Amount :
+                          {getLanguage(LanguageKey.MAXIMUM_BONUS_AMOUNT)} :
                         </h4>
                         <p className=" text-[12px] leading-relaxed">
                           {item?.maximum_bonus_amount}
@@ -105,7 +108,7 @@ const LossbackBonus = () => {
                       </div>
                       <div className="flex items-start gap-3">
                         <h4 className="font-bold  text-[12px] mb-2 tracking-wide min-w-fit">
-                          Status :
+                          {getLanguage(LanguageKey.STATUS)} :
                         </h4>
                         <p
                           className={`text-[12px] leading-relaxed ${item?.status === "ACTIVE" ? "text-green-500" : item?.status === "INACTIVE" ? "text-orange-500" : "text-red-500"}`}
@@ -115,7 +118,7 @@ const LossbackBonus = () => {
                       </div>
                       <div className="flex items-start gap-3">
                         <h4 className="font-bold  text-[12px] mb-2 tracking-wide min-w-fit">
-                          Expiry :
+                          {getLanguage(LanguageKey.EXPIRY)} :
                         </h4>
                         <p className=" text-[12px] leading-relaxed">
                           {item?.expires_at}
@@ -129,7 +132,7 @@ const LossbackBonus = () => {
                           className="relative overflow-hidden bg-green-500 py-1 px-4 rounded-md active:scale-[99%] transition-all duration-300   text-sm font-bold"
                           type="button"
                         >
-                          Claim
+                          {getLanguage(LanguageKey.CLAIM)}
                         </button>
                       )}
                     </div>
@@ -154,10 +157,13 @@ const LossbackBonus = () => {
                 </div>
                 <div className="text-center space-y-3">
                   <h3 className="text-xl font-extrabold text-text_color_primary1 tracking-tight">
-                    No Loss Back Claims Available!
+                    {getLanguage(LanguageKey.NO_LOSS_BACK_CLAIMS_AVAILABLE)}!
                   </h3>
                   <p className="text-text_color_primary1 text-sm max-w-sm leading-relaxed font-medium">
-                    Continue playing to earn loss back bonuses!
+                    {getLanguage(
+                      LanguageKey.CONTINUE_PLAYING_TO_EARN_LOSS_BACK_BONUSES,
+                    )}
+                    !
                   </p>
                 </div>
                 <div className="w-full max-w-sm bg-bg_color_quaternary2 rounded-lg p-4 border border-border_color_primary shadow-sm">
@@ -169,7 +175,7 @@ const LossbackBonus = () => {
                     </div>
                     <div className="flex-1">
                       <h4 className="font-bold  text-sm mb-2 tracking-wide">
-                        How Loss Back Works
+                        {getLanguage(LanguageKey.HOW_LOSS_BACK_WORKS)}
                       </h4>
                       <p className=" text-sm leading-relaxed font-medium">
                         When you experience losses while playing, a percentage
@@ -197,7 +203,9 @@ const LossbackBonus = () => {
                           <path d="m22 7-8.5 8.5-5-5L2 17" />
                         </svg>
                       </div>
-                      <p className="text-xs font-medium ">Play Games</p>
+                      <p className="text-xs font-medium ">
+                        {getLanguage(LanguageKey.PLAY_GAMES)}
+                      </p>
                     </div>
                     <div className="text-center">
                       <div className="size-7 rounded-full flex items-center justify-center mx-auto mb-2 bg-bg_color_tertiary">
@@ -217,7 +225,9 @@ const LossbackBonus = () => {
                           <polyline points="12 6 12 12 16 14" />
                         </svg>
                       </div>
-                      <p className="text-xs font-medium ">Auto Calculate</p>
+                      <p className="text-xs font-medium ">
+                        {getLanguage(LanguageKey.AUTO_CALCULATE)}
+                      </p>
                     </div>
                     <div className="text-center">
                       <div className="size-7 rounded-full flex items-center justify-center mx-auto mb-2 bg-bg_color_tertiary">
@@ -238,7 +248,9 @@ const LossbackBonus = () => {
                           <path d="M20 12v4h-4a2 2 0 0 1 0 -4h4" />
                         </svg>
                       </div>
-                      <p className="text-xs font-medium ">Get Rewarded</p>
+                      <p className="text-xs font-medium ">
+                        {getLanguage(LanguageKey.GET_REWARDED)}
+                      </p>
                     </div>
                   </div>
                 </div>
@@ -247,7 +259,7 @@ const LossbackBonus = () => {
                   className="relative overflow-hidden bg-green-500 py-2 px-4 rounded-lg active:scale-[99%] transition-all duration-300   text-sm font-bold"
                   type="button"
                 >
-                  Continue Playing
+                  {getLanguage(LanguageKey.CONTINUE_PLAYING)}
                 </button>
               </div>
             )}

@@ -19,8 +19,11 @@ import {
   handleDecreasePrice,
   handleIncreasePrice,
 } from "../../../utils/editBetSlipPrice";
+import useLanguage from "../../../hooks/use-language";
+import { LanguageKey } from "../../../const";
 
 const DesktopBetSlip = ({ currentPlaceBetEvent }) => {
+  const { getLanguage } = useLanguage();
   const { closePopupForForever } = useSelector((state) => state.global);
   const [isCashOut, setIsCashOut] = useState(false);
   const [profit, setProfit] = useState(0);
@@ -331,7 +334,7 @@ const DesktopBetSlip = ({ currentPlaceBetEvent }) => {
             onClick={() => dispatch(setStake(parseButtonValues[0]?.value))}
             className=" active:opacity-70 flex-1 w-full text-sm h-8 rounded text-black bg-[#e8e817]"
           >
-            Min Stake
+            {getLanguage(LanguageKey.MIN_STAKE)}
           </button>
           <button
             onClick={() =>
@@ -343,7 +346,7 @@ const DesktopBetSlip = ({ currentPlaceBetEvent }) => {
             }
             className=" active:opacity-70 flex-1 w-full  text-sm h-8 rounded  bg-blue-700 "
           >
-            Max Stake
+            {getLanguage(LanguageKey.MAX_STAKE)}
           </button>
 
           <button
@@ -352,7 +355,7 @@ const DesktopBetSlip = ({ currentPlaceBetEvent }) => {
             }}
             className=" active:opacity-70 flex-1 w-full  text-sm h-8 rounded bg-red-600 "
           >
-            Clear
+            {getLanguage(LanguageKey.CLEAR)}
           </button>
         </div>
         <div className="flex justify-between pb-2 gap-1 mx-2">
@@ -360,13 +363,13 @@ const DesktopBetSlip = ({ currentPlaceBetEvent }) => {
             onClick={handleCancelBet}
             className=" active:opacity-70 flex-1 text-sm h-8 w-full rounded bg-red-600 "
           >
-            Reset{" "}
+            {getLanguage(LanguageKey.CANCEL)}{" "}
           </button>
           <button
             onClick={handleOrderBets}
             className=" active:opacity-70 flex-1 h-8 w-full border border-green-700 rounded text-sm bg-green-600 "
           >
-            Place Bet
+            {getLanguage(LanguageKey.PLACE_BET)}
           </button>
         </div>
         {loading && (
@@ -377,9 +380,11 @@ const DesktopBetSlip = ({ currentPlaceBetEvent }) => {
             </div>
             <div className="flex flex-col items-center justify-center ">
               <div className="text-sm font-semibold">
-                Your bet is being processed...
+                {getLanguage(LanguageKey.YOUR_BET_IS_BEING_PROCESSED)}...
               </div>
-              <div className="text-xs text-suspendedBg">Please wait</div>
+              <div className="text-xs text-suspendedBg">
+                {getLanguage(LanguageKey.PLEASE_WAIT)}
+              </div>
             </div>
           </div>
         )}

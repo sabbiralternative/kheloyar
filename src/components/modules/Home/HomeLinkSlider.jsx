@@ -4,8 +4,11 @@ import { useNavigate } from "react-router-dom";
 import { Settings } from "../../../api";
 import { setShowLoginModal } from "../../../redux/features/global/globalSlice";
 import WarningCondition from "../../shared/WarningCondition/WarningCondition";
+import useLanguage from "../../../hooks/use-language";
+import { LanguageKey } from "../../../const";
 
 const HomeLinkSlider = () => {
+  const { getLanguage } = useLanguage();
   const dispatch = useDispatch();
   const { token } = useSelector((state) => state.auth);
   const navigate = useNavigate();
@@ -33,7 +36,7 @@ const HomeLinkSlider = () => {
         onClick={() => handleNavigateToIFrame("sportsbook", "550000")}
         className="flex items-center justify-between gap-2 h-[40px] min-w-[150px] md:min-w-[280px]  text-xs font-medium px-2 py-1 rounded-md cursor-pointer bg-sportsbookQuickLinkBg"
       >
-        <span>Sportsbook</span>
+        <span>{getLanguage(LanguageKey.SPORTSBOOK)}</span>
         <img
           loading="lazy"
           src="/icon/sportsbook-image-CkNGaIEW.webp"
@@ -54,7 +57,7 @@ const HomeLinkSlider = () => {
         onClick={() => navigate("/casino?product=MAC88%20LIVE&category=All")}
         className="flex items-center justify-between gap-2 h-[40px] min-w-[150px] md:min-w-[280px]  text-xs font-medium px-2 py-1 rounded-md cursor-pointer bg-indianCasinoQuickLinkBg"
       >
-        <span>Indian Casino</span>
+        <span>{getLanguage(LanguageKey.INDIAN_CASINO)}</span>
         <img
           loading="lazy"
           src="/icon/indian-casino-icon-D2C69UK4.svg"
@@ -75,7 +78,7 @@ const HomeLinkSlider = () => {
         onClick={() => navigate("/casino?product=All&category=live")}
         className="flex items-center justify-between gap-2 h-[40px] min-w-[150px] md:min-w-[280px]  text-xs font-medium px-2 py-1 rounded-md cursor-pointer bg-liveCasinoQuickLinkBg"
       >
-        <span>Live Casino</span>
+        <span>{getLanguage(LanguageKey.LIVE_CASINO)}</span>
         <img
           loading="lazy"
           src="/icon/live-casino-image-D1C_HT8f.webp"

@@ -18,7 +18,7 @@ import Authorized from "./Authorized";
 import Notification from "./Notification";
 import MobileLeftSidebar from "../LeftSidebar/MobileLeftSidebar";
 import Language from "../../modals/Language/Language";
-import { useLanguage } from "../../../context/LanguageProvider";
+import useLanguage from "../../../hooks/use-language";
 
 const Header = () => {
   const { setLanguage } = useLanguage();

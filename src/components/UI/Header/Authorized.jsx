@@ -5,12 +5,11 @@ import { useNavigate } from "react-router-dom";
 import { Settings } from "../../../api";
 import { setShowLanguageModal } from "../../../redux/features/global/globalSlice";
 import { useDispatch } from "react-redux";
-import { useLanguage } from "../../../context/LanguageProvider";
-import { languageValue } from "../../../utils/language";
 import { LanguageKey } from "../../../const";
+import useLanguage from "../../../hooks/use-language";
 
 const Authorized = () => {
-  const { valueByLanguage } = useLanguage();
+  const { getLanguage } = useLanguage();
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { data } = useBalance();
@@ -24,7 +23,7 @@ const Authorized = () => {
         >
           <span className="my-auto uppercase">
             {" "}
-            {languageValue(valueByLanguage, LanguageKey.DEPOSIT)}{" "}
+            {getLanguage(LanguageKey.DEPOSIT)}{" "}
           </span>
         </button>
         <button
@@ -33,21 +32,21 @@ const Authorized = () => {
         >
           <span className="my-auto uppercase">
             {" "}
-            {languageValue(valueByLanguage, LanguageKey.WITHDRAW)}
+            {getLanguage(LanguageKey.WITHDRAW)}
           </span>
         </button>
         <button
           onClick={() => navigate("/promotions")}
           className=" active:opacity-70 text-center h-[36px] w-[58px] text-[9px]  font-bold rounded-[4px] color-blinking-button"
         >
-          Check Bonuses
+          {getLanguage(LanguageKey.PROMOTIONS)}
         </button>
       </div>
       <div className="flex items-center gap-2">
         <div className="flex flex-col gap-1 justify-between text-sm md:text-[16px]">
           <div className="flex items-center gap-0.5">
             <div className="md:flex flex-col justify-center gap-1 md:h-[30px] text-center leading-none text-[11px]  font-bold bg-balanceAndExposureBg px-1 md:px-2 rounded-md md:uppercase">
-              Balance:{" "}
+              {getLanguage(LanguageKey.BALANCE)}:{" "}
               <span className="text-signupHereText">{data?.availBalance}</span>
             </div>
             <div className="inline-block">
@@ -62,7 +61,7 @@ const Authorized = () => {
           </div>
           <div className="flex gap-0.5">
             <div className="md:flex flex-col justify-center gap-1 md:h-[30px] text-center leading-none text-[11px]  font-bold bg-balanceAndExposureBg px-1 md:px-2 rounded-md cursor-pointer md:uppercase">
-              Exposure:{" "}
+              {getLanguage(LanguageKey.EXPOSURE)}:{" "}
               <span className="text-signupHereText">
                 {data?.deductedExposure}
               </span>

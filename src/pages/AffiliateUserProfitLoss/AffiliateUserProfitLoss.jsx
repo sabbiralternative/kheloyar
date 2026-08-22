@@ -3,8 +3,11 @@ import { useSelector } from "react-redux";
 import moment from "moment";
 
 import { useIndexQuery } from "../../hooks";
+import useLanguage from "../../hooks/use-language";
+import { LanguageKey } from "../../const";
 
 const AffiliateUserProfitLoss = () => {
+  const { getLanguage } = useLanguage();
   const fromDate = new Date(new Date().setDate(new Date().getDate() - 7))
     .toISOString()
     .split("T")[0];
@@ -55,7 +58,7 @@ const AffiliateUserProfitLoss = () => {
                     </button>
                   </div>
                   <span className="w-full h-full capitalize ml-[4px] flex items-center text-text_Ternary  font-bold  leading-5">
-                    <span>Back</span>
+                    <span>{getLanguage(LanguageKey.BACK)}</span>
                   </span>
                 </div>
               </div>
@@ -80,7 +83,7 @@ const AffiliateUserProfitLoss = () => {
                           {moment(date).format("Do-MMM-YYYY")}
                         </div>
                         <div className="text-xs   font-[600] flex items-center justify-center leading-[140%]">
-                          <span>Total PL</span>
+                          <span>{getLanguage(LanguageKey.TOTAL_PL)}</span>
                           <span className="-mt-0.5 ml-1">:</span>
                           <span
                             style={{ textShadow: "1px 1px #000000" }}
@@ -127,7 +130,9 @@ const AffiliateUserProfitLoss = () => {
                                   </span>
                                 </span>
                                 <span className="text-text_Ternary w-1/2 flex items-center justify-end gap-x-1">
-                                  <span>Balance:</span>
+                                  <span>
+                                    {getLanguage(LanguageKey.BALANCE)}:
+                                  </span>
                                   <span className={`font-medium `}>
                                     ₹ {item?.balance}
                                   </span>

@@ -16,12 +16,11 @@ import {
 } from "../../redux/features/global/globalSlice";
 import { IoEye } from "react-icons/io5";
 import { IoMdEyeOff } from "react-icons/io";
-import { useLanguage } from "../../context/LanguageProvider";
-import { languageValue } from "../../utils/language";
 import { LanguageKey } from "../../const";
+import useLanguage from "../../hooks/use-language";
 
 const Register = () => {
-  const { valueByLanguage } = useLanguage();
+  const { getLanguage } = useLanguage();
   const affnook_token = localStorage.getItem("affnook_token");
   const referralCode = localStorage.getItem("referralCode");
   const { logo } = useLogo();
@@ -152,7 +151,7 @@ const Register = () => {
             >
               <path d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l128 128c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 288 480 288c17.7 0 32-14.3 32-32s-14.3-32-32-32l-370.7 0 73.4-73.4c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-128 128z" />
             </svg>
-            <span className="my-auto">Back</span>
+            <span className="my-auto">{getLanguage(LanguageKey.BACK)}</span>
           </button>
           <div
             onClick={() => navigate("/")}
@@ -170,7 +169,9 @@ const Register = () => {
             />
           </div>
           <header className="flex flex-col justify-center self-center mt-2.5 max-w-full text-center w-[254px]">
-            <h1 className="text-xl font-semibold">Sign Up</h1>
+            <h1 className="text-xl font-semibold">
+              {getLanguage(LanguageKey.REGISTER)}
+            </h1>
             <p className="text-xs text-black-900 font-bold">
               Create your account by following these simple steps.
             </p>
@@ -194,7 +195,7 @@ const Register = () => {
                 <div className=" h-[44px] w-[130px] flex items-center justify-center gap-1 rounded-md bg-loginInputGray ">
                   {timer ? (
                     <div className="px-3 w-full h-full  text-base font-semibold text-center rounded-md  bg-buttonGradient  cursor-text">
-                      Retry in {timer}
+                      {getLanguage(LanguageKey.RETRY_IN)} {timer}
                     </div>
                   ) : (
                     <button
@@ -203,7 +204,7 @@ const Register = () => {
                       type="button"
                       className="px-3 w-full h-full  text-base font-semibold text-center rounded-md  bg-buttonGradient "
                     >
-                      Get OTP
+                      {getLanguage(LanguageKey.GET_OTP)}
                     </button>
                   )}
                 </div>
@@ -214,7 +215,7 @@ const Register = () => {
                 htmlFor="username"
                 className="self-start text-black-900 font-bold"
               >
-                OTP
+                {getLanguage(LanguageKey.OTP)}
               </label>
               <input
                 type="text"
@@ -228,7 +229,7 @@ const Register = () => {
                 htmlFor="password"
                 className="self-start text-black-900 font-bold"
               >
-                Password
+                {getLanguage(LanguageKey.PASSWORD)}
               </label>
               <div className="flex items-center px-3 py-2 w-full h-[44px] bg-loginInputGray rounded text-black-900 font-bold text-opacity-60 focus:outline-none">
                 <input
@@ -251,7 +252,7 @@ const Register = () => {
                 htmlFor="password"
                 className="self-start text-black-900 font-bold"
               >
-                Confirm Password
+                {getLanguage(LanguageKey.CONFIRM_PASSWORD)}
               </label>
               <div className="flex items-center px-3 py-2 w-full h-[44px] bg-loginInputGray rounded text-black-900 font-bold text-opacity-60 focus:outline-none">
                 <input
@@ -274,7 +275,8 @@ const Register = () => {
                 htmlFor="password"
                 className="self-start text-black-900 font-bold"
               >
-                Referral Code(Optional)
+                {getLanguage(LanguageKey.REFERRAL_CODE)}(
+                {getLanguage(LanguageKey.OPTIONAL)})
               </label>
               <div className="flex items-center px-3 py-2 w-full h-[44px] bg-loginInputGray rounded text-black-900 font-bold text-opacity-60 focus:outline-none">
                 <input
@@ -292,7 +294,7 @@ const Register = () => {
               type="submit"
               className=" active:opacity-70 gap-2.5 self-stretch px-16 py-3 mt-5 text-base font-semibold text-center rounded-lg min-h-[44px] shadow-[0px_1px_2px_rgba(0,0,0,0.05)] max-md:px-5 bg-buttonGradient  cursor-not-allowed"
             >
-              {languageValue(valueByLanguage, LanguageKey.REGISTER)}
+              {getLanguage(LanguageKey.REGISTER)}
             </button>
             <div className="self-center mt-6 text-sm text-center ">
               Already have account?{" "}
@@ -300,7 +302,7 @@ const Register = () => {
                 onClick={showLogin}
                 className=" text-signupHereText underline font-medium transition-all duration-200"
               >
-                {languageValue(valueByLanguage, LanguageKey.LOGIN)}
+                {getLanguage(LanguageKey.LOGIN)}
               </a>
             </div>
           </form>

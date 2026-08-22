@@ -5,8 +5,11 @@ import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { setShowLoginModal } from "../../../redux/features/global/globalSlice";
 import WarningCondition from "../../shared/WarningCondition/WarningCondition";
+import useLanguage from "../../../hooks/use-language";
+import { LanguageKey } from "../../../const";
 
 const Menu = ({ setShowMenu }) => {
+  const { getLanguage } = useLanguage();
   const dispatch = useDispatch();
   const [showWarning, setShowWarning] = useState(false);
   const [gameInfo, setGameInfo] = useState({ gameName: "", gameId: "" });
@@ -76,7 +79,9 @@ const Menu = ({ setShowMenu }) => {
                     alt="home"
                     className="w-[30px] h-[30px]"
                   />
-                  <div className="text-[10px] text-center capitalize">Home</div>
+                  <div className="text-[10px] text-center capitalize">
+                    {getLanguage(LanguageKey.HOME)}
+                  </div>
                 </div>
                 <div
                   onClick={() => handleNavigate("/deposit")}
@@ -88,7 +93,7 @@ const Menu = ({ setShowMenu }) => {
                     className="w-[30px] h-[30px]"
                   />
                   <div className="text-[10px] text-center capitalize">
-                    Deposit{" "}
+                    {getLanguage(LanguageKey.DEPOSIT)}{" "}
                   </div>
                 </div>
                 <div
@@ -101,7 +106,7 @@ const Menu = ({ setShowMenu }) => {
                     className="w-[30px] h-[30px]"
                   />
                   <div className="text-[10px] text-center capitalize">
-                    Withdraw
+                    {getLanguage(LanguageKey.WITHDRAW)}
                   </div>
                 </div>
                 <div
@@ -116,13 +121,15 @@ const Menu = ({ setShowMenu }) => {
                     className="w-[30px] h-[30px]"
                   />
                   <div className="text-[10px] text-center capitalize">
-                    Aviator
+                    {getLanguage(LanguageKey.AVIATOR)}
                   </div>
                 </div>
               </div>
             </div>
             <div className="flex flex-col gap-1 p-1.5 border border-mobileMenuGridBorder rounded-md">
-              <div className="text-signupHereText font-bold">Sports</div>
+              <div className="text-signupHereText font-bold">
+                {getLanguage(LanguageKey.SPORTS)}
+              </div>
               <div className="grid grid-cols-4 gap-1">
                 <div
                   onClick={() =>
@@ -136,7 +143,7 @@ const Menu = ({ setShowMenu }) => {
                     className="w-[30px] h-[30px]"
                   />
                   <div className="text-[10px] text-center capitalize">
-                    In Play
+                    {getLanguage(LanguageKey.IN_PLAY)}
                   </div>
                 </div>
                 <div
@@ -149,7 +156,7 @@ const Menu = ({ setShowMenu }) => {
                     className="w-[30px] h-[30px]"
                   />
                   <div className="text-[10px] text-center capitalize">
-                    Exchange
+                    {getLanguage(LanguageKey.SPORTS)}
                   </div>
                 </div>
                 <div
@@ -162,7 +169,7 @@ const Menu = ({ setShowMenu }) => {
                     className="w-[30px] h-[30px]"
                   />
                   <div className="text-[10px] text-center capitalize">
-                    Sports Book
+                    {getLanguage(LanguageKey.SPORTSBOOK)}
                   </div>
                 </div>
 
@@ -178,7 +185,7 @@ const Menu = ({ setShowMenu }) => {
                     className="w-[30px] h-[30px]"
                   />
                   <div className="text-[10px] text-center capitalize">
-                    Cricket
+                    {getLanguage(LanguageKey.CRICKET)}
                   </div>
                 </div>
                 <div
@@ -193,7 +200,7 @@ const Menu = ({ setShowMenu }) => {
                     className="w-[30px] h-[30px]"
                   />
                   <div className="text-[10px] text-center capitalize">
-                    Soccer
+                    {getLanguage(LanguageKey.FOOTBALL)}
                   </div>
                 </div>
                 <div
@@ -208,13 +215,15 @@ const Menu = ({ setShowMenu }) => {
                     className="w-[30px] h-[30px]"
                   />
                   <div className="text-[10px] text-center capitalize">
-                    Tennis
+                    {getLanguage(LanguageKey.TENNIS)}
                   </div>
                 </div>
               </div>
             </div>
             <div className="flex flex-col gap-1 p-1.5 border border-mobileMenuGridBorder rounded-md">
-              <div className="text-signupHereText font-bold">Casino</div>
+              <div className="text-signupHereText font-bold">
+                {getLanguage(LanguageKey.CASINO)}
+              </div>
               <div className="grid grid-cols-4 gap-1">
                 <div className="flex flex-col gap-1.5 items-center justify-center min-h-[72px] p-1 bg-mobileMenuGridBg border border-mobileMenuGridBorder rounded-md cursor-pointer">
                   <img
@@ -233,7 +242,7 @@ const Menu = ({ setShowMenu }) => {
                     className="w-[30px] h-[30px]"
                   />
                   <div className="text-[10px] text-center capitalize">
-                    Indian Casino
+                    {getLanguage(LanguageKey.INDIAN_CASINO)}
                   </div>
                 </div>
                 <div className="flex flex-col gap-1.5 items-center justify-center min-h-[72px] p-1 bg-mobileMenuGridBg border border-mobileMenuGridBorder rounded-md cursor-pointer">
@@ -243,7 +252,7 @@ const Menu = ({ setShowMenu }) => {
                     className="w-[30px] h-[30px]"
                   />
                   <div className="text-[10px] text-center capitalize">
-                    Crash Games
+                    {getLanguage(LanguageKey.CRASH_GAMES)}
                   </div>
                 </div>
                 <div className="flex flex-col gap-1.5 items-center justify-center min-h-[72px] p-1 bg-mobileMenuGridBg border border-mobileMenuGridBorder rounded-md cursor-pointer">
@@ -253,7 +262,7 @@ const Menu = ({ setShowMenu }) => {
                     className="w-[30px] h-[30px]"
                   />
                   <div className="text-[10px] text-center capitalize">
-                    Slot games
+                    {getLanguage(LanguageKey.SLOTS)}
                   </div>
                 </div>
               </div>
@@ -272,7 +281,7 @@ const Menu = ({ setShowMenu }) => {
                     className="w-[30px] h-[30px]"
                   />
                   <div className="text-[10px] text-center capitalize">
-                    Promotions
+                    {getLanguage(LanguageKey.PROMOTIONS)}
                   </div>
                 </div>
                 <div
@@ -285,7 +294,7 @@ const Menu = ({ setShowMenu }) => {
                     className="w-[30px] h-[30px]"
                   />
                   <div className="text-[10px] text-center capitalize">
-                    settings
+                    {getLanguage(LanguageKey.SETTINGS)}
                   </div>
                 </div>
                 {Settings.apk_link && (
@@ -299,7 +308,7 @@ const Menu = ({ setShowMenu }) => {
                       className="w-[30px] h-[30px]"
                     />
                     <div className="text-[10px] text-center capitalize">
-                      Download Apk
+                      {getLanguage(LanguageKey.DOWNLOAD_APK)}
                     </div>
                   </div>
                 )}
@@ -314,7 +323,7 @@ const Menu = ({ setShowMenu }) => {
                       className="w-[30px] h-[30px]"
                     />
                     <div className="text-[10px] text-center capitalize">
-                      24x7 Customer Support
+                      {getLanguage(LanguageKey.CUSTOMER_SUPPORT)}
                     </div>
                   </div>
                 )}
@@ -332,10 +341,11 @@ const Menu = ({ setShowMenu }) => {
               />
               <div className="flex flex-col bg-modalBg p-2 rounded-[4px]">
                 <span>
-                  Bal: <span>{data?.availBalance}</span>
+                  {getLanguage(LanguageKey.BALANCE)}:{" "}
+                  <span>{data?.availBalance}</span>
                 </span>
                 <span>
-                  Exp:{" "}
+                  {getLanguage(LanguageKey.EXPOSURE)}:{" "}
                   <span className="text-exposureText">
                     {data?.deductedExposure}
                   </span>

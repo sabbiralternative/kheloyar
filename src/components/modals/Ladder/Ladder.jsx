@@ -1,8 +1,11 @@
 import { useRef } from "react";
 import useCloseModalClickOutside from "../../../hooks/closeModal";
 import { useLogo } from "../../../context/ApiProvider";
+import useLanguage from "../../../hooks/use-language";
+import { LanguageKey } from "../../../const";
 
 const Ladder = ({ ladderData, setLadderData, marketName }) => {
+  const { getLanguage } = useLanguage();
   const { logo } = useLogo();
   const ladderRef = useRef();
   useCloseModalClickOutside(ladderRef, () => {
@@ -45,10 +48,10 @@ const Ladder = ({ ladderData, setLadderData, marketName }) => {
                 <thead>
                   <tr className="bg-gray-200 text-left text-gray-600 font-bold">
                     <th className="py-2 px-4 border-b border-gray-300">
-                      Runner Name
+                      {getLanguage(LanguageKey.RUNNER_NAME)}
                     </th>
                     <th className="py-2 px-4 border-b border-gray-300">
-                      Profit/Loss
+                      {getLanguage(LanguageKey.PROFIT_LOSS)}
                     </th>
                   </tr>
                 </thead>

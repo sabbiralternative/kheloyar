@@ -2,8 +2,11 @@ import { useChangePasswordMutation } from "../../redux/features/auth/authApi";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
+import useLanguage from "../../hooks/use-language";
+import { LanguageKey } from "../../const";
 
 const ChangePassword = () => {
+  const { getLanguage } = useLanguage();
   const [handleChangePassword] = useChangePasswordMutation();
 
   const { register, handleSubmit } = useForm();
@@ -36,7 +39,9 @@ const ChangePassword = () => {
                 <div className="flex flex-col mt-1 bg-white  h-full sm:border rounded-[4px] text-[15px]">
                   <div className="py-[2px] flex 1 text-[14px] font-[700] flex-row justify-between items-center  w-full  px-2 ">
                     <div>
-                      <p className="text-[14px]">Change Password</p>
+                      <p className="text-[14px]">
+                        {getLanguage(LanguageKey.CHANGE_PASSWORD)}
+                      </p>
                     </div>
                   </div>
                   <form
@@ -46,7 +51,7 @@ const ChangePassword = () => {
                     <div>
                       <div className="flex flex-col max-w-[400px]">
                         <div className="text-[#6c757d] text-[14px]">
-                          Old Password
+                          {getLanguage(LanguageKey.OLD_PASSWORD)}
                         </div>
                         <input
                           {...register("password", { required: true })}
@@ -57,7 +62,7 @@ const ChangePassword = () => {
                       </div>
                       <div className="flex flex-col max-w-[400px]">
                         <div className="text-[#6c757d] text-[14px]">
-                          New Password
+                          {getLanguage(LanguageKey.NEW_PASSWORD)}
                         </div>
                         <input
                           className="mb-2 p-2 border border-gray-300 rounded placeholder:text-xs shadow-[0_2px_4px_rgba(0,0,0,0.1)]"
@@ -70,7 +75,7 @@ const ChangePassword = () => {
                       </div>
                       <div className="flex flex-col max-w-[400px]">
                         <div className="text-[#6c757d] text-[14px]">
-                          Confirm Password
+                          {getLanguage(LanguageKey.CONFIRM_PASSWORD)}
                         </div>
                         <input
                           className="mb-2 p-2 border border-gray-300 rounded placeholder:text-xs shadow-[0_2px_4px_rgba(0,0,0,0.1)]"
@@ -86,7 +91,7 @@ const ChangePassword = () => {
                       type="submit"
                       className=" active:opacity-70  1  p-3  w-fit px-4 py-1.5 rounded-[4px] active:bg-blue1 placeholder:text-xs undefined"
                     >
-                      Update Password
+                      {getLanguage(LanguageKey.CHANGE_PASSWORD)}
                     </button>
                   </form>
                 </div>

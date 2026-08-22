@@ -4,8 +4,11 @@ import { useIndexQuery } from "../../../hooks";
 import { Settings } from "../../../api";
 import useCloseModalClickOutside from "../../../hooks/closeModal";
 import images from "../../../assets/images";
+import useLanguage from "../../../hooks/use-language";
+import { LanguageKey } from "../../../const";
 
 const ShareAffiliateLink = ({ setShowShareAffiliateLink }) => {
+  const { getLanguage } = useLanguage();
   const { data } = useIndexQuery({
     type: "get_referral_code",
   });
@@ -27,7 +30,7 @@ const ShareAffiliateLink = ({ setShowShareAffiliateLink }) => {
         className="z-2 popUpBoxShadow popUpOpenAnimation fixed w-[90%] sm:w-[85%] md:w-[70%] lg:w-[450px] rounded-[5px] bg-sidebarBg p-2 xs:p-5 rounded-md  overflow-hidden pb-10"
       >
         <h2 className="mb-5 text-base md:text-xl font-medium">
-          How to get bonus ?
+          {getLanguage(LanguageKey.HOW_TO_GET_BONUS)} ?
         </h2>
         <div
           onClick={() => setShowShareAffiliateLink(false)}
@@ -68,14 +71,14 @@ const ShareAffiliateLink = ({ setShowShareAffiliateLink }) => {
                 <img src={images.share} alt="af-share-img" />
               </div>
               <div className="af-share-link-wrapper">
-                <p>Share Link</p>
+                <p>{getLanguage(LanguageKey.SHARE_LINK)}</p>
                 <div className="af-share-link-sec">
                   <span>{data?.result?.link}</span>
                   <button
                     onClick={() => handleCopyToClipBoard(data?.result?.text)}
                     className="thm-but btn-gradient"
                   >
-                    Copy
+                    {getLanguage(LanguageKey.COPY)}
                   </button>
                 </div>
               </div>
@@ -86,7 +89,7 @@ const ShareAffiliateLink = ({ setShowShareAffiliateLink }) => {
                 <div className="af-share-link-wrapper">
                   <div className="affilate-cmn-footer">
                     <div className="shre-text-title">
-                      <p>Share this link via</p>
+                      <p>{getLanguage(LanguageKey.SHARE_THIS_LINK_VIA)}</p>
                     </div>
                     <div className="af-share-social-link-sec">
                       {(Settings?.branchWhatsapplink ||

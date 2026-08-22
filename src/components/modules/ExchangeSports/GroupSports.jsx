@@ -1,10 +1,17 @@
 import { useNavigate, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
-import { Status, EVENT_NAMES, EVENT_SORT_ORDER } from "../../../const";
+import {
+  Status,
+  EVENT_NAMES,
+  EVENT_SORT_ORDER,
+  LanguageKey,
+} from "../../../const";
 import Notification from "../../UI/Header/Notification";
 import { useGroupQuery } from "../../../hooks/group";
+import useLanguage from "../../../hooks/use-language";
 
 export const GroupSports = () => {
+  const { getLanguage } = useLanguage();
   const navigate = useNavigate();
   const [isInPlay, setIsInPlay] = useState(true);
   const [categories, setCategories] = useState([]);
@@ -111,7 +118,7 @@ export const GroupSports = () => {
                     isInPlay ? "bg-gray-700 " : "bg-white text-black"
                   }`}
                 >
-                  In-play
+                  {getLanguage(LanguageKey.IN_PLAY)}
                 </div>
                 <div
                   onClick={() => setIsInPlay(false)}
@@ -119,7 +126,7 @@ export const GroupSports = () => {
                     !isInPlay ? "bg-gray-700 " : "bg-white text-black"
                   }`}
                 >
-                  UPCOMING
+                  {getLanguage(LanguageKey.UP_COMING)}
                 </div>
               </div>
 
@@ -169,15 +176,11 @@ export const GroupSports = () => {
                           <div className="flex items-center gap-2">
                             <p className="flex gap-1 items-center justify-center md:border-black border rounded-full px-2 py-[3px] cursor-pointer border-white">
                               <span>-</span>
-                              <span>Live</span>
+                              <span>{getLanguage(LanguageKey.LIVE)}</span>
                             </p>
                             <p className="flex gap-1 items-center justify-center md:border-black border rounded-full px-2 py-[2px] min-w-20 cursor-pointer border-white">
                               <span>-</span>
-                              <span>Virtual</span>
-                            </p>
-                            <p className="flex gap-1 items-center justify-center md:border-black border rounded-full px-2 py-[2px] min-w-20 cursor-pointer border-white">
-                              <span>-</span>
-                              <span>Premium</span>
+                              <span>{getLanguage(LanguageKey.VIRTUAL)}</span>
                             </p>
                           </div>
                           <div className="relative max-md:hidden">
@@ -249,7 +252,9 @@ export const GroupSports = () => {
                                           <div className="flex gap-1 items-center">
                                             {value?.inPlay === 1 && (
                                               <div className="text-[#508d0e] font-[700]">
-                                                In-Play
+                                                {getLanguage(
+                                                  LanguageKey.IN_PLAY,
+                                                )}
                                               </div>
                                             )}
 

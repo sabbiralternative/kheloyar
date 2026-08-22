@@ -5,7 +5,10 @@ import { setShowLoginModal } from "../../../redux/features/global/globalSlice";
 import { Settings } from "../../../api";
 import WarningCondition from "../../shared/WarningCondition/WarningCondition";
 import { latestEvent } from "../../../static/latest-event";
+import useLanguage from "../../../hooks/use-language";
+import { LanguageKey } from "../../../const";
 const QuickDesktopLink = () => {
+  const { getLanguage } = useLanguage();
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [showWarning, setShowWarning] = useState(false);
@@ -58,7 +61,9 @@ const QuickDesktopLink = () => {
             alt="Kheloyar Exch"
             className="w-6 h-6"
           />
-          <span className="text-xs md:text-[9px]">Exch</span>
+          <span className="text-xs md:text-[9px]">
+            {getLanguage(LanguageKey.HOME)}
+          </span>
         </Link>
         <a
           onClick={handleNavigateToAviator}
@@ -69,7 +74,9 @@ const QuickDesktopLink = () => {
             alt="Aviator"
             className="w-6 h-6"
           />
-          <span className="text-xs md:text-[9px]">Aviator</span>
+          <span className="text-xs md:text-[9px]">
+            {getLanguage(LanguageKey.AVIATOR)}
+          </span>
         </a>
         <Link
           className="flex flex-col items-center gap-1  cursor-pointer text-nowrap"
@@ -80,7 +87,9 @@ const QuickDesktopLink = () => {
             alt="Indian Casino"
             className="w-6 h-6"
           />
-          <span className="text-xs md:text-[9px]">Indian Casino</span>
+          <span className="text-xs md:text-[9px]">
+            {getLanguage(LanguageKey.INDIAN_CASINO)}
+          </span>
         </Link>
         <Link
           className="flex flex-col items-center gap-1  cursor-pointer text-nowrap"
@@ -91,7 +100,9 @@ const QuickDesktopLink = () => {
             alt="All Casino"
             className="w-6 h-6"
           />
-          <span className="text-xs md:text-[9px]">All Casino</span>
+          <span className="text-xs md:text-[9px]">
+            {getLanguage(LanguageKey.CASINO)}
+          </span>
         </Link>
         <Link
           className="flex flex-col items-center gap-1  cursor-pointer text-nowrap"
@@ -102,7 +113,9 @@ const QuickDesktopLink = () => {
             alt="Teen Patti"
             className="w-6 h-6"
           />
-          <span className="text-xs md:text-[9px]">Teen Patti</span>
+          <span className="text-xs md:text-[9px]">
+            {getLanguage(LanguageKey.TEEN_PATTI)}
+          </span>
         </Link>
         <Link
           className="flex flex-col items-center gap-1  cursor-pointer text-nowrap"
@@ -113,7 +126,9 @@ const QuickDesktopLink = () => {
             alt="Slot Game"
             className="w-6 h-6"
           />
-          <span className="text-xs md:text-[9px]">Slot Game</span>
+          <span className="text-xs md:text-[9px]">
+            {getLanguage(LanguageKey.SLOTS)}
+          </span>
         </Link>
         <Link
           className="flex flex-col items-center gap-1  cursor-pointer text-nowrap"
@@ -124,7 +139,9 @@ const QuickDesktopLink = () => {
             alt="Table Game"
             className="w-6 h-6"
           />
-          <span className="text-xs md:text-[9px]">Table Game</span>
+          <span className="text-xs md:text-[9px]">
+            {getLanguage(LanguageKey.TABLE_GAMES)}
+          </span>
         </Link>
         <Link
           className="flex flex-col items-center gap-1  cursor-pointer text-nowrap"
@@ -135,7 +152,9 @@ const QuickDesktopLink = () => {
             alt="Live Casino"
             className="w-6 h-6"
           />
-          <span className="text-xs md:text-[9px]">Live Casino</span>
+          <span className="text-xs md:text-[9px]">
+            {getLanguage(LanguageKey.LIVE_CASINO)}
+          </span>
         </Link>
       </div>
     </div>

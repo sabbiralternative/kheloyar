@@ -2,8 +2,11 @@ import { useDispatch, useSelector } from "react-redux";
 import { logout } from "../../redux/features/auth/authSlice";
 import { Settings } from "../../api";
 import { useNavigate } from "react-router-dom";
+import useLanguage from "../../hooks/use-language";
+import { LanguageKey } from "../../const";
 
 const Account = () => {
+  const { getLanguage } = useLanguage();
   const closePopupForForever = localStorage.getItem("closePopupForForever");
   const { user } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
@@ -69,7 +72,7 @@ const Account = () => {
                         className="flex items-center justify-between py-2 font-[900] text-[17.2px]  border-b border-gray-200 hover:bg-gray-50 cursor-pointer"
                       >
                         <span className="ml-4 text-[17px] font-[900] font-sans">
-                          Customer Support
+                          {getLanguage(LanguageKey.CUSTOMER_SUPPORT)}
                         </span>
                         <ArrowRightIcon />
                       </div>
@@ -79,7 +82,7 @@ const Account = () => {
                       className="flex items-center justify-between py-2 font-[900] text-[17.2px]  border-b border-gray-200 hover:bg-gray-50 cursor-pointer"
                     >
                       <span className="ml-4 text-[17px] font-[900] font-sans">
-                        Deposit
+                        {getLanguage(LanguageKey.DEPOSIT)}
                       </span>
                       <ArrowRightIcon />
                     </div>
@@ -88,7 +91,7 @@ const Account = () => {
                       className="flex items-center justify-between py-2 font-[900] text-[17.2px]  border-b border-gray-200 hover:bg-gray-50 cursor-pointer"
                     >
                       <span className="ml-4 text-[17px] font-[900] font-sans">
-                        Withdraw
+                        {getLanguage(LanguageKey.WITHDRAW)}
                       </span>
                       <ArrowRightIcon />
                     </div>
@@ -97,7 +100,7 @@ const Account = () => {
                       className="flex items-center justify-between py-2 font-[900] text-[17.2px]  border-b border-gray-200 hover:bg-gray-50 cursor-pointer"
                     >
                       <span className="ml-4 text-[17px] font-[900] font-sans">
-                        Deposit Report
+                        {getLanguage(LanguageKey.DEPOSIT_STATEMENT)}
                       </span>
                       <ArrowRightIcon />
                     </div>
@@ -106,7 +109,7 @@ const Account = () => {
                       className="flex items-center justify-between py-2 font-[900] text-[17.2px]  border-b border-gray-200 hover:bg-gray-50 cursor-pointer"
                     >
                       <span className="ml-4 text-[17px] font-[900] font-sans">
-                        Withdraw Report
+                        {getLanguage(LanguageKey.WITHDRAW_STATMENT)}
                       </span>
                       <ArrowRightIcon />
                     </div>
@@ -115,7 +118,7 @@ const Account = () => {
                       className="flex items-center justify-between py-2 font-[900] text-[17.2px]  border-b border-gray-200 hover:bg-gray-50 cursor-pointer"
                     >
                       <span className="ml-4 text-[17px] font-[900] font-sans">
-                        Open Bets
+                        {getLanguage(LanguageKey.OPEN_BETS)}
                       </span>
                       <ArrowRightIcon />
                     </div>
@@ -124,7 +127,7 @@ const Account = () => {
                       className="flex items-center justify-between py-2 font-[900] text-[17.2px]  border-b border-gray-200 hover:bg-gray-50 cursor-pointer"
                     >
                       <span className="ml-4 text-[17px] font-[900] font-sans">
-                        Betting Profit & Loss
+                        {getLanguage(LanguageKey.BETTING_PROFIT_AND_LOSS)}
                       </span>
                       <ArrowRightIcon />
                     </div>
@@ -133,7 +136,7 @@ const Account = () => {
                       className="flex items-center justify-between py-2 font-[900] text-[17.2px]  border-b border-gray-200 hover:bg-gray-50 cursor-pointer"
                     >
                       <span className="ml-4 text-[17px] font-[900] font-sans">
-                        My Bank Details
+                        {getLanguage(LanguageKey.MY_BANK_DETAILS)}
                       </span>
                       <ArrowRightIcon />
                     </div>
@@ -143,7 +146,7 @@ const Account = () => {
                         className="flex items-center justify-between py-2 font-[900] text-[17.2px]  border-b border-gray-200 hover:bg-gray-50 cursor-pointer"
                       >
                         <span className="ml-4 text-[17px] font-[900] font-sans">
-                          Affiliate
+                          {getLanguage(LanguageKey.AFFILIATE)}
                         </span>
                         <ArrowRightIcon />
                       </div>
@@ -153,7 +156,7 @@ const Account = () => {
                       className="flex items-center justify-between py-2 font-[900] text-[17.2px]  border-b border-gray-200 hover:bg-gray-50 cursor-pointer"
                     >
                       <span className="ml-4 text-[17px] font-[900] font-sans">
-                        Promotions
+                        {getLanguage(LanguageKey.PROMOTIONS)}
                       </span>
                       <ArrowRightIcon />
                     </div>
@@ -162,7 +165,7 @@ const Account = () => {
                       className="flex items-center justify-between py-2 font-[900] text-[17.2px]  border-b border-gray-200 hover:bg-gray-50 cursor-pointer"
                     >
                       <span className="ml-4 text-[17px] font-[900] font-sans">
-                        Bonus Statement
+                        {getLanguage(LanguageKey.BONUS_STATEMENT)}
                       </span>
                       <ArrowRightIcon />
                     </div>
@@ -171,7 +174,7 @@ const Account = () => {
                       className="flex items-center justify-between py-2 font-[900] text-[17.2px]  border-b border-gray-200 hover:bg-gray-50 cursor-pointer"
                     >
                       <span className="ml-4 text-[17px] font-[900] font-sans">
-                        Promos & Bonus
+                        {getLanguage(LanguageKey.PROMOTION_AND_BONUSES)}
                       </span>
                       <ArrowRightIcon />
                     </div>
@@ -180,7 +183,7 @@ const Account = () => {
                       className="flex items-center justify-between py-2 font-[900] text-[17.2px]  border-b border-gray-200 hover:bg-gray-50 cursor-pointer"
                     >
                       <span className="ml-4 text-[17px] font-[900] font-sans">
-                        Lossback Bonus
+                        {getLanguage(LanguageKey.LOSSBACK_BONUS)}
                       </span>
                       <ArrowRightIcon />
                     </div>
@@ -190,7 +193,7 @@ const Account = () => {
                         className="flex items-center justify-between py-2 font-[900] text-[17.2px]  border-b border-gray-200 hover:bg-gray-50 cursor-pointer"
                       >
                         <span className="ml-4 text-[17px] font-[900] font-sans">
-                          App Only Bonus
+                          {getLanguage(LanguageKey.APP_ONLY_BONUS)}
                         </span>
                         <ArrowRightIcon />
                       </div>
@@ -201,7 +204,7 @@ const Account = () => {
                       className="flex items-center justify-between py-2 font-[900] text-[17.2px]  border-b border-gray-200 hover:bg-gray-50 cursor-pointer"
                     >
                       <span className="ml-4 text-[17px] font-[900] font-sans">
-                        Change Password
+                        {getLanguage(LanguageKey.CHANGE_PASSWORD)}
                       </span>
                       <ArrowRightIcon />
                     </div>
@@ -211,7 +214,7 @@ const Account = () => {
                         className="flex items-center justify-between py-2 font-[900] text-[17.2px]  border-b border-gray-200 hover:bg-gray-50 cursor-pointer"
                       >
                         <span className="ml-4 text-[17px] font-[900] font-sans">
-                          Download APK
+                          {getLanguage(LanguageKey.DOWNLOAD_APK)}
                         </span>
                         <ArrowRightIcon />
                       </div>
@@ -221,7 +224,7 @@ const Account = () => {
                       className="flex items-center justify-between py-2 font-[900] text-[17.2px]  border-b border-gray-200 hover:bg-gray-50 cursor-pointer"
                     >
                       <span className="ml-4 text-[17px] font-[900] font-sans">
-                        Rules and Regulations
+                        {getLanguage(LanguageKey.RULES_AND_REGULATION)}
                       </span>
                       <ArrowRightIcon />
                     </div>
@@ -232,7 +235,9 @@ const Account = () => {
                     onClick={() => dispatch(logout())}
                     className="bg-gradient-to-b text-[18px] mb-12 font-[600] font-sans from-red9 to-red10 mt-4  p-4 flex items-center justify-center cursor-pointer hover:bg-red-600 transition-colors duration-200"
                   >
-                    <span className="font-medium mr-2">LOGOUT</span>
+                    <span className="font-medium mr-2">
+                      {getLanguage(LanguageKey.LOGOUT)}
+                    </span>
                     <img
                       src="data:image/svg+xml,%3csvg%20width='19'%20height='18'%20viewBox='0%200%2019%2018'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3cpath%20d='M11.58%2012.59L14.17%2010H4.5V8H14.17L11.58%205.41L13%204L18%209L13%2014L11.58%2012.59ZM16.5%200C17.0304%200%2017.5391%200.210714%2017.9142%200.585786C18.2893%200.960859%2018.5%201.46957%2018.5%202V6.67L16.5%204.67V2H2.5V16H16.5V13.33L18.5%2011.33V16C18.5%2016.5304%2018.2893%2017.0391%2017.9142%2017.4142C17.5391%2017.7893%2017.0304%2018%2016.5%2018H2.5C1.96957%2018%201.46086%2017.7893%201.08579%2017.4142C0.710714%2017.0391%200.5%2016.5304%200.5%2016V2C0.5%200.89%201.39%200%202.5%200H16.5Z'%20fill='white'/%3e%3c/svg%3e"
                       alt="Logout Icon"

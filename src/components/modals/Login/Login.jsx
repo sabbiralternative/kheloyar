@@ -12,12 +12,12 @@ import {
 import toast from "react-hot-toast";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { useLanguage } from "../../../context/LanguageProvider";
-import { languageValue } from "../../../utils/language";
+
 import { LanguageKey } from "../../../const";
+import useLanguage from "../../../hooks/use-language";
 
 const Login = () => {
-  const { valueByLanguage } = useLanguage();
+  const { getLanguage } = useLanguage();
   const [tab, setTab] = useState("username");
   const [showPassword, setShowPassword] = useState(false);
   const { closePopupForForever } = useSelector((state) => state.global);
@@ -177,10 +177,10 @@ const Login = () => {
                       className="h-[38px] w-full rounded p-2 pr-6 bg-loginInputGray  text-xs focus:outline-none appearance-none"
                     >
                       <option className="capitalize" value="username">
-                        Username
+                        {getLanguage(LanguageKey.USERNAME)}
                       </option>
                       <option className="capitalize" value="phone">
-                        Phone
+                        {getLanguage(LanguageKey.MOBILE_NUMBER)}
                       </option>
                     </select>
                     <svg
@@ -255,7 +255,7 @@ const Login = () => {
                 </div>
                 <div className="text-center">
                   <a className=" text-xs" onClick={showForgotPassword}>
-                    Forgot password? पासवर्ड भूल गया?
+                    {getLanguage(LanguageKey.FORGOT_PASSWORD)}?
                   </a>
                 </div>
                 <div className="space-y-3">
@@ -263,14 +263,14 @@ const Login = () => {
                     type="submit"
                     className=" active:opacity-70 w-full h-[40px] text-sm text-bold font-bold p-1 rounded-md transition-colors bg-disabledButtonBg border border-signupHereText "
                   >
-                    {languageValue(valueByLanguage, LanguageKey.LOGIN)}
+                    {getLanguage(LanguageKey.LOGIN)}
                   </button>
                   <button
                     onClick={loginWithDemo}
                     type="button"
                     className=" active:opacity-70 w-full h-[40px] text-sm bg-buttonGradient hover:bg-blue-600 text-black font-bold p-1 rounded-md transition-colors"
                   >
-                    Login with Demo ID
+                    {getLanguage(LanguageKey.DEMO_LOGIN)}
                   </button>
                 </div>
                 <div className="text-center ">
@@ -282,7 +282,7 @@ const Login = () => {
                       onClick={showRegister}
                       className="text-xs text-signupHereText cursor-pointer"
                     >
-                      {languageValue(valueByLanguage, LanguageKey.REGISTER)}
+                      {getLanguage(LanguageKey.REGISTER)}
                     </span>
                   </p>
                 </div>
@@ -293,7 +293,7 @@ const Login = () => {
                       type="button"
                       className=" active:opacity-70 w-full h-[40px] text-sm text-bold font-bold p-1 rounded-md transition-colors bg-disabledButtonBg border border-signupHereText "
                     >
-                      Whatsapp
+                      {getLanguage(LanguageKey.WHATSAPP)}
                     </button>
                   )}
                   {Settings.apk_link && (
@@ -302,7 +302,7 @@ const Login = () => {
                       type="button"
                       className=" active:opacity-70 w-full h-[40px] text-sm text-bold font-bold p-1 rounded-md transition-colors bg-disabledButtonBg border border-signupHereText "
                     >
-                      Download .apk
+                      {getLanguage(LanguageKey.DOWNLOAD_APK)}
                     </button>
                   )}
                 </div>
