@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { Fragment, useEffect, useState } from "react";
 import { useLogo } from "../../context/ApiProvider";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
@@ -18,8 +18,12 @@ import { IoEye } from "react-icons/io5";
 import { IoMdEyeOff } from "react-icons/io";
 import { LanguageKey } from "../../const";
 import useLanguage from "../../hooks/use-language";
+import { FaRegUser, FaMobileAlt } from "react-icons/fa";
 
 const Register = () => {
+  const [tab, setTab] = useState(
+    Settings.registration_mobile ? "mobile" : "username",
+  );
   const { getLanguage } = useLanguage();
   const affnook_token = localStorage.getItem("affnook_token");
   const referralCode = localStorage.getItem("referralCode");
@@ -54,7 +58,7 @@ const Register = () => {
 
   const onSubmit = async (data) => {
     const registerData = {
-      username: "",
+      username: data?.username,
       password: data?.password,
       confirmPassword: data?.confirmPassword,
       mobile: mobile,
@@ -64,6 +68,8 @@ const Register = () => {
       orderId: order.orderId,
       otpMethod: order.otpMethod,
       affnook_token: affnook_token || null,
+      registration_mobile: Settings.registration_mobile,
+      registration_username: Settings.registration_username,
     };
 
     const result = await handleRegister(registerData).unwrap();
@@ -180,50 +186,136 @@ const Register = () => {
             onSubmit={handleSubmit(onSubmit)}
             className="flex flex-col py-px w-full text-sm font-medium"
           >
-            <div>
-              <div className="flex gap-2.5 mt-3 text-black-900 font-bold text-opacity-60">
-                <div className="px-3 h-[44px] flex items-center justify-center gap-1 rounded-md bg-loginInputGray">
-                  <img src="data:image/webp;base64,UklGRnYBAABXRUJQVlA4TGkBAAAvEYAEEGfiOJJtpRoctp6G5p8MxVa/y70nDTeSJDlRosHl/z42jzpXazEzDBpJUtT3DJJew6t9Xcw44xC2bVFZn+BPZLGEEkEqmXQjePsRvABUPiCwwQGBwF4Pw/P7/XjKeTl42u/3+XxeFqKCp3nK+/2wMAux+KngaSr5/8VTfr+fym63kwrbcVV/N9f1skTq+311W/fA5CNZIITgP1jChRA4IW2E/igUggfJ3C79DySEIChTwxeeENR4FFyIOI8JRd5ydMA8NCuRv1J1/d5+iiVXrrVoTN/JlN1wGNm2mrzg7gR3ojjE3dH+G+JLCxH9nwBAR2GQAGlim6qqqroVYVxNxeoewlGJbQDwVcoAwKDR42dKnZUY5Gg87TPIcg7Rqy8H3SGiwCDZ1n7XYBHYeWe9as5QeUR10q4tKoji94N8bTfvD/L3EKgVONCcAXiJTFIAQJFIJAX++QtGvHKAVe5HWT7dOPgHAA==" />
-                  <div>+91</div>
-                </div>
-                <input
-                  onChange={(e) => handleMobileNo(e)}
-                  value={mobile}
-                  className="flex items-center px-3 py-2 w-full h-[44px] bg-loginInputGray rounded text-black-900 font-bold text-opacity-60 focus:outline-none"
-                  placeholder="Enter Phone Number"
-                />{" "}
-                <div className=" h-[44px] w-[130px] flex items-center justify-center gap-1 rounded-md bg-loginInputGray ">
-                  {timer ? (
-                    <div className="px-3 w-full h-full  text-base font-semibold text-center rounded-md  bg-buttonGradient  cursor-text">
-                      {getLanguage(LanguageKey.RETRY_IN)} {timer}
-                    </div>
-                  ) : (
-                    <button
-                      disabled={Settings.otp && mobile?.length < 10}
-                      onClick={handleOTP}
-                      type="button"
-                      className="px-3 w-full h-full  text-base font-semibold text-center rounded-md  bg-buttonGradient "
-                    >
-                      {getLanguage(LanguageKey.GET_OTP)}
-                    </button>
-                  )}
+            {Settings.registration_mobile && Settings.registration_username && (
+              <div
+                style={{
+                  width: "100%",
+                  background:
+                    "color-mix(in srgb, var(--primary-color) 30%, transparent)",
+                  marginBottom: "12px",
+                  marginTop: "12px",
+                }}
+              >
+                <div
+                  style={{
+                    display: "flex",
+                    flexDirection: "row",
+                    alignItems: "center",
+                    justifyContent: "flex-start",
+                    position: "relative",
+                    width: "100%",
+                  }}
+                >
+                  <div
+                    onClick={() => setTab("mobile")}
+                    style={{
+                      cursor: "pointer",
+                      display: "flex",
+                      flexDirection: "row",
+                      alignItems: "center",
+                      justifyContent: "center",
+                      padding: "5px",
+                      width: "100%",
+                      gap: "6px",
+                      color: "white",
+                      background:
+                        tab === "mobile"
+                          ? "var(--primary-active-bg)"
+                          : undefined,
+                    }}
+                  >
+                    <FaMobileAlt />
+
+                    <span>{getLanguage(LanguageKey.BY_PHONE)}</span>
+                  </div>
+
+                  <div
+                    onClick={() => setTab("username")}
+                    style={{
+                      cursor: "pointer",
+                      display: "flex",
+                      flexDirection: "row",
+                      alignItems: "center",
+                      justifyContent: "center",
+                      padding: "5px",
+                      width: "100%",
+                      gap: "6px",
+                      color: "white",
+                      background:
+                        tab === "username"
+                          ? "var(--primary-active-bg)"
+                          : undefined,
+                    }}
+                  >
+                    <FaRegUser />
+
+                    <span>{getLanguage(LanguageKey.BY_USERNAME)}</span>
+                  </div>
                 </div>
               </div>
-            </div>
-            <div className="mt-3">
-              <label
-                htmlFor="username"
-                className="self-start text-black-900 font-bold"
-              >
-                {getLanguage(LanguageKey.OTP)}
-              </label>
-              <input
-                type="text"
-                placeholder="Enter OTP"
-                {...register("otp", { required: true })}
-                className="flex items-center px-3 py-2 w-full h-[44px] bg-loginInputGray rounded text-black-900 font-bold text-opacity-60 focus:outline-none"
-              />
-            </div>
+            )}
+            {tab === "mobile" && Settings.registration_mobile && (
+              <Fragment>
+                <div>
+                  <div className="flex gap-2.5 mt-3 text-black-900 font-bold text-opacity-60">
+                    <div className="px-3 h-[44px] flex items-center justify-center gap-1 rounded-md bg-loginInputGray">
+                      <img src="data:image/webp;base64,UklGRnYBAABXRUJQVlA4TGkBAAAvEYAEEGfiOJJtpRoctp6G5p8MxVa/y70nDTeSJDlRosHl/z42jzpXazEzDBpJUtT3DJJew6t9Xcw44xC2bVFZn+BPZLGEEkEqmXQjePsRvABUPiCwwQGBwF4Pw/P7/XjKeTl42u/3+XxeFqKCp3nK+/2wMAux+KngaSr5/8VTfr+fym63kwrbcVV/N9f1skTq+311W/fA5CNZIITgP1jChRA4IW2E/igUggfJ3C79DySEIChTwxeeENR4FFyIOI8JRd5ydMA8NCuRv1J1/d5+iiVXrrVoTN/JlN1wGNm2mrzg7gR3ojjE3dH+G+JLCxH9nwBAR2GQAGlim6qqqroVYVxNxeoewlGJbQDwVcoAwKDR42dKnZUY5Gg87TPIcg7Rqy8H3SGiwCDZ1n7XYBHYeWe9as5QeUR10q4tKoji94N8bTfvD/L3EKgVONCcAXiJTFIAQJFIJAX++QtGvHKAVe5HWT7dOPgHAA==" />
+                      <div>+91</div>
+                    </div>
+                    <input
+                      onChange={(e) => handleMobileNo(e)}
+                      value={mobile}
+                      className="flex items-center px-3 py-2 w-full h-[44px] bg-loginInputGray rounded text-black-900 font-bold text-opacity-60 focus:outline-none"
+                      placeholder="Enter Phone Number"
+                    />{" "}
+                    <div className=" h-[44px] w-[130px] flex items-center justify-center gap-1 rounded-md bg-loginInputGray ">
+                      {timer ? (
+                        <div className="px-3 w-full h-full  text-base font-semibold text-center rounded-md  bg-buttonGradient  cursor-text">
+                          {getLanguage(LanguageKey.RETRY_IN)} {timer}
+                        </div>
+                      ) : (
+                        <button
+                          disabled={Settings.otp && mobile?.length < 10}
+                          onClick={handleOTP}
+                          type="button"
+                          className="px-3 w-full h-full  text-base font-semibold text-center rounded-md  bg-buttonGradient "
+                        >
+                          {getLanguage(LanguageKey.GET_OTP)}
+                        </button>
+                      )}
+                    </div>
+                  </div>
+                </div>
+                <div className="mt-3">
+                  <label
+                    htmlFor="username"
+                    className="self-start text-black-900 font-bold"
+                  >
+                    {getLanguage(LanguageKey.OTP)}
+                  </label>
+                  <input
+                    type="text"
+                    placeholder="Enter OTP"
+                    {...register("otp", { required: true })}
+                    className="flex items-center px-3 py-2 w-full h-[44px] bg-loginInputGray rounded text-black-900 font-bold text-opacity-60 focus:outline-none"
+                  />
+                </div>
+              </Fragment>
+            )}
+            {tab === "username" && Settings.registration_username && (
+              <div className="mt-3">
+                <label className="self-start text-black-900 font-bold">
+                  {getLanguage(LanguageKey.USERNAME)}
+                </label>
+                <input
+                  type="text"
+                  placeholder="Enter Username"
+                  {...register("username", { required: true })}
+                  className="flex items-center px-3 py-2 w-full h-[44px] bg-loginInputGray rounded text-black-900 font-bold text-opacity-60 focus:outline-none"
+                />
+              </div>
+            )}
+
             <div className="mt-3">
               <label
                 htmlFor="password"
