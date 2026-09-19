@@ -40,8 +40,17 @@ const MainLayout = () => {
 
   return (
     <div className="h-full font-poppinsFont">
-      <meta name="description" content={Settings.metaDescription} />
-      <meta name="keywords" content={Settings.metaKeywords} />
+      {Settings.metaDescription && (
+        <meta name="description" content={Settings.metaDescription} />
+      )}
+      {Settings.metaKeywords && (
+        <meta name="keywords" content={Settings.metaKeywords} />
+      )}
+      {Settings.gscTag && (
+        <meta name="google-site-verification" content={Settings.gscTag} />
+      )}
+      {Settings.metaTitle && <title>{Settings.metaTitle}</title>}
+      <meta name="robots" content="index, follow" />
       {showLoginModal && <Login />}
       <div className="relative flex xl:gap-4 h-full w-full md:pt-4 app-bg ">
         <DesktopLeftSidebar />
